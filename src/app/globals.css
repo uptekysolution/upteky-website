@@ -1,0 +1,133 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 210 8% 15%; /* Darker gray derived from #2d3436 */
+    --foreground: 0 0% 98%; /* Light foreground for dark background */
+    --card: 210 8% 18%; /* Slightly lighter card background */
+    --card-foreground: 0 0% 98%;
+    --popover: 210 8% 10%; /* Dark popover */
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%; /* Primary elements - light */
+    --primary-foreground: 210 8% 10%; /* Text on primary elements - dark */
+    --secondary: 210 8% 25%; /* Secondary elements - slightly lighter gray */
+    --secondary-foreground: 0 0% 98%;
+    --muted: 210 8% 25%; /* Muted elements */
+    --muted-foreground: 0 0% 63.9%; /* Lighter muted text */
+    --accent: 25 85% 61%; /* Accent color derived from orange/red gradient */
+    --accent-foreground: 0 0% 100%; /* Text on accent */
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 210 8% 30%; /* Borders slightly visible */
+    --input: 210 8% 30%; /* Input background */
+    --ring: 25 85% 61%; /* Ring matches accent */
+    --chart-1: 25 85% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+    --radius: 0.5rem;
+    --sidebar-background: 210 8% 10%;
+    --sidebar-foreground: 0 0% 98%;
+    --sidebar-primary: 25 85% 61%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 210 8% 20%;
+    --sidebar-accent-foreground: 0 0% 98%;
+    --sidebar-border: 210 8% 25%;
+    --sidebar-ring: 25 85% 61%;
+  }
+
+  /* Remove dark class override as the base theme is dark now */
+  /* .dark { ... } */
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    @apply scroll-smooth;
+    scroll-snap-type: y mandatory;
+    scroll-padding-top: 4rem; /* For sticky navbar (h-16 = 4rem) */
+  }
+  body {
+    @apply bg-background text-foreground;
+    background-color: #2d3436;
+    background-image: linear-gradient(315deg, #2d3436 0%, #000000 74%);
+    min-height: 100vh;
+  }
+}
+
+/* Custom gradient text utility */
+@layer utilities {
+  .text-gradient-accent {
+    @apply bg-gradient-to-r from-[#f69018] to-[#e47c7c] bg-clip-text text-transparent;
+  }
+  .bg-gradient-accent {
+    @apply bg-gradient-to-r from-[#f69018] to-[#e47c7c];
+  }
+}
+
+.animate-dash-fast {
+  animation: dash 20s linear infinite;
+}
+
+.animate-float {
+  animation: float 8s ease-in-out infinite;
+}
+
+.animate-shooting-star {
+  animation: shootingStar 6s linear infinite;
+  opacity: 0;
+}
+
+.animate-wave {
+  animation: wave 1.5s ease-in-out infinite alternate; /* Adjusted duration slightly for smoother feel */
+}
+
+
+@keyframes dash {
+  to {
+    stroke-dashoffset: 1000;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes shootingStar {
+  0% {
+    opacity: 0;
+    stroke-width: 0;
+  }
+  50% {
+    opacity: 1;
+    stroke-width: 2px;
+  }
+  100% {
+    opacity: 0;
+    stroke-width: 0;
+  }
+}
+
+@keyframes wave {
+  0% {
+    transform: rotate(20deg); /* Increased start angle */
+  }
+  100% {
+    transform: rotate(-35deg); /* Increased end angle for a wider wave */
+  }
+}
+
+
+.shadow-glow {
+  box-shadow: 0 0 15px 5px rgba(255, 153, 0, 0.2);
+}
