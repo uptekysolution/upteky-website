@@ -1,4 +1,3 @@
-
 "use client";
 
 import Link from 'next/link';
@@ -13,7 +12,7 @@ import { cn } from '@/lib/utils';
 const navItems = [
   { href: '/', label: 'Home' },
   { href: '/about', label: 'About' },
-  { href: '/solutions', label: 'Solutions' },
+  { href: '/solution', label: 'Solutions' },
   { href: '/careers', label: 'Careers' },
   { href: '/contact', label: 'Contact' },
 ];
@@ -56,7 +55,7 @@ export function Navbar() {
     <>
       {isMounted && loadingHref && (
         <div className="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-background/80 backdrop-blur-md transition-opacity duration-300 ease-in-out opacity-100">
-          <UptekyLogo className="h-12 w-auto mb-6 text-primary" />
+          <UptekyLogo className="h-16 w-auto mb-6 text-primary" />
           <Loader2 className="h-8 w-8 animate-spin text-primary" />
           <p className="mt-3 text-sm text-muted-foreground">Loading page...</p>
         </div>
@@ -69,7 +68,7 @@ export function Navbar() {
       >
         <div className="container mx-auto flex h-20 items-center justify-between px-4 md:px-6">
           <Link href="/" className="flex items-center" prefetch={false} onClick={() => handleLinkClick('/')}>
-            <UptekyLogo className="h-9 w-auto text-primary" />
+            <UptekyLogo className="h-12 w-auto text-primary" />
             <span className="sr-only">Upteky AI Solutions</span>
           </Link>
 
@@ -108,7 +107,7 @@ export function Navbar() {
                 <div className="flex flex-col h-full">
                   <div className="p-6 border-b border-border/30">
                    <Link href="/" onClick={() => handleLinkClick('/')} prefetch={false}>
-                      <UptekyLogo className="h-8 w-auto text-primary" />
+                      <UptekyLogo className="h-10 w-auto text-primary" />
                       <span className="sr-only">Upteky AI Solutions</span>
                     </Link>
                   </div>

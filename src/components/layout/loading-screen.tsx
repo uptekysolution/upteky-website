@@ -12,7 +12,7 @@ export function LoadingScreen() {
     // Simulate loading time
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 1500); // Adjust timing as needed
+    }, 3000); // Adjust timing as needed
 
     return () => clearTimeout(timer);
   }, []);
@@ -24,7 +24,7 @@ export function LoadingScreen() {
         loading ? "opacity-100" : "opacity-0 pointer-events-none"
       )}
     >
-      <UptekyLogo className="h-12 w-auto mb-6 text-primary" />
+      <UptekyLogo className="h-16 w-auto mb-6 text-primary" />
       <Loader className="h-8 w-8 animate-spin text-primary" />
     </div>
   );

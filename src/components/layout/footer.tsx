@@ -1,4 +1,3 @@
-
 'use client';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
@@ -26,10 +25,10 @@ export function Footer() {
     {
       title: 'Solutions',
       links: [
-        { label: 'AI Chatbot', href: '/solutions/s01' },
-        { label: 'Voice Assistant', href: '/solutions/s04' },
-        { label: 'Workflow Automation', href: '/solutions/s05' },
-        { label: 'View All', href: '/solutions'},
+        { label: 'AI Chatbot', href: '/solution_pages/s01' },
+        { label: 'Voice Assistant', href: '/solution_pages/s04' },
+        { label: 'Workflow Automation', href: '/solution_pages/s05' },
+        { label: 'View All', href: '/solution'},
       ],
     },
     {
@@ -103,7 +102,7 @@ export function Footer() {
             {/* Column 1: Logo and Contact */}
             <div className="md:col-span-1 space-y-3">
               <Link href="/" className="inline-block mb-1" prefetch={false}>
-                <UptekyLogo className="h-7 w-auto text-primary" />
+                <UptekyLogo className="h-10 w-auto text-primary" />
               </Link>
               <p className="text-sm text-muted-foreground max-w-xs">
                 Revolutionizing industries with intelligent AI automation and enterprise solutions.

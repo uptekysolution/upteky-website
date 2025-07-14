@@ -131,3 +131,26 @@
 .shadow-glow {
   box-shadow: 0 0 15px 5px rgba(255, 153, 0, 0.2);
 }
+
+/* Testimonial Scrollbar Styles */
+.testimonial-scroll::-webkit-scrollbar {
+  height: 6px;
+  width: 6px;
+}
+
+.testimonial-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.testimonial-scroll::-webkit-scrollbar-thumb {
+  background: rgba(255, 139, 6, 0.3);
+  border-radius: 3px;
+}
+
+.testimonial-scroll::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 139, 6, 0.5);
+}
+
+.testimonial-scroll::-webkit-scrollbar-vertical {
+  display: none;
+}

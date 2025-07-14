@@ -1,4 +1,3 @@
-
 'use client';
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
@@ -8,6 +7,7 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Mail, Phone, MapPin, Loader2 } from "lucide-react"; 
 import { useToast } from "@/hooks/use-toast";
+import FadeIn from "@/components/FadeIn";
 
 export default function ContactPage() {
   const { toast } = useToast();
@@ -73,6 +73,7 @@ export default function ContactPage() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-background to-background/95">
       {/* Hero Section with Background */}
+      <FadeIn>
       <div className="relative bg-accent/10 overflow-hidden">
         <div className="absolute inset-0 bg-grid-white/5 [mask-image:radial-gradient(white,transparent_85%)]" />
         <div className="container mx-auto px-4 md:px-6 py-12 sm:py-16 md:py-24 relative z-10">
@@ -90,10 +91,12 @@ export default function ContactPage() {
         {/* Decorative elements */}
         <div className="absolute -bottom-6 left-0 right-0 h-12 bg-gradient-to-r from-accent/20 via-accent/30 to-accent/20 blur-xl" />
       </div>
+      </FadeIn>
 
       <div className="container mx-auto px-4 md:px-6 py-10 sm:py-12 md:py-20">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
           {/* Contact Form Section */}
+          <FadeIn>
           <section>
             <Card className="bg-card border border-border/50 shadow-xl rounded-xl overflow-hidden">
               <div className="h-1.5 sm:h-2 bg-gradient-to-r from-accent to-accent/70" />
@@ -169,8 +172,10 @@ export default function ContactPage() {
               </CardContent>
             </Card>
           </section>
+          </FadeIn>
 
           {/* Contact Details & Map Section */}
+          <FadeIn>
           <section className="space-y-6 sm:space-y-8">
             <div>
               <h2 className="text-xl sm:text-2xl font-semibold mb-1.5 sm:mb-2">Contact Information</h2>
@@ -239,6 +244,7 @@ export default function ContactPage() {
               </div>
             </Card>
           </section>
+          </FadeIn>
         </div>
       </div>
     </div>

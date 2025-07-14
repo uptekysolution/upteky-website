@@ -1,7 +1,7 @@
-
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { CheckCircle } from "lucide-react";
 import type { Metadata } from 'next';
+import FadeIn from "@/components/FadeIn";
 
 export const metadata: Metadata = {
   title: "FAQ | Upteky AI Solutions",
@@ -44,6 +44,7 @@ export default function FaqPage() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-background to-background/95 text-foreground">
       {/* Hero Section */}
+      <FadeIn>
       <section className="relative py-16 sm:py-20 md:py-28 bg-accent/10 overflow-hidden">
         <div className="absolute inset-0 bg-grid-white/5 [mask-image:radial-gradient(white,transparent_85%)]" />
         <div className="container mx-auto px-4 md:px-6 relative z-10">
@@ -58,8 +59,10 @@ export default function FaqPage() {
         </div>
         <div className="absolute -bottom-6 left-0 right-0 h-12 bg-gradient-to-r from-accent/20 via-accent/30 to-accent/20 blur-xl" />
       </section>
+      </FadeIn>
 
       {/* FAQ Accordion Section */}
+      <FadeIn>
       <section className="py-12 sm:py-16 md:py-24">
         <div className="container mx-auto px-4 md:px-6 max-w-3xl">
           <Accordion type="single" collapsible className="w-full space-y-3 sm:space-y-4">
@@ -76,8 +79,10 @@ export default function FaqPage() {
           </Accordion>
         </div>
       </section>
+      </FadeIn>
 
        {/* Still Need Help Section */}
+       <FadeIn>
        <section className="py-12 sm:py-16 md:py-24 bg-secondary/10 border-t border-border/20">
         <div className="container mx-auto px-4 md:px-6 text-center">
             <CheckCircle className="h-12 w-12 sm:h-16 sm:w-16 text-accent mx-auto mb-4 sm:mb-6" />
@@ -93,6 +98,7 @@ export default function FaqPage() {
             </a>
         </div>
       </section>
+      </FadeIn>
     </div>
   );
 }

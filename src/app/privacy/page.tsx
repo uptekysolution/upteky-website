@@ -1,5 +1,5 @@
-
 import type { Metadata } from 'next';
+import FadeIn from "@/components/FadeIn";
 
 export const metadata: Metadata = {
   title: "Privacy Policy | Upteky AI Solutions",
@@ -14,6 +14,7 @@ export const metadata: Metadata = {
 export default function PrivacyPolicyPage() {
   return (
     <div className="py-16 md:py-24 bg-background text-foreground">
+      <FadeIn>
       <div className="container mx-auto px-4 md:px-6 max-w-3xl">
         <h1 className="text-3xl font-bold tracking-tight sm:text-4xl mb-8">Privacy Policy</h1>
         <div className="prose prose-invert max-w-none text-muted-foreground space-y-6">
@@ -98,11 +99,11 @@ export default function PrivacyPolicyPage() {
           <h2 className="text-2xl font-semibold text-foreground mt-8">4. Tracking Technologies</h2>
           <h3 className="text-xl font-semibold text-foreground/90">Cookies and Web Beacons</h3>
           <p>
-            We may use cookies, web beacons, tracking pixels, and other tracking technologies on the Site to help customize the Site and improve your experience. When you access the Site, your personal information is not collected through the use of tracking technology. Most browsers are set to accept cookies by default. You can remove or reject cookies, but be aware that such action could affect the availability and functionality of the Site. You may not decline web beacons. However, they can be rendered ineffective by declining all cookies or by modifying your browser’s settings to notify you each time a cookie is tendered, permitting you to accept or decline cookies on an individual basis.
+            We may use cookies, web beacons, tracking pixels, and other tracking technologies on the Site to help customize the Site and improve your experience. When you access the Site, your personal information is not collected through the use of tracking technology. Most browsers are set to accept cookies by default. You can remove or reject cookies, but be aware that such action could affect the availability and functionality of the Site. You may not decline web beacons. However, they can be rendered ineffective by declining all cookies or by modifying your browser's settings to notify you each time a cookie is tendered, permitting you to accept or decline cookies on an individual basis.
           </p>
           <h3 className="text-xl font-semibold text-foreground/90">Analytics</h3>
           <p>
-            We may partner with selected third-party vendors, such as Google Analytics, to allow tracking technologies and remarketing services on the Site through the use of first-party cookies and third-party cookies, to, among other things, analyze and track users’ use of the Site, determine the popularity of certain content, and better understand online activity. By accessing the Site, you consent to the collection and use of your information by these third-party vendors. You are encouraged to review their privacy policy and contact them directly for responses to your questions. We do not transfer personal information to these third-party vendors.
+            We may partner with selected third-party vendors, such as Google Analytics, to allow tracking technologies and remarketing services on the Site through the use of first-party cookies and third-party cookies, to, among other things, analyze and track users' use of the Site, determine the popularity of certain content, and better understand online activity. By accessing the Site, you consent to the collection and use of your information by these third-party vendors. You are encouraged to review their privacy policy and contact them directly for responses to your questions. We do not transfer personal information to these third-party vendors.
           </p>
 
           <h2 className="text-2xl font-semibold text-foreground mt-8">5. Third-Party Websites</h2>
@@ -135,7 +136,7 @@ export default function PrivacyPolicyPage() {
 
           <h2 className="text-2xl font-semibold text-foreground mt-8">10. Changes to This Privacy Policy</h2>
           <p>
-            We may update this Privacy Policy from time to time. The updated version will be indicated by an updated “Last Updated” date and the updated version will be effective as soon as it is accessible. We encourage you to review this privacy policy frequently to be informed of how we are protecting your information.
+            We may update this Privacy Policy from time to time. The updated version will be indicated by an updated "Last Updated" date and the updated version will be effective as soon as it is accessible. We encourage you to review this privacy policy frequently to be informed of how we are protecting your information.
           </p>
 
           <h2 className="text-2xl font-semibold text-foreground mt-8">11. Contact Us</h2>
@@ -150,6 +151,7 @@ export default function PrivacyPolicyPage() {
           </p>
         </div>
       </div>
+      </FadeIn>
     </div>
   );
 }
