@@ -7,7 +7,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { allSolutions } from '@/lib/solutionsData';
-import Tilt from "react-parallax-tilt";
+// import Tilt from "react-parallax-tilt";
 
 
 

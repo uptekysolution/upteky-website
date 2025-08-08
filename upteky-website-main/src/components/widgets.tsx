@@ -63,7 +63,7 @@ export default function MainBotLauncher() {
         )}
         <Button
           onClick={handleMainClick}
-          className="h-16 w-16 rounded-full bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 shadow-lg transition-transform duration-300 hover:scale-105 p-0 overflow-hidden flex items-center justify-center"
+          className="h-16 w-16 rounded-full  bg-gradient-to-r from-[#F58F1D] to-[#E57D77] hover:shadow-[0px_0px_30px_-3px_#F58F1D]  shadow-lg transition-transform duration-300 hover:scale-105 p-0 overflow-hidden flex items-center justify-center"
         >
           {selectedBot ? (
             <X className="h-2 w-2 text-white" />

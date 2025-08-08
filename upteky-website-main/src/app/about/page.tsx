@@ -1,14 +1,206 @@
 "use client";
 import { useState, useEffect } from "react";
-import { ShieldCheck, Settings, Users, Zap, BarChart3, Settings2, Bot, Search, GitMerge, Lightbulb, Target, CheckCircle, Share2, BrainCircuit } from "lucide-react";
-import Image from "next/image";
+import { ShieldCheck, Code2, Network, BarChart2, Users, BarChart3, Settings2, ChevronDown, ChevronUp } from "lucide-react";
 import { useRouter } from "next/navigation";
-import { SpotLight } from "three/src/Three.js";
-import Tilt from "react-parallax-tilt";
 import Spline from '@splinetool/react-spline';
 import FadeIn from "@/components/FadeIn";
-import { Description } from "@radix-ui/react-toast";
-import type { Metadata } from 'next';
+import { motion } from "framer-motion";
+
+const faqs = [
+  {
+    question: "What services does Upteky provide?",
+    answer:
+      "We offer AI-powered solutions including conversational agents, process automation, analytics, and quality assurance.",
+  },
+  {
+    question: "Do you develop custom AI solutions?",
+    answer:
+      "Yes, we build tailor-made AI tools to address specific business challenges and optimize operations.",
+  },
+  {
+    question: "How long does it take to implement AI solutions?",
+    answer:
+      "Our typical delivery timeline is 4–8 weeks depending on complexity and integration requirements.",
+  },
+  {
+    question: "What is your approach to integrating AI into existing systems?",
+    answer:
+      "We follow a collaborative approach that ensures seamless integration with minimal disruption to current workflows.",
+  },
+];
+const capabilities = [
+  {
+    image: "/images/WebDevelopment.png",
+    title: "Web Development",
+    desc: "We design and develop scalable, responsive, and AI-enabled web solutions tailored to your business goals.",
+  },
+  {
+    image: "/images/IT Consultation.png",
+    title: "IT Consultation",
+    desc: "Our experts provide strategic IT guidance to optimize your infrastructure and implement cost-effective solutions.",
+  },
+  {
+    image: "/images/Analytics.png",
+    title: "Analytics",
+    desc: "Transforms data into real-time insights to drive faster, smarter business decisions.",
+  },
+  {
+    image: "/images/Quality Assurance.png",
+    title: "Quality Assurance",
+    desc: "AI-driven testing and monitoring to ensure reliability, performance, and faster delivery.",
+  },
+
+];
+const steps = [
+  {
+    step: "01",
+    title: "Business Analysis",
+    desc: "We analyze your operations to identify key areas where AI can deliver maximum impact and ROI.",
+  },
+  {
+    step: "02",
+    title: "Custom AI Building",
+    desc: "Our experts develop bespoke AI solutions tailored to your specific business challenges and goals.",
+  },
+  {
+    step: "03",
+    title: "Deployment",
+    desc: "We implement and integrate our solutions seamlessly into your existing infrastructure with minimal disruption.",
+  },
+  {
+    step: "04",
+    title: "Monthly Maintenance",
+    desc: "Our team provides ongoing support, updates, and optimization to ensure continued performance.",
+  },
+];
+// const FAQSection = () => {
+//   const [openIndex, setOpenIndex] = useState<number | null>(0);
+
+//   const toggle = (index: number) => {
+//     setOpenIndex(openIndex === index ? null : index);
+//   };
+
+//   return (
+//     <section className="  mx-32 px-5 sm:px-6 mb-4 lg:px-8 pt-[64px] pb-[48px] ">
+//       <div className="text-center mb-10 md:mb-12">
+//         <motion.h2
+//           className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white"
+//           initial={{ opacity: 0, y: -20 }}
+//           whileInView={{ opacity: 1, y: 0 }}
+//           viewport={{ once: true, amount: 0.3 }}
+//           transition={{ duration: 0.6 }}
+//         >
+//           FAQ
+//         </motion.h2>
+
+//         <motion.div
+//           className="w-[88px] h-1 mt-2 bg-gradient-to-r from-[#F58F1D] to-[#E57D77] mx-auto"
+//           initial={{ scaleX: 0 }}
+//           whileInView={{ scaleX: 1 }}
+//           viewport={{ once: true, amount: 0.3 }}
+//           transition={{ duration: 0.6, delay: 0.2 }}
+//           style={{ transformOrigin: "center" }}
+//         />
+//       </div>
+
+//       <div className="bg-[#2D2F33]  divide-y-8 divide-[#232629]  ">
+//         {faqs.map((faq, index) => (
+//           <div
+//             key={index}
+//             className={`px-6 py-5 transition-all duration-300 ${openIndex === index ? "bg-[#2D2F33]" : ""
+//               }`}
+//           >
+//             <button
+//               onClick={() => toggle(index)}
+//               className="flex items-center justify-between w-full text-left"
+//             >
+//               <span
+//                 className={`text-white text-base sm:text-lg font-medium ${openIndex === index ? "text-[#EE8741]" : ""
+//                   }`}
+//               >
+//                 {faq.question}
+//               </span>
+//               {openIndex === index ? (
+//                 <ChevronUp className="text-[#F58F1D]" />
+//               ) : (
+//                 <ChevronDown className="text-white" />
+//               )}
+//             </button>
+
+//             {openIndex === index && (
+//               <p className="text-sm text-gray-300 mt-3">{faq.answer}</p>
+//             )}
+//           </div>
+//         ))}
+//       </div>
+//     </section>
+//   );
+// };
+const FAQSection = () => {
+  const [openIndex, setOpenIndex] = useState<number | null>(0);
+
+  const toggle = (index: number) => {
+    setOpenIndex(openIndex === index ? null : index);
+  };
+
+  return (
+    <section className="px-4 sm:px-6 md:px-8 lg:px-32 mb-4 pt-[48px] sm:pt-[56px] md:pt-[64px] pb-[40px] sm:pb-[44px] md:pb-[48px]">
+      <div className="text-center mb-8 sm:mb-10 md:mb-12">
+        <motion.h2
+          className="text-lg sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white"
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.6 }}
+        >
+          FAQ
+        </motion.h2>
+
+        <motion.div
+          className="w-[64px] sm:w-[88px] h-1 mt-2 bg-gradient-to-r from-[#F58F1D] to-[#E57D77] mx-auto rounded-full"
+          initial={{ scaleX: 0 }}
+          whileInView={{ scaleX: 1 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          style={{ transformOrigin: "center" }}
+        />
+      </div>
+
+      <div className="bg-[#2D2F33] divide-y-4 sm:divide-y-6 md:divide-y-8 divide-[#232629] rounded-lg sm:rounded-xl">
+        {faqs.map((faq, index) => (
+          <div
+            key={index}
+            className={`px-4 sm:px-6 md:px-8 py-4 sm:py-5 md:py-6 transition-all duration-300 ${openIndex === index ? "bg-[#2D2F33]" : ""
+              }`}
+          >
+            <button
+              onClick={() => toggle(index)}
+              className="flex items-center justify-between w-full text-left"
+            >
+              <span
+                className={`text-sm sm:text-base md:text-lg font-medium ${openIndex === index ? "text-[#EE8741]" : "text-white"
+                  }`}
+              >
+                {faq.question}
+              </span>
+              {openIndex === index ? (
+                <ChevronUp className="text-[#F58F1D] w-4 h-4 sm:w-5 sm:h-5" />
+              ) : (
+                <ChevronDown className="text-white w-4 h-4 sm:w-5 sm:h-5" />
+              )}
+            </button>
+
+            {openIndex === index && (
+              <p className="text-xs sm:text-sm text-gray-300 mt-2 sm:mt-3 leading-relaxed">
+                {faq.answer}
+              </p>
+            )}
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+};
 
 export default function AboutPage() {
   const router = useRouter();
@@ -34,261 +226,221 @@ export default function AboutPage() {
 
 
     return (
-    
+
       <div className="text-center">
-        <p className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-2">{count}{label.includes("%") ? "%" : "+"}</p>
-        <p className="text-xs sm:text-sm uppercase tracking-wider text-muted-foreground">{label.replace(/\s*\(\d+-\d+%\)/, '').replace(/\s*\(\d+-\d+\sWeeks\)/, '').replace(" %", "")}</p>
+        <p className="text-3xl  sm:text-4xl md:text-5xl font-bold text-foreground mb-4 mt-2">{count}{label.includes("%") ? "%" : "+"}</p>
+        <p className="text-xs sm:text-sm uppercase tracking-widest text-[#8B8B8B] ">{label.replace(/\s*\(\d+-\d+%\)/, '').replace(/\s*\(\d+-\d+\sWeeks\)/, '').replace(" %", "")}</p>
       </div>
     );
   };
 
   return (
-
     <div className="bg-background text-foreground font-sans">
+      {/*---------------------------------- 1st Section-------------------------------------------  */}
       {/* Hero Section */}
+      <section className="relative w-full max-w-7xl mx-auto bg-accent/10 overflow-hidden 
+                    h-auto lg:h-[450px]">
+        {/* Grid background */}
+        <div className="absolute inset-0 bg-grid-white/5 [mask-image:radial-gradient(white,transparent_85%)]" />
 
-      <FadeIn>
-<section className="min-h-screen xl:min-h-[80vh] relative flex flex-col justify-center items-center px-4 pt-10 pb-[25px] sm:pt-24 sm:pb-[25px] overflow-hidden">
+        {/* Main flex layout */}
+        <div className="
+    relative z-10 
+    flex flex-col sm:flex-col md:flex-row-reverse lg:flex-row
+    items-center justify-between 
+    px-4 sm:px-6 md:px-10 lg:px-[100px] 
+    gap-8 py-8 lg:py-0
+  ">
+          {/* Text content */}
+          <FadeIn>
+            <div className="
+        max-w-full sm:max-w-[500px] md:max-w-[500px] lg:max-w-[600px] xl:max-w-[700px] 
+        text-center sm:text-center md:text-left lg:text-left
+        order-1 md:order-1 lg:order-1 lg:mt-11
+      ">
+              {/* React/Next: use className */}
+              <h1
+                className="
+    mt-[55px] md:mt-0                 /* mobile:55px, reset at md and up */
+    text-[26px] sm:text-[32px] md:text-[36px] lg:text-[44px]
+    leading-tight sm:leading-[110%] md:leading-[114%]
+    font-bold tracking-tight bg-clip-text text-transparent
+    bg-gradient-to-r from-[#FFFFFF] to-[#FFE4C6]
+    px-2 sm:px-4 md:px-0 lg:ml-32 md:ml-8
+  "
+              >
+                Where Artificial <br />
+                Intelligence Meets <br />
+                Real-World Impact
+              </h1>
 
-          <div className="absolute inset-0 bg-gradient-to-br from-background to-background/90 z-0"></div>
 
-          <div className="absolute top-0 left-0 w-full h-full opacity-10 z-0">
-            <div className="absolute top-10 left-10 w-32 h-32 sm:w-40 sm:h-40 rounded-full bg-accent blur-3xl"></div>
-            <div className="absolute bottom-20 right-10 w-48 h-48 sm:w-60 sm:h-60 rounded-full bg-accent blur-3xl"></div>
-          </div>
-
-          <div className="container mx-auto z-10">
-            <div className="flex flex-col items-center mb-12 sm:mb-16 lg:mb-0">
-              <h1 className="text-7xl sm:text-7xl md:text-7xl font-bold text-center mb-4 sm:mb-6 tracking-tight text-foreground">About Us</h1>
-              <p className="text-lg sm:text-xl md:text-2xl mb-8 sm:mb-10 text-center text-accent font-light max-w-2xl mx-auto">
-                Where Artificial Intelligence Meets Real-World Impact
+              <p className="
+          mt-4 text-sm sm:text-base md:text-lg
+          leading-snug sm:leading-[20px]
+          font-normal text-muted-foreground
+          max-w-full sm:max-w-md md:max-w-lg
+          px-2 sm:px-4 md:px-0
+          lg:ml-32 md:ml-8 
+        ">
+                At Upteky, we are revolutionizing the way businesses operate through cutting-edge AI automation.
               </p>
             </div>
+          </FadeIn>
 
-            {/* <Tilt> */}
-            <div className="relative border border-border/30 backdrop-blur-sm bg-card/50 shadow-xl shadow-accent/10 rounded-2xl max-w-4xl 2xl:max-w-3xl mx-auto p-2 sm:p-10 md:p-12">
-              <span className="absolute top-2 left-4 sm:top-4 sm:left-8 text-[50px] sm:text-[70px] leading-none text-accent opacity-50 select-none">"</span>
-              <span className="absolute bottom-2 right-4 sm:bottom-4 sm:right-8 text-[50px] sm:text-[70px] leading-none text-accent opacity-50 select-none">"</span>
-              <p className="text-center text-base sm:text-lg md:text-xl text-foreground/90 leading-relaxed font-light">
-                At Upteky, we are revolutionizing the way businesses operate through cutting-edge AI automation. Our mission is to streamline workflows, enhance efficiency, and unlock new levels of productivity with intelligent automation solutions. With expertise in artificial intelligence, machine learning, and process automation, we help businesses eliminate repetitive tasks and focus on high-value activities. Our AI-driven solutions are designed to seamlessly integrate with existing systems, reducing operational bottlenecks and enabling smarter decision-making.
-              </p>
-            </div>
-            {/* </Tilt> */}
+          {/* Spline object */}
+          <div className="
+      order-2 sm:order-2 md:order-2 lg:order-2
+      w-[240px] h-[240px] sm:w-[300px] sm:h-[300px] 
+      md:w-[360px] md:h-[360px] lg:w-[420px] lg:h-[420px]
+      lg:mt-6 sm:mt-8 md:mt-0  
+    ">
+            <Spline scene="https://prod.spline.design/gzZr3RkDaeIJ0HKD/scene.splinecode" />
           </div>
-        </section>
-      </FadeIn>
+        </div>
 
+        {/* Bottom blur */}
+        <div className="absolute -bottom-6 left-0 right-0 h-12 
+                  bg-gradient-to-r from-accent/20 via-accent/30 to-accent/20 blur-xl" />
+      </section>
 
-      {/* Statistics Section */}
-      <FadeIn>
-        <section className="py-12 sm:py-16 bg-background/70 border-y border-border/20">
-          <div className="container mx-auto px-4">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8">
+      {/*---------------------------------- 2nd Section-------------------------------------------  */}
+      <section className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-[64px] pb-[48px]">
+        {/* Heading */}
+        <div className="text-center mb-10 md:mb-12">
+          <motion.h2
+            className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white"
+            initial={{ opacity: 0, y: -20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.6 }}
+          >
+            Our Track Record
+          </motion.h2>
+
+          <motion.div
+            className="w-[88px] h-1 mt-2 bg-gradient-to-r from-[#F58F1D] to-[#E57D77] mx-auto rounded-full"
+            initial={{ scaleX: 0 }}
+            whileInView={{ scaleX: 1 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            style={{ transformOrigin: 'center' }}
+          />
+        </div>
+
+        {/* Stats Grid */}
+        <FadeIn>
+          <div className=" mx-8 grid grid-cols-2 md:grid-cols-4 gap-[10px]">
+
+            {/* Card 1 */}
+            <div className="bg-[#232629]  text-center rounded-xl px-2 py-4 shadow-[0px_1px_31px_0px_#6B6B6B40]">
               <StatCounter end={10} label="Industries Served" />
-              <div className="text-center">
-                <p className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-2">4-8</p>
-                <p className="text-xs sm:text-sm uppercase tracking-wider text-muted-foreground">Delivery Time (Weeks)</p>
-              </div>
+            </div>
+
+            {/* Card 2 */}
+            <div className="bg-[#232629] text-center rounded-xl px-4 py-6 shadow-[0px_1px_31px_0px_#6B6B6B40]">
+              <p className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-4">4-8</p>
+              <p className="text-xs sm:text-sm uppercase tracking-widest  text-[#8B8B8B]">Delivery Time (Weeks)</p>
+            </div>
+
+
+            {/* Card 3 */}
+            <div className="bg-[#232629] text-center rounded-xl px-4 py-6 shadow-[0px_1px_31px_0px_#6B6B6B40]">
               <StatCounter end={30} label="Avg Client Growth (30-50%)" />
+            </div>
+
+            {/* Card 4 */}
+            <div className="bg-[#232629] text-center rounded-xl px-4 py-6 shadow-[0px_1px_31px_0px_#6B6B6B40]">
               <StatCounter end={100} label="Integrations Implemented" />
             </div>
           </div>
-        </section>
-      </FadeIn>
+        </FadeIn>
+      </section>
 
-      {/* "What We Do" Section */}
-      <FadeIn>
-        <section className="pt-16 pb-0 sm:pt-20 sm:pb-0 md:pt-28 md:pb-0 lg:pt-[40px] lg:px-16 lg:pb-0">
+      {/* ---------------------------------------------3rd Section---------------------------------------- */}
+      <div className="border-t border-[#333333] mt-8" />
+      <section className="w-full max-w-7xl px-4 sm:px-6 lg:px-8 pt-[64px] pb-[48px] mx-auto">
+        <div className="text-center mb-12">
+          <motion.h2
+            className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white"
+            initial={{ opacity: 0, y: -20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.6 }}
+          >
+            Our Capabilities
+          </motion.h2>
 
-          <div className="container mx-auto grid md:grid-cols-2 gap-12 sm:gap-16 md:gap-20 px-4 items-center">
-            <div className="order-2 md:order-1">
-              <div className="mb-6 sm:mb-8">
-                <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 tracking-tight text-foreground">What We Do</h2>
-                <p className="text-accent text-lg sm:text-xl mb-4 sm:mb-6 font-light">We provide enterprise-level AI solutions with unmatched expertise.</p>
-              </div>
-
-              <div className="space-y-5 sm:space-y-6">
-                <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
-                  At Upteky, we specialize in AI-powered automation to streamline workflows, enhance efficiency, and drive business growth. Our cutting-edge solutions leverage machine learning, NLP, and intelligent automation to optimize processes across industries.
-                </p>
-
-                <div className="grid grid-cols-2 gap-3 sm:gap-4 mt-6 sm:mt-8">
-                  <div className="border border-border/20 rounded-lg p-3 sm:p-4 bg-card/30">
-                    <div className="w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center rounded-full bg-accent/20 text-accent mb-2 sm:mb-3">
-                      <Users className="w-4 h-4 sm:w-5 sm:h-5" />
-                    </div>
-                    <h3 className="font-medium text-sm sm:text-lg text-foreground">AI Conversational Agents</h3>
-                  </div>
-                  <div className="border border-border/20 rounded-lg p-3 sm:p-4 bg-card/30">
-                    <div className="w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center rounded-full bg-accent/20 text-accent mb-2 sm:mb-3">
-                      <Settings2 className="w-4 h-4 sm:w-5 sm:h-5" />
-                    </div>
-                    <h3 className="font-medium text-sm sm:text-lg text-foreground">Process Automation</h3>
-                  </div>
-                  <div className="border border-border/20 rounded-lg p-3 sm:p-4 bg-card/30">
-                    <div className="w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center rounded-full bg-accent/20 text-accent mb-2 sm:mb-3">
-                      <BarChart3 className="w-4 h-4 sm:w-5 sm:h-5" />
-                    </div>
-                    <h3 className="font-medium text-sm sm:text-lg text-foreground">Analytics</h3>
-                  </div>
-                  <div className="border border-border/20 rounded-lg p-3 sm:p-4 bg-card/30">
-                    <div className="w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center rounded-full bg-accent/20 text-accent mb-2 sm:mb-3">
-                      <ShieldCheck className="w-4 h-4 sm:w-5 sm:h-5" />
-                    </div>
-                    <h3 className="font-medium text-sm sm:text-lg text-foreground">Quality Assurance</h3>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="order-1 md:order-2 h-[20rem] sm:h-[24rem] md:h-[34rem] lg:h-[36rem] flex items-center justify-center">
-              <div className="w-full h-full rounded-xl overflow-hidden relative">
-                <Spline
-                  scene="https://prod.spline.design/gzZr3RkDaeIJ0HKD/scene.splinecode"
-                />
-              </div>
-            </div>
-          </div>
-        </section>
-      </FadeIn>
-
-      {/* "Our Vision" Section */}
-      <FadeIn>
-        {/* <section className="py-16 sm:py-20 md:py-28 bg-background/70"> */}
-        <section className="py-0 bg-background/70 lg:px-16">
-          <div className="container mx-auto grid md:grid-cols-2 gap-12 sm:gap-16 md:gap-20 px-4 items-center">
-            <div className="h-[20rem] sm:h-[24rem] md:h-[34rem] lg:h-[38rem] flex items-center justify-center">
-              <div className="w-full h-full rounded-xl overflow-hidden relative">
-                <Spline
-                  className="w-full h-full"
-                  scene="https://prod.spline.design/gzZr3RkDaeIJ0HKD/scene.splinecode"
-                />
-
-              </div>
-            </div>
-
-            <div>
-              <div className="mb-6 sm:mb-8">
-                <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 tracking-tight text-foreground">Our Vision</h2>
-                <p className="text-accent text-lg sm:text-xl mb-4 sm:mb-6 font-light">Optimizing Tomorrow with AI-Powered Solutions</p>
-              </div>
-
-              <div className="space-y-5 sm:space-y-6">
-                <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
-                  At Upteky, we aim to revolutionize businesses through AI automation. We streamline workflows, enhance efficiency, and empower businesses to focus on strategic growth, innovation, and high-value operations.
-                </p>
-
-                <div className="mt-6 sm:mt-8 space-y-3 sm:space-y-4">
-                  <div className="flex items-start">
-                    <div className="flex-shrink-0 mt-1">
-                      <div className="w-4 h-4 sm:w-5 sm:h-5 rounded-full border-2 border-accent flex items-center justify-center">
-                        <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-accent rounded-full"></div>
-                      </div>
-                    </div>
-                    <div className="ml-3 sm:ml-4">
-                      <h3 className="font-semibold text-base sm:text-lg text-foreground">Innovation at Scale</h3>
-                      <p className="text-muted-foreground mt-1 text-sm sm:text-base">Driving enterprise-level transformation through cutting-edge AI solutions.</p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start">
-                    <div className="flex-shrink-0 mt-1">
-                      <div className="w-4 h-4 sm:w-5 sm:h-5 rounded-full border-2 border-accent flex items-center justify-center">
-                        <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-accent rounded-full"></div>
-                      </div>
-                    </div>
-                    <div className="ml-3 sm:ml-4">
-                      <h3 className="font-semibold text-base sm:text-lg text-foreground">Sustainable Growth</h3>
-                      <p className="text-muted-foreground mt-1 text-sm sm:text-base">Creating AI solutions that deliver long-term business value.</p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start">
-                    <div className="flex-shrink-0 mt-1">
-                      <div className="w-4 h-4 sm:w-5 sm:h-5 rounded-full border-2 border-accent flex items-center justify-center">
-                        <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-accent rounded-full"></div>
-                      </div>
-                    </div>
-                    <div className="ml-3 sm:ml-4">
-                      <h3 className="font-semibold text-base sm:text-lg text-foreground">Human-Centered AI</h3>
-                      <p className="text-muted-foreground mt-1 text-sm sm:text-base">Developing technology that complements and enhances human capabilities.</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-      </FadeIn>
-
-      {/* "Our Workflow" Section */}
-
-<section className=" md:pt-[60px] md:pb-[60px] bg-background relative overflow-hidden">
-
-        <div className="absolute inset-0 opacity-10 z-0 ">
-          <div className="absolute top-40 left-20 w-48 h-48 sm:w-60 sm:h-60 rounded-full bg-accent blur-3xl"></div>
-          <div className="absolute bottom-40 right-20 w-32 h-32 sm:w-40 sm:h-40 rounded-full bg-accent blur-3xl"></div>
+          <motion.div
+            className="w-[88px] h-1 mt-2 bg-gradient-to-r from-[#F58F1D] to-[#E57D77] mx-auto rounded-full"
+            initial={{ scaleX: 0 }}
+            whileInView={{ scaleX: 1 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            style={{ transformOrigin: "center" }}
+          />
         </div>
 
-        <div className="container mx-auto px-4 relative z-10 " >
-          <div className="text-center mb-12 sm:mb-16">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-0 sm:mb-6 tracking-tight text-foreground">Our Workflow</h2>
-            <p className="text-accent text-lg sm:text-xl max-w-2xl mx-auto font-light">
-              A systematic approach to delivering exceptional AI solutions
-            </p>
-          </div>
+        <div className=" mx-auto lg:mx-48  grid grid-cols-1 md:grid-col-2 sm:grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 ">
+          {capabilities.map((cap, index) => (
+            <div
+              key={index}
+              className="lg:w-md h-[350px]   bg-[#232629] text-white p-12 sm:p-8 md:p-10 rounded-[40px]  transition duration-300 hover:shadow-[0px_0px_30px_-3px_#F58F1D]  shadow-[0px_4px_34px_0px_#8E8E8E40]"
+            >
+              <img className=" h-[60px]  w-[60px] mb-8 " src={cap.image} />
+              <h3 className="text-2xl font-semibold mb-5 mt-1">{cap.title}</h3>
+              <p className="text-sm text-[#ADADAD] leading-relaxed">{cap.desc}</p>
+            </div>
+          ))}
+        </div>
+      </section>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
-            {[
-              {
-                title: "Business Analysis",
-                description: "We analyze your operations to identify key areas where AI can deliver maximum impact and ROI."
-              },
-              {
-                title: "Custom AI Building",
-                description: "Our experts develop bespoke AI solutions tailored to your specific business challenges and goals."
-              },
-              {
-                title: "Deployment",
-                description: "We implement and integrate our solutions seamlessly into your existing infrastructure with minimal disruption."
-              },
-              {
-                title: "Monthly Maintenance",
-                description: "Our team provides ongoing support, updates, and optimization to ensure continued performance."
-              }
-            ].map((step, i) => (
-              <div key={i} className="group">
-                {/* <Tilt> */}
-                {/* <div className="relative rounded-xl transition-all duration-300 group-hover:before:opacity-100 before:opacity-0 before:absolute before:inset-0 before:-z-10 before:rounded-xl before:p-[2px] before:bg-gradient-to-r before:from-orange-400 before:via-orange-500 before:to-yellow-400 before:content-['']"> */}
-                <div className="flex flex-col items-start h-[325px] bg-gradient-to-br from-card/70 to-card/90 border border-border/20 rounded-xl p-6 sm:p-8 transition-all duration-300 min-h-[280px] hover:shadow-lg hover:shadow-accent/10 hover:border-accent/30 backdrop-blur-sm overflow-hidden">
-                  <div className="flex flex-col mb-4">
-                    <div className="text-accent font-bold text-4xl sm:text-5xl mb-2 opacity-60 group-hover:opacity-100 transition-opacity">0{i + 1}</div>
-                    <h3 className="font-semibold text-lg sm:text-xl mb-2 text-foreground">{step.title}</h3>
-                  </div>
-                  <p className="text-muted-foreground text-sm sm:text-base">{step.description}</p>
-                </div>
-                {/* </Tilt> */}
+      {/* -----------------------------------------4th Section-------------------------------------------------- */}
+
+      <div className="border-t border-[#333333]  mt-8" />
+      <section className="w-full max-w-[1210px] mx-auto px-4 sm:px-6 lg:px-8  pt-[64px] pb-[48px]">
+        <div className="text-center mb-10 md:mb-12 ">
+          <motion.h2
+            className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white"
+            initial={{ opacity: 0, y: -20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.6 }}
+          >
+            Our Workflow
+          </motion.h2>
+
+          <motion.div
+            className="w-[88px] h-1 mt-2 bg-gradient-to-r from-[#F58F1D] to-[#E57D77] mx-auto rounded-full"
+            initial={{ scaleX: 0 }}
+            whileInView={{ scaleX: 1 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            style={{ transformOrigin: "center" }}
+          />
+        </div>
+
+        {/* Timeline container with absolute line */}
+        <div className="relative">
+          {/* Horizontal connecting line visible on md+ screens */}
+          <div className="absolute mx-[130px] hidden md:block top-[80px]  left-0 right-0 h-[1px] bg-white/20 z-0" />
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 text-center text-white relative z-10">
+            {steps.map((item, index) => (
+              <div key={index} className="flex flex-col items-center">
+                <div className="text-[48px] font-bold mb-1 text-[#BABABA]">{item.step}</div>
+                <div className="w-2 h-2 rounded-full bg-white mb-4"></div>
+                <h3 className="text-xl font-semibold mt-3 mb-5">{item.title}</h3>
+                <p className="text-sm text-gray-300  leading-relaxed">{item.desc}</p>
               </div>
-              // </div>
             ))}
           </div>
         </div>
       </section>
 
-
-
-      {/* CTA Section */}
-     <section className="py-16 sm:py-20 lg:pt-10 bg-background/70 border-t border-border/20">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6 text-foreground">Ready to Transform Your Business with AI?</h2>
-          <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto mb-8 sm:mb-10">
-            Let's discuss how our AI solutions can help you achieve your business objectives and stay ahead of the competition.
-          </p>
-          <button className="bg-accent hover:bg-accent/90 text-accent-foreground font-medium py-2.5 px-6 sm:py-3 sm:px-8 rounded-full transition-all duration-300 transform hover:scale-105 text-sm sm:text-base" onClick={() => router.push("/contact")} >
-            Schedule a Consultation
-          </button>
-        </div>
-      </section>
+      {/*--------------------------------------------------5th Section--------------------------------------------------*/}
+      <div className="border-t border-[#333333]  mt-8" />
+      <FAQSection />
     </div>
   );
 }
