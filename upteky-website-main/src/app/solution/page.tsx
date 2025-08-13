@@ -106,7 +106,7 @@ export default function SolutionsPage() {
                   variants={fadeIn}
                   transition={{ duration: 0.7 }}
                 >
-                  <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight mb-4 sm:mb-6 bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/80">
+                  <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl lg:mt-10 font-bold tracking-tight mb-4 sm:mb-6 bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/80">
                   Our Comprehensive AI Solutions
                   </h1>
                   <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto mb-8 sm:mb-10 leading-relaxed">

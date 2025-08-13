@@ -88,7 +88,7 @@ const FAQSection = () => {
   };
 
   return (
-    <section className="w-full max-w-7xl  mx-auto px-4 sm:px-6 lg:px-8 pt-[48px] sm:pt-[56px] md:pt-[64px] pb-[40px] sm:pb-[44px] md:pb-[48px]">
+    <section className="w-full max-w-7xl  mx-auto lg:max-w-[1560px] px-2 sm:px-6 lg:px-8 pt-[48px] sm:pt-[56px] md:pt-[64px] pb-[40px] lg:pb-[90px] sm:pb-[44px] md:pb-[56px]">
       {/* Heading */}
       <div className="text-center mb-8 sm:mb-10 md:mb-12">
         <motion.h2
@@ -295,7 +295,7 @@ export default function AboutPage() {
                   variants={fadeIn}
                   transition={{ duration: 0.7 }}
                 >
-                  <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight mb-4 sm:mb-6 bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/80">
+                  <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl lg:mt-10 font-bold tracking-tight mb-4 sm:mb-6 bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/80">
                     Innovation That Drives Growth
                   </h1>
                   <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto mb-8 sm:mb-10 leading-relaxed">
@@ -322,7 +322,7 @@ export default function AboutPage() {
 
              {/* -------------------------------------2nd Section---------------------------------------- */}
         {/* Track Record Section */}
-        <section className="lg:mx-6 py-12 md:py-16 bg-background/30 backdrop-blur-sm ">
+        <section className=" py-12 lg:max-w-[1560px] mx-auto md:py-16 bg-background/30 backdrop-blur-sm ">
           <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-10 md:mb-12">
                              <motion.h2
@@ -376,7 +376,7 @@ export default function AboutPage() {
 
       {/* ---------------------------------------------3rd Section---------------------------------------- */}
       <div className="border-t border-[#333333] mt-6" />
-      <section className="w-full max-w-7xl px-4 sm:px-6 lg:px-8 pt-[64px] pb-[48px] mx-auto">
+      <section className="w-full max-w-7xl lg:max-w-[1560px]  px-4 sm:px-6 lg:px-8 pt-[64px] pb-[48px] mx-auto">
         <div className="text-center mb-12">
                      <motion.h2
              className="text-3xl sm:text-7xl md:text-5xl lg:text-4xl font-bold text-white"
@@ -415,7 +415,7 @@ export default function AboutPage() {
       {/* -----------------------------------------4th Section-------------------------------------------------- */}
 
       <div className="border-t border-[#333333]  mt-8" />
-      <section className="w-full max-w-[1210px] mx-auto px-4 sm:px-6 lg:px-8  pt-[64px] pb-[48px]">
+      <section className="w-full max-w-[1210px] lg:max-w-[1560px]  mx-auto px-4 sm:px-6 lg:px-8  pt-[64px] pb-[48px]">
         <div className="text-center mb-10 md:mb-12 ">
                      <motion.h2
              className="text-3xl sm:text-7xl md:text-5xl lg:text-4xl font-bold text-white"
