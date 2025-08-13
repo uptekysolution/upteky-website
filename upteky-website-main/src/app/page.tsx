@@ -215,6 +215,18 @@ export default function Home() {
   const statsScrollRef = useRef<HTMLDivElement>(null);
   const TESTIMONIAL_SCROLL_INTERVAL = 1000; // 1 second pause
 
+  function getTestimonialItemMetrics() {
+    const scrollContainer = testimonialScrollRef.current;
+    if (!scrollContainer) {
+      return { cardWidthPx: 350, gapPx: 32 };
+    }
+    const firstCard = scrollContainer.querySelector('.testimonial-card') as HTMLElement | null;
+    const computed = window.getComputedStyle(scrollContainer);
+    const gapPx = parseFloat((computed.columnGap || computed.gap || '0').toString()) || 0;
+    const cardWidthPx = firstCard?.clientWidth || 350;
+    return { cardWidthPx, gapPx };
+  }
+
   const handleStatsNavigation = (direction: 'prev' | 'next') => {
     const currentIsAutoScrolling = isAutoScrolling;
     setIsAutoScrolling(false);
@@ -249,14 +261,13 @@ export default function Home() {
 
     setTestimonialScrollIndex(prevIndex => {
       let newIndex = direction === 'next' ? prevIndex + 1 : prevIndex - 1;
-      const cardWidth = scrollContainer.querySelector('.testimonial-card')?.clientWidth || 350;
-      const gap = 32;
+      const { cardWidthPx, gapPx } = getTestimonialItemMetrics();
       const total = testimonials.length;
       // If next, and we reach the appended duplicate, jump to first real card
       if (direction === 'next' && newIndex === total + 1) {
-        scrollContainer.scrollTo({ left: (cardWidth + gap) * (total + 1), behavior: 'smooth' });
+        scrollContainer.scrollTo({ left: (cardWidthPx + gapPx) * (total + 1), behavior: 'smooth' });
         setTimeout(() => {
-          scrollContainer.scrollTo({ left: (cardWidth + gap) * 1, behavior: 'auto' });
+          scrollContainer.scrollTo({ left: (cardWidthPx + gapPx) * 1, behavior: 'auto' });
         }, 350);
         newIndex = 1;
       }
@@ -264,11 +275,11 @@ export default function Home() {
       else if (direction === 'prev' && newIndex === 0) {
         scrollContainer.scrollTo({ left: 0, behavior: 'smooth' });
         setTimeout(() => {
-          scrollContainer.scrollTo({ left: (cardWidth + gap) * total, behavior: 'auto' });
+          scrollContainer.scrollTo({ left: (cardWidthPx + gapPx) * total, behavior: 'auto' });
         }, 350);
         newIndex = total;
       } else {
-        scrollContainer.scrollTo({ left: (cardWidth + gap) * newIndex, behavior: 'smooth' });
+        scrollContainer.scrollTo({ left: (cardWidthPx + gapPx) * newIndex, behavior: 'smooth' });
       }
       if (currentIsAutoScrolling) {
         setTimeout(() => setIsTestimonialAutoScrolling(true), TESTIMONIAL_SCROLL_INTERVAL * 2);
@@ -311,9 +322,8 @@ export default function Home() {
     // On mount, scroll to the first real card (index 1)
     function scrollToIndex(index: number, behavior: ScrollBehavior = 'smooth') {
       if (!scrollContainer) return;
-      const cardWidth = scrollContainer.querySelector('.testimonial-card')?.clientWidth || 350;
-      const gap = 32;
-      const scrollPosition = (cardWidth + gap) * index;
+      const { cardWidthPx, gapPx } = getTestimonialItemMetrics();
+      const scrollPosition = (cardWidthPx + gapPx) * index;
       scrollContainer.scrollTo({ left: scrollPosition, behavior });
     }
     scrollToIndex(1, 'auto');
@@ -321,8 +331,6 @@ export default function Home() {
 
     function autoScroll() {
       if (!scrollContainer) return;
-      const cardWidth = scrollContainer.querySelector('.testimonial-card')?.clientWidth || 350;
-      const gap = 32;
       currentIndexRef.current++;
       scrollToIndex(currentIndexRef.current);
       if (currentIndexRef.current === total + 1) {
@@ -758,7 +766,7 @@ export default function Home() {
       </section>
 
       {/* Testimonial Section */}
-      <section className="py-12 md:py-16 bg-background/30 backdrop-blur-sm border-t border-border/20 snap-start">
+      <section className="py-12 px-6 md:py-16 bg-background/30 backdrop-blur-sm border-t border-border/20 snap-start">
         <div className="container mx-auto px-4 md:px-6">
           <div className="text-center mb-10 md:mb-12">
             <motion.span
@@ -791,7 +799,7 @@ export default function Home() {
           <div className="relative w-full overflow-hidden" >
             <div
               ref={testimonialScrollRef}
-              className="flex overflow-x-auto overflow-y-hidden pb-6 gap-6 md:gap-8 testimonial-scroll snap-x snap-mandatory hide-scrollbar"
+              className="flex overflow-x-auto overflow-y-hidden pb-6 testimonial-scroll snap-x snap-mandatory hide-scrollbar"
               style={{
                 scrollbarWidth: 'none', // Firefox
                 msOverflowStyle: 'none',  /* IE and Edge */
@@ -804,12 +812,12 @@ export default function Home() {
                   whileInView={{ opacity: 1, y: 0, scale: 1 }}
                   viewport={{ once: true, amount: 0.2 }}
                   transition={{ duration: 0.6, delay: index * 0.15, ease: "easeOut" }}
-                  className="flex-shrink-0 w-[300px] md:w-[350px] testimonial-card snap-center"
+                  className="flex-shrink-0 testimonial-card snap-start"
                 >
                   <Card className="relative bg-card/40 backdrop-blur-sm border border-border/20 shadow-lg hover:shadow-xl transition-all duration-300 group flex flex-col h-full">
                     <span className="absolute -top-4 -left-4 text-7xl sm:text-8xl text-accent/10 font-bold select-none z-0 group-hover:text-accent/20 transition-colors duration-300">"</span>
                     <CardContent className="pt-6 sm:pt-8 flex-grow z-10">
-                      <p className="text-muted-foreground italic text-sm sm:text-base leading-relaxed mb-5 sm:mb-6 group-hover:text-foreground/90 transition-colors duration-300">"{testimonial.quote}"</p>
+                      <p className="text-muted-foreground  text-sm sm:text-base leading-relaxed mb-5 sm:mb-6 group-hover:text-foreground/90 transition-colors duration-300">"{testimonial.quote}"</p>
                     </CardContent>
                     <CardFooter className="pt-3 sm:pt-4 border-t border-border/20 z-10 flex flex-col items-start">
                       <div>
@@ -844,12 +852,12 @@ export default function Home() {
             <div className="text-center mb-6 md:mb-8">
               <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-3 sm:mb-4">Ready to Transform Your Business?</h2>
               <p className="text-muted-foreground mb-5 sm:mb-6 md:mb-8 text-sm sm:text-base md:text-lg max-w-lg mx-auto">
-                Join innovative companies already leveraging our enterprise AI solutions to drive growth and efficiency.
+              Your Demand for IT & AI Expert and free consultation anytime
               </p>
 
               <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center">
                 <Button size="lg" className="bg-gradient-accent text-accent-foreground hover:opacity-90 transition-all duration-300 transform hover:scale-105 hover:shadow-accent/40 shadow-lg px-6 py-2.5 sm:px-8 sm:py-3 text-sm sm:text-base font-semibold w-full sm:w-auto">
-                  <Link href="/contact">Contact Us</Link><ChevronRight className=" h-4 sm:h-5 w-4 sm:w-5" />
+                  <Link href="/contact">Book Now</Link><ChevronRight className=" h-4 sm:h-5 w-4 sm:w-5" />
                 </Button>
                 {/* <Button size="lg" variant="outline" className="border-accent text-accent hover:bg-accent/10 hover:text-accent/90 transition-all duration-300 shadow-sm hover:shadow-md hover:border-accent/70 px-6 py-2.5 sm:px-8 sm:py-3 text-sm sm:text-base font-semibold w-full sm:w-auto">
                    <Link href="/contact">Contact Sales</Link>
@@ -952,6 +960,37 @@ export default function Home() {
         .hide-scrollbar::-webkit-scrollbar {
           display: none; /* Chrome, Safari, Opera */
         }
+         /* Testimonial carousel layout: exact n-per-view by breakpoint */
+         .testimonial-scroll {
+           display: flex;
+           gap: 1rem; /* default */
+         }
+         @media (min-width: 768px) { /* md */
+           .testimonial-scroll { gap: 1.5rem; }
+         }
+         @media (min-width: 1024px) { /* lg */
+           .testimonial-scroll { gap: 1.5rem; }
+         }
+         @media (min-width: 1280px) { /* xl */
+           .testimonial-scroll { gap: 1.5rem; }
+         }
+         /* Widths: 1 per view on small, 2 on md, 3 on lg, 4 on xl+ */
+         .testimonial-card { width: calc((100% - (1 * var(--ts-gap, 1rem))) / 2); }
+         @media (max-width: 639.98px) {
+           .testimonial-card { width: 100%; }
+         }
+         @media (min-width: 640px) and (max-width: 767.98px) {
+           .testimonial-card { width: 80vw; }
+         }
+         @media (min-width: 768px) and (max-width: 1023.98px) { /* md: 2 per view */
+           .testimonial-card { width: calc((100% - (1 * 1.5rem)) / 2); }
+         }
+         @media (min-width: 1024px) and (max-width: 1279.98px) { /* lg: 3 per view */
+           .testimonial-card { width: calc((100% - (2 * 1.5rem)) / 3); }
+         }
+         @media (min-width: 1280px) { /* xl+: 4 per view */
+           .testimonial-card { width: calc((100% - (3 * 1.5rem)) / 4); }
+         }
        `}</style>
     </div>
   );

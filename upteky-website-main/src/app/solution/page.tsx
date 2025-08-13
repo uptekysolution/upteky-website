@@ -7,15 +7,118 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { allSolutions } from '@/lib/solutionsData';
+import FadeIn from "@/components/FadeIn";
 // import Tilt from "react-parallax-tilt";
 
 
 
 export default function SolutionsPage() {
+  const fadeIn = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0 }
+  };
   return (
     <div className="min-h-screen bg-gradient-to-b from-background to-background/95 text-foreground">
       {/* Hero Section */}
-      <section className="relative py-16 sm:py-20 md:py-28 bg-accent/10 overflow-hidden">
+       {/* Hero Section with Abstract Background */}
+       <FadeIn>
+          <div className="relative overflow-hidden bg-gradient-to-br from-[#2d3436] to-[#000000]">
+            {/* Top Orange Light Gradient */}
+            <div className="absolute top-0 left-0 right-0 w-full h-full z-0 pointer-events-none" aria-hidden="true">
+              <svg viewBox="0 0 1440 800" className="w-full h-full" preserveAspectRatio="xMidYMin slice">
+                <defs>
+                  <radialGradient id="centerGlow" cx="50%" cy="5%" r="70%" fx="50%" fy="0%">
+                    <stop offset="0%" stopColor="#FF8B06" stopOpacity="0.35" />
+                    <stop offset="30%" stopColor="#FF8B06" stopOpacity="0.15" />
+                    <stop offset="100%" stopColor="#FF8B06" stopOpacity="0" />
+                  </radialGradient>
+                </defs>
+                <rect width="100%" height="65%" y="0" fill="url(#centerGlow)" />
+              </svg>
+            </div>
+
+            {/* Background SVG */}
+            <div className="absolute inset-0 z-0 pointer-events-none">
+             <svg
+               className="w-full h-full opacity-10"
+               viewBox="0 0 1440 600"
+               preserveAspectRatio="xMidYMin slice"
+             >
+               <defs>
+                 <linearGradient
+                   id="heroGradientCareers"
+                   x1="0%"
+                   y1="0%"
+                   x2="100%"
+                   y2="100%"
+                 >
+                   <stop offset="0%" stopColor="hsl(var(--accent))" />
+                   <stop
+                     offset="100%"
+                     stopColor="hsl(var(--accent))"
+                     stopOpacity="0.7"
+                   />
+                 </linearGradient>
+                 <filter
+                   id="glowCareers"
+                   x="-50%"
+                   y="-50%"
+                   width="200%"
+                   height="200%"
+                 >
+                   <feGaussianBlur stdDeviation="15" result="blur" />
+                   <feMerge>
+                     <feMergeNode in="blur" />
+                     <feMergeNode in="SourceGraphic" />
+                   </feMerge>
+                 </filter>
+               </defs>
+
+               <path
+                 d="M -100,100 Q 500,200 1200,100 T 2000,200"
+                 stroke="url(#heroGradientCareers)"
+                 strokeWidth="2"
+                 fill="none"
+                 opacity="0.5"
+               />
+               <path
+                 d="M -100,200 Q 600,50 1300,150 T 2000,50"
+                 stroke="url(#heroGradientCareers)"
+                 strokeWidth="3"
+                 fill="none"
+                 opacity="0.3"
+                 strokeDasharray="5,15"
+               />
+               <circle cx="200" cy="150" r="3" fill="hsl(var(--accent))" />
+               <circle cx="600" cy="120" r="2" fill="hsl(var(--accent))" />
+               <circle cx="1000" cy="180" r="4" fill="hsl(var(--accent))" />
+               <circle cx="1400" cy="150" r="3" fill="hsl(var(--accent))" />
+             </svg>
+           </div>
+
+              {/* Content */}
+              <div className="relative z-10 min-h-[70vh] md:min-h-[80vh] flex items-center">
+              <div className="container mx-auto px-4 md:px-6">
+                <motion.div
+                  className="text-center max-w-4xl mx-auto"
+                  initial="hidden"
+                  animate="visible"
+                  variants={fadeIn}
+                  transition={{ duration: 0.7 }}
+                >
+                  <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight mb-4 sm:mb-6 bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/80">
+                  Our Comprehensive AI Solutions
+                  </h1>
+                  <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto mb-8 sm:mb-10 leading-relaxed">
+                  Explore a wide range of AI-powered tools and services designed to transform your business, enhance efficiency, and drive growth.
+                  </p>
+                 
+                </motion.div>
+             </div>
+           </div>
+         </div>
+       </FadeIn>
+      {/* <section className="relative py-16 sm:py-20 md:py-28 bg-accent/10 overflow-hidden">
         <div className="absolute inset-0 bg-grid-white/5 [mask-image:radial-gradient(white,transparent_85%)]" />
         <div className="container mx-auto px-4 md:px-6 relative z-10">
           <motion.div
@@ -31,10 +134,10 @@ export default function SolutionsPage() {
               Explore a wide range of AI-powered tools and services designed to transform your business, enhance efficiency, and drive growth.
             </p>
           </motion.div>
-        </div>
+        </div> */}
         {/* Decorative elements */}
-        <div className="absolute -bottom-6 left-0 right-0 h-12 bg-gradient-to-r from-accent/20 via-accent/30 to-accent/20 blur-xl" />
-      </section>
+        {/* <div className="absolute -bottom-6 left-0 right-0 h-12 bg-gradient-to-r from-accent/20 via-accent/30 to-accent/20 blur-xl" />
+      </section> */}
 
       {/* Solutions Grid Section */}
      
