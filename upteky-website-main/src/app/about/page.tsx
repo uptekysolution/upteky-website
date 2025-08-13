@@ -286,7 +286,7 @@ export default function AboutPage() {
            </div>
 
            {/* Content */}
-           <div className="relative z-10 min-h-screen flex items-center justify-center">
+           <div className="relative z-10 min-h-[70vh] md:min-h-[80vh] flex items-center">
               <div className="container mx-auto px-4 md:px-6">
                 <motion.div
                   className="text-center max-w-4xl mx-auto"
