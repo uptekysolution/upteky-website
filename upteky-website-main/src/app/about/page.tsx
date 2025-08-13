@@ -1,9 +1,11 @@
 "use client";
 import { useState, useEffect } from "react";
-import { ShieldCheck, Code2, Network, BarChart2, Users, BarChart3, Settings2, ChevronDown, ChevronUp } from "lucide-react";
+import { ShieldCheck, Code2, Network, BarChart2, Users, BarChart3, Settings2, ChevronDown, ChevronUp, ChevronRight, Layers, TrendingUp } from "lucide-react";
 import { useRouter } from "next/navigation";
 import Spline from '@splinetool/react-spline';
 import FadeIn from "@/components/FadeIn";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
 import { motion } from "framer-motion";
 
 const faqs = [
@@ -73,87 +75,30 @@ const steps = [
     desc: "Our team provides ongoing support, updates, and optimization to ensure continued performance.",
   },
 ];
-// const FAQSection = () => {
-//   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
-//   const toggle = (index: number) => {
-//     setOpenIndex(openIndex === index ? null : index);
-//   };
-
-//   return (
-//     <section className="  mx-32 px-5 sm:px-6 mb-4 lg:px-8 pt-[64px] pb-[48px] ">
-//       <div className="text-center mb-10 md:mb-12">
-//         <motion.h2
-//           className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white"
-//           initial={{ opacity: 0, y: -20 }}
-//           whileInView={{ opacity: 1, y: 0 }}
-//           viewport={{ once: true, amount: 0.3 }}
-//           transition={{ duration: 0.6 }}
-//         >
-//           FAQ
-//         </motion.h2>
-
-//         <motion.div
-//           className="w-[88px] h-1 mt-2 bg-gradient-to-r from-[#F58F1D] to-[#E57D77] mx-auto"
-//           initial={{ scaleX: 0 }}
-//           whileInView={{ scaleX: 1 }}
-//           viewport={{ once: true, amount: 0.3 }}
-//           transition={{ duration: 0.6, delay: 0.2 }}
-//           style={{ transformOrigin: "center" }}
-//         />
-//       </div>
-
-//       <div className="bg-[#2D2F33]  divide-y-8 divide-[#232629]  ">
-//         {faqs.map((faq, index) => (
-//           <div
-//             key={index}
-//             className={`px-6 py-5 transition-all duration-300 ${openIndex === index ? "bg-[#2D2F33]" : ""
-//               }`}
-//           >
-//             <button
-//               onClick={() => toggle(index)}
-//               className="flex items-center justify-between w-full text-left"
-//             >
-//               <span
-//                 className={`text-white text-base sm:text-lg font-medium ${openIndex === index ? "text-[#EE8741]" : ""
-//                   }`}
-//               >
-//                 {faq.question}
-//               </span>
-//               {openIndex === index ? (
-//                 <ChevronUp className="text-[#F58F1D]" />
-//               ) : (
-//                 <ChevronDown className="text-white" />
-//               )}
-//             </button>
-
-//             {openIndex === index && (
-//               <p className="text-sm text-gray-300 mt-3">{faq.answer}</p>
-//             )}
-//           </div>
-//         ))}
-//       </div>
-//     </section>
-//   );
-// };
 const FAQSection = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
-  const toggle = (index: number) => {
-    setOpenIndex(openIndex === index ? null : index);
+  const handleHover = (index: number) => {
+    setOpenIndex(index);
+  };
+
+  const handleLeave = () => {
+    setOpenIndex(null);
   };
 
   return (
-    <section className="px-4 sm:px-6 md:px-8 lg:px-32 mb-4 pt-[48px] sm:pt-[56px] md:pt-[64px] pb-[40px] sm:pb-[44px] md:pb-[48px]">
+    <section className="w-full max-w-7xl  mx-auto px-4 sm:px-6 lg:px-8 pt-[48px] sm:pt-[56px] md:pt-[64px] pb-[40px] sm:pb-[44px] md:pb-[48px]">
+      {/* Heading */}
       <div className="text-center mb-8 sm:mb-10 md:mb-12">
         <motion.h2
-          className="text-lg sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white"
+          className="text-3xl sm:text-7xl md:text-5xl lg:text-4xl font-bold text-white"
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.6 }}
         >
-          FAQ
+          Frequently Asked Questions
         </motion.h2>
 
         <motion.div
@@ -166,35 +111,56 @@ const FAQSection = () => {
         />
       </div>
 
+      {/* FAQ Items */}
       <div className="bg-[#2D2F33] divide-y-4 sm:divide-y-6 md:divide-y-8 divide-[#232629] rounded-lg sm:rounded-xl">
         {faqs.map((faq, index) => (
           <div
             key={index}
-            className={`px-4 sm:px-6 md:px-8 py-4 sm:py-5 md:py-6 transition-all duration-300 ${openIndex === index ? "bg-[#2D2F33]" : ""
-              }`}
+            className={`px-4 sm:px-6 md:px-8 py-4 sm:py-5 md:py-6 
+                        transition-all duration-300 
+                        ${openIndex === index ? "bg-[#2D2F33]" : ""}`}
+            onMouseEnter={() => handleHover(index)}
+            onMouseLeave={handleLeave}
           >
             <button
-              onClick={() => toggle(index)}
-              className="flex items-center justify-between w-full text-left"
+              className="flex items-center justify-between w-full text-left group"
             >
               <span
-                className={`text-sm sm:text-base md:text-lg font-medium ${openIndex === index ? "text-[#EE8741]" : "text-white"
-                  }`}
+                className={`text-sm sm:text-base md:text-lg font-medium 
+                            transition-colors duration-300
+                            ${openIndex === index ? "text-[#EE8741]" : "text-white"}`}
               >
                 {faq.question}
               </span>
-              {openIndex === index ? (
-                <ChevronUp className="text-[#F58F1D] w-4 h-4 sm:w-5 sm:h-5" />
-              ) : (
-                <ChevronDown className="text-white w-4 h-4 sm:w-5 sm:h-5" />
-              )}
+
+              <motion.div
+                animate={{ rotate: openIndex === index ? 180 : 0 }}
+                transition={{ duration: 0.3 }}
+                className="transition-transform duration-300"
+              >
+                {openIndex === index ? (
+                  <ChevronUp className="text-[#F58F1D] w-4 h-4 sm:w-5 sm:h-5" />
+                ) : (
+                  <ChevronDown className="text-white w-4 h-4 sm:w-5 sm:h-5" />
+                )}
+              </motion.div>
             </button>
 
-            {openIndex === index && (
-              <p className="text-xs sm:text-sm text-gray-300 mt-2 sm:mt-3 leading-relaxed">
-                {faq.answer}
-              </p>
-            )}
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{
+                opacity: openIndex === index ? 1 : 0,
+                y: openIndex === index ? 0 : 10,
+              }}
+              transition={{ duration: 0.3 }}
+              className="overflow-hidden"
+            >
+              {openIndex === index && (
+                <p className="text-xs sm:text-sm text-gray-300 mt-2 sm:mt-3 leading-relaxed">
+                  {faq.answer}
+                </p>
+              )}
+            </motion.div>
           </div>
         ))}
       </div>
@@ -202,8 +168,14 @@ const FAQSection = () => {
   );
 };
 
+
 export default function AboutPage() {
   const router = useRouter();
+  
+  const fadeIn = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0 }
+  };
   const StatCounter = ({ end, label, duration = 2000 }: { end: number; label: string; duration?: number }) => {
     const [count, setCount] = useState(0);
 
@@ -228,7 +200,7 @@ export default function AboutPage() {
     return (
 
       <div className="text-center">
-        <p className="text-3xl  sm:text-4xl md:text-5xl font-bold text-foreground mb-4 mt-2">{count}{label.includes("%") ? "%" : "+"}</p>
+        <p className="text-3xl  sm:text-4xl md:text-5xl font-bold text-accent mb-4 mt-2">{count}{label.includes("%") ? "%" : "+"}</p>
         <p className="text-xs sm:text-sm uppercase tracking-widest text-[#8B8B8B] ">{label.replace(/\s*\(\d+-\d+%\)/, '').replace(/\s*\(\d+-\d+\sWeeks\)/, '').replace(" %", "")}</p>
       </div>
     );
@@ -236,140 +208,185 @@ export default function AboutPage() {
 
   return (
     <div className="bg-background text-foreground font-sans">
-      {/*---------------------------------- 1st Section-------------------------------------------  */}
-      {/* Hero Section */}
-      <section className="relative w-full max-w-7xl mx-auto bg-accent/10 overflow-hidden 
-                    h-auto lg:h-[450px]">
-        {/* Grid background */}
-        <div className="absolute inset-0 bg-grid-white/5 [mask-image:radial-gradient(white,transparent_85%)]" />
-
-        {/* Main flex layout */}
-        <div className="
-    relative z-10 
-    flex flex-col sm:flex-col md:flex-row-reverse lg:flex-row
-    items-center justify-between 
-    px-4 sm:px-6 md:px-10 lg:px-[100px] 
-    gap-8 py-8 lg:py-0
-  ">
-          {/* Text content */}
-          <FadeIn>
-            <div className="
-        max-w-full sm:max-w-[500px] md:max-w-[500px] lg:max-w-[600px] xl:max-w-[700px] 
-        text-center sm:text-center md:text-left lg:text-left
-        order-1 md:order-1 lg:order-1 lg:mt-11
-      ">
-              {/* React/Next: use className */}
-              <h1
-                className="
-    mt-[55px] md:mt-0                 /* mobile:55px, reset at md and up */
-    text-[26px] sm:text-[32px] md:text-[36px] lg:text-[44px]
-    leading-tight sm:leading-[110%] md:leading-[114%]
-    font-bold tracking-tight bg-clip-text text-transparent
-    bg-gradient-to-r from-[#FFFFFF] to-[#FFE4C6]
-    px-2 sm:px-4 md:px-0 lg:ml-32 md:ml-8
-  "
-              >
-                Where Artificial <br />
-                Intelligence Meets <br />
-                Real-World Impact
-              </h1>
-
-
-              <p className="
-          mt-4 text-sm sm:text-base md:text-lg
-          leading-snug sm:leading-[20px]
-          font-normal text-muted-foreground
-          max-w-full sm:max-w-md md:max-w-lg
-          px-2 sm:px-4 md:px-0
-          lg:ml-32 md:ml-8 
-        ">
-                At Upteky, we are revolutionizing the way businesses operate through cutting-edge AI automation.
-              </p>
-            </div>
-          </FadeIn>
-
-          {/* Spline object */}
-          <div className="
-      order-2 sm:order-2 md:order-2 lg:order-2
-      w-[240px] h-[240px] sm:w-[300px] sm:h-[300px] 
-      md:w-[360px] md:h-[360px] lg:w-[420px] lg:h-[420px]
-      lg:mt-6 sm:mt-8 md:mt-0  
-    ">
-            <Spline scene="https://prod.spline.design/gzZr3RkDaeIJ0HKD/scene.splinecode" />
-          </div>
-        </div>
-
-        {/* Bottom blur */}
-        <div className="absolute -bottom-6 left-0 right-0 h-12 
-                  bg-gradient-to-r from-accent/20 via-accent/30 to-accent/20 blur-xl" />
-      </section>
-
-      {/*---------------------------------- 2nd Section-------------------------------------------  */}
-      <section className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-[64px] pb-[48px]">
-        {/* Heading */}
-        <div className="text-center mb-10 md:mb-12">
-          <motion.h2
-            className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white"
-            initial={{ opacity: 0, y: -20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.6 }}
-          >
-            Our Track Record
-          </motion.h2>
-
-          <motion.div
-            className="w-[88px] h-1 mt-2 bg-gradient-to-r from-[#F58F1D] to-[#E57D77] mx-auto rounded-full"
-            initial={{ scaleX: 0 }}
-            whileInView={{ scaleX: 1 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            style={{ transformOrigin: 'center' }}
-          />
-        </div>
-
-        {/* Stats Grid */}
-        <FadeIn>
-          <div className=" mx-8 grid grid-cols-2 md:grid-cols-4 gap-[10px]">
-
-            {/* Card 1 */}
-            <div className="bg-[#232629]  text-center rounded-xl px-2 py-4 shadow-[0px_1px_31px_0px_#6B6B6B40]">
-              <StatCounter end={10} label="Industries Served" />
+             {/*---------------------------------- 1st Section-------------------------------------------  */}
+       {/* Hero Section with Abstract Background */}
+       <FadeIn>
+          <div className="relative overflow-hidden bg-gradient-to-br from-[#2d3436] to-[#000000]">
+            {/* Top Orange Light Gradient */}
+            <div className="absolute top-0 left-0 right-0 w-full h-full z-0" aria-hidden="true">
+              <svg viewBox="0 0 1440 800" className="w-full h-full" preserveAspectRatio="xMidYMin slice">
+                <defs>
+                  <radialGradient id="centerGlow" cx="50%" cy="5%" r="70%" fx="50%" fy="0%">
+                    <stop offset="0%" stopColor="#FF8B06" stopOpacity="0.35" />
+                    <stop offset="30%" stopColor="#FF8B06" stopOpacity="0.15" />
+                    <stop offset="100%" stopColor="#FF8B06" stopOpacity="0" />
+                  </radialGradient>
+                </defs>
+                <rect width="100%" height="65%" y="0" fill="url(#centerGlow)" />
+              </svg>
             </div>
 
-            {/* Card 2 */}
-            <div className="bg-[#232629] text-center rounded-xl px-4 py-6 shadow-[0px_1px_31px_0px_#6B6B6B40]">
-              <p className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-4">4-8</p>
-              <p className="text-xs sm:text-sm uppercase tracking-widest  text-[#8B8B8B]">Delivery Time (Weeks)</p>
-            </div>
+            {/* Background SVG */}
+            <div className="absolute inset-0 z-0">
+             <svg
+               className="w-full h-full opacity-10"
+               viewBox="0 0 1440 600"
+               preserveAspectRatio="xMidYMin slice"
+             >
+               <defs>
+                 <linearGradient
+                   id="heroGradientCareers"
+                   x1="0%"
+                   y1="0%"
+                   x2="100%"
+                   y2="100%"
+                 >
+                   <stop offset="0%" stopColor="hsl(var(--accent))" />
+                   <stop
+                     offset="100%"
+                     stopColor="hsl(var(--accent))"
+                     stopOpacity="0.7"
+                   />
+                 </linearGradient>
+                 <filter
+                   id="glowCareers"
+                   x="-50%"
+                   y="-50%"
+                   width="200%"
+                   height="200%"
+                 >
+                   <feGaussianBlur stdDeviation="15" result="blur" />
+                   <feMerge>
+                     <feMergeNode in="blur" />
+                     <feMergeNode in="SourceGraphic" />
+                   </feMerge>
+                 </filter>
+               </defs>
 
+               <path
+                 d="M -100,100 Q 500,200 1200,100 T 2000,200"
+                 stroke="url(#heroGradientCareers)"
+                 strokeWidth="2"
+                 fill="none"
+                 opacity="0.5"
+               />
+               <path
+                 d="M -100,200 Q 600,50 1300,150 T 2000,50"
+                 stroke="url(#heroGradientCareers)"
+                 strokeWidth="3"
+                 fill="none"
+                 opacity="0.3"
+                 strokeDasharray="5,15"
+               />
+               <circle cx="200" cy="150" r="3" fill="hsl(var(--accent))" />
+               <circle cx="600" cy="120" r="2" fill="hsl(var(--accent))" />
+               <circle cx="1000" cy="180" r="4" fill="hsl(var(--accent))" />
+               <circle cx="1400" cy="150" r="3" fill="hsl(var(--accent))" />
+             </svg>
+           </div>
 
-            {/* Card 3 */}
-            <div className="bg-[#232629] text-center rounded-xl px-4 py-6 shadow-[0px_1px_31px_0px_#6B6B6B40]">
-              <StatCounter end={30} label="Avg Client Growth (30-50%)" />
+           {/* Content */}
+           <div className="relative z-10 min-h-[70vh] md:min-h-[80vh] flex items-center">
+              <div className="container mx-auto px-4 md:px-6">
+                <motion.div
+                  className="text-center max-w-4xl mx-auto"
+                  initial="hidden"
+                  animate="visible"
+                  variants={fadeIn}
+                  transition={{ duration: 0.7 }}
+                >
+                  <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight mb-4 sm:mb-6 bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/80">
+                    Innovation That Drives Growth
+                  </h1>
+                  <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto mb-8 sm:mb-10 leading-relaxed">
+                    Witness the evolution of artificial intelligence and our journey in shaping the future of business automation.
+                  </p>
+                  <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
+                 
+                 <Button size="lg" variant="outline" className="border-accent text-accent hover:bg-accent/5 rounded-full px-6 py-3 sm:px-8 sm:py-3.5 font-medium text-sm sm:text-base">
+                   <Link href="/contact">Let's Tech Talk</Link>
+                 </Button>
+               </div>
+                </motion.div>
+               {/* <div className="order-1 md:order-2 h-[20rem] sm:h-[24rem] md:h-[34rem] lg:h-[20rem] flex items-center justify-center">
+            <div className="w-full h-full rounded-xl overflow-hidden relative">
+              <Spline
+        scene="https://prod.spline.design/gzZr3RkDaeIJ0HKD/scene.splinecode" 
+      />
             </div>
+          </div> */}
+             </div>
+           </div>
+         </div>
+       </FadeIn>
 
-            {/* Card 4 */}
-            <div className="bg-[#232629] text-center rounded-xl px-4 py-6 shadow-[0px_1px_31px_0px_#6B6B6B40]">
-              <StatCounter end={100} label="Integrations Implemented" />
-            </div>
-          </div>
-        </FadeIn>
-      </section>
+             {/* -------------------------------------2nd Section---------------------------------------- */}
+        {/* Track Record Section */}
+        <section className="lg:mx-6 py-12 md:py-16 bg-background/30 backdrop-blur-sm ">
+          <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-10 md:mb-12">
+                             <motion.h2
+                 className="text-3xl sm:text-7xl md:text-5xl lg:text-4xl font-bold text-white"
+                 initial={{ opacity: 0, y: -20 }}
+                 whileInView={{ opacity: 1, y: 0 }}
+                 viewport={{ once: true, amount: 0.3 }}
+                 transition={{ duration: 0.6 }}
+               >
+                 Our Track Record
+               </motion.h2>
+
+              <motion.div
+                className="w-[88px] h-1 mt-2 bg-gradient-to-r from-[#F58F1D] to-[#E57D77] mx-auto rounded-full mb-10"
+                initial={{ scaleX: 0 }}
+                whileInView={{ scaleX: 1 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                style={{ transformOrigin: 'center' }}
+              />
+
+              {/* Stats Grid */}
+              <FadeIn>
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-[20px] w-full">
+                 {/* Card 1 */}
+                 <div className="bg-[#232629] text-center rounded-xl px-4 py-4 shadow-[0px_1px_31px_0px_#6B6B6B40]">
+                   <StatCounter end={10} label="Industries Served" />
+                 </div>
+
+                 {/* Card 2 */}
+                 <div className="bg-[#232629] text-center rounded-xl px-4 py-4 shadow-[0px_1px_31px_0px_#6B6B6B40]">
+                   <p className="text-3xl sm:text-4xl md:text-5xl font-bold text-accent mt-2 mb-4">4-8</p>
+                   <p className="text-xs sm:text-sm uppercase tracking-widest text-[#8B8B8B]">Delivery Time (Weeks)</p>
+                 </div>
+
+                 {/* Card 3 */}
+                 <div className="bg-[#232629] text-center rounded-xl px-4 py-4 shadow-[0px_1px_31px_0px_#6B6B6B40]">
+                   <StatCounter end={30} label="Avg Client Growth (30-50%)" />
+                 </div>
+
+                 {/* Card 4 */}
+                 <div className="bg-[#232629] text-center rounded-xl px-4 py-4 shadow-[0px_1px_31px_0px_#6B6B6B40]">
+                   <StatCounter end={100} label="Integrations Implemented" />
+                 </div>
+               </div>
+             </FadeIn>
+           </div>
+         </div>
+       </section>
+      
 
       {/* ---------------------------------------------3rd Section---------------------------------------- */}
-      <div className="border-t border-[#333333] mt-8" />
+      <div className="border-t border-[#333333] mt-6" />
       <section className="w-full max-w-7xl px-4 sm:px-6 lg:px-8 pt-[64px] pb-[48px] mx-auto">
         <div className="text-center mb-12">
-          <motion.h2
-            className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white"
-            initial={{ opacity: 0, y: -20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.6 }}
-          >
-            Our Capabilities
-          </motion.h2>
+                     <motion.h2
+             className="text-3xl sm:text-7xl md:text-5xl lg:text-4xl font-bold text-white"
+             initial={{ opacity: 0, y: -20 }}
+             whileInView={{ opacity: 1, y: 0 }}
+             viewport={{ once: true, amount: 0.3 }}
+             transition={{ duration: 0.6 }}
+           >
+             Our Capabilities
+           </motion.h2>
 
           <motion.div
             className="w-[88px] h-1 mt-2 bg-gradient-to-r from-[#F58F1D] to-[#E57D77] mx-auto rounded-full"
@@ -381,11 +398,11 @@ export default function AboutPage() {
           />
         </div>
 
-        <div className=" mx-auto lg:mx-48  grid grid-cols-1 md:grid-col-2 sm:grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 ">
+        <div className=" mx-auto lg:mx-6  grid grid-cols-1 md:grid-col-2 sm:grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 ">
           {capabilities.map((cap, index) => (
             <div
               key={index}
-              className="lg:w-md h-[350px]   bg-[#232629] text-white p-12 sm:p-8 md:p-10 rounded-[40px]  transition duration-300 hover:shadow-[0px_0px_30px_-3px_#F58F1D]  shadow-[0px_4px_34px_0px_#8E8E8E40]"
+              className="lg:w-md h-[300px]  bg-[#232629] text-white p-12 sm:p-8 md:p-10 rounded-[40px]  transition duration-300 hover:shadow-[0px_0px_30px_-3px_#F58F1D]  shadow-[0px_4px_34px_0px_#8E8E8E40]"
             >
               <img className=" h-[60px]  w-[60px] mb-8 " src={cap.image} />
               <h3 className="text-2xl font-semibold mb-5 mt-1">{cap.title}</h3>
@@ -400,15 +417,15 @@ export default function AboutPage() {
       <div className="border-t border-[#333333]  mt-8" />
       <section className="w-full max-w-[1210px] mx-auto px-4 sm:px-6 lg:px-8  pt-[64px] pb-[48px]">
         <div className="text-center mb-10 md:mb-12 ">
-          <motion.h2
-            className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white"
-            initial={{ opacity: 0, y: -20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.6 }}
-          >
-            Our Workflow
-          </motion.h2>
+                     <motion.h2
+             className="text-3xl sm:text-7xl md:text-5xl lg:text-4xl font-bold text-white"
+             initial={{ opacity: 0, y: -20 }}
+             whileInView={{ opacity: 1, y: 0 }}
+             viewport={{ once: true, amount: 0.3 }}
+             transition={{ duration: 0.6 }}
+           >
+             Our Workflow
+           </motion.h2>
 
           <motion.div
             className="w-[88px] h-1 mt-2 bg-gradient-to-r from-[#F58F1D] to-[#E57D77] mx-auto rounded-full"
@@ -423,24 +440,55 @@ export default function AboutPage() {
         {/* Timeline container with absolute line */}
         <div className="relative">
           {/* Horizontal connecting line visible on md+ screens */}
-          <div className="absolute mx-[130px] hidden md:block top-[80px]  left-0 right-0 h-[1px] bg-white/20 z-0" />
+          <div className="absolute mx-[130px] hidden md:block top-[80px] left-0 right-0 h-[1px] bg-white/20 z-0" />
 
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 text-center text-white relative z-10">
             {steps.map((item, index) => (
-              <div key={index} className="flex flex-col items-center">
-                <div className="text-[48px] font-bold mb-1 text-[#BABABA]">{item.step}</div>
+              <div
+                key={index}
+                className="flex flex-col items-center group transition-all duration-300 px-2"
+              >
+                {/* Step Number */}
+                <div
+                  className="text-[48px] font-bold mb-2 text-[#BABABA]
+                   group-hover:text-accent
+                   group-hover:-translate-y-1
+                   transition-all duration-300 transform"
+                >
+                  {item.step}
+                </div>
+
+                {/* Dot */}
                 <div className="w-2 h-2 rounded-full bg-white mb-4"></div>
-                <h3 className="text-xl font-semibold mt-3 mb-5">{item.title}</h3>
-                <p className="text-sm text-gray-300  leading-relaxed">{item.desc}</p>
+
+                {/* Title */}
+                <h3
+                  className="text-xl font-semibold mb-4
+                   group-hover:text-accent
+                   group-hover:-translate-y-1
+                   transition-all duration-300 transform"
+                >
+                  {item.title}
+                </h3>
+
+                {/* Description */}
+                <p
+                  className="text-sm text-gray-300 leading-relaxed max-w-[280px] mx-auto
+                   group-hover:-translate-y-1
+                   transition-all duration-300 transform"
+                >
+                  {item.desc}
+                </p>
               </div>
             ))}
           </div>
+
         </div>
       </section>
 
-      {/*--------------------------------------------------5th Section--------------------------------------------------*/}
-      <div className="border-t border-[#333333]  mt-8" />
-      <FAQSection />
+             {/*--------------------------------------------------5th Section--------------------------------------------------*/}
+       <div className="border-t border-[#333333]  mt-8" />
+       <FAQSection />
     </div>
   );
 }

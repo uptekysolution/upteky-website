@@ -337,17 +337,21 @@ export default function CareersPage() {
         {/* Open Positions Section */}
         <FadeIn>
         <section id="open-positions" className="mb-16 sm:mb-24 scroll-mt-24">
-          <div className="flex items-center justify-between mb-10 sm:mb-12">
-            <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-foreground">Open Positions</h2>
+          <div className="text-center mb-10 sm:mb-12">
+            <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-foreground mb-3 sm:mb-4">Open Positions</h2>
             <Badge variant="outline" className="px-2.5 py-1 sm:px-3 sm:py-1.5 text-xs sm:text-sm border-border text-muted-foreground">
               {Object.values(openRoles).flat().length} Open Roles
             </Badge>
           </div>
 
           <Tabs defaultValue="Sales" className="w-full">
-            <TabsList className="mb-6 sm:mb-8 w-full max-w-md mx-auto grid grid-cols-3 bg-secondary/50 text-xs sm:text-sm">
+            <TabsList className="mb-6 sm:mb-8 w-full max-w-md mx-auto grid grid-cols-3 bg-secondary/50 text-xs sm:text-sm h-auto p-1">
               {Object.keys(openRoles).map((department) => (
-                <TabsTrigger key={department} value={department} className="data-[state=active]:bg-accent/20 data-[state=active]:text-accent py-1.5 sm:py-2">
+                <TabsTrigger 
+                  key={department} 
+                  value={department} 
+                  className="data-[state=active]:bg-accent/20 data-[state=active]:text-accent py-2 px-3 rounded-md transition-all duration-200"
+                >
                   {department}
                 </TabsTrigger>
               ))}
@@ -426,10 +430,10 @@ export default function CareersPage() {
               We've built a place where passionate people can thrive and do the best work of their careers.
             </p>
           </div>
-
+ 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12 mb-12 sm:mb-16">
-            <div className="relative rounded-2xl overflow-hidden bg-gradient-to-br from-accent/5 to-accent/10 p-6 sm:p-8 md:p-10 border border-accent/20">
-              <div className="absolute top-0 right-0 w-20 h-20 sm:w-24 sm:h-24 -mt-8 -mr-8 sm:-mt-10 sm:-mr-10 bg-accent/10 rounded-full filter blur-xl opacity-80"></div>
+            <div className="relative rounded-2xl overflow-hidden bg-card p-6 sm:p-8 md:p-10 border border-border/50  hover:bg-gradient-to-br hover:from-accent/5 hover:to-accent/10   hover:border hover:border-accent/20">
+              <div className="absolute top-0 right-0 w-20 h-20 sm:w-24 sm:h-24 -mt-8 -mr-8 sm:-mt-10 sm:-mr- rounded-full filter blur-xl opacity-80"></div>
 
               <h3 className="text-xl sm:text-2xl font-semibold mb-5 sm:mb-6 flex items-center text-foreground">
                 <Users className="h-4 w-4 sm:h-5 sm:w-5 mr-2 text-accent" />
@@ -442,7 +446,7 @@ export default function CareersPage() {
                     <div className="mr-3 sm:mr-4 mt-1">
                       <div className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-accent/20 flex items-center justify-center">
                         <Star className="h-2.5 w-2.5 sm:h-3 sm:w-3 text-accent" />
-                      </div>
+                      </div> 
                     </div>
                     <div>
                       <h4 className="font-medium mb-1 text-foreground text-sm sm:text-base">{value.title}</h4>
@@ -453,9 +457,9 @@ export default function CareersPage() {
               </div>
             </div>
 
-            <div className="relative rounded-2xl overflow-hidden bg-card p-6 sm:p-8 md:p-10 border border-border/50">
-              <h3 className="text-xl sm:text-2xl font-semibold mb-5 sm:mb-6 flex items-center text-foreground">
-                <Star className="h-4 w-4 sm:h-5 sm:w-5 mr-2 text-accent" />
+            <div className="relative rounded-2xl overflow-hidden bg-card p-6 sm:p-8 md:p-10 border border-border/50 hover:bg-gradient-to-br hover:from-accent/5 hover:to-accent/10 hover:border hover:border-accent/20">
+              <h3 className="text-xl sm:text-2xl font-semibold mb-6 sm:mb-6 flex items-center text-foreground  group-hover:opacity-80 ">
+                <Star className="h-4 w-4 sm:h-5  sm:w-5 mr-2 text-accent" />
                 Benefits & Perks
               </h3>
 
