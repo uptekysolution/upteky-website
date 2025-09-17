@@ -7,7 +7,7 @@ import AudioPlayerSingle from "@/hooks/AudioPlayerSingle";
 import { getVoicebotId } from "@/hooks/voicebotId";
 
 export default function VoiceBot() {
-  const { status, startRecording, stopRecording } = useVoiceBot();
+  const { status, startRecording, stopRecording, startConversation, onBotSpeechEnded } = useVoiceBot();
   const eyeLeftRef = useRef<HTMLDivElement>(null);
   const eyeRightRef = useRef<HTMLDivElement>(null);
   const orbRef = useRef<HTMLDivElement>(null);
@@ -17,7 +17,8 @@ export default function VoiceBot() {
 
   // 1️⃣ Auto-start on mount, auto-stop on unmount
   useEffect(() => {
-    startRecording();
+    // startRecording();
+    startConversation();
     getVoicebotId();
     // stopRecording();
     // startRecording();
@@ -138,9 +139,9 @@ export default function VoiceBot() {
         {/* Audio Controls (bottom) */}
         <div className="p-2 sm:p-4 border-t border-white/10 bg-[hsl(210,7.89%,14.9%)] flex items-center justify-between">
           <div className="text-white/70 text-xs sm:text-sm capitalize">
-            {status === "thinking" ? "thinking..." : status}
+            {status === "Thinking" ? "Thinking..." : status}
           </div>
-          <AudioPlayerSingle onEnded={startRecording} />
+          <AudioPlayerSingle onEnded={onBotSpeechEnded} />
         </div>
       </div>
 
