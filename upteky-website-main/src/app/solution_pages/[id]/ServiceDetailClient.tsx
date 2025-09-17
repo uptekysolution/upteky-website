@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect, useState } from "react";
-import { serviceDetails } from "@/lib/serviceDetails"; 
+import { serviceDetails, type ServiceDetail } from "@/lib/serviceDetails"; 
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import Link from "next/link";
@@ -18,7 +18,7 @@ import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion"
 // Enhanced animations with spring physics
 const fadeInUp = {
   hidden: { opacity: 0, y: 32 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" as const } },
 };
 
 const cardHover = {
@@ -76,32 +76,18 @@ interface ServiceDetailClientProps {
   id: string;
 }
 
-// Define a type for the service details structure if it's not imported from a shared file
-interface Service {
-  id: string;
-  title: string;
-  introduction: string;
-  benefits: string[];
-  highlights: string[];
-  process: string[];
-  impacts: string[];
-  category?: string; // Make category optional
-  icon: React.ReactNode; // Or the correct type for your icons
-  imgSrc: string;
-  imgAlt?: string; // Make imgAlt optional
-  contactLink: string;
-}
+
 
 export default function ServiceDetailClient({ id }: ServiceDetailClientProps) {
-  const [service, setService] = useState<Service | null>(null); // Use the defined Service type
+  const [service, setService] = useState<ServiceDetail | null>(null);
 
   const { scrollYProgress } = useScroll();
   const opacity = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
   const scale = useTransform(scrollYProgress, [0, 0.2], [1, 0.8]);
 
   useEffect(() => {
-    const foundService = serviceDetails.find((s: Service) => s.id === id); // Add type annotation here
-    setService(foundService || null); // Ensure null if not found
+    const foundService = serviceDetails.find((s: ServiceDetail) => s.id === id);
+    setService(foundService || null);
   }, [id]);
 
   const features = [
@@ -117,13 +103,13 @@ export default function ServiceDetailClient({ id }: ServiceDetailClientProps) {
     },
     {
       icon: BarChart3,
-      title: "Analytics Dashboard",
-      description: "Comprehensive insights and reporting tools"
+      title: "Conversion-Focused",
+      description: "Capture leads, Nurture prospects, and accelerate sales"
     },
     {
       icon: Activity,
       title: "Real-time Monitoring",
-      description: "24/7 monitoring and instant alerts"
+      description: "CRM systems, calendars, marketing tools, and databases"
     }
   ];
 
@@ -246,7 +232,7 @@ export default function ServiceDetailClient({ id }: ServiceDetailClientProps) {
 
               {/* Introduction with Gradient Text */}
               <motion.p
-                className="text-lg sm:text-xl md:text-2xl text-muted-foreground leading-relaxed border-b border-border/10 pb-8 sm:pb-10"
+                className="text-lg sm:text-xl md:text-  xl text-muted-foreground leading-relaxed border-b border-border/10 pb-8 sm:pb-10"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.5 }}
@@ -256,7 +242,7 @@ export default function ServiceDetailClient({ id }: ServiceDetailClientProps) {
 
               {/* Features List */}
               <motion.div
-                className="flex flex-col sm:flex-row items-center justify-center gap-6"
+                className="flex flex-col sm:flex-row items-center justify-center gap-3"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.6 }}
@@ -391,14 +377,23 @@ export default function ServiceDetailClient({ id }: ServiceDetailClientProps) {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 1 }}
               >
-                <div className="absolute inset-0 bg-gradient-to-br from-accent/5 via-accent/2 to-transparent" />
+                <div className="absolute inset-0 bg-[#2B3035] via-accent/2 to-transparent" />
                 <div className="relative z-10">
-                  <h3 className="text-2xl sm:text-3xl font-semibold text-foreground mb-6 text-center">
-                    Why Partner with Upteky for {service.title}?
+                  <h3 className="text-2xl sm:text-3xl  text-foreground mb-6 ">
+                  Why Partner with Upteky for Interactive AI Website Chatbots?
                   </h3>
-                  <p className="text-base sm:text-lg text-muted-foreground text-center max-w-3xl mx-auto">
-                    At Upteky, we don't just offer solutions; we build partnerships. Our expert team works closely with you to understand your specific business challenges and objectives. We tailor the {service.title} solution to integrate seamlessly with your existing workflows, ensuring you derive maximum value and achieve tangible results.
+                  <p className="text-base sm:text-lg text-muted-foreground   tracking-tight max-w-4xl mx-auto">
+                  At Upteky Solutions Pvt. Ltd., we specialize in building conversion-driven website chatbots tailored to your business goals. Unlike generic bots, our solutions are:
                   </p>
+                  <div>
+                  <ul className="list-disc list-inside space-y-2 mt-4 text-base sm:text-lg text-foreground">
+                    <li>Custom-designed to match your brand identity</li>
+                    <li>Secure and scalable, with enterprise-grade compliance</li>
+                    <li>Analytics-enabled, so you always know what’s working</li>
+                    <li>Proven to deliver results across industries like healthcare, real estate, e-commerce, SaaS,.</li>
+                  </ul>
+                  </div>
+                  
                 </div>
               </motion.div>
 
@@ -409,16 +404,16 @@ export default function ServiceDetailClient({ id }: ServiceDetailClientProps) {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 1.1 }}
               >
-                <h3 className="text-2xl sm:text-3xl font-semibold text-foreground mb-4">
+                <h3 className="text-2xl sm:text-3xl  text-foreground mb-4">
                   Ready to Transform Your Business?
                 </h3>
                 <p className="text-base sm:text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
-                  Learn how the {service.title} solution can revolutionize your operations. Contact us today for a personalized demo and consultation.
+                Discover how the Interactive AI Website Chatbot can transform your online engagement and drive measurable growth. Contact us today for a personalized consultation and demo. 
                 </p>
                 <Button
                   size="lg"
                   asChild
-                  className="group relative overflow-hidden bg-gradient-to-r from-orange-500 via-orange-400 to-yellow-400 text-white hover:opacity-90 transition-all duration-300 transform hover:scale-105 shadow-lg px-4 sm:px-8 py-4 sm:py-6 text-sm sm:text-lg rounded-full font-semibold"
+                  className="group relative overflow-hidden bg-gradient-accent text-white hover:opacity-90 transition-all duration-300 transform hover:scale-105 shadow-lg px-4 sm:px-8 py-4 sm:py-6 text-sm sm:text-lg rounded-full font-semibold"
                 >
                   <Link href={`${service.contactLink}&title=${encodeURIComponent(service.title)}`}>
                     <span className="relative z-10 flex items-center">

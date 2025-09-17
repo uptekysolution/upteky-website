@@ -174,7 +174,7 @@ export default function ContactPage() {
            </div>
 
               {/* Content */}
-              <div className="relative z-10 min-h-[70vh] md:min-h-[80vh] flex items-center">
+              <div className="relative z-10 min-h-[50vh] md:min-h-[60vh] flex items-center">
               <div className="container mx-auto px-4 md:px-6  ">
                 <motion.div
                   className="text-center max-w-4xl mx-auto"
@@ -282,19 +282,19 @@ export default function ContactPage() {
           <FadeIn>
           <section className="space-y-3 sm:space-y-4">
             <div>
-              <h2 className="text-2xl sm:text-2xl font-semibold mb-1.5 sm:mb-2">Contact Information</h2>
-              <div className="h-0.5 sm:h-1 w-16 sm:w-20 bg-accent/70 rounded-full mb-5 sm:mb-6"></div>
-              <p className="text-muted-foreground mb-6 sm:mb-8 text-sm sm:text-base leading-relaxed">
+              <h2 className="text-2xl sm:text-2xl font-semibold mb-10 sm:mb-2">Contact Information</h2>
+              <div className="h-0.5 sm:h-1 w-16 lg:w-60 sm:w-20 bg-accent/70 rounded-full mb-8 sm:mb-6"></div>
+              <p className="text-muted-foreground mb-6 sm:mb-8 text-sm sm:text-base leading-relaxed lg:mb-10">
                 Reach out to us directly or visit our office. We're available Monday through Friday, 9AM-6PM IST.
               </p>
             </div>
             
-            <div className="space-y-5 sm:space-y-6">
+            <div className="space-y-5 sm:space-y-8">
               <Card className="bg-card/50 border-border/30 shadow-md hover:shadow-lg transition-shadow duration-300">
                 <CardContent className="p-4 sm:p-6">
-                  <div className="flex items-start gap-3 sm:gap-4">
-                    <div className="h-9 w-9 sm:h-10 sm:w-10 rounded-full bg-accent/10 flex items-center justify-center">
-                      <Mail className="h-4 w-4 sm:h-5 sm:w-5 text-accent" />
+                  <div className="flex items-start gap-5 sm:gap-4">
+                    <div className="h-12 w-9 sm:h-10 sm:w-10 rounded-full bg-accent/10 flex items-center justify-center">
+                      <Mail className="h-6 w-4 sm:h-5 sm:w-5 text-accent" />
                     </div>
                     <div>
                       <h3 className="font-medium text-foreground text-sm sm:text-base">Email</h3>
@@ -307,8 +307,8 @@ export default function ContactPage() {
               <Card className="bg-card/50 border-border/30 shadow-md hover:shadow-lg transition-shadow duration-300">
                 <CardContent className="p-4 sm:p-6">
                   <div className="flex items-start gap-3 sm:gap-4">
-                    <div className="h-9 w-9 sm:h-10 sm:w-10 rounded-full bg-accent/10 flex items-center justify-center">
-                      <Phone className="h-4 w-4 sm:h-5 sm:w-5 text-accent" />
+                    <div className="h-12 w-9 sm:h-10 sm:w-10 rounded-full bg-accent/10 flex items-center justify-center">
+                      <Phone className="h-6 w-4 sm:h-5 sm:w-5 text-accent" />
                     </div>
                     <div>
                       <h3 className="font-medium text-foreground text-sm sm:text-base">Phone</h3>
@@ -321,8 +321,8 @@ export default function ContactPage() {
               <Card className="bg-card/50 border-border/30 shadow-md hover:shadow-lg transition-shadow duration-300">
                 <CardContent className="p-4 sm:p-6">
                   <div className="flex items-start gap-3 sm:gap-4">
-                    <div className="h-9 w-9 sm:h-10 sm:w-10 rounded-full bg-accent/10 flex items-center justify-center">
-                      <MapPin className="h-4 w-4 sm:h-5 sm:w-5 text-accent" />
+                    <div className="h-12 w-9 sm:h-10 sm:w-10 rounded-full bg-accent/10 flex items-center justify-center">
+                      <MapPin className="h-6 w-4 sm:h-5 sm:w-5 text-accent" />
                     </div>
                     <div>
                       <h3 className="font-medium text-foreground text-sm sm:text-base">Office Address</h3>

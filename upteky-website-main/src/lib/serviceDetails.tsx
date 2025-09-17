@@ -15,6 +15,7 @@ export interface ServiceDetail {
   imgSrc: string;
   contactLink: string;
   category?: string; // Optional category field for future use
+  
 }
 
 export const serviceDetails: ServiceDetail[] = [
@@ -113,26 +114,29 @@ export const serviceDetails: ServiceDetail[] = [
     title: "AI Voice Assistant (Voice Bot)",
     introduction: "Deliver human-like voice interactions for customer support and information services with advanced AI voice bots, available around the clock.",
     benefits: [
-      "Natural, conversational voice experiences",
-      "24/7 availability for inbound calls",
-      "Accurate intent recognition and call routing",
-      "Scalable support without additional staff"
+      "Instant, 24/7 engagement for website visitors.",
+      "Automated lead capture and qualification.",
+      "Appointment scheduling and calendar integration.",
+      "Personalized responses based on visitor behavior."
     ],
     process: [
-      "Voice workflow mapping and use case selection",
-      "Script and intent training with AI models",
-      "Integration with telephony and backend systems",
-      "Continuous improvement based on call analytics"
+      "Requirement analysis and conversation flow mapping.",
+      "Chatbot design, persona, and knowledge setup.",
+      "Development, integrations, and testing.",
+      "Deployment, monitoring, and ongoing optimization."
     ],
     impacts: [
-      "Reduced call wait times and dropped calls",
-      "Improved customer satisfaction scores",
-      "Lower operational costs for call centers"
+      "30–50% more leads captured through proactive engagement.",
+      "Faster customer response times, reducing drop-offs",
+      "Lower support costs by automating common queries",
+      "Higher customer satisfaction (CSAT) with 24/7 availability"
     ],
     highlights: [
-      "Multilingual support",
-      "Real-time sentiment analysis",
-      "Seamless escalation to human agents"
+      "Knowledge base ingestion for accurate responses",
+      "Context-aware escalation to human agents",
+"Multi-device responsive design (desktop, tablet, mobile)",
+"Analytics dashboard for real-time insights"
+      
     ],
     icon: <Zap className="w-8 h-8 text-accent" />,
     imgSrc: "/assets/10.jpg",
