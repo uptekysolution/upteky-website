@@ -7,17 +7,16 @@ import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect, useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { ArrowRight, ChevronRight, Zap, Settings, Layers, Users, Sparkles, Clock3, Repeat, MessagesSquare, Settings2, DollarSign, PhoneOff, Lightbulb, ChevronLeft, TrendingUp } from "lucide-react";
+import { ArrowRight, ChevronRight, Zap, Settings, Linkedin, Facebook, Instagram, Layers, Users, Sparkles, Clock3, Repeat, MessagesSquare, Settings2, DollarSign, PhoneOff, Lightbulb, ChevronLeft, TrendingUp, ChevronUp, ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useIsMobile } from "@/hooks/use-mobile";
-import Tilt from "react-parallax-tilt";
-import ChromaGrid from '@/blocks/Components/ChromaGrid/ChromaGrid';
-import type { Metadata } from 'next';
+
+
 
 
 
 const services = [
-  
+
   {
     id: "01",
     title: "AI-Powered Chatbot",
@@ -126,63 +125,150 @@ const testimonials = [
     author: "Lokesh Sharma",
     title: "Founder, Game Of Pharma",
     link: "https://gameofpharma.com/"
-
   },
   {
     quote: "Upteky built a smart, user-friendly website and automated our documentation with AI, streamlining daily operations and boosting team efficiency",
     author: "Pranav",
     title: "Founder, Vtalix Pvt. Ltd",
     link: "https://www.vtalix.com/"
-  },
-  {
-    quote: "Upteky built a smart, user-friendly website for us that also automated our documentation process — significantly increasing our team's daily efficiency.",
-    author: "Mohit",
-    title: "Director, Narayan Reality",
-  },
-  {
-    quote: "Upteky provided us with clear, actionable tech consultancy. Their guidance helped us understand how to implement AI and automation in our business workflows with confidence.",
-    author: "Chhavi",
-    title: "Founder, Joyory Luxe Pvt. Ltd",
-    link: "https://joyory.com/"
-
-  },
-  {
-    quote: "The custom AI solutions from Upteky helped us simplify internal communication and automate key customer interactions. It's been a game-changer for how we manage operational flow.",
-    author: "Ashish Talati",
-    title: "Director, JM PlastoPack Pvt. Ltd",
-    link: "https://www.jmplastopack.com/"
-  },
-  {
-    quote: "Upteky's expertise transformed our website into a smart, user-friendly platform and integrated automated documentation, making our processes faster and more reliable. This upgrade has been a game-changer for our efficiency and team morale",
-    author: "Lokesh Sharma",
-    title: "Founder, Game Of Pharma",
-    link: "https://gameofpharma.com/"
-
-  },
-  {
-    quote: "Upteky built a smart, user-friendly website and automated our documentation with AI, streamlining daily operations and boosting team efficiency",
-    author: "Pranav",
-    title: "Founder, Vtalix Pvt. Ltd",
-    link: "https://www.vtalix.com/"
-  },
-  {
-    quote: "Upteky built a smart, user-friendly website for us that also automated our documentation process — significantly increasing our team's daily efficiency.",
-    author: "Mohit",
-    title: "Director, Narayan Reality",
-  },
-  {
-    quote: "Upteky provided us with clear, actionable tech consultancy. Their guidance helped us understand how to implement AI and automation in our business workflows with confidence.",
-    author: "Chhavi",
-    title: "Founder, Joyory Luxe Pvt. Ltd",
-    link: "https://joyory.com/"
-
   }
 ];
 
-// 1. For seamless infinite loop: prepend last card, append first card
-const seamlessTestimonials = [testimonials[testimonials.length - 1], ...testimonials, testimonials[0]];
+// Only 3 testimonials - no need for seamless loop
+const seamlessTestimonials = testimonials;
+
+const faqs = [
+  {
+    question: "What AI services does Upteky offer?",
+    answer: "Upteky provides comprehensive AI solutions including chatbots, voice assistants, workflow automation, custom AI model development, AI-powered ERP and CRM systems, data analytics, and strategic AI consulting to help businesses transform their operations."
+  },
+  {
+    question: "How long does it take to implement an AI solution?",
+    answer: "Implementation timelines vary based on complexity. Simple chatbots can be deployed in 2-4 weeks, while comprehensive AI systems may take 2-6 months. We provide detailed project timelines during our initial consultation to ensure realistic expectations."
+  },
+  {
+    question: "Do you provide ongoing support after implementation?",
+    answer: "Yes, we offer comprehensive post-implementation support including maintenance, updates, training, and optimization. Our support packages are tailored to your needs, ensuring your AI solutions continue to deliver value and evolve with your business."
+  },
+  {
+    question: "Can AI solutions integrate with existing business systems?",
+    answer: "Absolutely. Our AI solutions are designed to seamlessly integrate with your existing systems including CRM, ERP, databases, and third-party applications. We ensure minimal disruption to your current workflows while maximizing the benefits of AI automation."
+  },
+  {
+    question: "What industries do you serve?",
+    answer: "We serve diverse industries including healthcare, finance, e-commerce, manufacturing, education, and professional services. Our AI solutions are adaptable to specific industry requirements and compliance standards."
+  },
+  {
+    question: "How do you ensure data security and privacy?",
+    answer: "Data security is our top priority. We implement enterprise-grade security measures, comply with industry standards like GDPR and HIPAA, use encrypted data transmission, and provide secure cloud or on-premise deployment options based on your requirements."
+  }
+];
+
+const FAQSection = () => {
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
+
+  const handleClick = (index: number) => {
+    setOpenIndex(openIndex === index ? null : index);
+  };
+
+  const handleHover = (index: number) => {
+    setOpenIndex(index);
+  };
+
+  const handleLeave = () => {
+    setOpenIndex(null);
+  };
+
+  return (
+    <section className="w-full max-w-7xl mx-auto lg:max-w-[1560px] px-2 sm:px-6 lg:px-8 pt-[48px] sm:pt-[56px] md:py-[64px] pb-[40px] lg:pb-[64px] sm:pb-[44px]">
+      {/* Heading */}
+      <div className="text-center mb-8 sm:mb-10 md:mb-12">
+        <motion.h2
+          className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white"
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.6 }}
+        >
+          Frequently Asked Questions
+        </motion.h2>
+
+        <motion.div
+          className="w-[64px] sm:w-[88px] h-1 mt-2 bg-gradient-to-r from-[#F58F1D] to-[#E57D77] mx-auto rounded-full"
+          initial={{ scaleX: 0 }}
+          whileInView={{ scaleX: 1 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          style={{ transformOrigin: "center" }}
+        />
+      </div>
+
+      {/* FAQ Items */}
+      <div className="bg-[#2D2F33] divide-y-4 sm:divide-y-6 md:divide-y-8 divide-[#232629] rounded-lg sm:rounded-xl">
+        {faqs.map((faq, index) => (
+          <div
+            key={index}
+            className={`px-4 sm:px-6 md:px-8 py-4 sm:py-5 md:py-6 
+                        transition-all duration-300 
+                        ${openIndex === index ? "bg-[#2D2F33]" : ""}`}
+            onMouseEnter={() => handleHover(index)}
+            onMouseLeave={handleLeave}
+          >
+            <button
+              onClick={() => handleClick(index)}
+              className="flex items-center justify-between w-full text-left group md:pointer-events-none"
+            >
+              <span
+                className={`text-xs sm:text-base  md:text-base font-medium 
+                            transition-colors duration-300
+                            ${openIndex === index ? "text-[#EE8741]" : "text-white"}`}
+              >
+                {faq.question}
+              </span>
+
+              <motion.div
+                animate={{ rotate: openIndex === index ? 180 : 0 }}
+                transition={{ duration: 0.3 }}
+                className="transition-transform duration-300"
+              >
+                {openIndex === index ? (
+                  <ChevronUp className="text-[#F58F1D] w-4 h-4 sm:w-5 sm:h-5" />
+                ) : (
+                  <ChevronDown className="text-white w-4 h-4 sm:w-5 sm:h-5" />
+                )}
+              </motion.div>
+            </button>
+
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{
+                opacity: openIndex === index ? 1 : 0,
+                y: openIndex === index ? 0 : 10,
+              }}
+              transition={{ duration: 0.3 }}
+              className="overflow-hidden"
+            >
+              {openIndex === index && (
+                <p className="text-xs sm:text-sm text-gray-300 mt-2 sm:mt-3 leading-relaxed">
+                  {faq.answer}
+                </p>
+              )}
+            </motion.div>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+};
 
 export default function Home() {
+
+  const socialMedia = [
+    { name: 'LinkedIn', icon: <Linkedin className="h-5 w-5" />, href: 'https://in.linkedin.com/company/uptekysolution' },
+    { name: 'Facebook', icon: <Facebook className="h-5 w-5" />, href: 'https://m.facebook.com/uptekysolution/' },
+    { name: 'Instagram', icon: <Instagram className="h-5 w-5" />, href: 'https://www.instagram.com/uptekysolution?igsh=MTh4b2hxdTUwOWt5cg==' },
+  ];
+
   const heroSectionRef = useRef<HTMLElement>(null);
   const isMobile = useIsMobile();
 
@@ -211,9 +297,27 @@ export default function Home() {
 
   const [testimonialScrollIndex, setTestimonialScrollIndex] = useState(1); // Start at first real card
   const [isTestimonialAutoScrolling, setIsTestimonialAutoScrolling] = useState(true);
+  const [currentSlide, setCurrentSlide] = useState(0); // For mobile carousel
   const testimonialScrollRef = useRef<HTMLDivElement>(null);
   const statsScrollRef = useRef<HTMLDivElement>(null);
   const TESTIMONIAL_SCROLL_INTERVAL = 1000; // 1 second pause
+
+  // Carousel state for mobile testimonials
+  const [currentTestimonialIndex, setCurrentTestimonialIndex] = useState(0);
+  const [isTestimonialCarouselAutoScrolling, setIsTestimonialCarouselAutoScrolling] = useState(true);
+
+  // Carousel navigation functions
+  const goToNextTestimonial = () => {
+    setCurrentTestimonialIndex((prevIndex) => 
+      prevIndex === seamlessTestimonials.length - 1 ? 0 : prevIndex + 1
+    );
+  };
+
+  const goToPreviousTestimonial = () => {
+    setCurrentTestimonialIndex((prevIndex) => 
+      prevIndex === 0 ? seamlessTestimonials.length - 1 : prevIndex - 1
+    );
+  };
 
   function getTestimonialItemMetrics() {
     const scrollContainer = testimonialScrollRef.current;
@@ -309,6 +413,24 @@ export default function Home() {
       if (intervalId) clearInterval(intervalId);
     };
   }, [isAutoScrolling, isMobile, problemSolutionStats.length]);
+
+  // Auto-scroll for testimonial carousel
+  useEffect(() => {
+    let intervalId: NodeJS.Timeout | undefined;
+
+    if (isTestimonialCarouselAutoScrolling) {
+      intervalId = setInterval(() => {
+        setCurrentTestimonialIndex(prevIndex => {
+          const nextIndex = prevIndex + 1;
+          return nextIndex >= seamlessTestimonials.length ? 0 : nextIndex;
+        });
+      }, 4000); // Change slide every 4 seconds
+
+      return () => {
+        if (intervalId) clearInterval(intervalId);
+      };
+    }
+  }, [isTestimonialCarouselAutoScrolling, seamlessTestimonials.length]);
 
   // Testimonial auto-scroll effect (robust, always works)
   useEffect(() => {
@@ -407,16 +529,16 @@ export default function Home() {
                   <feFuncA type="linear" slope="1.5" />
                 </feComponentTransfer>
                 <feMerge>
-                  <feMergeNode in="coloredBlur" />
+                  {/* <feMergeNode in="coloredBlur" /> */}
                   <feMergeNode in="SourceGraphic" />
                 </feMerge>
               </filter>
 
-              <radialGradient id="centerGlow" cx="50%" cy="5%" r="70%" fx="50%" fy="0%">
+              {/* <radialGradient id="centerGlow" cx="50%" cy="5%" r="70%" fx="50%" fy="0%">
                 <stop offset="0%" stopColor="#FF8B06" stopOpacity="0.35" />
                 <stop offset="30%" stopColor="#FF8B06" stopOpacity="0.15" />
                 <stop offset="100%" stopColor="#FF8B06" stopOpacity="0" />
-              </radialGradient>
+              </radialGradient> */}
 
               <filter id="particleGlow" x="-50%" y="-50%" width="200%" height="200%">
                 <feGaussianBlur stdDeviation="2.5" result="glow" />
@@ -498,10 +620,10 @@ export default function Home() {
           </svg>
         </div>
 
-        <div className="relative z-10 container mx-auto text-center flex flex-col h-full justify-center pb-10 sm:pb-0">
+        <div className="relative z-10  container mx-auto text-center flex flex-col h-full justify-center pb-10 sm:pb-0">
           <div className="relative inline-block hero-text-container">
             <motion.h1
-              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl 2xl:text-8xl font-extrabold leading-tight text-foreground hero-text-transform"
+              className="text-4xl sm:text-5xl mt-[90px] sm:mt-64  md:mt-56 lg:mt-40 md:text-6xl  lg:text-7xl 2xl:text-8xl font-extrabold leading-tight text-foreground hero-text-transform"
               style={{ x: x1, opacity: opacity1, originX: 0.5, originY: 0.5, textShadow: '0 0 1px rgba(0,0,0,0.1)' }}
             >
               Smarter Decisions
@@ -548,122 +670,125 @@ export default function Home() {
         </div>
       </section>
 
+
+
       {/* Services Section with Enhanced Styling */}
       <section
-  id="services"
-  className="py-12 md:py-16 bg-background/30 backdrop-blur-sm border-t border-b border-border/20 snap-start"
->
-  <div className="container mx-auto px-4 md:px-6">
-    {/* Header */}
-    <div className="text-center mb-10 md:mb-12">
-      <motion.span
-        className="text-xs sm:text-sm font-semibold uppercase tracking-wider text-accent mb-1.5 sm:mb-2 inline-block"
-        initial={{ opacity: 0, y: -20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.3 }}
-        transition={{ duration: 0.6 }}
+        id="services"
+        className="py-12 md:py-16 bg-background/30 backdrop-blur-sm border-t border-b border-border/20 snap-start"
       >
-        What We Offer
-      </motion.span>
-      <motion.h2
-        className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mt-1 mb-3 sm:mb-4"
-        initial={{ opacity: 0, y: -20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.3 }}
-        transition={{ duration: 0.6, delay: 0.15 }}
-      >
-        Our Core AI Solutions
-      </motion.h2>
-      <motion.div
-        className="w-16 sm:w-20 h-0.5 sm:h-1 bg-gradient-accent mx-auto rounded-full"
-        initial={{ scaleX: 0 }}
-        whileInView={{ scaleX: 1 }}
-        viewport={{ once: true, amount: 0.3 }}
-        transition={{ duration: 0.6, delay: 0.3 }}
-      />
-    </div>
+        <div className="container mx-auto px-4 md:px-6">
+          {/* Header */}
+          <div className="text-center mb-10 md:mb-12">
+            <motion.span
+              className="text-xs sm:text-sm font-semibold uppercase tracking-wider text-accent mb-1.5 sm:mb-2 inline-block"
+              initial={{ opacity: 0, y: -20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.6 }}
+            >
+              What We Offer
+            </motion.span>
+            <motion.h2
+              className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mt-1 mb-3 sm:mb-4"
+              initial={{ opacity: 0, y: -20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.6, delay: 0.15 }}
+            >
+              Our Core AI Solutions
+            </motion.h2>
+            <motion.div
+              className="w-16 sm:w-20 h-0.5 sm:h-1 bg-gradient-accent mx-auto rounded-full"
+              initial={{ scaleX: 0 }}
+              whileInView={{ scaleX: 1 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+            />
+          </div>
 
-    {/* Services Grid */}
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-      {services.map((service, index) => (
-        <motion.div
-          key={service.id}
-          className="flex" // ensure equal card height
-          initial={{ opacity: 0, y: 50, scale: 0.95 }}
-          whileInView={{ opacity: 1, y: 0, scale: 1 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.6, delay: index * 0.15, ease: "easeOut" }}
-        >
-          <Link href={`/solution_pages/${service.linkId}`} className="group flex-1 flex">
-            <div className="w-full">
-              <Card className="flex flex-col w-full h-full bg-card/80 border border-border/30 shadow-xl hover:shadow-accent/20 transition-all duration-300 transform hover:-translate-y-2 overflow-hidden rounded-xl backdrop-blur-md cursor-pointer">
-                
-                {/* Consistent Image Section */}
-                <div className="relative w-full aspect-[4/3] overflow-hidden">
-                  <Image
-                    src={service.imgSrc}
-                    alt={service.imgAlt}
-                    fill
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    style={{ objectFit: "cover" }}
-                    className="group-hover:scale-105 transition-transform duration-500 ease-out"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
-                  <div className="absolute top-4 right-4 p-2.5 sm:p-3 bg-card/90 backdrop-blur-sm rounded-full shadow-lg border border-border/20">
-                    {service.icon}
-                  </div>
-                  <span className="absolute bottom-4 left-4 text-4xl sm:text-5xl font-extrabold text-white/20 select-none group-hover:text-white/30 transition-colors duration-300">
-                    {service.id}
-                  </span>
-                </div>
+          {/* Services Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8">
+            {services.map((service, index) => (
+              <motion.div
+                key={service.id}
+                className="flex" // ensure equal card height
+                initial={{ opacity: 0, y: 50, scale: 0.95 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.6, delay: index * 0.15, ease: "easeOut" }}
+              >
+                <Link href={`/solution_pages/${service.linkId}`} className="group flex-1 flex">
+                  <div className="w-full">
+                    <Card className="flex flex-col w-full h-full bg-card/80 border border-border/30 shadow-xl hover:shadow-accent/20 transition-all duration-300 transform hover:-translate-y-2 overflow-hidden rounded-xl backdrop-blur-md cursor-pointer">
 
-                {/* Content */}
-                <CardContent className="p-5 sm:p-6 flex-grow flex flex-col">
-                  <h3 className="text-lg sm:text-xl md:text-2xl font-semibold mb-2 sm:mb-3 text-foreground group-hover:text-accent transition-colors duration-300">
-                    {service.title}
-                  </h3>
-                  <p className="text-muted-foreground mb-4 sm:mb-5 text-sm leading-relaxed flex-grow">
-                    {service.description}
-                  </p>
-                  <ul className="space-y-2 sm:space-y-2.5 mb-5 sm:mb-6 text-sm">
-                    {service.features.map((feature, idx) => (
-                      <li key={idx} className="flex items-start">
-                        <ChevronRight className="h-4 w-4 sm:h-5 sm:w-5 mr-2 sm:mr-2.5 mt-0.5 text-accent flex-shrink-0" />
-                        <span className="text-muted-foreground group-hover:text-foreground/80 transition-colors duration-300">
-                          {feature}
+                      {/* Consistent Image Section */}
+                      <div className="relative w-full aspect-[4/3] overflow-hidden">
+                        <Image
+                          src={service.imgSrc}
+                          alt={service.imgAlt}
+                          fill
+                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                          style={{ objectFit: "cover" }}
+                          className="group-hover:scale-105 transition-transform duration-500 ease-out"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
+                        <div className="absolute top-4 right-4 p-2.5 sm:p-3 bg-card/90 backdrop-blur-sm rounded-full shadow-lg border border-border/20">
+                          {service.icon}
+                        </div>
+                        <span className="absolute bottom-4 left-4 text-4xl sm:text-5xl font-extrabold text-white/20 select-none group-hover:text-white/30 transition-colors duration-300">
+                          {service.id}
                         </span>
-                      </li>
-                    ))}
-                  </ul>
-                </CardContent>
+                      </div>
 
-                {/* Footer */}
-                <CardFooter className="mt-auto p-6 pt-0">
-                  <span className="text-accent hover:text-accent/80 hover:underline p-0 font-semibold group-hover:translate-x-1 transition-all duration-300 text-sm sm:text-base inline-flex items-center">
-                    Explore More <ArrowRight className="ml-1 h-4 w-4" />
-                  </span>
-                </CardFooter>
-              </Card>
-            </div>
-          </Link>
-        </motion.div>
-      ))}
-    </div>
+                      {/* Content */}
+                      <CardContent className="p-5 sm:p-6 flex-grow flex flex-col">
+                        <h3 className="text-lg sm:text-xl md:text-2xl font-semibold mb-2 sm:mb-3 text-foreground group-hover:text-accent transition-colors duration-300">
+                          {service.title}
+                        </h3>
+                        <p className="text-muted-foreground mb-4 sm:mb-5 text-sm leading-relaxed flex-grow">
+                          {service.description}
+                        </p>
+                        <ul className="space-y-2 sm:space-y-2.5 mb-5 sm:mb-6 text-sm">
+                          {service.features.map((feature, idx) => (
+                            <li key={idx} className="flex items-start">
+                              <ChevronRight className="h-4 w-4 sm:h-5 sm:w-5 mr-2 sm:mr-2.5 mt-0.5 text-accent flex-shrink-0" />
+                              <span className="text-muted-foreground group-hover:text-foreground/80 transition-colors duration-300">
+                                {feature}
+                              </span>
+                            </li>
+                          ))}
+                        </ul>
+                      </CardContent>
 
-    {/* CTA Button */}
-    <div className="text-center mt-10 md:mt-12">
-      <Button
-        size="lg"
-        asChild
-        className="bg-accent/10 hover:bg-accent/20 text-accent rounded-full px-6 py-2.5 sm:px-8 sm:py-3 text-sm sm:text-base font-medium group-hover:bg-accent group-hover:text-white transition-colors"
-      >
-        <Link href="/solution">
-          View All Solutions <ArrowRight className="ml-2 h-4 w-4" />
-        </Link>
-      </Button>
-    </div>
-  </div>
-</section>
+                      {/* Footer */}
+                      <CardFooter className="mt-auto p-6 pt-0">
+                        <span className="text-accent hover:text-accent/80 hover:underline p-0 font-semibold group-hover:translate-x-1 transition-all duration-300 text-sm sm:text-base inline-flex items-center">
+                          Explore More <ArrowRight className="ml-1 h-4 w-4" />
+                        </span>
+                      </CardFooter>
+                    </Card>
+                  </div>
+                </Link>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* CTA Button */}
+
+          <div className="text-center mt-10 md:mt-12">
+            <Button
+              size="lg"
+              asChild
+              className="bg-accent/10 hover:bg-accent/20 text-accent rounded-full px-6 py-2.5 sm:px-8 sm:py-3 text-sm sm:text-base font-medium group-hover:bg-accent group-hover:text-white transition-colors"
+            >
+              <Link href="/solution">
+                View All Solutions <ArrowRight className="ml-2 h-4 w-4" />
+              </Link>
+            </Button>
+          </div>
+        </div>
+      </section>
 
       {/* Industry Insights Section - Enhanced & Animated */}
       <section ref={insightsSectionRef} id="stats-section" className="py-12 md:py-16 bg-background/30 backdrop-blur-sm relative overflow-hidden snap-start">
@@ -766,9 +891,11 @@ export default function Home() {
       </section>
 
       {/* Testimonial Section */}
-      <section className="py-12 px-6 md:py-16 bg-background/30 backdrop-blur-sm border-t border-border/20 snap-start">
+      
+      {/* -----------------------------------------------Here  from our clients-------------------------------------------------- */}
+      <section className="py-12 px-6 md:py-16  bg-opacity-90  bg-background/30 backdrop-blur-sm border-t border-border/20 snap-start">
         <div className="container mx-auto px-4 md:px-6">
-          <div className="text-center mb-10 md:mb-12">
+        <div className="text-center mb-10 md:mb-12">
             <motion.span
               className="text-xs sm:text-sm font-semibold uppercase tracking-wider text-accent mb-1.5 sm:mb-2 inline-block"
               initial={{ opacity: 0, y: -20 }}
@@ -776,7 +903,7 @@ export default function Home() {
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.6 }}
             >
-              Client Success
+               CLIENT SUCCESS
             </motion.span>
             <motion.h2
               className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mt-1 mb-3 sm:mb-4"
@@ -785,101 +912,252 @@ export default function Home() {
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.6, delay: 0.15 }}
             >
-              Hear From Our Partners
+                Hear From Our Clients
             </motion.h2>
             <motion.div
-              className="w-16  sm:w-20 h-0.5 sm:h-0.5 bg-gradient-accent mx-auto rounded-full"
+              className="w-16 sm:w-20 h-0.5 sm:h-1 bg-gradient-accent mx-auto rounded-full"
               initial={{ scaleX: 0 }}
               whileInView={{ scaleX: 1 }}
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.6, delay: 0.3 }}
             />
           </div>
+          
 
-          <div className="relative w-full overflow-hidden" >
-            <div
-              ref={testimonialScrollRef}
-              className="flex overflow-x-auto overflow-y-hidden pb-6 testimonial-scroll snap-x snap-mandatory hide-scrollbar"
-              style={{
-                scrollbarWidth: 'none', // Firefox
-                msOverflowStyle: 'none',  /* IE and Edge */
-              }}
-            >
-              {seamlessTestimonials.map((testimonial, index) => (
+          {/* Desktop Grid Layout */}
+          <div className="hidden lg:grid grid-cols-3 gap-8 xl:gap-24 2xl:gap-24 max-w-auto sm:w-full mx-auto">
+            {seamlessTestimonials.map((testimonial, index) => (
+              <motion.div
+                key={index}
+                className={`flex justify-center ${index === 1 ? " lg:mt-16 md:mt-0" : ""
+                  }`}
+                initial={{ opacity: 0, y: 20, scale: 0.95 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{
+                  duration: 0.6,
+                  delay: index * 0.15,
+                  ease: "easeOut",
+                }}
+              >
+                <div className="relative bg-gradient-to-b from-[#232629]/[0.18] to-[#23272B] backdrop-blur-sm border border-border/20 shadow-[0_4px_10px_rgba(142,142,142,0.3)]  p-3 transition-all duration-300 group flex flex-col  w-full max-w-[400px] sm:max-w-[500px] md:max-w-[400px] lg:max-w-[600px] xl:max-w-[800px] h-[320px] sm:h-[400px] md:h-[400px] lg:h-[400px] xl:h-[400px] 2xl:h[400px] rounded-[20px]">
+                  <div className=" flex-grow z-10 flex flex-col ">
+                    <div className="text-center mb-4 lg:mb-6 sm:mb-6 md:mb-6 xl:mb-6 2xl:mb-6">
+                      <p className="font-semibold text-accent text-xl sm:text-xl md:text-2xl lg:text-2xl xl:text-2xl 2xl:text-2xl justify-center items-start mt-10 tracking-tight">
+                        {testimonial.author}
+                      </p>
+                      <p className="text-xs sm:text-xl md:text-base lg:text-base xl:text-base 2xl:text-base mt-1 text-white ">{testimonial.title}</p>
+                    </div>
+                    <div className="h-px bg-gray-600 opacity-60 w-full " ></div>
+
+                    <div className="flex-grow flex justify-center mt-6 2xl:mt-10 xl:mt-8 xl:px-6 lg:mt-8 md:mt-10 sm:mt-10 px-2  md:px-8 lg:px-4 2xl:px-12 ">
+                      <p className="text-white/60 text-center text-sm sm:text-xl md:text-base lg:text-base xl:text-base 2xl:text-base leading-snug tracking-tighter">
+                        {testimonial.quote}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Mobile/Tablet Carousel Layout */}
+          <div className="lg:hidden">
+            <div className="flex items-center justify-center gap-4">
+              {/* Left Navigation Button */}
+              <Button
+                variant="outline"
+                size="icon"
+                onClick={goToPreviousTestimonial}
+                className="w-8 h-8 sm:w-10 sm:h-10 rounded-full border-accent/20 hover:border-accent hover:bg-accent/10 transition-all duration-300 flex-shrink-0"
+                disabled={currentTestimonialIndex === 0}
+              >
+                <ChevronLeft className="h-4 w-4 sm:h-5 sm:w-5 text-accent" />
+              </Button>
+
+              {/* Carousel Container */}
+              <div className="flex-1 relative overflow-hidden">
                 <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 0, scale: 0.95 }}
-                  whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                  viewport={{ once: true, amount: 0.2 }}
-                  transition={{ duration: 0.6, delay: index * 0.15, ease: "easeOut" }}
-                  className="flex-shrink-0 testimonial-card snap-start"
+                  className="flex transition-transform duration-700 ease-in-out"
+                  animate={{ x: `-${currentTestimonialIndex * 100}%` }}
+                  transition={{ 
+                    type: "spring", 
+                    stiffness: 100, 
+                    damping: 20,
+                    duration: 0.7
+                  }}
                 >
-                  <Card className="relative bg-card/40 backdrop-blur-sm border border-border/20 shadow-lg hover:shadow-xl transition-all duration-300 group flex flex-col h-full">
-                    <span className="absolute -top-4 -left-4 text-7xl sm:text-8xl text-accent/10 font-bold select-none z-0 group-hover:text-accent/20 transition-colors duration-300">"</span>
-                    <CardContent className="pt-6 sm:pt-8 flex-grow z-10">
-                      <p className="text-muted-foreground  text-sm sm:text-base leading-relaxed mb-5 sm:mb-6 group-hover:text-foreground/90 transition-colors duration-300">"{testimonial.quote}"</p>
-                    </CardContent>
-                    <CardFooter className="pt-3 sm:pt-4 border-t border-border/20 z-10 flex flex-col items-start">
-                      <div>
-                        <p className="font-semibold text-foreground text-sm sm:text-base group-hover:text-accent transition-colors duration-300">{testimonial.author}</p>
-                        {testimonial.link ? (
-                          <Link href={testimonial.link} target="_blank" rel="noopener noreferrer" className="text-sm text-muted-foreground group-hover:text-foreground/80 transition-colors duration-300">
-                            {testimonial.title}
-                          </Link>
-                        ) : (
-                          <p className="text-sm text-muted-foreground group-hover:text-foreground/80 transition-colors duration-300">{testimonial.title}</p>
-                        )}
-                      </div>
-                    </CardFooter>
-                  </Card>
+                  {seamlessTestimonials.map((testimonial, index) => (
+                    <div key={index} className="w-full flex-shrink-0 px-4">
+                      <motion.div
+                        className="relative bg-gradient-to-b from-[#232629]/[0.18] to-[#23272B] backdrop-blur-sm border border-border/20 shadow-[0_4px_10px_rgba(142,142,142,0.3)] p-3 sm:p-4 md:p-6 transition-all duration-300 group flex flex-col w-full max-w-[300px] sm:max-w-[380px] md:max-w-[450px] mx-auto h-[320px] sm:h-[340px] md:h-[360px] rounded-[20px] mb-4"
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, amount: 0.2 }}
+                        transition={{
+                          duration: 0.6,
+                          delay: index * 0.15,
+                          ease: "easeOut",
+                        }}
+                      >
+                        <div className="flex flex-col h-full">
+                          <div className="text-center mb-3 sm:mb-4 md:mb-5">
+                            <p className="font-semibold text-accent text-sm sm:text-base md:text-lg lg:text-xl justify-center items-start mt-3 sm:mt-4 md:mt-5 tracking-tight">
+                              {testimonial.author}
+                            </p>
+                            <p className="text-xs sm:text-sm md:text-base mt-1 text-white">{testimonial.title}</p>
+                          </div>
+                          <div className="h-px bg-gray-600 opacity-60 w-full mb-3 sm:mb-4 md:mb-5"></div>
+
+                          <div className="flex-1 flex justify-center items-start px-3 sm:px-4 overflow-hidden">
+                            <p className="text-white/60 text-center text-xs sm:text-sm md:text-base leading-tight sm:leading-snug md:leading-relaxed tracking-tight">
+                              {testimonial.quote}
+                            </p>
+                          </div>
+                        </div>
+                      </motion.div>
+                    </div>
+                  ))}
                 </motion.div>
-              ))}
+              </div>
+
+              {/* Right Navigation Button */}
+              <Button
+                variant="outline"
+                size="icon"
+                onClick={goToNextTestimonial}
+                className="w-8 h-8 sm:w-10 sm:h-10 rounded-full border-accent/20 hover:border-accent hover:bg-accent/10 transition-all duration-300 flex-shrink-0"
+                disabled={currentTestimonialIndex === seamlessTestimonials.length - 1}
+              >
+                <ChevronRight className="h-4 w-4 sm:h-5 sm:w-5 text-accent" />
+              </Button>
             </div>
           </div>
         </div>
       </section>
 
-      {/* CTA Section - Enhanced */}
-      <section className="py-12 md:py-16 md:pt-0 bg-background/30 backdrop-blur-sm text-foreground snap-start">
-        <div className="container mx-auto px-4 md:px-6">
-          <motion.div
-            className="max-w-3xl mx-auto bg-card/80 backdrop-blur-lg p-6 sm:p-8 md:p-12 rounded-2xl shadow-2xl border border-border/40"
-            initial={{ opacity: 0, y: 50, scale: 0.95 }}
-            whileInView={{ opacity: 1, y: 0, scale: 1 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.7, ease: "easeOut" }}
-          >
-            <div className="text-center mb-6 md:mb-8">
-              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-3 sm:mb-4">Ready to Transform Your Business?</h2>
-              <p className="text-muted-foreground mb-5 sm:mb-6 md:mb-8 text-sm sm:text-base md:text-lg max-w-lg mx-auto">
-              Your Demand for IT & AI Expert and free consultation anytime
-              </p>
+      {/* FAQ Section */}
+      <section className=" bg-background/30 backdrop-blur-sm border-t border-b border-border/20 snap-start">
+        <FAQSection />
+      </section>
 
-              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center">
-                <Button size="lg" className="bg-gradient-accent text-accent-foreground hover:opacity-90 transition-all duration-300 transform hover:scale-105 hover:shadow-accent/40 shadow-lg px-6 py-2.5 sm:px-8 sm:py-3 text-sm sm:text-base font-semibold w-full sm:w-auto">
-                  <Link href="/contact">Book Now</Link><ChevronRight className=" h-4 sm:h-5 w-4 sm:w-5" />
-                </Button>
-                {/* <Button size="lg" variant="outline" className="border-accent text-accent hover:bg-accent/10 hover:text-accent/90 transition-all duration-300 shadow-sm hover:shadow-md hover:border-accent/70 px-6 py-2.5 sm:px-8 sm:py-3 text-sm sm:text-base font-semibold w-full sm:w-auto">
-                   <Link href="/contact">Contact Sales</Link>
-                </Button> */}
+      {/* CTA Section - Enhanced */}
+      {/* <section className='py-12 md:py-16 md:pt-0 bg-background/30 backdrop-blur-sm text-foreground snap-start'>
+
+
+      </section> */}
+      {/* Free Consultation - two column form */}
+      <section className="py-12 md:py-16  bg-opacity-90  bg-background/30 backdrop-blur-sm border-t border-border/20 snap-start">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="w-full max-w-auto lg:max-w-[1273px] mx-auto shadow-[0_4px_10px_rgba(142,142,142,0.3)] bg-[#232629] backdrop-blur-lg rounded-[30px] border border-gray-600/30  p-4 sm:p-6 md:p-8">
+            <div className="grid grid-cols-1  lg:grid-cols-5 gap-8 lg:gap-10 items-center">
+              {/* Left info column */}
+              <div className="flex flex-col h-full lg:col-span-2">
+                <div>
+                  <h2 className="text-[18px] sm:text-2xl md:text-2xl lg:text-2xl  xl:text-3xl 2xl:text-4xl font-bold text-foreground mb-3 mt-1 lg:mt-6 pt-6 whitespace-nowrap ">Ready for Free Consultation?</h2>
+                  <p className=" mb-14 text-sm sm:text-base md:text-base lg:text-base xl:text-xl 2xl:text-xl text-muted-foreground font-semibold whitespace-wrap">
+                    Your Demand for IT & AI Expert 
+                    and  free consultation anytime
+                  </p>
+                  <div className="space-y-4 mt-8">
+                    <div className="flex items-center gap-3 text-sm">
+                      <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" className="text-accent  "><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" /><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" /></svg>
+                      <span className="text-foreground text-sm sm:text-[18px] whitespace-nowrap">Email us:</span>
+                      <span className="text-muted-foreground text-sm sm:text-[18px]">hello@upteky.com</span>
+                    </div>
+                    <div className="flex items-center gap-3 text-sm">
+                      <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" className="text-accent"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" /></svg>
+                      <span className="text-foreground text-sm sm:text-[18px] whitespace-nowrap">Phone :</span>
+                      <span className="text-muted-foreground whitespace-nowrap text-sm sm:text-[18px] ">+91 1234567890</span>
+                    </div>
+                  </div>
+
+                  <div className="lg:mt-60 md:mt-10 xl:mt-40 2xl:mt-40 sm:mt-5  mt-6 ">
+                    <p className="text-sm text-foreground mb-2 text-[18px]">Follow Us:</p>
+                    <div className="flex gap-3">
+                      <div className="flex space-x-2">
+                        {socialMedia.map((social) => (
+                          <Link
+                            key={social.name}
+                            href={social.href}
+                            aria-label={social.name}
+                            className="p-2.5 rounded-full bg-secondary/50 text-muted-foreground hover:bg-accent hover:text-accent-foreground transition-all duration-300 transform hover:scale-110"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            {social.icon}
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Right form column */}
+              <div className=" bg-[#2F3133] rounded-[30px] px-5 py-10 sm:px-14  sm:py-10 my-3 md:p-6 border border-muted-foreground/10 lg:col-span-3 2xl:ml-12">
+                <form className="space-y-6 ">
+                  <div className="space-y-3">
+                    {/* First Name - Full Width */}
+                    <div>
+                      <input type="text" placeholder="Full Name*" className="w-full   my-4 bg-transparent border-b border-muted-foreground/50 p-0 sm:pb-2 sm:pt-0 focus:border-accent focus:outline-none placeholder:text-base placeholder:text-muted-foreground" />
+                    </div>
+
+                    {/* Email and Phone - Side by Side */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div>
+                        <input type="email" placeholder="Email*" className="w-full  mb-4 bg-transparent border-b border-muted-foreground/50 pb-2 focus:border-accent focus:outline-none placeholder:text-base placeholder:text-muted-foreground" />
+                      </div>
+                      <div>
+                        <input type="text" placeholder="Phone number" className="w-full mb-4 bg-transparent border-b border-muted-foreground/50 pb-2 focus:border-accent focus:outline-none placeholder:text-base placeholder:text-muted-foreground" />
+                      </div>
+                    </div>
+
+                    {/* Describe your project - Full Width */}
+                    <div>
+
+                      <textarea rows={3} placeholder="Describe your project" className="w-full mb-4 bg-transparent border-b border-muted-foreground/50 pb-2 focus:border-accent focus:outline-none resize-none placeholder:text-base placeholder:text-muted-foreground" />
+                    </div>
+                  </div>
+
+                  <div>
+                    <p className="text-base text-muted-foreground font-medium mb-3">Services</p>
+                    <div className="flex flex-wrap gap-2">
+                      {[...new Set(['Web development', 'AI automation', 'IT consultation', 'Custom solution', 'IT consultation', 'Voicebots', 'Chatbots', 'App development'])].map((s, idx) => (
+                        <button key={`${s}-${idx}`} type="button" className="px-6 py-3 text-[12px] mx-1  text-foreground hover:text-accent rounded-full border border-muted-foreground/50 transition-colors">{s}</button>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="flex flex-col sm:flex-row items-center gap-4">
+                    <button type="button" className="w-full sm:w-auto flex-1 px-4 py-3 bg-muted/40 hover:bg-muted text-muted-foreground rounded-full border border-border/40 transition-colors flex items-center justify-center gap-2">
+                      <span className="text-lg">+</span> Attach File(s)
+                    </button>
+                    <Button
+                      type="submit"
+                      className="w-full sm:w-auto 
+                      bg-gradient-accent 
+                      text-[14px] 
+                      text-white 
+                      rounded-[30px] 
+                      px-16 py-7 
+                      border-transparent   /* reserve 1px border */
+                      hover:bg-none hover:bg-[#2c2c2c] 
+                      hover:text-accent 
+                      hover:border-accent
+                      transition-all duration-300" 
+                    >
+                      Send
+                    </Button>
+
+                  </div>
+                </form>
               </div>
             </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 md:gap-5 pt-5 sm:pt-6 border-t border-border/30 mt-5 sm:mt-6 text-sm">
-              {[
-                { icon: <Layers className="mr-2 sm:mr-2.5 h-4 w-4 sm:h-5 sm:w-5 text-accent" />, text: "Quick Implementation" },
-                { icon: <Users className="mr-2 sm:mr-2.5 h-4 w-4 sm:h-5 sm:w-5 text-accent" />, text: "24/7 Support" },
-                { icon: <TrendingUp className="mr-2 sm:mr-2.5 h-4 w-4 sm:h-5 sm:w-5 text-accent" />, text: "Scalable Solutions" }
-              ].map(item => (
-                <div key={item.text} className="flex items-center justify-center text-muted-foreground p-1.5 sm:p-2 bg-black/20 rounded-md border border-border/20 hover:bg-black/30 hover:border-border/40 transition-colors duration-300">
-                  {item.icon}
-                  <span>{item.text}</span>
-                </div>
-              ))}
-            </div>
-          </motion.div>
+          </div>
         </div>
       </section>
+
 
       <style jsx global>{`
          .hero-text-container {

@@ -11,7 +11,8 @@ export default {
     extend: {
        fontFamily: {
          sans: ["var(--font-inter)", "sans-serif"], // Use Inter font
-         outfit: ['Outfit', 'sans-serif']
+         outfit: ['Outfit', 'sans-serif'],
+         poppins: ['Poppins', 'sans-serif']
        },
       colors: {
         background: 'hsl(var(--background))',
@@ -92,7 +93,7 @@ export default {
            to: { opacity: '1' },
          },
          'dash-slow': {
-            to: { 'stroke-dashoffset': -170 } // Value should match stroke-dasharray sum approx
+            to: { 'stroke-dashoffset': '-170' } // Value should match stroke-dasharray sum approx
          },
          'float': {
             '0%, 100%': { transform: 'translateY(0px)', opacity: '0.7' },

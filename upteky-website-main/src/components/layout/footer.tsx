@@ -95,12 +95,12 @@ export function Footer() {
   };
 
   return (
-      <footer className="py-8 md:py-10 border-t border-border/30 bg-background/50 backdrop-blur-md text-foreground">
+      <footer className="py-8 px-20 md:py-10 border-t border-border/30 bg-background/50 backdrop-blur-md text-foreground font-poppins">
         <div className="container mx-auto px-4 md:px-6">
           {/* Top section: Logo and Links */}
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-x-6 gap-y-8 mb-8">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-x-8 gap-y-8 mb-8">
             {/* Column 1: Logo and Contact */}
-            <div className="md:col-span-1 space-y-3">
+            <div className="md:col-span-1 space-y-2">
               <Link href="/" className="inline-block mb-1" prefetch={false}>
                 <UptekyLogo className="h-10 w-auto text-primary" />
               </Link>
@@ -111,25 +111,41 @@ export function Footer() {
                 <a href="tel:+919978901910" className="hover:text-accent transition-colors">+91 9978901910</a>
               </p>
               <p className="text-sm text-muted-foreground">
-                <a href="mailto:hello@upteky.com" className="hover:text-accent transition-colors">Hello@upteky.com</a>
+                <a href="mailto:hello@upteky.com" className="hover:text-accent  transition-colors">Hello@upteky.com</a>
               </p>
+              <div className="flex space-x-2 ">
+                {socialMedia.map((social) => (
+                  <Link
+                    key={social.name}
+                    href={social.href}
+                    aria-label={social.name}
+                    className="p-2.5 rounded-full bg-secondary/50 text-muted-foreground hover:bg-accent hover:text-accent-foreground transition-all duration-300 transform hover:scale-110"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {social.icon}
+                  </Link>
+                ))}
+              </div>
             </div>
 
-            {/* Desktop Links (columns 2, 3, 4) */}
-            {footerLinks.map((section) => (
-              <div key={section.title} className="hidden md:block md:col-span-1 space-y-2">
-                <h4 className="font-semibold text-foreground/90 mb-2.5">{section.title}</h4>
-                <ul className="space-y-2">
-                  {section.links.map((link) => (
-                    <li key={link.label}>
-                      <Link href={link.href} className="text-sm text-muted-foreground hover:text-accent transition-colors" prefetch={false}>
-                        {link.label}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
+            {/* Desktop Links: grouped and right-aligned (columns 2-4) */}
+            <div className="hidden md:flex md:col-span-3 justify-end gap-20 text-right">
+              {footerLinks.map((section) => (
+                <div key={section.title} className="space-y-2">
+                  <h4 className="font-semibold text-foreground/90 mb-2.5">{section.title}</h4>
+                  <ul className="space-y-2">
+                    {section.links.map((link) => (
+                      <li key={link.label}>
+                        <Link href={link.href} className="text-sm text-muted-foreground hover:text-accent transition-colors" prefetch={false}>
+                          {link.label}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
 
             {/* Mobile Accordion Links (spans full width on sm, hidden on md+) */}
             <div className="md:hidden col-span-1">
@@ -156,59 +172,10 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Newsletter Subscription & Social Media */}
-          <div className="border-t border-border/30 pt-6">
-            <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-              <div className="w-full md:w-auto">
-                <h4 className="font-semibold text-foreground/90 mb-2 text-center md:text-left text-sm">Stay Updated</h4>
-                <form className="flex items-center w-full max-w-sm" onSubmit={handleSubmit}>
-                  <Input
-                    type="text"
-                    placeholder="Your Email/Phone" 
-                    className="bg-input border-border/50 rounded-r-none rounded-l-md flex-grow focus:ring-accent focus:border-accent text-sm py-2.5 h-10"
-                    aria-label="Email or Phone for newsletter"
-                    id="input" 
-                    name="input" 
-                    required
-                    disabled={isSubscribing}
-                  />
-                  <Button 
-                    type="submit" 
-                    className="bg-gradient-accent text-accent-foreground hover:opacity-90 rounded-l-none rounded-r-md flex-shrink-0 px-4 h-10 text-sm -ml-px"
-                    disabled={isSubscribing}
-                  >
-                    {isSubscribing ? (
-                      <>
-                        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                        Connecting...
-                      </>
-                    ) : (
-                      "Connect"
-                    )}
-                  </Button>
-                </form>
-              </div>
-
-              <div className="flex space-x-2">
-                {socialMedia.map((social) => (
-                  <Link
-                    key={social.name}
-                    href={social.href}
-                    aria-label={social.name}
-                    className="p-2.5 rounded-full bg-secondary/50 text-muted-foreground hover:bg-accent hover:text-accent-foreground transition-all duration-300 transform hover:scale-110"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    {social.icon}
-                  </Link>
-                ))}
-              </div>
-            </div>
-          </div>
-
+          
           <div className="border-t border-border/30 pt-6 mt-6">
             <p className="text-center text-xs text-muted-foreground">
-              &copy; {currentYear} Upteky Solutions Pvt. Ltd. All rights reserved.
+              &copy; {currentYear} Upteky Solution Pvt. Ltd. All rights reserved.
             </p>
           </div>
         </div>
