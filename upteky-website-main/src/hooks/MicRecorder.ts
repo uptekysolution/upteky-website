@@ -4,7 +4,8 @@ export default class MicRecorder {
   private chunks: BlobPart[] = [];
   public stream?: MediaStream;        // expose this
 
-  async start() {
+  async warmUp() {
+    if (this.stream) return;
     this.stream = await navigator.mediaDevices.getUserMedia({
       audio: {
         echoCancellation: true,
@@ -12,7 +13,12 @@ export default class MicRecorder {
         autoGainControl: true,
       },
     });
-    this.recorder = new MediaRecorder(this.stream);
+  }
+
+  async start() {
+    if (!this.stream) await this.warmUp();
+    const stream = this.stream!;
+    this.recorder = new MediaRecorder(stream);
     this.chunks = [];
     this.recorder.ondataavailable = (e) => this.chunks.push(e.data);
     this.recorder.start();
