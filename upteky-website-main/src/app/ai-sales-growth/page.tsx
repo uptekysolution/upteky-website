@@ -8,51 +8,51 @@ import Image from 'next/image';
 export default function AISalesGrowthPage() {
   const cards = [
     {
-      title: 'Lead Generation & Qualification',
-      desc: 'Automated lead capture, scoring, and qualification across all channels.'
+      title: 'Accelerated Sales Cycles',
+      desc: 'Qualify and convert leads faster with automation.'
     },
     {
-      title: 'Sales Pipeline Automation',
-      desc: 'Streamlined sales processes with intelligent workflow automation.'
+      title: 'Smarter Marketing Spend',
+      desc: 'Maximize ROI by targeting the right audience with precision.'
     },
     {
-      title: 'Revenue Optimization',
-      desc: 'Data-driven insights and strategies to maximize conversion rates.'
+      title: 'Customer-Centric Engagement',
+      desc: 'Deliver personalized experiences across every touchpoint.'
     },
     {
-      title: 'Customer Retention',
-      desc: 'Proactive engagement and retention strategies powered by AI.'
+      title: 'Future-Proof Strategies',
+      desc: 'Adapt quickly to changing market demands with AI-driven insights.'
     },
     {
-      title: 'Performance Analytics',
-      desc: 'Real-time dashboards and insights for continuous improvement.'
+      title: 'Data-Driven Decision Making',
+      desc: ' Leverage real-time analytics to make informed, strategic sales and growth decisions.'
     },
   ];
   
   const services = [
     {
       no: '01',
-      title: 'AI-Powered Lead Scoring',
-      desc: 'Intelligent lead qualification and prioritization using machine learning algorithms.',
-      cta: 'Explore Lead Scoring →',
+      title: 'AI Sales Agent',
+      desc: 'Turn interactions into revenue around the clock. Automates nurturing, follow-ups, and recommendations for higher conversions and happier customers.',
+      cta: ' Explore AI Sales Agent →',
     },
     {
       no: '02',
-      title: 'Sales Process Automation',
-      desc: 'Automate follow-ups, scheduling, and pipeline management for maximum efficiency.',
-      cta: 'Explore Sales Automation →',
+      title: 'AI Digital Marketing Agent',
+      desc: 'Boost your campaigns with AI precision. Optimize in real-time, target the right audience, and personalize content at scale for stronger engagement.',
+      cta: 'Explore AI Digital Marketing Agent →',
     },
     {
       no: '03',
-      title: 'Revenue Intelligence Platform',
-      desc: 'Advanced analytics and forecasting to optimize sales performance and growth.',
-      cta: 'Explore Revenue Intelligence →',
+      title: 'AI-Powered Lead Reactivation',
+      desc: 'Make smarter moves, faster. Leverage AI-driven insights for tailored go-to-market strategies and competitive positioning that accelerate growth.',
+      cta: 'Explore AI Lead Reactivation →',
     },
     {
       no: '04',
-      title: 'Customer Success Automation',
-      desc: 'Proactive customer engagement and retention strategies with AI-driven insights.',
-      cta: 'Explore Customer Success →',
+      title: 'Custom AI Model Development',
+      desc: 'AI built for your business needs. Gain predictive insights, advanced segmentation, and trend forecasting to drive smarter, measurable growth.',
+      cta: 'Explore Custom AI →',
     },
   ];
   
@@ -70,7 +70,7 @@ export default function AISalesGrowthPage() {
   return (
     <div className="min-h-screen bg-[#232629] px-20 text-foreground overflow-x-hidden">
       {/* ------------------------------------------------------1----------------------------------------------- */}
-      <section className="container mx-auto px-4 md:px-6 pt-28 pb-16">
+      <section className=" mx-auto pt-20 sm:pt-32 md:pt-40 pb-8 sm:pb-12">
         <div className="grid grid-cols-1 pl-20 lg:grid-cols-2 gap-10 items-center">
           {/* Left copy */}
           <div>
@@ -78,27 +78,27 @@ export default function AISalesGrowthPage() {
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="font-poppins text-white font-light text-[40px] leading-[121%]"
+              className="font-poppins text-white font-light text-[45px] leading-[121%]"
             >
-              AI Sales & Growth Solutions
-              
-              for Accelerated Revenue
-              
-              and Business Expansion
+             AI Sales & Growth Solutions
+
             </motion.h1>
 
             <motion.p
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.05 }}
-              className="mt-5 max-w-2xl font-poppins font-normal text-[18px] leading-[146%] text-[#858C92]"
+              className="mt-12 max-w-xl font-poppins  font-normal text-base leading-[146%] text-[#858C92]"
             >
-              Upteky Solutions delivers intelligent sales automation, lead generation, revenue optimization, and growth strategies powered by AI to accelerate your business success.
+             Driving revenue, customer engagement, and market presence with intelligent AI.
+             At Upteky Solutions Pvt. Ltd., we help organizations transform sales and marketing through intelligent automation, data-driven strategies, and custom AI models. Our solutions go beyond technology — they create measurable impact on revenue, customer satisfaction, and market growth.
+
+
             </motion.p>
 
             <div className="mt-16">
               <button
-                className="text-white shadow-lg hover:opacity-90 transition bg-[linear-gradient(90deg,_#F58F1D_0%,_#E57D77_100%)] w-[243px] h-[50px] rounded-[62px] font-[Arial,_sans-serif] font-normal text-[20px] leading-[100%] tracking-[0]"
+                className="text-white font-poppins shadow-lg hover:bg-[linear-gradient(90deg,_#F58F1D_0%,_#E57D77_100%)] w-[243px] h-[50px] rounded-[62px]  border border-accent font-normal text-[20px] transition-all duration-300"
               >
                 Talk to an Expert
               </button>
@@ -106,19 +106,15 @@ export default function AISalesGrowthPage() {
           </div>
 
           {/* Right visuals: positioned within column to avoid overflow */}
-          <div className="relative h-[560px] overflow-hidden">
-            {/* 1st box */}
-            <div className="absolute top-[20px] right-[230px] w-[286px] h-[286px] rounded-[28px] bg-[linear-gradient(180deg,_rgba(44,48,53,0.7)_0%,_rgba(68,79,93,0.7)_100%)] backdrop-blur-sm" />
-            {/* 2nd box */}
-            <div className="absolute top-[180px] right-[90px] w-[286px] h-[286px] rounded-[28px] bg-[linear-gradient(180deg,_rgba(44,48,53,0.7)_0%,_rgba(68,79,93,0.7)_100%)] backdrop-blur-sm" />
-            {/* 3rd box */}
-            <div className="absolute top-[260px] right-[320px] w-[286px] h-[286px] rounded-[28px] bg-[linear-gradient(180deg,_rgba(44,48,53,0.7)_0%,_rgba(68,79,93,0.7)_100%)] backdrop-blur-sm" />
+          <div className="relative h-[570px] overflow-hidden">
+            <img src="/Aigrowth.png" alt="" />
           </div>
         </div>
       </section>
       
       {/* Divider line */}
       <div className="w-full h-[0.5px] bg-[#414141]" />
+
 
       {/* ---------------------------------------------Section-2--------------------------------------------------- */}
       <section className="container mx-auto px-4 md:px-6 py-12 sm:py-16 md:py-24">
@@ -130,7 +126,7 @@ export default function AISalesGrowthPage() {
                 Why Choose Upteky Solutions?
               </h2> 
               <p className="mt-4 font-poppins text-[12px] sm:text-[14px] md:text-[16px] text-[#858C92] max-w-sm mx-auto md:mx-0">
-                We don't just deploy AI tools we design intelligent systems that drive revenue growth and business expansion.
+              Seamlessly engage customers across channels with secure, integrated, and conversion-focused solutions.
               </p>
             </div>
 
@@ -157,7 +153,7 @@ export default function AISalesGrowthPage() {
           transition={{ duration: 0.5 }}
           className="text-center text-white font-outfit text-[24px] sm:text-[28px] md:text-[30px] lg:text-[45px] leading-[121%] pb-8 sm:pb-10 md:pb-12"
         >
-          Our AI Sales & Growth Solutions
+          Our Core AI Growth Solutions
         </motion.h1>
         
         {/* Mobile/Tablet Layout */}
@@ -211,13 +207,12 @@ export default function AISalesGrowthPage() {
           {/* Left Section */}
           <div className="space-y-6 sm:space-y-8 max-w-[527px] mx-auto lg:mx-0">
             <h2 className="text-white font-outfit text-[24px] sm:text-[28px] md:text-[30px] lg:text-[45px]">
-              Our Sales Growth Process
+            Our Delivery Process
             </h2>
             <p className="text-[#9FA6AD] font-poppins font-normal text-[12px] sm:text-[14px] md:text-[16px]">
-              We follow a structured, data-driven approach to transform your sales operations into intelligent, high-performing systems.
-            </p>
+            We start by understanding your goals, sales pipeline, and business challenges to identify opportunities for growth.             </p>
             <p className="text-[#9FA6AD] font-poppins font-normal text-[12px] sm:text-[14px] md:text-[16px]">
-              From analyzing your current sales funnel and identifying growth opportunities to implementing AI-powered automation, optimizing conversion rates, and scaling successful strategies, each step is designed for measurable revenue impact.
+            Then we design tailored AI workflows, predictive models, and strategies that align perfectly with your objectives. From seamless integration with your CRM and marketing tools to thorough testing, optimization, and continuous monitoring, we deliver scalable, high-performing, and compliant AI solutions that drive measurable business results.
             </p>
           </div>
 

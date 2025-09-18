@@ -95,8 +95,8 @@ export function Footer() {
   };
 
   return (
-      <footer className="py-8 px-20 md:py-10 border-t border-border/30 bg-background/50 backdrop-blur-md text-foreground font-poppins">
-        <div className="container mx-auto px-4 md:px-6">
+      <footer className="py-8 mx-auto px-4 sm:px-6 md:px-8 lg:px-20  md:py-10 border-t border-border/30 bg-background/50 backdrop-blur-md text-foreground font-poppins">
+        <div className="container mx-auto px-4  md:px-8 sm:px-10  ">
           {/* Top section: Logo and Links */}
           <div className="grid grid-cols-1 md:grid-cols-4 gap-x-8 gap-y-8 mb-8">
             {/* Column 1: Logo and Contact */}

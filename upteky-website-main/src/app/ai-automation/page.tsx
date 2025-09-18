@@ -70,7 +70,7 @@ export default function AIAutomationPage() {
   return (
     <div className="min-h-screen bg-[#232629] px-20 text-foreground overflow-x-hidden">
       {/* ------------------------------------------------------1----------------------------------------------- */}
-      <section className="container mx-auto px-4 md:px-6 pt-28 pb-16">
+      <section className=" mx-auto pt-20 sm:pt-32 md:pt-40 pb-8 sm:pb-12">
         <div className="grid grid-cols-1 pl-20 lg:grid-cols-2 gap-10 items-center">
           {/* Left copy */}
           <div>
@@ -78,9 +78,9 @@ export default function AIAutomationPage() {
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="font-poppins text-white font-light text-[40px] leading-[121%]"
+              className="font-poppins text-white font-light text-[45px] leading-[121%]"
             >
-           AI Automation Solutions for Smarter, Faster, Better Businesses
+             AI Automation Solutions for Smarter, Faster, Better Businesses
 
             </motion.h1>
 
@@ -88,15 +88,16 @@ export default function AIAutomationPage() {
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.05 }}
-              className="mt-5 max-w-2xl font-poppins font-normal text-[18px] leading-[146%] text-[#858C92]"
+              className="mt-12 max-w-xl font-poppins  font-normal text-base leading-[146%] text-[#858C92]"
             >
-              Upteky Solutions Pvt. Ltd. delivers AI-powered platforms and custom automation that simplify operations, improve decision-making, and unlock growth. From ERP and CRM to advanced data analytics and custom AI models, we build intelligent systems tailored to your business.
+             Upteky Solutions Pvt. Ltd. delivers AI-powered platforms and custom automation that simplify operations, improve decision-making, and unlock growth. From ERP and CRM to advanced data analytics and custom AI models, we build intelligent systems tailored to your business.
+
 
             </motion.p>
 
             <div className="mt-16">
               <button
-                className="text-white shadow-lg hover:opacity-90 transition bg-[linear-gradient(90deg,_#F58F1D_0%,_#E57D77_100%)] w-[243px] h-[50px] rounded-[62px] font-[Arial,_sans-serif] font-normal text-[20px] leading-[100%] tracking-[0]"
+                className="text-white font-poppins shadow-lg hover:bg-[linear-gradient(90deg,_#F58F1D_0%,_#E57D77_100%)] w-[243px] h-[50px] rounded-[62px]  border border-accent font-normal text-[20px] transition-all duration-300"
               >
                 Talk to an Expert
               </button>
@@ -105,12 +106,7 @@ export default function AIAutomationPage() {
 
           {/* Right visuals: positioned within column to avoid overflow */}
           <div className="relative h-[560px] overflow-hidden">
-            {/* 1st box */}
-            <div className="absolute top-[20px] right-[230px] w-[286px] h-[286px] rounded-[28px] bg-[linear-gradient(180deg,_rgba(44,48,53,0.7)_0%,_rgba(68,79,93,0.7)_100%)] backdrop-blur-sm" />
-            {/* 2nd box */}
-            <div className="absolute top-[180px] right-[90px] w-[286px] h-[286px] rounded-[28px] bg-[linear-gradient(180deg,_rgba(44,48,53,0.7)_0%,_rgba(68,79,93,0.7)_100%)] backdrop-blur-sm" />
-            {/* 3rd box */}
-            <div className="absolute top-[260px] right-[320px] w-[286px] h-[286px] rounded-[28px] bg-[linear-gradient(180deg,_rgba(44,48,53,0.7)_0%,_rgba(68,79,93,0.7)_100%)] backdrop-blur-sm" />
+            <img src="/AiAutohero.png" alt="" />
           </div>
         </div>
       </section>
@@ -221,7 +217,7 @@ export default function AIAutomationPage() {
 
           {/* Right Section - Card */}
           <div className="flex justify-center">
-            <div className="bg-[#2C3035] rounded-[20px] py-6 sm:py-8 px-8 sm:px-12 lg:px-20 w-full max-w-[400px] lg:max-w-none lg:h-[286px]">
+            <div className="bg-[#2C3035] rounded-[20px] py-6 sm:py-8 px-8 sm:px-12 lg:px-20 w-full max-w-[400px] lg:max-w-none ">
               <div className="flex flex-col space-y-6 sm:space-y-8 lg:space-y-10">
                 <Image
                   src="/images/target.png"
@@ -230,7 +226,7 @@ export default function AIAutomationPage() {
                   height={62}
                   className="w-[50px] h-[50px] sm:w-[62px] sm:h-[62px]"
                 />
-                <h3 className="text-white font-outfit font-normal text-[18px] sm:text-[20px] lg:text-[24px] leading-[100%]">
+                <h3 className="text-white font-outfit font-normal text-[18px] sm:text-[20px] lg:text-[24px]">
                   Process Analysis & Design
                 </h3>
                 <p className="text-[#9FA6AD] font-poppins font-normal text-[12px] sm:text-[14px] md:text-base">

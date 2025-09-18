@@ -1,12 +1,98 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import ProjectDiscussion from '@/components/ProjectDiscussion';
 import Image from 'next/image';
-import DeliveryStack from "@/components/DeliveryStack";
+import gsap from 'gsap';
+// import { ScrollTrigger, Observer } from 'gsap/all';
 
 export default function ConversationalAgentsPage() {
+//   const cardsSectionRef = useRef<HTMLDivElement | null>(null);
+//   const cardsContainerRef = useRef<HTMLDivElement | null>(null);
+
+//   useEffect(() => {
+//     gsap.registerPlugin(ScrollTrigger, Observer);
+
+//     const sectionEl = cardsSectionRef.current;
+//     const cardsEl = cardsContainerRef.current;
+//     if (!sectionEl || !cardsEl) return;
+
+//     let animating = false;
+//     const duration = 1;
+
+//     // Progressive enhancement: set initial offsets
+//     gsap.set(cardsEl.querySelectorAll('.ca-card'), {
+//       y: (index: number) => 20 * index,
+//       transformOrigin: 'center top'
+//     });
+
+//     const tl = gsap.timeline({ paused: true });
+
+//     // Build labels and transitions based on number of cards
+//     const cardNodes = Array.from(cardsEl.querySelectorAll('.ca-card')) as HTMLElement[];
+//     cardNodes.forEach((_, i) => {
+//       if (i === 0) return; // skip first for initial state
+//       tl.add(`card${i + 1}`);
+//       tl.to(`.ca-card:nth-child(${i})`, {
+//         scale: 1 - (0.15 - (i - 1) * 0.05),
+//         duration,
+//       });
+//       tl.from(`.ca-card:nth-child(${i + 1})`, {
+//         y: () => window.innerHeight,
+//         duration,
+//       }, '<');
+//     });
+//     tl.add('end');
+
+//     function tweenToLabel(direction: string | undefined, isScrollingDown: boolean) {
+//       if ((!tl.nextLabel() && isScrollingDown) || (!tl.previousLabel() && !isScrollingDown)) {
+//         cardsObserver.disable();
+//         return;
+//       }
+//       if (!animating && direction) {
+//         animating = true;
+//         tl.tweenTo(direction, { onComplete: () => { animating = false; } });
+//       }
+//     }
+
+//     const cardsObserver = Observer.create({
+//       wheelSpeed: -1,
+//       onDown: () => tweenToLabel(tl.previousLabel(), false),
+//       onUp: () => tweenToLabel(tl.nextLabel(), true),
+//       tolerance: 10,
+//       preventDefault: true,
+//       onEnable(self) {
+//         const savedScroll = self.scrollY();
+//         // @ts-expect-error attach for cleanup
+//         self._restoreScroll = () => self.scrollY(savedScroll);
+//         document.addEventListener('scroll', (self as any)._restoreScroll, { passive: false });
+//       },
+//       onDisable(self) {
+//         document.removeEventListener('scroll', (self as any)._restoreScroll);
+//       }
+//     });
+
+//     cardsObserver.disable();
+
+//     const st = ScrollTrigger.create({
+//       id: 'CA-STACK-PIN',
+//       trigger: sectionEl,
+//       pin: true,
+//       start: 'top 20%',
+//       end: '+=' + Math.max(300, cardNodes.length * 120),
+//       onEnter: () => { if (!cardsObserver.isEnabled) cardsObserver.enable(); },
+//       onEnterBack: () => { if (!cardsObserver.isEnabled) cardsObserver.enable(); },
+//       onLeave: () => { if (cardsObserver.isEnabled) cardsObserver.disable(); },
+//       onLeaveBack: () => { if (cardsObserver.isEnabled) cardsObserver.disable(); },
+//     });
+
+//     return () => {
+//       st.kill();
+//       cardsObserver.kill();
+//       tl.kill();
+//     };
+//   }, []);
   const cards = [
     {
       title: 'Omnichannel Expertise',
@@ -56,6 +142,38 @@ export default function ConversationalAgentsPage() {
     },
   
   ];
+  const deliverySteps = [
+    {
+      img: "/images/target.png",
+      alt: "Target icon",
+      title: "Discovery and Conversation Mapping",
+      desc: "We analyze your business goals, target audiences, key use cases, and define measurable KPIs. This ensures every conversation aligns with your objectives and delivers value.",
+    },
+    {
+      img: "/images/target.png",
+      alt: "Workflow icon",
+      title: "UI/UX Design & Prototyping",
+      desc: "Wireframes, mockups, and interactive prototypes help shape an intuitive and engaging user experience.",
+    },
+    {
+      img: "/images/target.png",
+      alt: "CRM icon",
+      title: "Agile Development",
+      desc: "Scalable frontend and backend development, crafted with industry best practices and agile collaboration.",
+    },
+    {
+      img: "/images/Analytics.png",
+      alt: "Analytics icon",
+      title: "Quality Assurance & Testing",
+      desc: "Rigorous testing ensures security, performance, and reliability across all devices and platforms.",
+    },
+    {
+      img: "/images/Analytics.png",
+      alt: "Analytics icon",
+      title: "Deployment & Support",
+      desc: " A seamless launch followed by ongoing support and improvements to keep your product at its best.",
+    },
+  ];
   const PlusMarker = ({ className = '' }: { className?: string }) => (
     <div className={`absolute ${className}`} aria-hidden>
       <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
@@ -67,17 +185,17 @@ export default function ConversationalAgentsPage() {
     </div>
   );
   return (
-    <div className="min-h-screen bg-[#232629] px-20 text-foreground overflow-x-hidden">
+    <div className="min-h-screen px-4 sm:px-2 md:px-12 lg:px-20 bg-[#232629] text-foreground overflow-x-hidden">
     {/* ------------------------------------------------------Section-1----------------------------------------------- */}
-      <section className="container mx-auto px-4 md:px-6 pt-28 pb-16">
-        <div className="grid grid-cols-1 pl-20 lg:grid-cols-2 gap-10 items-center">
+      <section className=" max-w-4xl mx-auto px-4 md:px-6 pt-20 sm:pt-32 md:pt-40 pb-8 sm:pb-12">
+        <div className="grid grid-cols-1 px-2 lg:grid-cols-2 gap-10 items-center">
           {/* Left copy */}
           <div>
             <motion.h1
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="font-poppins text-white font-light text-[45px] leading-[121%]"
+              className="font-poppins text-white font-light text-[20px] xl:text-[45px] sm:text-[20px] md:text-[30px] lg:text-[40px] leading-[121%]"
             >
               Intelligent Conversational Agents 
               
@@ -106,12 +224,7 @@ export default function ConversationalAgentsPage() {
 
           {/* Right visuals: positioned within column to avoid overflow */}
           <div className="relative h-[560px] overflow-hidden">
-            {/* 1st box */}
-            {/* <div className="absolute top-[20px] right-[230px] w-[286px] h-[286px] rounded-[28px] bg-[linear-gradient(180deg,_rgba(44,48,53,0.7)_0%,_rgba(68,79,93,0.7)_100%)] backdrop-blur-sm" /> */}
-            {/* 2nd box */}
-            {/* <div className="absolute top-[180px]  right-[90px] w-[286px] h-[286px] rounded-[28px] bg-[linear-gradient(180deg,_rgba(44,48,53,0.7)_0%,_rgba(68,79,93,0.7)_100%)] backdrop-blur-sm" /> */}
-            {/* 3rd box */}
-            {/* <div className="absolute top-[260px]  right-[320px] w-[286px] h-[286px] rounded-[28px] bg-[linear-gradient(180deg,_rgba(44,48,53,0.7)_0%,_rgba(68,79,93,0.7)_100%)] backdrop-blur-sm" /> */}
+            
             <img src="/Convhero.png" alt="" />
           </div>
         </div>
@@ -206,7 +319,7 @@ export default function ConversationalAgentsPage() {
       <section className="container mx-auto px-4 md:px-6 lg:px-10 py-12 sm:py-16 md:py-24">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 justify-center">
           {/* Left Section */}
-          <div className="space-y-6 sm:space-y-8 max-w-[527px] mx-auto lg:mx-0">
+          <div className="space-y-6  sticky sm:space-y-8 max-w-[527px] mx-auto lg:mx-0">
             <h2 className="text-white  mb-12 font-outfit text-[24px] sm:text-[28px] md:text-[30px] lg:text-[45px]">
             Our Delivery Process
             </h2>
@@ -220,25 +333,20 @@ export default function ConversationalAgentsPage() {
 
           {/* Right Section - Card */}
           <div className="flex justify-center">
-            <div className="bg-[#2C3035] rounded-[20px] py-6 sm:py-8 px-8 sm:px-12 lg:px-20 w-full max-w-[400px] lg:max-w-none ">
-          
-              <div className="flex flex-col space-y-6 sm:space-y-8 lg:space-y-10">
-                <Image
-                  src="/images/target.png"
-                  alt="Target icon"
-                  width={62}
-                  height={62}
-                  className="w-[50px] h-[50px] sm:w-[62px] sm:h-[62px]"
-                />
-                <h3 className="text-white font-outfit font-normal text-[18px] sm:text-[20px] lg:text-[24px] leading-[100%]">
-                Discovery and Conversation Mapping
-                </h3>
-                <p className="text-[#9FA6AD] font-poppins font-normal text-[12px] sm:text-[14px] md:text-base">
-                We analyze your business goals, target audiences, key use cases, and define measurable KPIs.This ensures every conversation aligns with your objectives and delivers value.
-                </p>
+            <div  className="relative w-full max-w-[400px] lg:max-w-none">
+              {/* Stacked animated cards container */}
+              <div  className="relative h-[310px]">
+                {deliverySteps.map((step, index) => (
+                  <div key={index} className="ca-card absolute  bg-[#2C3035] rounded-[20px] py-6 sm:py-8 px-8 sm:px-12 lg:px-20 ">
+                    <div className="flex flex-col space-y-6 sm:space-y-8 lg:space-y-10">
+                      <Image src={step.img} alt={step.alt} width={62} height={62} className="w-[50px] h-[50px] sm:w-[62px] sm:h-[62px]" />
+                      <h3 className="text-white font-outfit font-normal text-[18px] sm:text-[20px] lg:text-[24px] leading-[100%]">{step.title}</h3>
+                      <p className="text-[#9FA6AD] font-poppins font-normal text-[12px] sm:text-[14px] md:text-base">{step.desc}</p>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
-            
           </div>
         </div>
       </section>
