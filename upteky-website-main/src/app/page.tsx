@@ -6,60 +6,71 @@ import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect, useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import { ArrowRight, ChevronRight, Zap, Settings, Linkedin, Facebook, Instagram, Layers, Users, Sparkles, Clock3, Repeat, MessagesSquare, Settings2, DollarSign, PhoneOff, Lightbulb, ChevronLeft, TrendingUp, ChevronUp, ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useIsMobile } from "@/hooks/use-mobile";
+// Add these icons to your existing import from lucide-react
 
-
-
-
-
-const services = [
-
+const whatWeDoData = [
   {
-    id: "01",
-    title: "AI-Powered Chatbot",
-    description: "Enhance customer engagement with an AI-powered chatbot that provides instant responses, streamlines inquiries, and improves lead conversion.",
-    features: [
+    id: "conversational-ai",
+    buttonText: "Conversational Agents",
+    title: "Artificial Intelligence",
+    imageSrc: "/images/what-we-do/ai-conversation.jpg", // Replace with your actual image path
+    description:
+      "Upteky Solutions Pvt. Ltd. specializes in creating robust Conversational AI solutions for web, messaging, and voice channels. From Website Chatbots and WhatsApp automation to AI-powered lead re-engagement and Voice Bots, we integrate advanced natural language processing, secure system connections, and actionable analytics to help businesses achieve measurable growth.",
+    services: [
       "Interactive AI Website Chatbot",
       "WhatsApp & Multi-Platform Chatbot",
       "AI-Powered Lead Reactivation",
+      "AI Voice Assistant (Voice Bot)",
     ],
-    icon: <Sparkles className="w-8 h-8 text-accent" />,
-    imgSrc: "/assets/chatbot.jpg",
-    imgAlt: "AI Chatbot for real-time interactions",
-    linkId: "s01"
   },
   {
-    id: "02",
-    title: "AI Voice Assistant",
-    description: "Improve customer experience with an AI-powered voice bot that can understand, process, and respond to user queries in real-time.",
-    features: [
-      "Seamless Voice Interaction",
-      "Smart Task Automation",
-      "Personalized User Experience",
+    id: "automation-bi",
+    buttonText: "AI Automation & Business Intelligence",
+    title: "Intelligent Automation",
+    imageSrc: "/images/what-we-do/automation-bi.jpg", // Replace with your actual image path
+    description:
+      "Streamline your operations and unlock data-driven insights. We develop custom automation workflows that eliminate repetitive tasks and integrate powerful business intelligence tools to transform raw data into actionable strategies, enhancing efficiency and decision-making across your organization.",
+    services: [
+      "Business Process Automation",
+      "AI-Powered Data Analytics",
+      "Custom ERP/CRM Solutions",
+      "Intelligent Document Processing",
     ],
-    icon: <Zap className="w-8 h-8 text-accent" />,
-    imgSrc: "/assets/10.jpg",
-    imgAlt: "AI Voice Bot with real-time response",
-    linkId: "s04"
   },
   {
-    id: "03",
-    title: "AI Workflow Optimization",
-    description: "Automate repetitive tasks and improve efficiency with AI-powered workflow automation solutions.",
-    features: [
-      "Enhancing Efficiency with AI",
-      "Automating Repetitive Tasks",
-      "Optimizing Decision-Making Processes",
+    id: "advanced-ai",
+    buttonText: "Advanced AI Solutions",
+    title: "Custom AI & Machine Learning",
+    imageSrc: "/images/what-we-do/advanced-ai.jpg", // Replace with your actual image path
+    description:
+      "Go beyond off-the-shelf solutions with custom-trained AI models tailored to your unique challenges. Our expertise in machine learning, computer vision, and predictive analytics allows us to build powerful, proprietary systems that provide a distinct competitive advantage and solve complex business problems.",
+    services: [
+      "Custom Machine Learning Models",
+      "Predictive Analytics & Forecasting",
+      "Computer Vision Systems",
+      "Natural Language Processing (NLP)",
     ],
-    icon: <Settings className="w-8 h-8 text-accent" />,
-    imgSrc: "/assets/11.jpg",
-    imgAlt: "AI Workflow Optimization for Efficiency",
-    linkId: "s05"
+  },
+  {
+    id: "web-development",
+    buttonText: "Web Development Services",
+    title: "Modern Web Solutions",
+    imageSrc: "/images/what-we-do/web-development.jpg", // Replace with your actual image path
+    description:
+      "We build high-performance, scalable, and secure web applications that deliver exceptional user experiences. From dynamic e-commerce platforms to sophisticated enterprise portals, our development team leverages the latest technologies to create robust solutions that drive engagement and business growth.",
+    services: [
+      "Full-Stack Web Applications",
+      "E-commerce & Marketplace Platforms",
+      "API Development & Integration",
+      "UI/UX Design & Prototyping",
+    ],
   },
 ];
+
 
 const problemSolutionStats = [
   {
@@ -137,6 +148,7 @@ const testimonials = [
 // Only 3 testimonials - no need for seamless loop
 const seamlessTestimonials = testimonials;
 
+
 const faqs = [
   {
     question: "What AI services does Upteky offer?",
@@ -164,6 +176,9 @@ const faqs = [
   }
 ];
 
+
+
+
 const FAQSection = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
@@ -178,6 +193,8 @@ const FAQSection = () => {
   const handleLeave = () => {
     setOpenIndex(null);
   };
+
+  
 
   return (
     <section className="w-full max-w-7xl mx-auto lg:max-w-[1560px] px-2 sm:px-6 lg:px-8 pt-[48px] sm:pt-[56px] md:py-[64px] pb-[40px] lg:pb-[64px] sm:pb-[44px]">
@@ -262,6 +279,9 @@ const FAQSection = () => {
 };
 
 export default function Home() {
+  const [activeTab, setActiveTab] = useState(whatWeDoData[0].id);
+  const [accordionIndex, setAccordionIndex] = useState<number | null>(0); // ADD THIS STATE
+
 
   const socialMedia = [
     { name: 'LinkedIn', icon: <Linkedin className="h-5 w-5" />, href: 'https://in.linkedin.com/company/uptekysolution' },
@@ -671,125 +691,6 @@ export default function Home() {
       </section>
 
 
-
-      {/* Services Section with Enhanced Styling */}
-      <section
-        id="services"
-        className="py-12 md:py-16 bg-background/30 backdrop-blur-sm border-t border-b border-border/20 snap-start"
-      >
-        <div className="container mx-auto px-4 md:px-6">
-          {/* Header */}
-          <div className="text-center mb-10 md:mb-12">
-            <motion.span
-              className="text-xs sm:text-sm font-semibold uppercase tracking-wider text-accent mb-1.5 sm:mb-2 inline-block"
-              initial={{ opacity: 0, y: -20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.6 }}
-            >
-              What We Offer
-            </motion.span>
-            <motion.h2
-              className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mt-1 mb-3 sm:mb-4"
-              initial={{ opacity: 0, y: -20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.6, delay: 0.15 }}
-            >
-              Our Core AI Solutions
-            </motion.h2>
-            <motion.div
-              className="w-16 sm:w-20 h-0.5 sm:h-1 bg-gradient-accent mx-auto rounded-full"
-              initial={{ scaleX: 0 }}
-              whileInView={{ scaleX: 1 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-            />
-          </div>
-
-          {/* Services Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8">
-            {services.map((service, index) => (
-              <motion.div
-                key={service.id}
-                className="flex" // ensure equal card height
-                initial={{ opacity: 0, y: 50, scale: 0.95 }}
-                whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 0.6, delay: index * 0.15, ease: "easeOut" }}
-              >
-                <Link href={`/solution_pages/${service.linkId}`} className="group flex-1 flex">
-                  <div className="w-full">
-                    <Card className="flex flex-col w-full h-full bg-card/80 border border-border/30 shadow-xl hover:shadow-accent/20 transition-all duration-300 transform hover:-translate-y-2 overflow-hidden rounded-xl backdrop-blur-md cursor-pointer">
-
-                      {/* Consistent Image Section */}
-                      <div className="relative w-full aspect-[4/3] overflow-hidden">
-                        <Image
-                          src={service.imgSrc}
-                          alt={service.imgAlt}
-                          fill
-                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                          style={{ objectFit: "cover" }}
-                          className="group-hover:scale-105 transition-transform duration-500 ease-out"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
-                        <div className="absolute top-4 right-4 p-2.5 sm:p-3 bg-card/90 backdrop-blur-sm rounded-full shadow-lg border border-border/20">
-                          {service.icon}
-                        </div>
-                        <span className="absolute bottom-4 left-4 text-4xl sm:text-5xl font-extrabold text-white/20 select-none group-hover:text-white/30 transition-colors duration-300">
-                          {service.id}
-                        </span>
-                      </div>
-
-                      {/* Content */}
-                      <CardContent className="p-5 sm:p-6 flex-grow flex flex-col">
-                        <h3 className="text-lg sm:text-xl md:text-2xl font-semibold mb-2 sm:mb-3 text-foreground group-hover:text-accent transition-colors duration-300">
-                          {service.title}
-                        </h3>
-                        <p className="text-muted-foreground mb-4 sm:mb-5 text-sm leading-relaxed flex-grow">
-                          {service.description}
-                        </p>
-                        <ul className="space-y-2 sm:space-y-2.5 mb-5 sm:mb-6 text-sm">
-                          {service.features.map((feature, idx) => (
-                            <li key={idx} className="flex items-start">
-                              <ChevronRight className="h-4 w-4 sm:h-5 sm:w-5 mr-2 sm:mr-2.5 mt-0.5 text-accent flex-shrink-0" />
-                              <span className="text-muted-foreground group-hover:text-foreground/80 transition-colors duration-300">
-                                {feature}
-                              </span>
-                            </li>
-                          ))}
-                        </ul>
-                      </CardContent>
-
-                      {/* Footer */}
-                      <CardFooter className="mt-auto p-6 pt-0">
-                        <span className="text-accent hover:text-accent/80 hover:underline p-0 font-semibold group-hover:translate-x-1 transition-all duration-300 text-sm sm:text-base inline-flex items-center">
-                          Explore More <ArrowRight className="ml-1 h-4 w-4" />
-                        </span>
-                      </CardFooter>
-                    </Card>
-                  </div>
-                </Link>
-              </motion.div>
-            ))}
-          </div>
-
-          {/* CTA Button */}
-
-          <div className="text-center mt-10 md:mt-12">
-            <Button
-              size="lg"
-              asChild
-              className="bg-accent/10 hover:bg-accent/20 text-accent rounded-full px-6 py-2.5 sm:px-8 sm:py-3 text-sm sm:text-base font-medium group-hover:bg-accent group-hover:text-white transition-colors"
-            >
-              <Link href="/solution">
-                View All Solutions <ArrowRight className="ml-2 h-4 w-4" />
-              </Link>
-            </Button>
-          </div>
-        </div>
-      </section>
-
       {/* Industry Insights Section - Enhanced & Animated */}
       <section ref={insightsSectionRef} id="stats-section" className="py-12 md:py-16 bg-background/30 backdrop-blur-sm relative overflow-hidden snap-start">
         <div className="absolute inset-0 z-0 opacity-5 pointer-events-none"
@@ -801,15 +702,7 @@ export default function Home() {
 
         <div className="container mx-auto px-4 md:px-6 relative z-10">
           <div className="text-center mb-10 md:mb-12">
-            <motion.span
-              className="text-xs sm:text-sm font-semibold uppercase tracking-wider text-accent mb-1.5 sm:mb-2 inline-block"
-              initial={{ opacity: 0, y: -20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.6 }}
-            >
-              Industry Insights
-            </motion.span>
+           
             <motion.h2
               className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mt-1 mb-3 sm:mb-4 text-foreground"
               initial={{ opacity: 0, y: -20 }}
@@ -828,13 +721,7 @@ export default function Home() {
             >
               Discover how AI tackles key business challenges and unlocks new opportunities for growth and efficiency.
             </motion.p>
-            <motion.div
-              className="w-16 sm:w-20 h-0.5 sm:h-1 bg-gradient-accent mx-auto mt-3 sm:mt-4 rounded-full"
-              initial={{ scaleX: 0 }}
-              whileInView={{ scaleX: 1 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.6, delay: 0.45 }}
-            />
+           
           </div>
 
           {problemSolutionStats.length > 0 && (
@@ -890,151 +777,585 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Testimonial Section */}
-      
-      {/* -----------------------------------------------Here  from our clients-------------------------------------------------- */}
-      <section className="py-12 px-6 md:py-16  bg-opacity-90  bg-background/30 backdrop-blur-sm border-t border-border/20 snap-start">
-        <div className="container mx-auto px-4 md:px-6">
-        <div className="text-center mb-10 md:mb-12">
-            <motion.span
-              className="text-xs sm:text-sm font-semibold uppercase tracking-wider text-accent mb-1.5 sm:mb-2 inline-block"
-              initial={{ opacity: 0, y: -20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.6 }}
-            >
-               CLIENT SUCCESS
-            </motion.span>
-            <motion.h2
-              className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mt-1 mb-3 sm:mb-4"
-              initial={{ opacity: 0, y: -20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.6, delay: 0.15 }}
-            >
-                Hear From Our Clients
-            </motion.h2>
-            <motion.div
-              className="w-16 sm:w-20 h-0.5 sm:h-1 bg-gradient-accent mx-auto rounded-full"
-              initial={{ scaleX: 0 }}
-              whileInView={{ scaleX: 1 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-            />
-          </div>
-          
+      {/* What We Do – End-to-End Solutions */}
+<section className="py-12 md:py-16 bg-background/30 backdrop-blur-sm snap-start">
+  <div className="container mx-auto px-4 md:px-6">
+    <div className="text-center mb-10 md:mb-12">
+      <motion.h2
+        className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-4"
+        initial={{ opacity: 0, y: -20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.3 }}
+        transition={{ duration: 0.6 }}
+      >
+        What We Do – End-to-End Solutions
+      </motion.h2>
+    </div>
 
-          {/* Desktop Grid Layout */}
-          <div className="hidden lg:grid grid-cols-3 gap-8 xl:gap-24 2xl:gap-24 max-w-auto sm:w-full mx-auto">
-            {seamlessTestimonials.map((testimonial, index) => (
+    {/* Conditionally render based on screen size */}
+    {isMobile ? (
+      // ======================================================
+      // NEW: Mobile Accordion Layout
+      // ======================================================
+      <motion.div
+        className="bg-[#2D2F33] divide-y-2 divide-[#232629] rounded-lg"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ duration: 0.7 }}
+      >
+        {whatWeDoData.map((tab, index) => (
+          <div key={tab.id} className="p-4">
+            <button
+              onClick={() => setAccordionIndex(accordionIndex === index ? null : index)}
+              className="flex items-center justify-between w-full text-left group"
+            >
+              <span className={`text-base font-medium transition-colors duration-300 ${accordionIndex === index ? "text-[#EE8741]" : "text-white"}`}>
+                {tab.buttonText}
+              </span>
               <motion.div
-                key={index}
-                className={`flex justify-center ${index === 1 ? " lg:mt-16 md:mt-0" : ""
-                  }`}
-                initial={{ opacity: 0, y: 20, scale: 0.95 }}
-                whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                viewport={{ once: true, amount: 0.2 }}
-                transition={{
-                  duration: 0.6,
-                  delay: index * 0.15,
-                  ease: "easeOut",
-                }}
+                animate={{ rotate: accordionIndex === index ? 180 : 0 }}
+                transition={{ duration: 0.3 }}
               >
-                <div className="relative bg-gradient-to-b from-[#232629]/[0.18] to-[#23272B] backdrop-blur-sm border border-border/20 shadow-[0_4px_10px_rgba(142,142,142,0.3)]  p-3 transition-all duration-300 group flex flex-col  w-full max-w-[400px] sm:max-w-[500px] md:max-w-[400px] lg:max-w-[600px] xl:max-w-[800px] h-[320px] sm:h-[400px] md:h-[400px] lg:h-[400px] xl:h-[400px] 2xl:h[400px] rounded-[20px]">
-                  <div className=" flex-grow z-10 flex flex-col ">
-                    <div className="text-center mb-4 lg:mb-6 sm:mb-6 md:mb-6 xl:mb-6 2xl:mb-6">
-                      <p className="font-semibold text-accent text-xl sm:text-xl md:text-2xl lg:text-2xl xl:text-2xl 2xl:text-2xl justify-center items-start mt-10 tracking-tight">
-                        {testimonial.author}
-                      </p>
-                      <p className="text-xs sm:text-xl md:text-base lg:text-base xl:text-base 2xl:text-base mt-1 text-white ">{testimonial.title}</p>
-                    </div>
-                    <div className="h-px bg-gray-600 opacity-60 w-full " ></div>
-
-                    <div className="flex-grow flex justify-center mt-6 2xl:mt-10 xl:mt-8 xl:px-6 lg:mt-8 md:mt-10 sm:mt-10 px-2  md:px-8 lg:px-4 2xl:px-12 ">
-                      <p className="text-white/60 text-center text-sm sm:text-xl md:text-base lg:text-base xl:text-base 2xl:text-base leading-snug tracking-tighter">
-                        {testimonial.quote}
-                      </p>
-                    </div>
+                {accordionIndex === index ? (
+                  <ChevronUp className="w-5 h-5 text-[#F58F1D]" />
+                ) : (
+                  <ChevronDown className="w-5 h-5 text-white" />
+                )}
+              </motion.div>
+            </button>
+            
+            <AnimatePresence>
+              {accordionIndex === index && (
+                <motion.div
+                  initial={{ opacity: 0, height: 0, marginTop: 0 }}
+                  animate={{ opacity: 1, height: 'auto', marginTop: '16px' }}
+                  exit={{ opacity: 0, height: 0, marginTop: 0 }}
+                  transition={{ duration: 0.4, ease: "easeInOut" }}
+                  className="overflow-hidden"
+                >
+                  <div className="relative w-full h-48 rounded-lg overflow-hidden mb-4">
+                    <Image src={tab.imageSrc} alt={tab.title} fill className="object-cover" sizes="100vw" />
+                    <div className="absolute inset-0 bg-black/30"></div>
                   </div>
+                  <h3 className="text-xl font-bold text-white mb-2">{tab.title}</h3>
+                  <p className="text-gray-300 leading-relaxed mb-4 text-sm">{tab.description}</p>
+                  <div className="flex flex-col gap-2">
+                    {tab.services.map((service, sIndex) => (
+                      <div key={sIndex} className="flex items-center gap-3 text-gray-200 text-sm">
+                        <ArrowRight className="w-4 h-4 text-accent flex-shrink-0" />
+                        <span>{service}</span>
+                      </div>
+                    ))}
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+        ))}
+      </motion.div>
+    ) : (
+      // ======================================================
+      // EXISTING: Desktop Two-Column Layout
+      // ======================================================
+      <div className="flex flex-col lg:flex-row gap-6 md:gap-8">
+        <motion.div
+          className="lg:w-1/3 bg-[#2C3035] p-3 rounded-2xl flex flex-col justify-evenly"
+          initial={{ opacity: 0, x: -20 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.7, delay: 0.2 }}
+        >
+          {whatWeDoData.map((tab, index) => (
+            <React.Fragment key={tab.id}>
+              <button
+                onClick={() => setActiveTab(tab.id)}
+                className={cn(
+                  "p-4 rounded-lg text-center transition-all duration-300 font-medium w-full",
+                  "focus:outline-none focus-visible:ring-2 focus-visible:ring-accent",
+                  activeTab === tab.id
+                    ? "bg-[#4A4E54] text-white shadow-lg rounded-full"
+                    : "bg-transparent text-gray-300 hover:bg-[#2A2D31] rounded-full"
+                )}
+              >
+                {tab.buttonText}
+              </button>
+              {index < whatWeDoData.length - 1 && <div className="h-px bg-gray-600/50 mx-4" />}
+            </React.Fragment>
+          ))}
+        </motion.div>
+
+        <motion.div
+          className="lg:w-2/3 bg-[#2C3035] p-6 md:p-8 rounded-2xl"
+          initial={{ opacity: 0, x: 20 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.7, delay: 0.3 }}
+        >
+          <AnimatePresence mode="wait">
+            {(() => {
+              const currentTab = whatWeDoData.find(tab => tab.id === activeTab);
+              if (!currentTab) return null;
+
+              return (
+                <motion.div
+                  key={currentTab.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.4, ease: "easeInOut" }}
+                >
+                  <div className="relative w-full h-48 md:h-60 rounded-lg overflow-hidden mb-6">
+                    <Image src={currentTab.imageSrc} alt={currentTab.title} fill className="object-cover" sizes="(max-width: 1024px) 100vw, 67vw" />
+                    <div className="absolute inset-0 bg-black/30"></div>
+                  </div>
+                  <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">{currentTab.title}</h3>
+                  <p className="text-gray-300 leading-relaxed mb-6">{currentTab.description}</p>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-4">
+                    {currentTab.services.map((service, index) => (
+                      <div key={index} className="flex items-center gap-3 text-gray-200">
+                        <ArrowRight className="w-5 h-5 text-accent flex-shrink-0" />
+                        <span>{service}</span>
+                      </div>
+                    ))}
+                  </div>
+                </motion.div>
+              );
+            })()}
+          </AnimatePresence>
+        </motion.div>
+      </div>
+    )}
+  </div>
+</section>
+       
+{/* Powering Innovation For */}
+<section className="py-16 md:py-20 bg-background/20 backdrop-blur-sm snap-start font-[Poppins]">
+  <div className="container mx-auto px-4 md:px-6">
+    <div className="text-center mb-12">
+      <motion.h2
+        className="font-[Outfit] text-[45px] font-bold text-white mb-4"
+        initial={{ opacity: 0, y: -20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.3 }}
+        transition={{ duration: 0.6 }}
+      >
+        Powering Innovation For
+      </motion.h2>
+      <motion.p
+        className="text-gray-400 text-lg max-w-4xl mx-auto leading-relaxed"
+        initial={{ opacity: 0, y: -20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.3 }}
+        transition={{ duration: 0.6, delay: 0.1 }}
+      >
+        Tailored technology solutions for startups, small businesses, enterprises, and agencies – driving innovation,
+        scalability, and sustainable growth at every stage.
+      </motion.p>
+    </div>
+
+    <div className=" space-y-8">
+      {/* First Row */}
+      <div className="grid grid-cols-1 md:grid-cols-10 gap-8 items-stretch"> {/* CHANGED: Back to 10-column grid for the 4:6 ratio */}
+        {/* Startups */}
+        <motion.div
+          className="md:col-span-4 bg-[#2A2D31] border border-gray-700/50 rounded-[30px] p-8 hover:bg-[#2F3236] transition-all duration-300 h-full flex flex-col" /* CHANGED: Spans 4 of 10 columns */
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+        >
+          <Image src="/icons/startup.png" alt="Startups" width={32} height={32} className="mb-4" />
+          <h3 className="font-[Outfit] text-2xl font-semibold text-white mb-3">Startups Business</h3>
+          <p className="text-gray-400 text-base leading-relaxed">
+            We specialize in MVP development, rapid prototyping, and flexible engagement models, helping startups scale from
+            idea to launch. With a diverse tech stack and proactive execution, we act as their extended team, managing
+            technology while they focus on growth.
+          </p>
+        </motion.div>
+
+        {/* Small Business */}
+        <motion.div
+          className="md:col-span-6 bg-[#2A2D31] border border-gray-700/50 rounded-[30px] p-8 hover:bg-[#2F3236] transition-all duration-300 h-full flex flex-col" /* CHANGED: Spans 6 of 10 columns */
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+        >
+          <Image src="/icons/smallbusiness.png" alt="Small Business" width={32} height={32} className="mb-4" />
+          <h3 className="font-[Outfit] text-2xl font-semibold text-white mb-3">Small Business</h3>
+          <p className="text-gray-400 text-base leading-relaxed">
+            Small businesses seek to scale and boost efficiency through technology and that's where we deliver value. From UI/UX design and development to QA
+            and cloud deployment, we provide complete, end-to-end custom
+            technology solutions under one roof.
+          </p>
+        </motion.div>
+      </div>
+
+      {/* Second Row (This remains unchanged as the 3 cards are already equal) */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
+        {/* Enterprise */}
+        <motion.div
+          className="bg-[#2A2D31] border border-gray-700/50 rounded-[30px] p-8 hover:bg-[#2F3236] transition-all duration-300 h-full flex flex-col"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+        >
+          <Image src="/icons/enterprise.png" alt="Enterprise" width={32} height={32} className="mb-4" />
+          <h3 className="font-[Outfit] text-2xl font-semibold text-white mb-3">Enterprise Business</h3>
+          <p className="text-gray-400 text-base leading-relaxed">
+            We build enterprise-grade solutions that drive measurable impact, from clinical systems to insurance platforms. Our
+            products power global multi-million-dollar businesses, with enterprises preferring our
+            scalable dedicated hire model to match
+            evolving needs.
+          </p>
+        </motion.div>
+
+        {/* Agency */}
+        <motion.div
+          className="bg-[#2A2D31] border border-gray-700/50 rounded-[30px] p-8 hover:bg-[#2F3236] transition-all duration-300 h-full flex flex-col"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+        >
+          <Image src="/icons/agency.png" alt="Agency" width={32} height={32} className="mb-4" />
+          <h3 className="font-[Outfit] text-2xl font-semibold text-white mb-3">Agency Business</h3>
+          <p className="text-gray-400 text-base leading-relaxed">
+            Upteky offers free business analysis, tech consultation, and tailored solutions. With
+            flexible models and expert teams, we help
+            enterprises scale efficiently, accelerate
+            growth, and maximize customer value
+            globally.
+          </p>
+        </motion.div>
+
+        {/* Innovation */}
+        <motion.div
+          className="bg-[#2A2D31] border border-gray-700/50 rounded-[30px] p-8 hover:bg-[#2F3236] transition-all duration-300 flex flex-col justify-between h-full"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.6, delay: 0.5 }}
+        >
+          <div>
+            <Image src="/icons/innovation.png" alt="Innovation" width={32} height={32} className="mb-4" />
+            <h3 className="font-[Outfit] text-2xl font-semibold text-white mb-3">Bringing Innovation Together</h3>
+            <p className="text-gray-400 text-base leading-relaxed mb-6">
+              Upteky's R&D team ensures clients stay ahead with early tech adoption, seamless
+              execution, and access to the latest innovations in a fast-evolving digital
+              landscape.
+            </p>
+          </div>
+          <div>
+            <Button
+              className="bg-[#2A2D31] border border-gray-500 text-gray-200 hover:bg-gray-700 hover:border-gray-400 transition-all duration-300 px-5 py-2 rounded-full text-sm"
+            >
+              Get In Touch →
+            </Button>
+          </div>
+        </motion.div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{/* Our Process */}
+<section className="py-16 md:py-20 bg-[#232629] text-white font-poppins">
+  <div className="container mx-auto px-4 md:px-6">
+    {/* Section Heading */}
+    <div className="text-center mb-12">
+      <motion.h2
+        className="text-3xl sm:text-4xl font-bold mb-4 font-outfit"
+        initial={{ opacity: 0, y: -20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.3 }}
+        transition={{ duration: 0.6 }}
+      >
+        Our Process
+      </motion.h2>
+      <motion.p
+        className="text-gray-400 max-w-3xl mx-auto text-lg" /* CHANGED: to text-lg */
+        initial={{ opacity: 0, y: -20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.3 }}
+        transition={{ duration: 0.6, delay: 0.1 }}
+      >
+        A streamlined journey from idea to impact – guiding you through every stage with
+        clarity, innovation, and measurable results.
+      </motion.p>
+    </div>
+
+    {/* Process Steps Data */}
+    {(() => {
+      const processSteps = [
+        {
+          step: "01",
+          title: "Consultation & Discovery",
+          description: "Understand your business challenges and uncover hidden opportunities with tailored AI and IT solutions designed to accelerate growth and efficiency.",
+        },
+        {
+          step: "02",
+          title: "Solution Design",
+          description: "We combine AI, IT, and web expertise to craft the right-fit solutions that empower businesses with innovation, scalability, and measurable growth.",
+        },
+        {
+          step: "03",
+          title: "Development & Implementation",
+          description: "Delivering smooth and secure execution with reliable processes, robust technology, and enterprise-grade solutions that ensure efficiency, trust, and long-term success.",
+        },
+        {
+          step: "04",
+          title: "Optimization & Training",
+          description: "We ensure adoption and efficiency through tailored guidance, streamlined processes, and continuous improvements that maximize business impact.",
+        },
+        {
+          step: "05",
+          title: "Ongoing Support & Scaling",
+          description: "Enabling continuous growth with technology through proactive support, scalable systems, and future-ready solutions tailored for businesses.",
+        },
+      ];
+
+      return (
+        // Outer Box
+        <div className="border border-neutral-800 rounded-2xl overflow-hidden bg-[#2C2F33]">
+          <div className="grid grid-cols-1 md:grid-cols-2">
+            {processSteps.map((item, index) => (
+              <motion.div
+                key={item.step}
+                className={cn(
+                  "text-left",
+                  // Re-organized classes for clarity
+                  {
+                    // For the last item, center it and give it more padding
+                    "md:col-span-2 flex flex-col items-left text-left p-10 md:p-12": index === 4,
+                    // For all other items
+                    "p-10": index < 5,
+                    // Border logic
+                    "border-b border-neutral-800": index < processSteps.length - 1 && index !== 4, // All but last two items get bottom border
+                    "md:border-r border-neutral-800": index % 2 === 0 && index < 4, // Items 0 and 2 get a right border on desktop
+                  }
+                )}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+              >
+                {/* Constrain width of the centered last item */}
+                <div className={cn({ "md:w-2/3 lg:w-1/2": index === 4 })}>
+                  <span className="block text-xl font-bold text-[#F58F1D] mb-4"> {/* CHANGED: text-lg to text-xl */}
+                    {item.step}
+                  </span>
+                  <h3 className="text-2xl font-semibold text-white mb-3 font-outfit"> {/* CHANGED: text-xl to text-2xl */}
+                    {item.title}
+                  </h3>
+                  <p className="text-gray-300 text-base leading-relaxed font-poppins"> {/* CHANGED: text-sm to text-base */}
+                    {item.description}
+                  </p>
                 </div>
               </motion.div>
             ))}
           </div>
+        </div>
+      );
+    })()}
+  </div>
+</section>
 
-          {/* Mobile/Tablet Carousel Layout */}
-          <div className="lg:hidden">
-            <div className="flex items-center justify-center gap-4">
-              {/* Left Navigation Button */}
-              <Button
-                variant="outline"
-                size="icon"
-                onClick={goToPreviousTestimonial}
-                className="w-8 h-8 sm:w-10 sm:h-10 rounded-full border-accent/20 hover:border-accent hover:bg-accent/10 transition-all duration-300 flex-shrink-0"
-                disabled={currentTestimonialIndex === 0}
-              >
-                <ChevronLeft className="h-4 w-4 sm:h-5 sm:w-5 text-accent" />
-              </Button>
+{/* Why Choose Upteky Solutions */}
+<section className="py-16 md:py-20 bg-[#232629] text-white font-poppins">
+  <div className="container mx-auto px-4 md-px-6">
+    {(() => {
+      // Data for the 5 feature cards
+      const whyChooseData = [
+        {
+          title: "All-in-One Partner",
+          description: "AI + Web + IT under one roof",
+        },
+        {
+          title: "Tailored Solutions",
+          description: "Customized for your business model",
+        },
+        {
+          title: "Scalable Technology",
+          description: "Grow without limitations",
+        },
+        {
+          title: "Proven Track Record",
+          description: "Trusted by global clients across industries",
+        },
+        {
+          title: "Round-the-Clock Support",
+          description: "Because business never sleeps",
+        },
+      ];
 
-              {/* Carousel Container */}
-              <div className="flex-1 relative overflow-hidden">
-                <motion.div
-                  className="flex transition-transform duration-700 ease-in-out"
-                  animate={{ x: `-${currentTestimonialIndex * 100}%` }}
-                  transition={{ 
-                    type: "spring", 
-                    stiffness: 100, 
-                    damping: 20,
-                    duration: 0.7
-                  }}
-                >
-                  {seamlessTestimonials.map((testimonial, index) => (
-                    <div key={index} className="w-full flex-shrink-0 px-4">
-                      <motion.div
-                        className="relative bg-gradient-to-b from-[#232629]/[0.18] to-[#23272B] backdrop-blur-sm border border-border/20 shadow-[0_4px_10px_rgba(142,142,142,0.3)] p-3 sm:p-4 md:p-6 transition-all duration-300 group flex flex-col w-full max-w-[300px] sm:max-w-[380px] md:max-w-[450px] mx-auto h-[320px] sm:h-[340px] md:h-[360px] rounded-[20px] mb-4"
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true, amount: 0.2 }}
-                        transition={{
-                          duration: 0.6,
-                          delay: index * 0.15,
-                          ease: "easeOut",
-                        }}
-                      >
-                        <div className="flex flex-col h-full">
-                          <div className="text-center mb-3 sm:mb-4 md:mb-5">
-                            <p className="font-semibold text-accent text-sm sm:text-base md:text-lg lg:text-xl justify-center items-start mt-3 sm:mt-4 md:mt-5 tracking-tight">
-                              {testimonial.author}
-                            </p>
-                            <p className="text-xs sm:text-sm md:text-base mt-1 text-white">{testimonial.title}</p>
-                          </div>
-                          <div className="h-px bg-gray-600 opacity-60 w-full mb-3 sm:mb-4 md:mb-5"></div>
+      return (
+        // A single grid container for the text block AND all 5 cards
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
+          
+          {/* Grid Item 1: The Heading Block */}
+          <motion.div
+            className="flex flex-col justify-center text-center lg:text-left p-4"
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.7 }}
+          >
+            <h2 className="text-3xl sm:text-4xl font-bold font-outfit mb-4">
+              Why Choose Upteky Solutions?
+            </h2>
+            <p className="text-gray-400 leading-relaxed">
+              Empowering businesses with innovation, scalability, and trusted expertise delivering solutions that truly drive growth.
+            </p>
+          </motion.div>
 
-                          <div className="flex-1 flex justify-center items-start px-3 sm:px-4 overflow-hidden">
-                            <p className="text-white/60 text-center text-xs sm:text-sm md:text-base leading-tight sm:leading-snug md:leading-relaxed tracking-tight">
-                              {testimonial.quote}
-                            </p>
-                          </div>
-                        </div>
-                      </motion.div>
-                    </div>
-                  ))}
-                </motion.div>
+          {/* Grid Items 2-6: The 5 Feature Cards */}
+          {whyChooseData.map((item, index) => (
+            <motion.div
+              key={index}
+              // ADDED min-h-[240px] to enforce a consistent minimum height for ALL cards
+              className="bg-[#2C2F33] border border-neutral-800 rounded-2xl p-6 flex flex-col h-full text-center transition-all duration-300 hover:border-indigo-500/50 hover:-translate-y-1 min-h-[240px]"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.6, delay: (index + 1) * 0.1 }}
+            >
+              <div className="flex-grow flex flex-col justify-center">
+                <h3 className="text-lg font-semibold text-white font-outfit pb-4">
+                  {item.title}
+                </h3>
+                {/* Divider Line: Centered using mx-auto */}
+                <div className="h-px bg-neutral-700 w-2/3 mx-auto" /> 
+                <p className="text-gray-400 text-sm pt-4">
+                  {item.description}
+                </p>
               </div>
+            </motion.div>
+          ))}
+        </div>
+      );
+    })()}
+  </div>
+</section>
 
-              {/* Right Navigation Button */}
-              <Button
-                variant="outline"
-                size="icon"
-                onClick={goToNextTestimonial}
-                className="w-8 h-8 sm:w-10 sm:h-10 rounded-full border-accent/20 hover:border-accent hover:bg-accent/10 transition-all duration-300 flex-shrink-0"
-                disabled={currentTestimonialIndex === seamlessTestimonials.length - 1}
-              >
-                <ChevronRight className="h-4 w-4 sm:h-5 sm:w-5 text-accent" />
-              </Button>
+      
+      {/* -----------------------------------------------Here from our clients-------------------------------------------------- */}
+<section className="py-12 px-6 md:py-16 bg-opacity-90 bg-background/30 backdrop-blur-sm border-t border-border/20 snap-start">
+  <div className="container mx-auto px-4 md:px-6">
+    <div className="text-center mb-10 md:mb-12">
+      <motion.h2
+        className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mt-1 mb-3 sm:mb-4"
+        initial={{ opacity: 0, y: -20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.3 }}
+        transition={{ duration: 0.6, delay: 0.15 }}
+      >
+        Hear From Our Clients
+      </motion.h2>
+      <motion.p
+        className="text-gray-400 max-w-3xl mx-auto"
+        initial={{ opacity: 0, y: -20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.3 }}
+        transition={{ duration: 0.6, delay: 0.1 }}
+      >
+        Real businesses, real results — showcasing the impact of our solutions.
+      </motion.p>
+    </div>
+
+    {/* Desktop Grid Layout (Unchanged) */}
+    <div className="hidden lg:grid grid-cols-3 gap-8 xl:gap-24 2xl:gap-24 max-w-auto sm:w-full mx-auto">
+      {seamlessTestimonials.map((testimonial, index) => (
+        <motion.div
+          key={index}
+          className={`flex justify-center ${index === 1 ? " lg:mt-16 md:mt-0" : ""}`}
+          initial={{ opacity: 0, y: 20, scale: 0.95 }}
+          whileInView={{ opacity: 1, y: 0, scale: 1 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{
+            duration: 0.6,
+            delay: index * 0.15,
+            ease: "easeOut",
+          }}
+        >
+          <div className="relative bg-gradient-to-b from-[#232629]/[0.18] to-[#23272B] backdrop-blur-sm border border-border/20 shadow-[0_4px_10px_rgba(142,142,142,0.3)] p-3 transition-all duration-300 group flex flex-col w-full max-w-[400px] sm:max-w-[500px] md:max-w-[400px] lg:max-w-[600px] xl:max-w-[800px] h-[320px] sm:h-[400px] md:h-[400px] lg:h-[400px] xl:h-[400px] 2xl:h[400px] rounded-[20px]">
+            <div className=" flex-grow z-10 flex flex-col ">
+              <div className="text-center mb-4 lg:mb-6 sm:mb-6 md:mb-6 xl:mb-6 2xl:mb-6">
+                <p className="font-semibold text-accent text-xl sm:text-xl md:text-2xl lg:text-2xl xl:text-2xl 2xl:text-2xl justify-center items-start mt-10 tracking-tight">
+                  {testimonial.author}
+                </p>
+                <p className="text-xs sm:text-xl md:text-base lg:text-base xl:text-base 2xl:text-base mt-1 text-white ">{testimonial.title}</p>
+              </div>
+              <div className="h-px bg-gray-600 opacity-60 w-full " ></div>
+              <div className="flex-grow flex justify-center mt-6 2xl:mt-10 xl:mt-8 xl:px-6 lg:mt-8 md:mt-10 sm:mt-10 px-2 md:px-8 lg:px-4 2xl:px-12 ">
+                <p className="text-white/60 text-center text-sm sm:text-xl md:text-base lg:text-base xl:text-base 2xl:text-base leading-snug tracking-tighter">
+                  {testimonial.quote}
+                </p>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </motion.div>
+      ))}
+    </div>
+
+    {/* ====================================================== */}
+    {/* UPDATED: Mobile/Tablet Carousel Layout                 */}
+    {/* ====================================================== */}
+    <div className="lg:hidden">
+      {/* The flex container with arrows is removed */}
+      <div className="relative overflow-hidden">
+        <motion.div
+          className="flex" // Removed transition classes, framer handles it
+          animate={{ x: `-${currentTestimonialIndex * 100}%` }}
+          transition={{ type: "spring", stiffness: 100, damping: 20 }}
+
+          // ADDED: Drag gesture for swipe navigation
+          drag="x"
+          dragConstraints={{ left: 0, right: 0 }}
+          onDragEnd={(e, { offset, velocity }) => {
+            const swipeThreshold = 50; // Min drag distance to trigger swipe
+            if (offset.x < -swipeThreshold) {
+              goToNextTestimonial();
+            } else if (offset.x > swipeThreshold) {
+              goToPreviousTestimonial();
+            }
+          }}
+        >
+          {seamlessTestimonials.map((testimonial, index) => (
+            <div key={index} className="w-full flex-shrink-0 px-2 sm:px-4"> {/* Adjusted padding */}
+              <motion.div
+                // REMOVED: max-w-... classes to make the card wider
+                // ADDED: min-h-... to maintain a consistent height
+                className="relative bg-gradient-to-b from-[#232629]/[0.18] to-[#23272B] backdrop-blur-sm border border-border/20 shadow-[0_4px_10px_rgba(142,142,142,0.3)] p-4 sm:p-6 transition-all duration-300 group flex flex-col w-full mx-auto min-h-[340px] sm:min-h-[360px] rounded-[20px] mb-4"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.6, delay: index * 0.15, ease: "easeOut" }}
+              >
+                <div className="flex flex-col h-full">
+                  <div className="text-center mb-4 sm:mb-5">
+                    <p className="font-semibold text-accent text-base sm:text-lg md:text-xl justify-center items-center mt-4 sm:mt-5 tracking-tight">
+                      {testimonial.author}
+                    </p>
+                    <p className="text-sm sm:text-base mt-1 text-white">{testimonial.title}</p>
+                  </div>
+                  <div className="h-px bg-gray-600 opacity-60 w-full mb-4 sm:mb-5"></div>
+                  <div className="flex-1 flex justify-center items-center px-2 sm:px-4 overflow-hidden">
+                    <p className="text-white/60 text-center text-sm sm:text-base leading-snug md:leading-relaxed tracking-tight">
+                      {testimonial.quote}
+                    </p>
+                  </div>
+                </div>
+              </motion.div>
+            </div>
+          ))}
+        </motion.div>
+      </div>
+    </div>
+  </div>
+</section>
 
       {/* FAQ Section */}
       <section className=" bg-background/30 backdrop-blur-sm border-t border-b border-border/20 snap-start">
