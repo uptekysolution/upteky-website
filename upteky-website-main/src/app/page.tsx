@@ -743,8 +743,8 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
               style={{ y: contentY, opacity: contentOpacity }}
             >
               <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center"></div>
-              <Button size="lg" className="bg-gradient-accent text-accent-foreground hover:opacity-90 transition-all duration-300 transform hover:scale-105 hover:shadow-accent/40 shadow-lg px-6 py-2.5 sm:px-8 sm:py-3 text-sm sm:text-base font-semibold">
-                <Link href="/solution">Get Started</Link> <ArrowRight className="ml-2 h-5 w-5" />
+              <Button size="lg" className="bg-gradient-accent text-accent-foreground hover:opacity-90 transition-all duration-300 transform hover:scale-105 hover:shadow-accent/40 shadow-lg px-6 py-2.5 sm:px-8 sm:py-3 text-sm sm:text-base font-semibold" onClick={() => document.getElementById('contact-form')?.scrollIntoView({ behavior: 'smooth' })}>
+                Get Started <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
               <Button size="lg" variant="outline" className="border-accent text-accent hover:bg-accent/10 hover:text-accent/90 transition-all duration-300 shadow-sm hover:shadow-md hover:border-accent/70 px-6 py-2.5 sm:px-8 sm:py-3 text-sm sm:text-base font-semibold">
                 <Link href="/about">Learn More</Link>
@@ -994,7 +994,7 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
   <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-20">
     <div className="text-center mb-12">
       <motion.h2
-        className="text-[40px] font-normal font-['Outfit'] leading-[111%] text-center text-white mb-4"
+        className="text-2xl sm:text-3xl md:text-4xl lg:text-[40px] font-normal font-['Outfit'] leading-[111%] text-center text-white mb-4"
         initial={{ opacity: 0, y: -20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.3 }}
@@ -1003,7 +1003,7 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         Powering Innovation For
       </motion.h2>
       <motion.p
-        className="text-[#9FA6AD] text-[16px] leading-[130%] text-center font-['Poppins'] font-normal max-w-4xl mx-auto"
+        className="text-[#9FA6AD] text-sm sm:text-base leading-[130%] text-center font-['Poppins'] font-normal max-w-4xl mx-auto px-4"
         initial={{ opacity: 0, y: -20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.3 }}
@@ -1025,7 +1025,7 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.6, delay: 0.1 }}
         >
-          <Image src="/icons/startup.png" alt="Startups" width={32} height={32} className="mb-4" />
+          <Image src="/icons/startup 1.png" alt="Startups" width={32} height={32} className="mb-4" />
           <h3 className="font-['Outfit'] text-2xl font-normal leading-[100%] tracking-[0] text-white mb-3">Startups Business</h3>
           <p className="text-[#9FA6AD] text-base leading-[130%] tracking-[0] text-justify font-['Poppins'] font-normal">
             We specialize in MVP development, rapid prototyping, and flexible engagement models, helping startups scale from
@@ -1042,7 +1042,7 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          <Image src="/icons/smallbusiness.png" alt="Small Business" width={32} height={32} className="mb-4" />
+          <Image src="/icons/supermarket 1.png" alt="Small Business" width={32} height={32} className="mb-4" />
           <h3 className="font-['Outfit'] text-2xl font-normal leading-[100%] tracking-[0] text-white mb-3">Small Business</h3>
           <p className="text-[#9FA6AD] text-base leading-[130%] tracking-[0] text-justify font-['Poppins'] font-normal">
             Small businesses seek to scale and boost efficiency through technology and that's where we deliver value. From UI/UX design and development to QA
@@ -1062,7 +1062,7 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.6, delay: 0.3 }}
         >
-          <Image src="/icons/enterprise.png" alt="Enterprise" width={32} height={32} className="mb-4" />
+          <Image src="/icons/global-access 1.png" alt="Enterprise" width={32} height={32} className="mb-4" />
           <h3 className="font-['Outfit'] text-2xl font-normal leading-[100%] tracking-[0] text-white mb-3">Enterprise Business</h3>
           <p className="text-[#9FA6AD] text-base leading-[130%] tracking-[0] text-justify font-['Poppins'] font-normal">
             We build enterprise-grade solutions that drive measurable impact, from clinical systems to insurance platforms. Our
@@ -1080,7 +1080,7 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.6, delay: 0.4 }}
         >
-          <Image src="/icons/agency.png" alt="Agency" width={32} height={32} className="mb-4" />
+          <Image src="/icons/employee 1.png" alt="Agency" width={32} height={32} className="mb-4" />
           <h3 className="font-['Outfit'] text-2xl font-normal leading-[100%] tracking-[0] text-white mb-3">Agency Business</h3>
           <p className="text-[#9FA6AD] text-base leading-[130%] tracking-[0] text-justify font-['Poppins'] font-normal">
             Upteky offers free business analysis, tech consultation, and tailored solutions. With
@@ -1093,14 +1093,14 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 
         {/* Innovation */}
         <motion.div
-          className="bg-[#2C3035] border border-gray-700/50 rounded-[30px] p-10 md:p-12 hover:bg-[#2C3035] transition-all duration-300 flex flex-col justify-between h-full"
+          className="bg-[#2C3035] border border-gray-700/50 rounded-[30px] p-6 sm:p-8 md:p-10 lg:p-12 hover:bg-[#2C3035] transition-all duration-300 flex flex-col justify-between h-full"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.6, delay: 0.5 }}
         >
           <div className="space-y-6">
-            <h3 className="font-['Outfit'] text-2xl font-normal leading-[100%] tracking-[0] text-white whitespace-nowrap">Bringing Innovation Together</h3>
+            <h3 className="font-['Outfit'] text-xl sm:text-2xl font-normal leading-[100%] tracking-[0] text-white">Bringing Innovation Together</h3>
             <p className="text-[#9FA6AD] text-base leading-[130%] tracking-[0] text-justify font-['Poppins'] font-normal">
               Upteky's R&D team ensures clients stay ahead with early tech adoption, seamless
               execution, and access to the latest innovations in a fast-evolving digital
@@ -1109,7 +1109,7 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
           </div>
           <div className="pt-6">
             <Button
-              className="bg-[#2F3133] border border-gray-600 text-gray-200 hover:bg-[#394046] hover:border-gray-500 transition-all duration-300 px-6 md:px-8 py-3 md:py-4 rounded-full text-base"
+              className="bg-[#2F3133] border border-gray-600 text-gray-200 hover:bg-[#394046] hover:border-gray-500 transition-all duration-300 px-4 sm:px-6 md:px-8 py-2 sm:py-3 md:py-4 rounded-full text-sm sm:text-base"
             >
               Get In Touch →
             </Button>
@@ -1429,7 +1429,7 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 
       </section> */}
       {/* Free Consultation - two column form */}
-      <section className="py-12 md:py-16 bg-[#232629] backdrop-blur-sm border-t border-border/20 snap-start">
+      <section id="contact-form" className="py-12 md:py-16 bg-[#232629] backdrop-blur-sm border-t border-border/20 snap-start">
         <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-20">
           <div className="w-full max-w-auto lg:max-w-[1273px] mx-auto bg-[#2C3035] backdrop-blur-lg rounded-[30px] border border-gray-600/30  p-4 sm:p-6 md:p-8">
             <div className="grid grid-cols-1  lg:grid-cols-5 gap-8 lg:gap-10 items-center">

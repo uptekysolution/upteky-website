@@ -178,7 +178,7 @@ export function Navbar() {
                       transition-all duration-300"
               asChild
             >
-              <Link href="/contact">Let's Tech Talk</Link>
+              <Link href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ0Hf-bvSzm-R79180oE1OQfbfQZI_QdfANF-hMCMk0U7i5xALnGlP0GS4vtFsky9z28D5zgGTsT">Let's Tech Talk</Link>
             </Button>
           </div>
 
