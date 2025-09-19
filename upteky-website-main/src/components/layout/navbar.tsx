@@ -72,7 +72,7 @@ export function Navbar() {
       )}
       <header
         className={cn(
-          "fixed top-0 z-50 w-full transition-all mx-auto px-4 sm:px-6 md:px-8 lg:px-20 duration-300 ease-in-out",
+          "fixed top-0 z-50 w-full transition-all mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-20 duration-300 ease-in-out",
           isScrolled ? "bg-background/80 backdrop-blur-lg shadow-lg" : "bg-transparent"
         )}
       >
@@ -84,7 +84,7 @@ export function Navbar() {
 
 
           {/* Desktop Navigation (lg and up) */}
-          <nav className="hidden lg:flex items-center justify-center space-x-6 xl:space-x-8 flex-1">
+          <nav className="hidden lg:flex items-center justify-center  space-x-6 xl:space-x-8 flex-1">
             {navItems.map((item) => (
               <div key={item.href} className="relative group">
                 <Link
@@ -105,14 +105,14 @@ export function Navbar() {
                   <span>{item.label}</span>
                   <span
                     className={cn(
-                      "absolute -bottom-1 left-0 w-full h-0.5 bg-accent transform transition-transform duration-300 ease-out",
+                      "absolute -bottom-1 left-0  w-full h-0.5 bg-accent transform transition-transform duration-300 ease-out",
                       pathname === item.href ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"
                     )}
                   />
                 </Link>
                 {/* Solutions Mega Menu */}
                  {item.href === "/solution" && (
-                   <div className="fixed inset-x-0 top-20 py-10 hidden group-hover:block w-screen rounded-b-2xl bg-[#212529] shadow-xl border-t border-border z-40">
+                   <div className="fixed inset-x-0 py-10 hidden group-hover:block w-screen rounded-b-2xl bg-[#212529] shadow-xl border-t border-border z-40">
                      <div className="container mx-auto px-6 md:px-10 lg:px-16 xl:px-24 py-12">
                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-y-8 lg:gap-x-8 text-sm">
                        
@@ -254,14 +254,26 @@ export function Navbar() {
                                   { href: '/solution_pages/s17', label: 'WordPress Development' },
                                 ]},
                               ].map((grp) => (
-                                <div key={grp.key} className="">
-                                  <button
-                                    className="w-full flex items-center justify-between text-sm font-medium text-white/90 hover:text-white py-2 px-2 rounded-md"
-                                    onClick={() => setOpenMobileGroup((g) => g === grp.key ? null : grp.key)}
-                                  >
-                                    <span>{grp.label}</span>
-                                    <ChevronRight className={cn("h-4 w-4 transition-transform", openMobileGroup === grp.key && "rotate-90")} />
-                                  </button>
+                                <div key={grp.key} className=""
+                                  onMouseEnter={() => setOpenMobileGroup(grp.key)}
+                                >
+                                  <div className="w-full flex items-center justify-between">
+                                    <Link
+                                      href={grp.base}
+                                      className="flex-1 text-sm font-medium text-white/90 hover:text-white py-2 px-2 rounded-md"
+                                      onClick={() => handleLinkClick(grp.base)}
+                                      prefetch={false}
+                                    >
+                                      {grp.label}
+                                    </Link>
+                                    <button
+                                      className="p-2 rounded-md text-white/80 hover:text-white"
+                                      onClick={() => setOpenMobileGroup((g) => g === grp.key ? null : grp.key)}
+                                      aria-label="Toggle sub menu"
+                                    >
+                                      <ChevronRight className={cn("h-4 w-4 transition-transform", openMobileGroup === grp.key && "rotate-90")} />
+                                    </button>
+                                  </div>
                                   {openMobileGroup === grp.key && (
                                     <div className="pl-3 space-y-1">
                                       {grp.links.map((l) => (
@@ -273,6 +285,7 @@ export function Navbar() {
                                   )}
                                 </div>
                               ))}
+                            
                             </div>
                           )}
                         </div>

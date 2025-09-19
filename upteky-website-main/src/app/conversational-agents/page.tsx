@@ -306,7 +306,7 @@ export default function ConversationalAgentsPage() {
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="font-poppins text-white font-light text-[20px] xs:text-[22px] sm:text-[26px] md:text-[30px] lg:text-[32px] xl:text-[38px] 2xl:text-[45px] leading-[110%] xs:leading-[115%] sm:leading-[120%] md:leading-[121%]"
+              className="font-outfit md:mt-10 mt-14 text-center md:text-left text-white font-light text-[20px] xs:text-[22px] sm:text-[26px] md:text-[30px] lg:text-[32px] xl:text-[38px] 2xl:text-[45px] leading-[110%] xs:leading-[115%] sm:leading-[120%] md:leading-[121%]"
             >
               Intelligent Conversational Agents
               <br className="hidden xs:block" />
@@ -319,14 +319,14 @@ export default function ConversationalAgentsPage() {
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.05 }}
-              className="mt-6 xs:mt-8 sm:mt-10 md:mt-12 lg:mt-14 max-w-full lg:max-w-xl font-poppins font-normal text-[11px] xs:text-[12px] sm:text-[13px] md:text-[14px] lg:text-[15px] xl:text-[16px] leading-[140%] xs:leading-[145%] sm:leading-[146%] text-[#858C92]"
+              className="mt-6  text-center md:text-left xs:mt-8 sm:mt-10 md:mt-12 lg:mt-14 max-w-full lg:max-w-xl font-poppins font-normal text-[11px] xs:text-[12px] sm:text-[13px] md:text-[14px] lg:text-[15px] xl:text-[16px] leading-[140%] xs:leading-[145%] sm:leading-[146%] text-[#858C92]"
             >
               Upteky Solutions builds enterprise Conversational AI chatbots, WhatsApp automation, lead reactivation, and voice bots powered by NLP, secure integrations, and analytics to fuel growth.
             </motion.p>
 
-            <div className="mt-6 xs:mt-8 sm:mt-10 md:mt-12 lg:mt-14 xl:mt-16">
+            <div className="mt-6 xs:mt-8 text-center md:text-left  sm:mt-10 md:mt-12 lg:mt-14 xl:mt-16">
               <button
-                className="text-white font-poppins shadow-lg hover:bg-[linear-gradient(90deg,_#F58F1D_0%,_#E57D77_100%)] w-full xs:w-auto min-w-[160px] xs:min-w-[180px] sm:min-w-[200px] md:min-w-[220px] lg:min-w-[240px] xl:min-w-[243px] h-[36px] xs:h-[40px] sm:h-[44px] md:h-[46px] lg:h-[48px] xl:h-[50px] rounded-[30px] xs:rounded-[35px] sm:rounded-[40px] md:rounded-[45px] lg:rounded-[50px] xl:rounded-[62px] border border-accent font-normal text-[12px] xs:text-[13px] sm:text-[14px] md:text-[15px] lg:text-[16px] xl:text-[18px] 2xl:text-[20px] transition-all duration-300 px-3 xs:px-4 sm:px-5 md:px-6 lg:px-7 xl:px-8"
+                className="text-white font-poppins shadow-lg hover:bg-[linear-gradient(90deg,_#F58F1D_0%,_#E57D77_100%)] w-auto min-w-[100px] xs:min-w-[180px] sm:min-w-[200px] md:min-w-[220px] lg:min-w-[240px] xl:min-w-[243px] h-[36px] xs:h-[40px] sm:h-[44px] md:h-[46px] lg:h-[48px] xl:h-[50px] rounded-[30px] xs:rounded-[35px] sm:rounded-[40px] md:rounded-[45px] lg:rounded-[50px] xl:rounded-[62px] border border-accent font-normal text-[12px] xs:text-[13px] sm:text-[14px] md:text-[15px] lg:text-[16px] xl:text-[18px] 2xl:text-[20px] transition-all duration-300 px-3 xs:px-4 sm:px-5 md:px-6 lg:px-7 xl:px-8"
               >
                 Talk to an Expert
               </button>

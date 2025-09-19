@@ -296,12 +296,12 @@ export default function WebDevelopmentPage() {
     <div className="min-h-screen px-3 xs:px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 2xl:px-20 bg-[#232629] text-foreground">
       {/* Section-1 */}
       <FadeIn>
-      <section className="max-w-4xl mx-auto px-2 xs:px-3 sm:px-4 md:px-6 lg:pt-36 xl:pt-40 pb-6 xs:pb-8 sm:pb-10 md:pb-12 lg:pb-16">
+      <section className="max-w-4xl pt-14 mx-auto px-2 xs:px-3 sm:px-4 md:px-6 lg:pt-36 xl:pt-40 pb-6 xs:pb-8 sm:pb-10 md:pb-12 lg:pb-16">
         <motion.h1
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="text-center text-white font-outfit text-[20px] xs:text-[22px] sm:text-[26px] md:text-[30px] lg:text-[32px] xl:text-[38px] 2xl:text-[45px] leading-[110%] xs:leading-[115%] sm:leading-[120%] md:leading-[121%] opacity-100"
+          className="text-center text-white pt-16 md:pt-20 lg:pt-0 font-outfit text-[20px] xs:text-[22px] sm:text-[26px] md:text-[30px] lg:text-[32px] xl:text-[38px] 2xl:text-[45px] leading-[110%] xs:leading-[115%] sm:leading-[120%] md:leading-[121%] opacity-100"
         >
           Premium Web Development Solutions Tailored for Your Business Growth
         </motion.h1>
@@ -309,44 +309,58 @@ export default function WebDevelopmentPage() {
        </FadeIn>
        
       <FadeIn>
-      <section className="container pb-16 xs:pb-20 sm:pb-24 md:pb-28 lg:pb-32 xl:pb-36 2xl:pb-40 mx-auto px-3 xs:px-4 sm:px-6 md:px-8">
-         <div className="mx-auto rounded-t-[16px] xs:rounded-t-[18px] sm:rounded-t-[20px] md:rounded-t-[24px] lg:rounded-t-[28px] xl:rounded-t-[30px] 2xl:rounded-t-[33.39px] bg-[linear-gradient(180deg,_rgba(69,76,83,0.7)_0%,_rgba(35,38,41,0.7)_100%)] backdrop-blur-[65.437px] overflow-hidden">
-           <div className="overflow-x-auto">
-             <table className="w-full min-w-[500px] xs:min-w-[550px] sm:min-w-[600px] md:min-w-[700px] lg:min-w-[800px] xl:min-w-[860px] mt-[20px] xs:mt-[25px] sm:mt-[30px] md:mt-[40px] lg:mt-[50px] xl:mt-[60px]">
-               <thead className="font-outfit font-normal text-[10px] xs:text-[11px] sm:text-[12px] md:text-[13px] lg:text-[13.35px] text-[#C4C4C4]">
-                 <tr className="text-center">
-                   <td className="py-2 xs:py-3 sm:py-4 md:py-5">Platform</td>
-                   <td className="py-2 xs:py-3 sm:py-4 md:py-5">Best for</td>
-                   <td className="py-2 xs:py-3 sm:py-4 md:py-5">Customization</td>
-                   <td className="py-2 xs:py-3 sm:py-4 md:py-5">Scalability</td>
-                   <td className="py-2 xs:py-3 sm:py-4 md:py-5">Speed to Market</td>
-                 </tr>
-               </thead>
-               <tbody className="font-poppins font-normal text-[10px] xs:text-[11px] sm:text-[12px] md:text-[13px] lg:text-[14px] xl:text-[15px] 2xl:text-[16px] text-white">
-                 {[
-                   ['Wix', 'Small Businesses, Portfolios', 'High', 'High', 'Excellent'],
-                   ['Webflow', 'Startups, Agencies, Brands', 'High', 'High', 'Fast'],
-                   ['MERN', 'SaaS, Enterprises, Custom Apps', 'Excellent', 'Excellent', 'Fast'],
-                   ['WordPress', 'Blogs, Corporate, E‑commerce', 'High', 'High', 'Excellent'],
-                   ['Shopify', 'E‑commerce, D2C Brands', 'High', 'Excellent', 'Fast']
-                 ].map((row, idx) => (
-                   <tr key={idx} className="text-center border-t border-white/10">
-                     <td className="py-2 xs:py-3 sm:py-4 md:py-5 px-2 xs:px-3 sm:px-4 md:px-6 lg:px-8 xl:px-10">{row[0]}</td>
-                     <td className="py-2 xs:py-3 sm:py-4 md:py-5 px-2 xs:px-3 sm:px-4 md:px-6 lg:px-8 xl:px-10">{row[1]}</td>
-                     <td className="py-2 xs:py-3 sm:py-4 md:py-5 px-2 xs:px-3 sm:px-4 md:px-6 lg:px-8 xl:px-10 text-center font-poppins text-[10px] xs:text-[11px] sm:text-[12px] md:text-[13px] lg:text-[14px] xl:text-[15px] 2xl:text-[16px] text-white">{row[2]}</td>
-                     <td className="py-2 xs:py-3 sm:py-4 md:py-5 px-2 xs:px-3 sm:px-4 md:px-6 lg:px-8 xl:px-10">
-                       <span className={`inline-flex items-center justify-center px-1 xs:px-2 sm:px-3 md:px-4 h-[20px] xs:h-[22px] sm:h-[25px] md:h-[28px] lg:h-[30px] xl:h-[33.386px] rounded-[8px] xs:rounded-[10px] sm:rounded-[12px] md:rounded-[14px] lg:rounded-[16px] xl:rounded-[16.69px] text-black text-[10px] xs:text-[11px] sm:text-[12px] md:text-[13px] lg:text-[14px] xl:text-[15.58px] ${scaleBg(row[3] as string)}`}>
-                         {row[3]}
-                       </span>
-                     </td>
-                     <td className="py-2 xs:py-3 sm:py-4 md:py-5 px-2 xs:px-3 sm:px-4 md:px-6 lg:px-8 xl:px-10">{row[4]}</td>
-                   </tr>
-                 ))}
-               </tbody>
-             </table>
-           </div>
-         </div>
-       </section>
+      <section className="container pb-16 xs:pb-20 sm:pb-24 md:pb-28 lg:pb-32 xl:pb-36 2xl:pb-40 mx-auto px-3 xs:px-4 sm:px-6 md:px-8 ">
+        {/* Mobile/Tablet: image only */}
+        <div className="block lg:hidden mt-6">
+          <Image
+            src="web hero.png"
+            alt="Web development comparison"
+            width={1600}
+            height={900}
+            className="w-full h-auto rounded-[16px] xs:rounded-[18px] sm:rounded-[20px]"
+            sizes="(max-width: 1024px) 100vw"
+            priority={false}
+          />
+        </div>
+
+        {/* Desktop: table only */}
+        <div className="hidden lg:block mx-auto rounded-t-[16px] xs:rounded-t-[18px] sm:rounded-t-[20px] md:rounded-t-[24px] lg:rounded-t-[28px] xl:rounded-t-[30px] 2xl:rounded-t-[33.39px] bg-[linear-gradient(180deg,_rgba(69,76,83,0.7)_0%,_rgba(35,38,41,0.7)_100%)] backdrop-blur-[65.437px] overflow-hidden">
+          <div className="overflow-x-auto">
+            <table className="w-full min-w-[500px] xs:min-w-[550px] sm:min-w-[600px] md:min-w-[700px] lg:min-w-[800px] xl:min-w-[860px] mt-[20px] xs:mt-[25px] sm:mt-[30px] md:mt-[40px] lg:mt-[50px] xl:mt-[60px]">
+              <thead className="font-outfit font-normal text-[10px] xs:text-[11px] sm:text-[12px] md:text-[13px] lg:text-[13.35px] text-[#C4C4C4]">
+                <tr className="text-center">
+                  <td className="py-2 xs:py-3 sm:py-4 md:py-5">Platform</td>
+                  <td className="py-2 xs:py-3 sm:py-4 md:py-5">Best for</td>
+                  <td className="py-2 xs:py-3 sm:py-4 md:py-5">Customization</td>
+                  <td className="py-2 xs:py-3 sm:py-4 md:py-5">Scalability</td>
+                  <td className="py-2 xs:py-3 sm:py-4 md:py-5">Speed to Market</td>
+                </tr>
+              </thead>
+              <tbody className="font-poppins font-normal text-[10px] xs:text-[11px] sm:text-[12px] md:text-[13px] lg:text-[14px] xl:text-[15px] 2xl:text-[16px] text-white">
+                {[
+                  ['Wix', 'Small Businesses, Portfolios', 'High', 'High', 'Excellent'],
+                  ['Webflow', 'Startups, Agencies, Brands', 'High', 'High', 'Fast'],
+                  ['MERN', 'SaaS, Enterprises, Custom Apps', 'Excellent', 'Excellent', 'Fast'],
+                  ['WordPress', 'Blogs, Corporate, E‑commerce', 'High', 'High', 'Excellent'],
+                  ['Shopify', 'E‑commerce, D2C Brands', 'High', 'Excellent', 'Fast']
+                ].map((row, idx) => (
+                  <tr key={idx} className="text-center border-t border-white/10">
+                    <td className="py-2 xs:py-3 sm:py-4 md:py-5 px-2 xs:px-3 sm:px-4 md:px-6 lg:px-8 xl:px-10">{row[0]}</td>
+                    <td className="py-2 xs:py-3 sm:py-4 md:py-5 px-2 xs:px-3 sm:px-4 md:px-6 lg:px-8 xl:px-10">{row[1]}</td>
+                    <td className="py-2 xs:py-3 sm:py-4 md:py-5 px-2 xs:px-3 sm:px-4 md:px-6 lg:px-8 xl:px-10 text-center font-poppins text-[10px] xs:text-[11px] sm:text-[12px] md:text-[13px] lg:text-[14px] xl:text-[15px] 2xl:text-[16px] text-white">{row[2]}</td>
+                    <td className="py-2 xs:py-3 sm:py-4 md:py-5 px-2 xs:px-3 sm:px-4 md:px-6 lg:px-8 xl:px-10">
+                      <span className={`inline-flex items-center justify-center px-1 xs:px-2 sm:px-3 md:px-4 h-[20px] xs:h-[22px] sm:h-[25px] md:h-[28px] lg:h-[30px] xl:h-[33.386px] rounded-[8px] xs:rounded-[10px] sm:rounded-[12px] md:rounded-[14px] lg:rounded-[16px] xl:rounded-[16.69px] text-black text-[10px] xs:text-[11px] sm:text-[12px] md:text-[13px] lg:text-[14px] xl:text-[15.58px] ${scaleBg(row[3] as string)}`}>
+                        {row[3]}
+                      </span>
+                    </td>
+                    <td className="py-2 xs:py-3 sm:py-4 md:py-5 px-2 xs:px-3 sm:px-4 md:px-6 lg:px-8 xl:px-10">{row[4]}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
 
       <div className="w-full h-[0.5px] bg-[#414141]" />
 

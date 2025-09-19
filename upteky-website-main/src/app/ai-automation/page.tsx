@@ -279,7 +279,7 @@ export default function AIAutomationPage() {
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="font-poppins text-white font-light text-[20px] xs:text-[22px] sm:text-[26px] md:text-[30px] lg:text-[32px] xl:text-[38px] 2xl:text-[45px] leading-[110%] xs:leading-[115%] sm:leading-[120%] md:leading-[121%]"
+              className="font-outfit  md:mt-10 mt-14 text-center md:text-left  text-white font-light text-[20px] sm:text-[26px] md:text-[30px] lg:text-[32px] xl:text-[38px] 2xl:text-[45px] leading-[110%] xs:leading-[115%] sm:leading-[120%] md:leading-[121%]"
             >
               AI Automation Solutions for Smarter, Faster, Better Businesses
             </motion.h1>
@@ -288,14 +288,14 @@ export default function AIAutomationPage() {
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.05 }}
-              className="mt-6 xs:mt-8 sm:mt-10 md:mt-12 lg:mt-14 max-w-full lg:max-w-xl font-poppins font-normal text-[11px] xs:text-[12px] sm:text-[13px] md:text-[14px] lg:text-[15px] xl:text-[16px] leading-[140%] xs:leading-[145%] sm:leading-[146%] text-[#858C92]"
+              className="mt-6  text-center md:text-left xs:mt-8 sm:mt-10 md:mt-12 lg:mt-14 max-w-full lg:max-w-xl font-poppins font-normal text-[11px] xs:text-[12px] sm:text-[13px] md:text-[14px] lg:text-[15px] xl:text-[16px] leading-[140%] xs:leading-[145%] sm:leading-[146%] text-[#858C92]"
             >
               Upteky Solutions Pvt. Ltd. delivers AI-powered platforms and custom automation that simplify operations, improve decision-making, and unlock growth. From ERP and CRM to advanced data analytics and custom AI models, we build intelligent systems tailored to your business.
             </motion.p>
 
-            <div className="mt-6 xs:mt-8 sm:mt-10 md:mt-12 lg:mt-14 xl:mt-16">
+            <div className="mt-6 xs:mt-8 text-center md:text-left  sm:mt-10 md:mt-12 lg:mt-14 xl:mt-16">
               <button
-                className="text-white font-poppins shadow-lg hover:bg-[linear-gradient(90deg,_#F58F1D_0%,_#E57D77_100%)] w-full xs:w-auto min-w-[160px] xs:min-w-[180px] sm:min-w-[200px] md:min-w-[220px] lg:min-w-[240px] xl:min-w-[243px] h-[36px] xs:h-[40px] sm:h-[44px] md:h-[46px] lg:h-[48px] xl:h-[50px] rounded-[30px] xs:rounded-[35px] sm:rounded-[40px] md:rounded-[45px] lg:rounded-[50px] xl:rounded-[62px] border border-accent font-normal text-[12px] xs:text-[13px] sm:text-[14px] md:text-[15px] lg:text-[16px] xl:text-[18px] 2xl:text-[20px] transition-all duration-300 px-3 xs:px-4 sm:px-5 md:px-6 lg:px-7 xl:px-8"
+                className="text-white  font-poppins shadow-lg hover:bg-[linear-gradient(90deg,_#F58F1D_0%,_#E57D77_100%)] w-auto min-w-[100px]  sm:min-w-[100px] md:min-w-[220px] lg:min-w-[240px] xl:min-w-[243px] h-[36px] xs:h-[40px] sm:h-[44px] md:h-[46px] lg:h-[48px] xl:h-[50px] rounded-[30px] xs:rounded-[35px] sm:rounded-[40px] md:rounded-[45px] lg:rounded-[50px] xl:rounded-[62px] border border-accent font-normal text-[12px]  sm:text-[14px] md:text-[15px] lg:text-[16px] xl:text-[18px] 2xl:text-[20px] transition-all duration-300 px-3  sm:px-5 md:px-6 lg:px-7 xl:px-8"
               >
                 Talk to an Expert
               </button>
@@ -303,7 +303,7 @@ export default function AIAutomationPage() {
           </div>
 
           {/* Image */}
-          <div className="relative h-[280px] xs:h-[320px] sm:h-[380px] md:h-[450px] lg:h-[500px] xl:h-[560px] 2xl:h-[600px] overflow-hidden order-2">
+          <div className="lg:absolute  right-0 mt-10 h-[280px] xs:h-[320px] sm:h-[380px] md:h-[450px] lg:h-[500px] xl:h-[560px] 2xl:h-[600px] overflow-hidden order-2">
             <img 
               src="/AiAutohero.png" 
               alt="AI Automation Solutions" 
@@ -315,7 +315,7 @@ export default function AIAutomationPage() {
       </FadeIn>
       
       {/* Divider line */}
-      <div className="w-full h-[0.5px] bg-[#414141]" />
+      <div className="w-full h-[0.5px] mt-16 bg-[#414141]" />
 
       {/* Section-2 */}
       <FadeIn>
