@@ -708,28 +708,32 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
           <div className="relative inline-block hero-text-container">
             <motion.h1
               className="text-4xl sm:text-5xl mt-[90px] sm:mt-64  md:mt-56 lg:mt-40 md:text-6xl  lg:text-7xl 2xl:text-8xl font-extrabold leading-tight text-foreground hero-text-transform"
-              style={{ x: x1, opacity: opacity1, originX: 0.5, originY: 0.5, textShadow: '0 0 1px rgba(0,0,0,0.1)', fontFamily: 'Outfit' }}
+              style={{ x: x1, opacity: opacity1, originX: 0.5, originY: 0.5, textShadow: '0 0 1px rgba(0,0,0,0.1)' }}
             >
               Smarter Decisions
             </motion.h1>
             <motion.h1
               className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl 2xl:text-8xl font-extrabold leading-tight text-gradient-accent hero-text-ease my-1"
-              style={{ x: x2, opacity: opacity2, originX: 0.5, originY: 0.5, textShadow: '0 0 1px rgba(0,0,0,0.1)', fontFamily: 'Outfit' }}
+              style={{ x: x2, opacity: opacity2, originX: 0.5, originY: 0.5, textShadow: '0 0 1px rgba(0,0,0,0.1)' }}
             >
               Faster Results
             </motion.h1>
             <motion.h1
               className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl 2xl:text-8xl font-extrabold leading-tight text-foreground hero-text-ai"
-              style={{ x: x3, opacity: opacity3, originX: 0.5, originY: 0.5, textShadow: '0 0 1px rgba(0,0,0,0.1)', fontFamily: 'Outfit' }}
+              style={{ x: x3, opacity: opacity3, originX: 0.5, originY: 0.5, textShadow: '0 0 1px rgba(0,0,0,0.1)' }}
             >
               Powered By AI
             </motion.h1>
+            <motion.div
+              className="absolute -bottom-4 sm:-bottom-6 left-1/2 transform -translate-x-1/2 w-32 sm:w-40 h-1.5 sm:h-2 bg-gradient-accent rounded-full shadow-glow"
+              style={{ opacity: contentOpacity }}
+            />
           </div>
 
           <div className="flex flex-col items-center mt-4 sm:mt-6">
             <motion.p
-              className="text-base sm:text-lg md:text-xl mb-4 sm:mb-6 max-w-xl md:max-w-2xl mx-auto leading-relaxed pt-3"
-              style={{ y: contentY, opacity: contentOpacity, fontFamily: 'Poppins', color: '#9FA6AD' }}
+              className="text-base sm:text-lg md:text-xl text-muted-foreground mb-4 sm:mb-6 max-w-xl md:max-w-2xl mx-auto leading-relaxed pt-3"
+              style={{ y: contentY, opacity: contentOpacity }}
             >
               Empowering enterprise solutions that deliver measurable results through intelligent automation and cutting-edge AI technology.
             </motion.p>
@@ -739,10 +743,10 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
               style={{ y: contentY, opacity: contentOpacity }}
             >
               <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center"></div>
-              <Button size="lg" className="bg-gradient-accent text-accent-foreground hover:opacity-90 transition-all duration-300 transform hover:scale-105 hover:shadow-accent/40 shadow-lg px-6 py-2.5 sm:px-8 sm:py-3 text-sm sm:text-base font-semibold rounded-[30px]" style={{ fontFamily: 'Poppins' }}>
+              <Button size="lg" className="bg-gradient-accent text-accent-foreground hover:opacity-90 transition-all duration-300 transform hover:scale-105 hover:shadow-accent/40 shadow-lg px-6 py-2.5 sm:px-8 sm:py-3 text-sm sm:text-base font-semibold">
                 <Link href="/solution">Get Started</Link> <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
-              <Button size="lg" variant="outline" className="border-accent text-accent hover:bg-accent/10 hover:text-accent/90 transition-all duration-300 shadow-sm hover:shadow-md hover:border-accent/70 px-6 py-2.5 sm:px-8 sm:py-3 text-sm sm:text-base font-semibold rounded-[30px]" style={{ fontFamily: 'Poppins' }}>
+              <Button size="lg" variant="outline" className="border-accent text-accent hover:bg-accent/10 hover:text-accent/90 transition-all duration-300 shadow-sm hover:shadow-md hover:border-accent/70 px-6 py-2.5 sm:px-8 sm:py-3 text-sm sm:text-base font-semibold">
                 <Link href="/about">Learn More</Link>
               </Button>
             </motion.div>
@@ -1021,7 +1025,7 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.6, delay: 0.1 }}
         >
-          <Image src="/assets/startup.png" alt="Startups" width={32} height={32} className="mb-4" />
+          <Image src="/icons/startup.png" alt="Startups" width={32} height={32} className="mb-4" />
           <h3 className="font-['Outfit'] text-2xl font-normal leading-[100%] tracking-[0] text-white mb-3">Startups Business</h3>
           <p className="text-[#9FA6AD] text-base leading-[130%] tracking-[0] text-justify font-['Poppins'] font-normal">
             We specialize in MVP development, rapid prototyping, and flexible engagement models, helping startups scale from
@@ -1038,7 +1042,7 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          <Image src="/assets/supermarket.png" alt="Small Business" width={32} height={32} className="mb-4" />
+          <Image src="/icons/smallbusiness.png" alt="Small Business" width={32} height={32} className="mb-4" />
           <h3 className="font-['Outfit'] text-2xl font-normal leading-[100%] tracking-[0] text-white mb-3">Small Business</h3>
           <p className="text-[#9FA6AD] text-base leading-[130%] tracking-[0] text-justify font-['Poppins'] font-normal">
             Small businesses seek to scale and boost efficiency through technology and that's where we deliver value. From UI/UX design and development to QA
@@ -1058,7 +1062,7 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.6, delay: 0.3 }}
         >
-          <Image src="/assets/global-access.png" alt="Enterprise" width={32} height={32} className="mb-4" />
+          <Image src="/icons/enterprise.png" alt="Enterprise" width={32} height={32} className="mb-4" />
           <h3 className="font-['Outfit'] text-2xl font-normal leading-[100%] tracking-[0] text-white mb-3">Enterprise Business</h3>
           <p className="text-[#9FA6AD] text-base leading-[130%] tracking-[0] text-justify font-['Poppins'] font-normal">
             We build enterprise-grade solutions that drive measurable impact, from clinical systems to insurance platforms. Our
@@ -1076,7 +1080,7 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.6, delay: 0.4 }}
         >
-          <Image src="/assets/employee.png" alt="Agency" width={32} height={32} className="mb-4" />
+          <Image src="/icons/agency.png" alt="Agency" width={32} height={32} className="mb-4" />
           <h3 className="font-['Outfit'] text-2xl font-normal leading-[100%] tracking-[0] text-white mb-3">Agency Business</h3>
           <p className="text-[#9FA6AD] text-base leading-[130%] tracking-[0] text-justify font-['Poppins'] font-normal">
             Upteky offers free business analysis, tech consultation, and tailored solutions. With
@@ -1089,24 +1093,23 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 
         {/* Innovation */}
         <motion.div
-          className="bg-[#2C3035] border border-gray-700/50 rounded-[30px] p-6 sm:p-8 md:p-10 lg:p-12 hover:bg-[#2C3035] transition-all duration-300 flex flex-col justify-between h-full"
+          className="bg-[#2C3035] border border-gray-700/50 rounded-[30px] p-10 md:p-12 hover:bg-[#2C3035] transition-all duration-300 flex flex-col justify-between h-full"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.6, delay: 0.5 }}
         >
-          <div className="space-y-4 sm:space-y-5 md:space-y-6">
-            <h3 className="font-['Outfit'] text-xl sm:text-2xl font-normal leading-[100%] tracking-[0] text-white">Bringing Innovation Together</h3>
-            <p className="text-[#9FA6AD] text-sm sm:text-base leading-[130%] tracking-[0] text-left font-['Poppins'] font-normal">
+          <div className="space-y-6">
+            <h3 className="font-['Outfit'] text-2xl font-normal leading-[100%] tracking-[0] text-white whitespace-nowrap">Bringing Innovation Together</h3>
+            <p className="text-[#9FA6AD] text-base leading-[130%] tracking-[0] text-justify font-['Poppins'] font-normal">
               Upteky's R&D team ensures clients stay ahead with early tech adoption, seamless
               execution, and access to the latest innovations in a fast-evolving digital
               landscape.
             </p>
           </div>
-          <div className="pt-4 sm:pt-5 md:pt-6">
+          <div className="pt-6">
             <Button
-              className="bg-[#2F3133] border border-gray-600 text-gray-200 hover:bg-[#394046] hover:border-gray-500 transition-all duration-300 px-4 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-4 rounded-full text-sm sm:text-base w-full sm:w-auto"
-              style={{ fontFamily: 'Poppins' }}
+              className="bg-[#2F3133] border border-gray-600 text-gray-200 hover:bg-[#394046] hover:border-gray-500 transition-all duration-300 px-6 md:px-8 py-3 md:py-4 rounded-full text-base"
             >
               Get In Touch →
             </Button>
@@ -1474,102 +1477,108 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
               </div>
 
               {/* Right form column */}
-              <div className=" bg-[#2C3035] rounded-[30px] px-5 py-10 sm:px-14  sm:py-10 my-3 md:p-6 border border-muted-foreground/10 lg:col-span-3 2xl:ml-12">
-              <form onSubmit={handleSubmit} className="space-y-6">
-    <div className="space-y-3">
-        {/* First Name - Full Width */}
-        <div>
-            <input
-                type="text"
-                placeholder="Full Name*"
-                className="w-full  my-4 bg-transparent border-b border-muted-foreground/50 p-0 sm:pb-2 sm:pt-0 focus:border-accent focus:outline-none placeholder:text-base placeholder:text-muted-foreground"
-                // --- Functional additions ---
-                name="fullName"
-                value={formData.fullName}
-                onChange={handleChange}
-                required
-            />
-        </div>
-
-        {/* Email and Phone - Side by Side */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className=" bg-[#2C3035] rounded-[30px] px-6 py-8 sm:px-14 sm:py-10 my-3 md:p-10 border border-muted-foreground/10 lg:col-span-3 2xl:ml-12">
+    <form onSubmit={handleSubmit} className="space-y-8"> {/* Increased spacing for mobile */}
+        <div className="space-y-3">
+            {/* First Name - Full Width */}
             <div>
                 <input
-                    type="email"
-                    placeholder="Email*"
-                    className="w-full  mb-4 bg-transparent border-b border-muted-foreground/50 pb-2 focus:border-accent focus:outline-none placeholder:text-base placeholder:text-muted-foreground"
+                    type="text"
+                    placeholder="Full Name*"
+                    // --- Responsive Change: Added base vertical padding for better touch targets ---
+                    className="w-full my-4 bg-transparent border-b border-muted-foreground/50 py-3 focus:border-accent focus:outline-none placeholder:text-base placeholder:text-muted-foreground"
                     // --- Functional additions ---
-                    name="email"
-                    value={formData.email}
+                    name="fullName"
+                    value={formData.fullName}
                     onChange={handleChange}
                     required
                 />
             </div>
+
+            {/* Email and Phone - Stacks on mobile, side-by-side on md+ */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-3"> {/* Added gap-y for mobile */}
+                <div>
+                    <input
+                        type="email"
+                        placeholder="Email*"
+                        // --- Responsive Change: Added base vertical padding ---
+                        className="w-full mb-4 bg-transparent border-b border-muted-foreground/50 py-3 focus:border-accent focus:outline-none placeholder:text-base placeholder:text-muted-foreground"
+                        // --- Functional additions ---
+                        name="email"
+                        value={formData.email}
+                        onChange={handleChange}
+                        required
+                    />
+                </div>
+                <div>
+                    <input
+                        type="text"
+                        placeholder="Phone number"
+                        // --- Responsive Change: Added base vertical padding ---
+                        className="w-full mb-4 bg-transparent border-b border-muted-foreground/50 py-3 focus:border-accent focus:outline-none placeholder:text-base placeholder:text-muted-foreground"
+                        // --- Functional additions ---
+                        name="phone"
+                        value={formData.phone}
+                        onChange={handleChange}
+                    />
+                </div>
+            </div>
+
+            {/* Describe your project - Full Width */}
             <div>
-                <input
-                    type="text"
-                    placeholder="Phone number"
-                    className="w-full mb-4 bg-transparent border-b border-muted-foreground/50 pb-2 focus:border-accent focus:outline-none placeholder:text-base placeholder:text-muted-foreground"
+                <textarea
+                    rows={3}
+                    placeholder="Describe your project"
+                    // --- Responsive Change: Added base vertical padding ---
+                    className="w-full mb-4 bg-transparent border-b border-muted-foreground/50 py-3 focus:border-accent focus:outline-none resize-none placeholder:text-base placeholder:text-muted-foreground"
                     // --- Functional additions ---
-                    name="phone"
-                    value={formData.phone}
+                    name="projectDescription"
+                    value={formData.projectDescription}
                     onChange={handleChange}
                 />
             </div>
         </div>
 
-        {/* Describe your project - Full Width */}
         <div>
-            <textarea
-                rows={3}
-                placeholder="Describe your project"
-                className="w-full mb-4 bg-transparent border-b border-muted-foreground/50 pb-2 focus:border-accent focus:outline-none resize-none placeholder:text-base placeholder:text-muted-foreground"
-                // --- Functional additions ---
-                name="projectDescription"
-                value={formData.projectDescription}
-                onChange={handleChange}
-            />
+            <p className="text-base text-muted-foreground font-medium mb-4">Services</p> {/* Increased margin bottom */}
+            <div className="flex flex-wrap gap-3"> {/* Increased gap for better spacing */}
+                {['Web development', 'AI automation', 'IT consultation', 'Custom solution', 'Voicebots', 'Chatbots', 'App development'].map((service) => (
+                    <button
+                        key={service}
+                        type="button"
+                        onClick={() => handleServiceToggle(service)} // <-- onClick handler
+                        // --- Responsive Change: Smaller padding & text on mobile, larger on sm+ screens ---
+                        className={cn(
+                            "px-5 py-2 text-xs sm:px-6 sm:py-3 sm:text-sm rounded-full border border-muted-foreground/50 transition-colors",
+                            formData.services.includes(service)
+                                ? "bg-accent text-accent-foreground border-accent" // Style for selected button
+                                : "text-foreground hover:text-accent" // Default style
+                        )}
+                    >
+                        {service}
+                    </button>
+                ))}
+            </div>
         </div>
-    </div>
 
-    <div>
-        <p className="text-base text-muted-foreground font-medium mb-3">Services</p>
-        <div className="flex flex-wrap gap-2">
-            {['Web development', 'AI automation', 'IT consultation', 'Custom solution', 'Voicebots', 'Chatbots', 'App development'].map((service) => (
-                <button
-                    key={service}
-                    type="button"
-                    onClick={() => handleServiceToggle(service)} // <-- ADDED onClick handler
-                    // --- ADDED conditional styling ---
-                    className={cn(
-                        "px-6 py-3 text-[12px] mx-1 rounded-full border border-muted-foreground/50 transition-colors",
-                        formData.services.includes(service)
-                            ? "bg-accent text-accent-foreground border-accent" // Style for selected button
-                            : "text-foreground hover:text-accent" // Default style
-                    )}
-                >
-                    {service}
-                </button>
-            ))}
+        {/* --- Responsive Change: Stacks on mobile, row on sm+ screens --- */}
+        <div className="flex flex-col sm:flex-row items-center gap-4 pt-4">
+            <button type="button" className="w-full sm:w-auto flex-1 px-4 py-4 bg-muted/40 hover:bg-muted text-muted-foreground rounded-full border border-border/40 transition-colors flex items-center justify-center gap-2">
+                <span className="text-lg">+</span> Attach File(s)
+            </button>
+            <Button
+                type="submit"
+                // --- Responsive Change: Adjusted padding and rounding for different screen sizes ---
+                className="w-full sm:w-auto bg-gradient-accent text-sm text-white rounded-full px-12 py-4 sm:px-16 sm:py-5 border-transparent hover:bg-none hover:bg-[#2c2c2c] hover:text-accent hover:border-accent transition-all duration-300"
+            >
+                Send
+            </Button>
         </div>
-    </div>
 
-    <div className="flex flex-col sm:flex-row items-center gap-4">
-        <button type="button" className="w-full sm:w-auto flex-1 px-4 py-3 bg-muted/40 hover:bg-muted text-muted-foreground rounded-full border border-border/40 transition-colors flex items-center justify-center gap-2">
-            <span className="text-lg">+</span> Attach File(s)
-        </button>
-        <Button
-            type="submit"
-            className="w-full sm:w-auto bg-gradient-accent text-[14px] text-white rounded-[30px] px-16 py-7 border-transparent hover:bg-none hover:bg-[#2c2c2c] hover:text-accent hover:border-accent transition-all duration-300"
-        >
-            Send
-        </Button>
-    </div>
-
-    {/* Display the submission status message */}
-    {responseMessage && <p className="text-center text-white mt-4">{responseMessage}</p>}
-</form>
-              </div>
+        {/* Display the submission status message */}
+        {responseMessage && <p className="text-center text-white mt-4">{responseMessage}</p>}
+    </form>
+</div>
             </div>
           </div>
         </div>

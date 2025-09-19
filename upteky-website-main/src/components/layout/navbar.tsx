@@ -86,7 +86,7 @@ export function Navbar() {
           {/* Desktop Navigation (lg and up) */}
           <nav className="hidden lg:flex items-center justify-center  space-x-6 xl:space-x-8 flex-1">
             {navItems.map((item) => (
-              <div key={item.href} className="relative group">
+              <div key={item.href} className="relative group flex items-center h-20">
                 <Link
                   href={item.href === '/solution' ? '#' : item.href}
                   className={cn(
@@ -112,7 +112,7 @@ export function Navbar() {
                 </Link>
                 {/* Solutions Mega Menu */}
                  {item.href === "/solution" && (
-                   <div className="fixed inset-x-0 py-10 hidden group-hover:block w-screen rounded-b-2xl bg-[#212529] shadow-xl border-t border-border z-40">
+                   <div className="fixed inset-x-0 top-20 py-10 hidden group-hover:block w-screen rounded-b-2xl bg-[#212529] shadow-xl border-t border-border z-40">
                      <div className="container mx-auto px-6 md:px-10 lg:px-16 xl:px-24 py-12">
                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-y-8 lg:gap-x-8 text-sm">
                        
@@ -120,10 +120,10 @@ export function Navbar() {
                          <div className="py-4 lg:py-0 lg:px-4 border-b sm:border-b-0 lg:border-b-0 lg:border-r border-white/10">
                            <h4 className="pb-4 text-white font-semibold text-base"><Link href="/conversational-agents" className="hover:text-accent transition-colors">Conversational Agents</Link></h4>
                           <ul className="space-y-2 text-gray-400">
-                            <li><Link href="/solution_pages/s01" className="hover:text-white transition-colors">Interactive AI Website Chatbot</Link></li>
-                            <li><Link href="/solution_pages/s02" className="hover:text-white transition-colors">WhatsApp & Multi-Platform Chatbot</Link></li>
-                            <li><Link href="/solution_pages/s03" className="hover:text-white transition-colors">AI-Powered Lead Reactivation</Link></li>
-                            <li><Link href="/solution_pages/s04" className="hover:text-white transition-colors">AI Voice Assistant (Voice Bot)</Link></li>
+                           <li><Link href="/solution_pages/s01" className="hover:text-white transition-colors">Interactive AI Website Chatbot</Link></li>
+                           <li><Link href="/solution_pages/s02" className="hover:text-white transition-colors">WhatsApp & Multi-Platform Chatbot</Link></li>
+                           <li><Link href="/solution_pages/s03" className="hover:text-white transition-colors">AI-Powered Lead Reactivation</Link></li>
+                           <li><Link href="/solution_pages/s04" className="hover:text-white transition-colors">AI Voice Assistant (Voice Bot)</Link></li>
                           </ul>
                          </div>
 
@@ -131,10 +131,10 @@ export function Navbar() {
                          <div className="py-4 lg:py-0 lg:px-4 border-b sm:border-b-0 lg:border-b-0 lg:border-r border-white/10">
                            <h4 className="pb-4 text-white font-semibold text-base"><Link href="/ai-automation" className="hover:text-accent transition-colors">AI Automation Solution</Link></h4>
                           <ul className="space-y-2 text-gray-400">
-                            <li><Link href="/solution_pages/s05" className="hover:text-white transition-colors">AI Workflow Automation</Link></li>
-                            <li><Link href="/solution_pages/s12" className="hover:text-white transition-colors">AI-Powered ERP</Link></li>
-                            <li><Link href="/solution_pages/s10" className="hover:text-white transition-colors">AI-Powered CRM Platform</Link></li>
-                            <li><Link href="/solution_pages/s07" className="hover:text-white transition-colors">AI-Powered Data Analyst</Link></li>
+                           <li><Link href="/solution_pages/s05" className="hover:text-white transition-colors">AI Workflow Automation</Link></li>
+                           <li><Link href="/solution_pages/s12" className="hover:text-white transition-colors">AI-Powered ERP</Link></li>
+                           <li><Link href="/solution_pages/s10" className="hover:text-white transition-colors">AI-Powered CRM Platform</Link></li>
+                           <li><Link href="/solution_pages/s07" className="hover:text-white transition-colors">AI-Powered Data Analyst</Link></li>
                           </ul>
                          </div>
 
@@ -142,9 +142,9 @@ export function Navbar() {
                          <div className="py-4 lg:py-0 lg:px-4 border-b sm:border-b-0 lg:border-b-0 lg:border-r border-white/10">
                            <h4 className="pb-4 text-white font-semibold text-base"><Link href="ai-sales-growth" className="hover:text-accent transition-colors">AI Sales & Growth Solution</Link></h4>
                           <ul className="space-y-2 text-gray-400">
-                            <li><Link href="/solution_pages/s08" className="hover:text-white transition-colors">AI Strategy Consulting</Link></li>
-                            <li><Link href="/solution_pages/s09" className="hover:text-white transition-colors">AI Sales Agent</Link></li>
-                            <li><Link href="/solution_pages/s11" className="hover:text-white transition-colors">AI Digital Marketing Agent</Link></li>
+                           <li><Link href="/solution_pages/s08" className="hover:text-white transition-colors">AI Strategy Consulting</Link></li>
+                           <li><Link href="/solution_pages/s09" className="hover:text-white transition-colors">AI Sales Agent</Link></li>
+                           <li><Link href="/solution_pages/s11" className="hover:text-white transition-colors">AI Digital Marketing Agent</Link></li>
                           </ul>
                          </div>
 
@@ -172,7 +172,7 @@ export function Navbar() {
           {/* Desktop CTA (lg and up) */}
           <div className="hidden lg:flex items-center justify-end mr-1">
             <Button
-              className=" bg-transparent border-accent text-white rounded-full px-6 py-2.5 text-base  font-outfit     /* reserve 1px border */
+              className=" bg-transparent border-accent text-white rounded-full px-6 py-2.5 text-base  font-outfit      /* reserve 1px border */
                       hover:bg-none   
                       hover:bg-gradient-accent
                       transition-all duration-300"
