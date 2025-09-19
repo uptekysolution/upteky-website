@@ -208,40 +208,40 @@ export default function ConversationalAgentsPage() {
 
     const cardData = [
       {
-        icon: "/images/target.png",
+        icon: "/WebDevlopment/target.png",
         alt: "Target icon",
         title: "Discovery and Conversation Mapping",
-        desc: "We analyze your business goals, target audiences, key use cases, and define measurable KPIs. This ensures every conversation aligns with your objectives and delivers value."
+        desc: "We analyze your business goals, target audiences, key use cases, and define measurable KPIs.This ensures every conversation aligns with your objectives and delivers value."
       },
       {
-        icon: "/images/target.png",
+        icon: "/Conversational/1.png",
         alt: "Design icon",
-        title: "UI/UX Design & Prototyping",
-        desc: "Wireframes, mockups, and interactive prototypes help shape an intuitive and engaging user experience."
+        title: "Discovery and Conversation Mapping",
+        desc: "We analyze your business goals, target audiences, key use cases, and define measurable KPIs.This ensures every conversation aligns with your objectives and delivers value."
       },
       {
-        icon: "/images/target.png",
+        icon: "/Conversational/2.png",
         alt: "Development icon",
-        title: "Agile Development",
-        desc: "Scalable frontend and backend development, crafted with industry best practices and agile collaboration."
+        title: "Design and Knowledge Setup",
+        desc: "Create intelligent dialog flows with well-defined intents, entities, and secure knowledge-base integration.This enables accurate responses and seamless user interactions."
       },
       {
-        icon: "/images/target.png",
+        icon: "/Conversational/3.png",
         alt: "Testing icon",
-        title: "Quality Assurance & Testing",
-        desc: "Rigorous testing ensures security, performance, and reliability across all devices and platforms."
+        title: "Build and Integrations",
+        desc: "Set up channels like website, WhatsApp, or Messenger and connect essential tools such as CRM, payment gateways, and calendars."
       },
       {
-        icon: "/images/target.png",
+        icon: "/Conversational/4.png",
         alt: "Launch icon",
-        title: "Deployment & Support",
-        desc: "A seamless launch followed by ongoing support and improvements to keep your products at its best."
+        title: "Testing and Compliance Review",
+        desc: "Thoroughly test for performance, handle edge cases, and ensure GDPR-aligned data security and compliance guardrails."
       },
       {
-        icon: "/images/target.png",
+        icon: "/Conversational/5.png",
         alt: "Optimization icon",
-        title: "Optimization & Growth",
-        desc: "Continuously monitor analytics, iterate on features, and scale infrastructure as your business evolves."
+        title: "Launch and Optimization",
+        desc: "Go live with real-time analytics, A/B testing, and continuous performance improvements."
       }
     ];
 
@@ -366,9 +366,9 @@ export default function ConversationalAgentsPage() {
             {cards.map((card, idx) => (
               <div key={idx} className="col-span-1">
                 <div className="rounded-[16px] xs:rounded-[18px] sm:rounded-[20px] md:rounded-[22px] lg:rounded-[24px] xl:rounded-[28px] bg-[#2C3035] w-full min-h-[140px] xs:min-h-[150px] sm:min-h-[160px] md:min-h-[180px] lg:min-h-[200px] xl:min-h-[216px] mx-auto p-3 xs:p-4 sm:p-5 md:p-6 lg:p-7">
-                  <h3 className="text-white pt-1 xs:pt-2 sm:pt-3 md:pt-4 text-[11px] font-outfit xs:text-[12px] sm:text-[13px] md:text-[14px] lg:text-[15px] xl:text-[18px] leading-[115%] xs:leading-[118%] sm:leading-[120%] md:leading-[121%] text-center font-medium">{card.title}</h3>
+                  <h3 className="text-white font-outfit pt-1 xs:pt-2 sm:pt-3 md:pt-4 text-[11px] font-outfit xs:text-[12px] sm:text-[13px] md:text-[14px] lg:text-[15px] xl:text-[18px] leading-[115%] xs:leading-[118%] sm:leading-[120%] md:leading-[121%] text-center font-medium">{card.title}</h3>
                   <div className="-mx-3 xs:-mx-4 sm:-mx-5 md:-mx-6 lg:-mx-7 my-3 xs:my-4 sm:my-5 md:my-6 lg:my-7 h-px bg-[#4C4C4C]" />
-                  <p className=" font-poppins text-[#858C92] text-[10px] xs:text-[11px] sm:text-[12px] md:text-[13px] lg:text-[14px] xl:text-[15px] leading-[135%] xs:leading-[140%] sm:leading-[145%] md:leading-[150%] text-center max-w-[240px] xs:max-w-[260px] sm:max-w-[280px] md:max-w-[300px] lg:max-w-[320px] mx-auto">{card.desc}</p>
+                  <p className="text-[#858C92] font-poppins text-[10px] xs:text-[11px] sm:text-[12px] md:text-[13px] lg:text-[14px] xl:text-[15px] leading-[135%] xs:leading-[140%] sm:leading-[145%] md:leading-[150%] text-center max-w-[240px] xs:max-w-[260px] sm:max-w-[280px] md:max-w-[300px] lg:max-w-[320px] mx-auto">{card.desc}</p>
                 </div>
               </div>
             ))}

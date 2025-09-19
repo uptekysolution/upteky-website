@@ -298,16 +298,16 @@ export default function CareersPage() {
                   Be part of a dynamic team that's revolutionizing real estate through
                   the power of artificial intelligence and innovative thinking.
                 </p>
-                <div className="flex flex-col sm:flex-row items-center justify-center gap-3 xs:gap-4 sm:gap-5 md:gap-6 mt-6 xs:mt-8 sm:mt-10 md:mt-12 lg:mt-14 xl:mt-16">
-                  <button className="text-white font-poppins shadow-lg hover:bg-[linear-gradient(90deg,_#F58F1D_0%,_#E57D77_100%)] w-full xs:w-auto min-w-[160px] xs:min-w-[180px] sm:min-w-[200px] md:min-w-[220px] lg:min-w-[240px] xl:min-w-[243px] h-[36px] xs:h-[40px] sm:h-[44px] md:h-[46px] lg:h-[48px] xl:h-[50px] rounded-[30px] xs:rounded-[35px] sm:rounded-[40px] md:rounded-[45px] lg:rounded-[50px] xl:rounded-[30px] border border-accent font-normal text-[11px] xs:text-[13px] sm:text-[14px] md:text-[15px] lg:text-[16px] xl:text-[18px] 2xl:text-[20px] transition-all duration-300 px-3 xs:px-4 sm:px-5 md:px-6 lg:px-7 xl:px-8">
-                    <Link href="#open-positions" className="flex items-center justify-center">
+                <div className="flex flex-col sm:flex-row items-center justify-center gap-2 xs:gap-4 sm:gap-5 md:gap-6 mt-4 sm:mt-6 md:mt-8 lg:mt-10 xl:mt-16">
+                  <Button size="lg" className="bg-transparent text-white shadow-lg border border-accent hover:bg-[linear-gradient(90deg,_#F58F1D_0%,_#E57D77_100%)] rounded-full px-6 py-3 sm:px-8 sm:py-3.5 font-medium text-sm sm:text-base transition-all duration-300">
+                    <Link href="#open-positions" className="flex items-center">
                       View Open Positions
-                      <ChevronRight className="ml-2 h-3 w-3 xs:h-3.5 xs:w-3.5 sm:h-4 sm:w-4" />
+                      <ChevronRight className="ml-2 h-4 w-4" />
                     </Link>
-                  </button>
-                  <button className="text-white font-poppins shadow-lg border border-accent hover:bg-accent/10 w-full xs:w-auto min-w-[160px] xs:min-w-[180px] sm:min-w-[200px] md:min-w-[220px] lg:min-w-[240px] xl:min-w-[243px] h-[36px] xs:h-[40px] sm:h-[44px] md:h-[46px] lg:h-[48px] xl:h-[50px] rounded-[30px] xs:rounded-[35px] sm:rounded-[40px] md:rounded-[45px] lg:rounded-[50px] xl:rounded-[62px] font-normal text-[12px] xs:text-[13px] sm:text-[14px] md:text-[15px] lg:text-[16px] xl:text-[18px] 2xl:text-[20px] transition-all duration-300 px-3 xs:px-4 sm:px-5 md:px-6 lg:px-7 xl:px-8">
+                  </Button>
+                  <Button size="lg" variant="outline" className="bg-transparent text-white shadow-lg border border-accent hover:bg-accent/5 rounded-full px-6 py-3 sm:px-8 sm:py-3.5 font-medium text-sm sm:text-base transition-all duration-300">
                     <Link href="#company-culture">Our Culture</Link>
-                  </button>
+                  </Button>
                 </div>
               </motion.div>
             </div>
@@ -363,7 +363,7 @@ export default function CareersPage() {
                 <TabsContent key={department} value={department} className="mt-0">
                   <div className="grid gap-3 sm:gap-4">
                     {roles.map((role) => (
-                      <Card key={role.title} className="overflow-hidden bg-card border-border/50 hover:border-accent/30 transition-colors group">
+                      <Card key={role.title} className="overflow-hidden bg-card border-border/50 transition-colors transition-all duration-300 hover:-translate-y-1 hover:scale-[1.01] hover:shadow-lg group">
                         <CardContent className="p-0">
                           <div className="flex flex-col md:flex-row justify-between p-4 sm:p-6">
                             <div className="flex-1">
@@ -479,7 +479,7 @@ export default function CareersPage() {
         {/* Apply Now Form Section */}
         <FadeIn>
           <section id="apply-form" className="scroll-mt-24 mb-10 sm:mb-14">
-            <div className="   bg-[#232629]/30 backdrop-blur-sm  shadow-[0_4px_10px_rgba(142,142,142,0.3)]   rounded-[20px]  p-4 sm:p-6 md:p-8 border border-border/50 max-w-6xl mx-auto">
+            <div className="   bg-[#232629]/30 backdrop-blur-sm  shadow-[0_4px_10px_rgba(142,142,142,0.3)]   rounded-[30px]  p-4 sm:p-6 md:p-8 border border-border/50 max-w-6xl mx-auto">
               <div className="text-center mb-8 xs:mb-10 sm:mb-12 md:mb-14 lg:mb-16">
                 <button className="text-white font-poppins shadow-lg bg-[#2C3035] hover:bg-[linear-gradient(90deg,_#F58F1D_0%,_#E57D77_100%)] w-full xs:w-auto min-w-[160px] xs:min-w-[180px] sm:min-w-[200px] md:min-w-[220px] lg:min-w-[240px] xl:min-w-[243px] h-[36px] xs:h-[40px] sm:h-[44px] md:h-[46px] lg:h-[48px] xl:h-[50px] rounded-[30px] font-normal text-[12px] xs:text-[11px] sm:text-[12px] md:text-[13px] transition-all duration-300 px-3 xs:px-4 sm:px-5 md:px-6 lg:px-7 xl:px-8 mb-3 xs:mb-4 sm:mb-5 md:mb-6">
                   Apply Now
@@ -621,7 +621,7 @@ export default function CareersPage() {
               <div className="flex justify-center mt-6 xs:mt-7 sm:mt-8 md:mt-9 lg:mt-10">
                 <button
                   type="submit"
-                  className="text-white font-poppins shadow-lg hover:bg-[linear-gradient(90deg,_#F58F1D_0%,_#E57D77_100%)] w-full xs:w-auto min-w-[160px] xs:min-w-[180px] sm:min-w-[200px] md:min-w-[220px] lg:min-w-[240px] xl:min-w-[243px] h-[36px] xs:h-[40px] sm:h-[44px] md:h-[46px] lg:h-[48px] xl:h-[50px] rounded-[30px] xs:rounded-[35px] sm:rounded-[40px] md:rounded-[45px] lg:rounded-[50px] xl:rounded-[62px] border border-accent font-normal text-[12px] xs:text-[13px] sm:text-[14px] md:text-[15px] lg:text-[16px] xl:text-[18px] 2xl:text-[20px] transition-all duration-300 px-3 xs:px-4 sm:px-5 md:px-6 lg:px-7 xl:px-8"
+                  className="text-white font-poppins shadow-lg hover:bg-[linear-gradient(90deg,_#F58F1D_0%,_#E57D77_100%)] w-full xs:w-auto min-w-[160px] xs:min-w-[180px] sm:min-w-[200px] md:min-w-[220px] lg:min-w-[240px] xl:min-w-[243px] h-[36px] xs:h-[40px] sm:h-[44px] md:h-[46px] lg:h-[48px] xl:h-[50px] rounded-[30px] xs:rounded-[35px] sm:rounded-[40px] md:rounded-[45px] lg:rounded-[50px] xl:rounded-[62px] border border-accent font-normal text-[12px] xs:text-[13px] sm:text-[14px] md:text-[15px] lg:text-[16px] xl:text-[18px] 2xl:text-[20px] transition-all duration-300 px-3 xs:px-4 sm:px-5 md:px-6 lg:px-7 xl:px-8 py-3 sm:py-3.5 h-10 sm:h-11 text-sm sm:text-base"
                   disabled={isLoading}
                 >
                   {isLoading ? (
@@ -640,7 +640,7 @@ export default function CareersPage() {
 
         {/* Join Us Banner */}
         <FadeIn>
-          <div className="rounded-2xl bg-gradient-to-br from-accent/20 to-accent/5 p-6 sm:p-8 md:p-12 border border-accent/20 text-center">
+          <div className="rounded-2xl bg-[#2C3035] p-6 sm:p-8 md:p-12  text-center">
             <h3 className="font-outfit text-white text-[16px] xs:text-[17px] sm:text-[18px] md:text-[19px] lg:text-[20px] xl:text-[22px] 2xl:text-[24px] mb-3 xs:mb-4 sm:mb-5 md:mb-6">Don't see a role that fits? We'd still love to hear from you!</h3>
             <p className="font-poppins text-[11px] xs:text-[12px] sm:text-[13px] md:text-[14px] lg:text-[15px] xl:text-[16px] text-[#858C92] mb-4 xs:mb-5 sm:mb-6 md:mb-7 max-w-2xl mx-auto">
               We're always on the lookout for exceptional talent. Send us your resume and we'll keep you in mind for future opportunities.

@@ -111,6 +111,42 @@ export default function AIAutomationPage() {
           duration: time
         }, "<");
 
+        // card 4
+        tl.add("card4");
+        tl.to(".card-stack-card:nth-child(3)", {
+          scale: 0.95,
+          duration: time,
+          backgroundColor: "#2C3035"
+        });
+        tl.from(".card-stack-card:nth-child(4)", {
+          y: () => window.innerHeight,
+          duration: time
+        }, "<");
+
+        // card 5
+        tl.add("card5");
+        tl.to(".card-stack-card:nth-child(4)", {
+          scale: 0.98,
+          duration: time,
+          backgroundColor: "#2C3035"
+        });
+        tl.from(".card-stack-card:nth-child(5)", {
+          y: () => window.innerHeight,
+          duration: time
+        }, "<");
+
+        // card 6
+        tl.add("card6");
+        tl.to(".card-stack-card:nth-child(5)", {
+          scale: 0.99,
+          duration: time,
+          backgroundColor: "#2C3035"
+        });
+        tl.from(".card-stack-card:nth-child(6)", {
+          y: () => window.innerHeight,
+          duration: time
+        }, "<");
+
         function tweenToLabel(direction: string | undefined, isScrollingDown: boolean) {
           if (
             (!tl.nextLabel() && isScrollingDown) ||
@@ -174,24 +210,12 @@ export default function AIAutomationPage() {
     }, []);
 
     const cardData = [
-      {
-        icon: "/images/target.png",
-        alt: "Target icon",
-        title: "Process Analysis & Design",
-        desc: "We analyze your current processes, identify automation opportunities, and design intelligent solutions for maximum efficiency."
-      },
-      {
-        icon: "/images/WebDevelopment.png",
-        alt: "Development icon",
-        title: "Development & Integration",
-        desc: "We build and integrate AI solutions with your existing systems, ensuring seamless connectivity and optimal performance."
-      },
-      {
-        icon: "/images/Quality Assurance.png",
-        alt: "Testing icon",
-        title: "Testing & Optimization",
-        desc: "Thorough testing and continuous optimization ensure your AI solutions deliver maximum value and performance."
-      }
+      { icon: "/aiAutomation/target.png", alt: "Discovery icon", title: "Discovery", desc: "We analyze your existing workflows, identify bottlenecks, and define clear KPIs. This helps us align the solution strategy with your business goals for maximum impact." },
+      { icon: "/aiAutomation/1.png", alt: "Design icon", title: "Design", desc: "Design intelligent AI workflows, data models, and system architecture tailored to your needs. Our focus is on creating efficient, scalable, and future-proof solutions." },
+      { icon: "/aiAutomation/2.png", alt: "Development icon", title: "Development", desc: "Build ERP, CRM, or custom AI models according to the defined specifications .We ensure robust coding practices to deliver reliable and high-performance applications." },
+      { icon: "/aiAutomation/3.png", alt: "Integration icon", title: "Integration", desc: "Seamlessly connect APIs, databases, and third-party systems for smooth data flow .This ensures all components work together in a unified ecosystem." },
+      { icon: "/aiAutomation/4.png", alt: "Testing icon", title: "Testing & Compliance", desc: "Conduct rigorous load, security, and regulatory compliance tests.We make sure solutions are stable, secure, and fully compliant with industry standards." },
+      { icon: "/aiAutomation/5.png", alt: "Launch icon", title: "Launch & Optimization", desc: "Deploy solutions with continuous learning, fine-tuning, and ROI tracking.We focus on long-term performance improvement through data-driven optimization." },
     ];
 
     return (
@@ -311,9 +335,9 @@ export default function AIAutomationPage() {
             {cards.map((card, idx) => (
               <div key={idx} className="col-span-1">
                 <div className="rounded-[16px] xs:rounded-[18px] sm:rounded-[20px] md:rounded-[22px] lg:rounded-[24px] xl:rounded-[28px] bg-[#2C3035] w-full min-h-[140px] xs:min-h-[150px] sm:min-h-[160px] md:min-h-[180px] lg:min-h-[200px] xl:min-h-[216px] mx-auto p-3 xs:p-4 sm:p-5 md:p-6 lg:p-7">
-                  <h3 className="text-white pt-1 xs:pt-2 sm:pt-3 md:pt-4 text-[11px] xs:text-[12px] sm:text-[13px] md:text-[14px] lg:text-[15px] xl:text-[16px] leading-[115%] xs:leading-[118%] sm:leading-[120%] md:leading-[121%] text-center font-medium">{card.title}</h3>
+                  <h3 className="text-white font-outfit pt-1 xs:pt-2 sm:pt-3 md:pt-4 text-[11px] xs:text-[12px] sm:text-[13px] md:text-[14px] lg:text-[15px] xl:text-[16px] leading-[115%] xs:leading-[118%] sm:leading-[120%] md:leading-[121%] text-center font-medium">{card.title}</h3>
                   <div className="-mx-3 xs:-mx-4 sm:-mx-5 md:-mx-6 lg:-mx-7 my-3 xs:my-4 sm:my-5 md:my-6 lg:my-7 h-px bg-[#4C4C4C]" />
-                  <p className="text-[#858C92] text-[10px] xs:text-[11px] sm:text-[12px] md:text-[13px] lg:text-[14px] xl:text-[15px] leading-[135%] xs:leading-[140%] sm:leading-[145%] md:leading-[150%] text-center max-w-[240px] xs:max-w-[260px] sm:max-w-[280px] md:max-w-[300px] lg:max-w-[320px] mx-auto">{card.desc}</p>
+                  <p className="text-[#858C92] font-poppins text-[10px] xs:text-[11px] sm:text-[12px] md:text-[13px] lg:text-[14px] xl:text-[15px] leading-[135%] xs:leading-[140%] sm:leading-[145%] md:leading-[150%] text-center max-w-[240px] xs:max-w-[260px] sm:max-w-[280px] md:max-w-[300px] lg:max-w-[320px] mx-auto">{card.desc}</p>
                 </div>
               </div>
             ))}

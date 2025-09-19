@@ -24,6 +24,8 @@ export function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [loadingHref, setLoadingHref] = useState<string | null>(null);
   const [isMounted, setIsMounted] = useState(false);
+  const [mobileSolutionsOpen, setMobileSolutionsOpen] = useState(false);
+  const [openMobileGroup, setOpenMobileGroup] = useState<string | null>(null);
   const pathname = usePathname();
 
   const socialMedia = [
@@ -86,12 +88,18 @@ export function Navbar() {
             {navItems.map((item) => (
               <div key={item.href} className="relative group">
                 <Link
-                  href={item.href}
+                  href={item.href === '/solution' ? '#' : item.href}
                   className={cn(
                     "text-base font-medium  font-poppins text-foreground/70 transition-colors hover:text-primary relative py-2",
                     pathname === item.href && "text-primary"
                   )}
-                  onClick={() => handleLinkClick(item.href)}
+                  onClick={(e) => {
+                    if (item.href === '/solution') {
+                      e.preventDefault();
+                      return; // no main Solutions page navigation
+                    }
+                    handleLinkClick(item.href);
+                  }}
                   prefetch={false}
                 >
                   <span>{item.label}</span>
@@ -110,7 +118,7 @@ export function Navbar() {
                        
                          {/* Column 1 */}
                          <div className="py-4 lg:py-0 lg:px-4 border-b sm:border-b-0 lg:border-b-0 lg:border-r border-white/10">
-                           <h4 className="mb-4 text-white font-semibold text-base"><Link href="/conversational-agents" className="hover:text-accent transition-colors">Conversational Agents</Link></h4>
+                           <h4 className="pb-4 text-white font-semibold text-base"><Link href="/conversational-agents" className="hover:text-accent transition-colors">Conversational Agents</Link></h4>
                           <ul className="space-y-2 text-gray-400">
                             <li><Link href="/solution_pages/s01" className="hover:text-white transition-colors">Interactive AI Website Chatbot</Link></li>
                             <li><Link href="/solution_pages/s02" className="hover:text-white transition-colors">WhatsApp & Multi-Platform Chatbot</Link></li>
@@ -121,7 +129,7 @@ export function Navbar() {
 
                          {/* Column 2 */}
                          <div className="py-4 lg:py-0 lg:px-4 border-b sm:border-b-0 lg:border-b-0 lg:border-r border-white/10">
-                           <h4 className="mb-4 text-white font-semibold text-base"><Link href="/ai-automation" className="hover:text-accent transition-colors">AI Automation Solution</Link></h4>
+                           <h4 className="pb-4 text-white font-semibold text-base"><Link href="/ai-automation" className="hover:text-accent transition-colors">AI Automation Solution</Link></h4>
                           <ul className="space-y-2 text-gray-400">
                             <li><Link href="/solution_pages/s05" className="hover:text-white transition-colors">AI Workflow Automation</Link></li>
                             <li><Link href="/solution_pages/s12" className="hover:text-white transition-colors">AI-Powered ERP</Link></li>
@@ -132,7 +140,7 @@ export function Navbar() {
 
                          {/* Column 3 */}
                          <div className="py-4 lg:py-0 lg:px-4 border-b sm:border-b-0 lg:border-b-0 lg:border-r border-white/10">
-                           <h4 className="mb-4 text-white font-semibold text-base"><Link href="ai-sales-growth" className="hover:text-accent transition-colors">AI Sales & Growth Solution</Link></h4>
+                           <h4 className="pb-4 text-white font-semibold text-base"><Link href="ai-sales-growth" className="hover:text-accent transition-colors">AI Sales & Growth Solution</Link></h4>
                           <ul className="space-y-2 text-gray-400">
                             <li><Link href="/solution_pages/s08" className="hover:text-white transition-colors">AI Strategy Consulting</Link></li>
                             <li><Link href="/solution_pages/s09" className="hover:text-white transition-colors">AI Sales Agent</Link></li>
@@ -142,7 +150,7 @@ export function Navbar() {
 
                          {/* Column 4 */}
                          <div className="py-4 lg:py-0 lg:px-4">
-                           <h4 className="mb-4 text-white font-semibold text-base"><Link href="/web-development" className="hover:text-accent transition-colors"> Web Development Services</Link></h4>
+                           <h4 className="pb-4 text-white font-semibold text-base"><Link href="/web-development" className="hover:text-accent transition-colors"> Web Development Services</Link></h4>
                            <ul className="space-y-2 text-gray-400">
                             <li><Link href="/solution_pages/s13" className="hover:text-white transition-colors">Wix Development</Link></li>
                             <li><Link href="/solution_pages/s14" className="hover:text-white transition-colors">Webflow Development</Link></li>
@@ -195,25 +203,83 @@ export function Navbar() {
                   </div>
                   <nav className="flex-grow p-6 space-y-1">
                     {navItems.map((item) => (
-                      <Link
-                        key={item.href}
-                        href={item.href}
-                        className={cn(
-                          "flex items-center justify-center text-base sm:text-lg font-medium text-accent-foreground transition-colors hover:text-primary py-3 rounded-md px-3",
-                          pathname === item.href && "text-primary bg-accent/10"
-                        )}
-                        onClick={() => handleLinkClick(item.href)}
-                        prefetch={false}
-                      >
-                        <span>{item.label}</span>
-                      </Link>
+                      item.href !== '/solution' ? (
+                        <Link
+                          key={item.href}
+                          href={item.href}
+                          className={cn(
+                            "flex items-center justify-center text-base sm:text-lg font-medium text-accent-foreground transition-colors hover:text-primary py-3 rounded-md px-3",
+                            pathname === item.href && "text-primary bg-accent/10"
+                          )}
+                          onClick={() => handleLinkClick(item.href)}
+                          prefetch={false}
+                        >
+                          <span>{item.label}</span>
+                        </Link>
+                      ) : (
+                        <div key={item.href} className="rounded-md">
+                          <button
+                            className="relative w-full flex items-center justify-center text-base sm:text-lg font-medium text-accent-foreground hover:text-primary py-3 px-3 rounded-md"
+                            onClick={() => setMobileSolutionsOpen((s) => !s)}
+                            onMouseEnter={() => setMobileSolutionsOpen(true)}
+                          >
+                            <span>Solutions</span>
+                            <ChevronRight className={cn("absolute right-3 h-4 w-4 transition-transform", mobileSolutionsOpen && "rotate-90")} />
+                          </button>
+                          {mobileSolutionsOpen && (
+                            <div className="pl-3 pb-2 space-y-2">
+                              {[
+                                { key: 'ca', label: 'Conversational Agents', base: '/conversational-agents', links: [
+                                  { href: '/solution_pages/s01', label: 'Interactive AI Website Chatbot' },
+                                  { href: '/solution_pages/s02', label: 'WhatsApp & Multi-Platform Chatbot' },
+                                  { href: '/solution_pages/s03', label: 'AI-Powered Lead Reactivation' },
+                                  { href: '/solution_pages/s04', label: 'AI Voice Assistant (Voice Bot)' },
+                                ]},
+                                { key: 'auto', label: 'AI Automation Solution', base: '/ai-automation', links: [
+                                  { href: '/solution_pages/s05', label: 'AI Workflow Automation' },
+                                  { href: '/solution_pages/s12', label: 'AI-Powered ERP' },
+                                  { href: '/solution_pages/s10', label: 'AI-Powered CRM Platform' },
+                                  { href: '/solution_pages/s07', label: 'AI-Powered Data Analyst' },
+                                ]},
+                                { key: 'sales', label: 'AI Sales & Growth Solution', base: '/ai-sales-growth', links: [
+                                  { href: '/solution_pages/s08', label: 'AI Strategy Consulting' },
+                                  { href: '/solution_pages/s09', label: 'AI Sales Agent' },
+                                  { href: '/solution_pages/s11', label: 'AI Digital Marketing Agent' },
+                                ]},
+                                { key: 'web', label: 'Web Development Services', base: '/web-development', links: [
+                                  { href: '/solution_pages/s13', label: 'Wix Development' },
+                                  { href: '/solution_pages/s14', label: 'Webflow Development' },
+                                  { href: '/solution_pages/s15', label: 'MERN Stack Development' },
+                                  { href: '/solution_pages/s16', label: 'Shopify Development' },
+                                  { href: '/solution_pages/s17', label: 'WordPress Development' },
+                                ]},
+                              ].map((grp) => (
+                                <div key={grp.key} className="">
+                                  <button
+                                    className="w-full flex items-center justify-between text-sm font-medium text-white/90 hover:text-white py-2 px-2 rounded-md"
+                                    onClick={() => setOpenMobileGroup((g) => g === grp.key ? null : grp.key)}
+                                  >
+                                    <span>{grp.label}</span>
+                                    <ChevronRight className={cn("h-4 w-4 transition-transform", openMobileGroup === grp.key && "rotate-90")} />
+                                  </button>
+                                  {openMobileGroup === grp.key && (
+                                    <div className="pl-3 space-y-1">
+                                      {grp.links.map((l) => (
+                                        <Link key={l.href} href={l.href} className="block text-sm text-gray-400 hover:text-white py-1"
+                                          onClick={() => handleLinkClick(l.href)} prefetch={false}
+                                        >{l.label}</Link>
+                                      ))}
+                                    </div>
+                                  )}
+                                </div>
+                              ))}
+                            </div>
+                          )}
+                        </div>
+                      )
                     ))}
                     <div className="pt-2">
-                      <Button className="w-full bg-gradient-accent font-outfit border-transparent
-                      hover:bg-none hover:bg-[#2c2c2c] 
-                      hover:text-accent 
-                      hover:border-accent
-                       text-accent-foreground hover:opacity-90 transition-all duration-300 shadow-lg px-6 py-2.5 text-sm sm:text-base font-semibold" asChild>
+                      <Button className="w-full bg-transparent text-white border border-accent rounded-full px-6 py-2.5 text-sm sm:text-base font-outfit shadow-lg hover:bg-[linear-gradient(90deg,_#F58F1D_0%,_#E57D77_100%)] transition-all duration-300" asChild>
                         <Link href="/contact">Let's Tech Talk <ChevronRight className="inline-block ml-2 h-4 w-4" /></Link>
                       </Button>
                     </div>
