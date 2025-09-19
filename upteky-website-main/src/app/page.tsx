@@ -178,6 +178,10 @@ const faqs = [
 
 
 
+// ...
+
+
+
 
 const FAQSection = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
@@ -273,6 +277,16 @@ const FAQSection = () => {
 export default function Home() {
   const [activeTab, setActiveTab] = useState(whatWeDoData[0].id);
   const [accordionIndex, setAccordionIndex] = useState<number | null>(0); // ADD THIS STATE
+
+
+  const [formData, setFormData] = useState({
+    fullName: '',
+    email: '',
+    phone: '',
+    projectDescription: '',
+    services: [], // Array to hold selected services
+});
+const [responseMessage, setResponseMessage] = useState('');
 
 
   const socialMedia = [
@@ -507,6 +521,62 @@ export default function Home() {
     };
   }, [isAutoScrolling]);
 
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prevState => ({
+        ...prevState,
+        [name]: value,
+    }));
+};
+
+// 3. HANDLER for the service buttons (toggle selection)
+const handleServiceToggle = (serviceName) => {
+    setFormData(prevState => {
+        const currentServices = prevState.services;
+        // If the service is already selected, remove it. Otherwise, add it.
+        const newServices = currentServices.includes(serviceName)
+            ? currentServices.filter(s => s !== serviceName)
+            : [...currentServices, serviceName];
+        
+        return { ...prevState, services: newServices };
+    });
+};
+
+// 4. HANDLER for form submission
+const handleSubmit = async (e) => {
+    e.preventDefault();
+    setResponseMessage('Submitting...');
+
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbxHy2aJu7uv7ZmMZ-stz1-9WmTDUq6Z5faTWTmn0G2nj4GnDFI3OdcT0QO8qe-fUu4s3A/exec'; // <-- IMPORTANT: PASTE YOUR URL HERE
+
+    // Create a new object to send, joining the services array into a string
+    const submissionData = {
+        ...formData,
+        services: formData.services.join(', '), // Convert array to "Service1, Service2"
+    };
+
+    try {
+        await fetch(scriptURL, {
+            method: 'POST',
+            body: JSON.stringify(submissionData),
+            headers: { "Content-Type": "text/plain;charset=utf-8" },
+        });
+
+        setResponseMessage('Success! Your message was submitted.');
+        // Reset the form after successful submission
+        setFormData({
+            fullName: '',
+            email: '',
+            phone: '',
+            projectDescription: '',
+            services: [],
+        });
+    } catch (error) {
+        setResponseMessage('An error occurred. Please try again.');
+        console.error('Submission error:', error);
+    }
+};
+
 
   return (
     <div className="flex flex-col bg-gradient-to-br from-[#2d3436] to-[#000000] text-foreground min-h-screen overflow-x-hidden">
@@ -515,7 +585,7 @@ export default function Home() {
         className={cn(
           "relative flex flex-col items-center justify-center bg-[#232629]",
           "h-screen",
-          "px-4 md:px-6",
+          "px-4 sm:px-6 md:px-8 lg:px-20",
           "pt-8 sm:pt-12 md:pt-16",
           "overflow-hidden snap-start"
         )}
@@ -686,7 +756,7 @@ export default function Home() {
       {/* Industry Insights Section - Enhanced */}
       <section ref={insightsSectionRef} id="stats-section" className="py-12 md:py-16 bg-[#232629] backdrop-blur-sm relative overflow-hidden snap-start">
 
-        <div className="container mx-auto px-4 md:px-6 relative z-10">
+        <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-20 relative z-10">
           <div className="text-center mb-10 md:mb-12">
            
             <motion.h2
@@ -766,7 +836,7 @@ export default function Home() {
       {/* What We Do – End-to-End Solutions */}
       <div className="border-t border-[#333333] " />
 <section className="py-12 md:py-16 bg-[#232629] backdrop-blur-sm snap-start">
-  <div className="container mx-auto px-4 md:px-6">
+  <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-20">
     <div className="text-center mb-10 md:mb-12">
       <motion.h2
         className="text-[40px] font-normal font-['Outfit'] leading-[111%] text-center text-white mb-4"
@@ -919,7 +989,7 @@ export default function Home() {
 {/* Powering Innovation For */}
 <div className="border-t border-[#333333] " />
 <section className="py-16 md:py-20 bg-[#232629] backdrop-blur-sm snap-start font-[Poppins]">
-  <div className="container mx-auto px-4 md:px-6">
+  <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-20">
     <div className="text-center mb-12">
       <motion.h2
         className="text-[40px] font-normal font-['Outfit'] leading-[111%] text-center text-white mb-4"
@@ -1051,7 +1121,7 @@ export default function Home() {
 {/* Our Process */}
 <div className="border-t border-[#333333] " />
 <section className="py-16 md:py-20 bg-[#232629] text-white font-poppins">
-  <div className="container mx-auto px-4 md:px-6">
+  <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-20">
     {/* Section Heading */}
     <div className="text-center mb-12">
       <motion.h2
@@ -1154,7 +1224,7 @@ export default function Home() {
 {/* Why Choose Upteky Solutions */}
 <div className="border-t border-[#333333] " />
 <section className="py-16 md:py-20 bg-[#232629] text-white font-poppins">
-  <div className="container mx-auto px-4 md-px-6">
+  <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-20">
     {(() => {
       // Data for the 5 feature cards
       const whyChooseData = [
@@ -1231,8 +1301,8 @@ export default function Home() {
 
       
       {/* -----------------------------------------------Here from our clients-------------------------------------------------- */}
-<section className="py-12 px-6 md:py-16 bg-[#232629] backdrop-blur-sm border-t border-border/20 snap-start">
-  <div className="container mx-auto px-4 md:px-6">
+<section className="py-12 md:py-16 bg-[#232629] backdrop-blur-sm border-t border-border/20 snap-start">
+  <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-20">
     <div className="text-center mb-10 md:mb-12">
       <motion.h2
         className="text-[40px] font-normal font-['Outfit'] leading-[111%] text-center mt-1 mb-3 sm:mb-4"
@@ -1406,62 +1476,100 @@ export default function Home() {
 
               {/* Right form column */}
               <div className=" bg-[#2C3035] rounded-[30px] px-5 py-10 sm:px-14  sm:py-10 my-3 md:p-6 border border-muted-foreground/10 lg:col-span-3 2xl:ml-12">
-                <form className="space-y-6 ">
-                  <div className="space-y-3">
-                    {/* First Name - Full Width */}
-                    <div>
-                      <input type="text" placeholder="Full Name*" className="w-full   my-4 bg-transparent border-b border-muted-foreground/50 p-0 sm:pb-2 sm:pt-0 focus:border-accent focus:outline-none placeholder:text-base placeholder:text-muted-foreground" />
-                    </div>
+              <form onSubmit={handleSubmit} className="space-y-6">
+    <div className="space-y-3">
+        {/* First Name - Full Width */}
+        <div>
+            <input
+                type="text"
+                placeholder="Full Name*"
+                className="w-full  my-4 bg-transparent border-b border-muted-foreground/50 p-0 sm:pb-2 sm:pt-0 focus:border-accent focus:outline-none placeholder:text-base placeholder:text-muted-foreground"
+                // --- Functional additions ---
+                name="fullName"
+                value={formData.fullName}
+                onChange={handleChange}
+                required
+            />
+        </div>
 
-                    {/* Email and Phone - Side by Side */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      <div>
-                        <input type="email" placeholder="Email*" className="w-full  mb-4 bg-transparent border-b border-muted-foreground/50 pb-2 focus:border-accent focus:outline-none placeholder:text-base placeholder:text-muted-foreground" />
-                      </div>
-                      <div>
-                        <input type="text" placeholder="Phone number" className="w-full mb-4 bg-transparent border-b border-muted-foreground/50 pb-2 focus:border-accent focus:outline-none placeholder:text-base placeholder:text-muted-foreground" />
-                      </div>
-                    </div>
+        {/* Email and Phone - Side by Side */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+                <input
+                    type="email"
+                    placeholder="Email*"
+                    className="w-full  mb-4 bg-transparent border-b border-muted-foreground/50 pb-2 focus:border-accent focus:outline-none placeholder:text-base placeholder:text-muted-foreground"
+                    // --- Functional additions ---
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
+                />
+            </div>
+            <div>
+                <input
+                    type="text"
+                    placeholder="Phone number"
+                    className="w-full mb-4 bg-transparent border-b border-muted-foreground/50 pb-2 focus:border-accent focus:outline-none placeholder:text-base placeholder:text-muted-foreground"
+                    // --- Functional additions ---
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleChange}
+                />
+            </div>
+        </div>
 
-                    {/* Describe your project - Full Width */}
-                    <div>
+        {/* Describe your project - Full Width */}
+        <div>
+            <textarea
+                rows={3}
+                placeholder="Describe your project"
+                className="w-full mb-4 bg-transparent border-b border-muted-foreground/50 pb-2 focus:border-accent focus:outline-none resize-none placeholder:text-base placeholder:text-muted-foreground"
+                // --- Functional additions ---
+                name="projectDescription"
+                value={formData.projectDescription}
+                onChange={handleChange}
+            />
+        </div>
+    </div>
 
-                      <textarea rows={3} placeholder="Describe your project" className="w-full mb-4 bg-transparent border-b border-muted-foreground/50 pb-2 focus:border-accent focus:outline-none resize-none placeholder:text-base placeholder:text-muted-foreground" />
-                    </div>
-                  </div>
+    <div>
+        <p className="text-base text-muted-foreground font-medium mb-3">Services</p>
+        <div className="flex flex-wrap gap-2">
+            {['Web development', 'AI automation', 'IT consultation', 'Custom solution', 'Voicebots', 'Chatbots', 'App development'].map((service) => (
+                <button
+                    key={service}
+                    type="button"
+                    onClick={() => handleServiceToggle(service)} // <-- ADDED onClick handler
+                    // --- ADDED conditional styling ---
+                    className={cn(
+                        "px-6 py-3 text-[12px] mx-1 rounded-full border border-muted-foreground/50 transition-colors",
+                        formData.services.includes(service)
+                            ? "bg-accent text-accent-foreground border-accent" // Style for selected button
+                            : "text-foreground hover:text-accent" // Default style
+                    )}
+                >
+                    {service}
+                </button>
+            ))}
+        </div>
+    </div>
 
-                  <div>
-                    <p className="text-base text-muted-foreground font-medium mb-3">Services</p>
-                    <div className="flex flex-wrap gap-2">
-                      {['Web development', 'AI automation', 'IT consultation', 'Custom solution', 'IT consultation', 'Voicebots', 'Chatbots', 'App development'].map((s, idx) => (
-                        <button key={`${s}-${idx}`} type="button" className="px-6 py-3 text-[12px] mx-1  text-foreground hover:text-accent rounded-full border border-muted-foreground/50 transition-colors">{s}</button>
-                      ))}
-                    </div>
-                  </div>
+    <div className="flex flex-col sm:flex-row items-center gap-4">
+        <button type="button" className="w-full sm:w-auto flex-1 px-4 py-3 bg-muted/40 hover:bg-muted text-muted-foreground rounded-full border border-border/40 transition-colors flex items-center justify-center gap-2">
+            <span className="text-lg">+</span> Attach File(s)
+        </button>
+        <Button
+            type="submit"
+            className="w-full sm:w-auto bg-gradient-accent text-[14px] text-white rounded-[30px] px-16 py-7 border-transparent hover:bg-none hover:bg-[#2c2c2c] hover:text-accent hover:border-accent transition-all duration-300"
+        >
+            Send
+        </Button>
+    </div>
 
-                  <div className="flex flex-col sm:flex-row items-center gap-4">
-                    <button type="button" className="w-full sm:w-auto flex-1 px-4 py-3 bg-muted/40 hover:bg-muted text-muted-foreground rounded-full border border-border/40 transition-colors flex items-center justify-center gap-2">
-                      <span className="text-lg">+</span> Attach File(s)
-                    </button>
-                    <Button
-                      type="submit"
-                      className="w-full sm:w-auto 
-                      bg-gradient-accent 
-                      text-[14px] 
-                      text-white 
-                      rounded-[30px] 
-                      px-16 py-7 
-                      border-transparent   /* reserve 1px border */
-                      hover:bg-none hover:bg-[#2c2c2c] 
-                      hover:text-accent 
-                      hover:border-accent
-                      transition-all duration-300" 
-                    >
-                      Send
-                    </Button>
-
-                  </div>
-                </form>
+    {/* Display the submission status message */}
+    {responseMessage && <p className="text-center text-white mt-4">{responseMessage}</p>}
+</form>
               </div>
             </div>
           </div>
