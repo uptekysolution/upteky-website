@@ -477,7 +477,7 @@ export const serviceDetails: ServiceDetail[] = [
     partnerIntro: "At Upteky Solutions Pvt. Ltd., we specialize in delivering Wix websites that balance design and functionality. Our team works closely with you to ensure the website not only looks premium but also performs seamlessly. We tailor every Wix project to align with your business goals, industry standards, and growth strategy.",
     partnerBullets: [],
   icon: <Edit className="w-8 h-8 text-accent" />,
-  imgSrc: "/assets/12.jpg",
+  imgSrc: "/assets/13.png",
   contactLink: "/contact?solution=wix-development"
 },
 {
@@ -528,7 +528,7 @@ export const serviceDetails: ServiceDetail[] = [
     "Custom CMS architectures for easy content ops"
   ],
   icon: <Edit className="w-8 h-8 text-accent" />,
-  imgSrc: "/assets/11.jpg",
+  imgSrc: "/assets/14.png",
   contactLink: "/contact?solution=webflow-development"
 },
 {
@@ -579,7 +579,7 @@ export const serviceDetails: ServiceDetail[] = [
     "Proven delivery for SaaS and high-traffic platforms"
   ],
   icon: <Package className="w-8 h-8 text-accent" />,
-  imgSrc: "/assets/10.jpg",
+  imgSrc: "/assets/15.png",
   contactLink: "/contact?solution=mern-development"
 },
 {
@@ -631,7 +631,7 @@ export const serviceDetails: ServiceDetail[] = [
     "End-to-end support from launch to growth"
   ],
   icon: <Package className="w-8 h-8 text-accent" />,
-  imgSrc: "/assets/12.jpg",
+  imgSrc: "/assets/16.png",
   contactLink: "/contact?solution=shopify-development"
 },
 {
@@ -682,7 +682,7 @@ export const serviceDetails: ServiceDetail[] = [
     "WooCommerce and enterprise integration expertise"
   ],
   icon: <Edit className="w-8 h-8 text-accent" />,
-  imgSrc: "/assets/11.jpg",
+  imgSrc: "/assets/17.png",
   contactLink: "/contact?solution=wordpress-development"
 }
 ];

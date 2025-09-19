@@ -4,6 +4,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import ProjectDiscussion from '@/components/ProjectDiscussion';
 import Image from 'next/image';
+import FadeIn from '@/components/FadeIn';
 
 export default function AISalesGrowthPage() {
   const cards = [
@@ -70,6 +71,7 @@ export default function AISalesGrowthPage() {
   return (
     <div className="min-h-screen bg-[#232629] px-20 text-foreground overflow-x-hidden">
       {/* ------------------------------------------------------1----------------------------------------------- */}
+      <FadeIn>
       <section className=" mx-auto pt-20 sm:pt-32 md:pt-40 pb-8 sm:pb-12">
         <div className="grid grid-cols-1 pl-20 lg:grid-cols-2 gap-10 items-center">
           {/* Left copy */}
@@ -111,12 +113,14 @@ export default function AISalesGrowthPage() {
           </div>
         </div>
       </section>
+      </FadeIn>
       
       {/* Divider line */}
       <div className="w-full h-[0.5px] bg-[#414141]" />
 
 
       {/* ---------------------------------------------Section-2--------------------------------------------------- */}
+      <FadeIn>
       <section className="container mx-auto px-4 md:px-6 py-12 sm:py-16 md:py-24">
         <div className="mx-auto rounded-[30px]">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
@@ -142,10 +146,12 @@ export default function AISalesGrowthPage() {
           </div>
         </div>
       </section>
+      </FadeIn>
       
       <div className="w-full h-[0.5px] bg-[#414141]" />
       
       {/* ---------------------------------------------Section-3--------------------------------------------------- */}
+      <FadeIn>
       <section className="container mx-auto px-4 md:px-6 py-12 sm:py-16 md:py-24">
         <motion.h1
           initial={{ opacity: 0, y: 12 }}
@@ -198,10 +204,12 @@ export default function AISalesGrowthPage() {
           </div>
         </div>
       </section>
+      </FadeIn>
 
       <div className="w-full h-[0.5px] bg-[#414141]" />
         
       {/* ---------------------------------------------Section-4--------------------------------------------------- */}
+      <FadeIn>
       <section className="container mx-auto px-4 md:px-6 lg:px-10 py-12 sm:py-16 md:py-24">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 justify-center">
           {/* Left Section */}
@@ -238,10 +246,12 @@ export default function AISalesGrowthPage() {
           </div>
         </div>
       </section>
+      </FadeIn>
       
       <div className="w-full h-[0.5px] bg-[#414141]" />
       
       {/* ---------------------------------------------Section-5--------------------------------------------------- */}
+      <FadeIn>
       <section className="container mx-auto px-4 md:px-6 py-12 sm:py-16 md:py-24">
         <div>
           <ProjectDiscussion
@@ -251,6 +261,7 @@ export default function AISalesGrowthPage() {
           />
         </div>
       </section>
+      </FadeIn>
     </div>
   );
 }

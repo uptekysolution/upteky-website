@@ -107,6 +107,7 @@ export default function ServiceDetailClient({ id }: ServiceDetailClientProps) {
 
   if (!service) {
     return (
+      
       <motion.div 
         className="min-h-screen flex items-center justify-center bg-gradient-to-br from-background via-background/95 to-background/90"
         initial={{ opacity: 0 }}
@@ -127,16 +128,17 @@ export default function ServiceDetailClient({ id }: ServiceDetailClientProps) {
   }
 
   return (
+    
     <motion.div
-      className="min-h-screen bg-[#232629] px-20 pt-4"
+      className="min-h-screen bg-[#232629] px-3 xs:px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 pt-4"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.7, ease: "easeOut" }}
     >
-      <div className="container mx-auto px-4 md:px-6 py-16 relative z-10">
+      <div className="container mx-auto px-3 xs:px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 py-10 xs:py-12 sm:py-14 md:py-16 lg:py-20 relative z-10">
         {/* Main Card with 3D Effect */}
         <motion.div
-          className="bg-card/40 border border-border/20 shadow-xl overflow-hidden rounded-[20px] backdrop-blur-md transform-gpu"
+          className="bg-card/40 border border-border/20 shadow-xl overflow-hidden rounded-[20px] xl:rounded-[30px] backdrop-blur-md transform-gpu"
           initial="hidden"
           animate="visible"
           variants={fadeInUp}
@@ -154,7 +156,7 @@ export default function ServiceDetailClient({ id }: ServiceDetailClientProps) {
               className="object-cover  object-center opacity-90 group-hover:opacity-100 transition-all duration-500"
               priority
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/7 to-transparent flex flex-col justify-end p-6 sm:p-8 md:p-10">
+            <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/7 to-transparent flex flex-col justify-end p-4 xs:p-6 sm:p-8 md:p-10">
               <motion.div 
                 className="mb-auto pt-4"
                 initial={{ opacity: 0, y: 20 }}
@@ -163,7 +165,7 @@ export default function ServiceDetailClient({ id }: ServiceDetailClientProps) {
               >
                 <Badge 
                   variant="secondary" 
-                  className="bg-accent/10 text-accent border-accent/20 text-sm sm:text-base mb-3 sm:mb-4 shadow-lg backdrop-blur-sm"
+                  className="bg-accent/10 text-accent border-accent/20 text-[10px] xs:text-[11px] sm:text-[12px] md:text-[13px] lg:text-[14px] mb-2 xs:mb-3 sm:mb-4 shadow-lg backdrop-blur-sm font-poppins"
                 >
                   {service.category}
                 </Badge>
@@ -182,7 +184,7 @@ export default function ServiceDetailClient({ id }: ServiceDetailClientProps) {
                     className: "w-7 h-7 sm:w-8 sm:h-8 text-accent drop-shadow-lg",
                   })}
                 </motion.div>
-                <h1 className="font-outfit text-[24px] sm:text-[30px] md:text-[36px] lg:text-[35px] xl:text-[40px]  text-white leading-tight drop-shadow-lg">
+                <h1 className="font-outfit text-white text-[20px] xs:text-[22px] sm:text-[26px] md:text-[30px] lg:text-[32px] xl:text-[38px] 2xl:text-[45px] leading-[110%] xs:leading-[115%] sm:leading-[120%] md:leading-[121%] drop-shadow-lg">
                   {service.title}
                 </h1>
               </motion.div>
@@ -190,7 +192,7 @@ export default function ServiceDetailClient({ id }: ServiceDetailClientProps) {
           </motion.div>
 
           {/* Content Section with Enhanced Styling */}
-          <div className="p-6  sm:p-8 md:p-12">
+          <div className="p-5 xs:p-6 sm:p-8 md:p-10 lg:p-12">
             <motion.div
               className=" mx-auto space-y-12"
               initial="hidden"
@@ -199,7 +201,7 @@ export default function ServiceDetailClient({ id }: ServiceDetailClientProps) {
             >
               {/* Quick Stats */}
               <motion.div
-                className={`grid ${service.stats && service.stats.length === 2 ? 'grid-cols-2' : service.stats && service.stats.length === 4 ? 'grid-cols-4' : 'grid-cols-3'} text-center gap-10`}
+                className={`grid ${service.stats && service.stats.length === 2 ? 'grid-cols-2' : service.stats && service.stats.length === 4 ? 'grid-cols-4' : 'grid-cols-3'} text-center gap-2 xs:gap-8 sm:gap-10`}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.5 }}
@@ -218,18 +220,18 @@ export default function ServiceDetailClient({ id }: ServiceDetailClientProps) {
                   return (
                     <motion.div
                       key={idx}
-                      className="p-4 rounded-[20px] bg-[#2C3035]  backdrop-blur-sm  hover:shadow-lg transition-all duration-300"
+                      className="p-4 xs:p-5 sm:p-6 rounded-[16px] xs:rounded-[18px] sm:rounded-[20px] xl:rounded-[30px] bg-[#2C3035] backdrop-blur-sm hover:shadow-lg transition-all duration-300"
                       whileHover={{ y: -5, scale: 1.02 }}
                     >
-                      <IconComp className="h-8 w-8 text-accent mb-3 mx-auto" />
-                      <div className="text-2xl  text-foreground font-outfit">
+                      <IconComp className="h-5 w-5 xs:h-6 xs:w-6 sm:h-8 sm:w-8 text-accent mb-2 xs:mb-3 mx-auto" />
+                      <div className="font-outfit text-white text-[14px] sm:text-[20px] md:text-[22px]">
                         {typeof stat.value === 'number' ? (
                           <AnimatedCounter value={stat.value as number} suffix={stat.suffix} />
                         ) : (
                           <span>{String(stat.value)}</span>
                         )}
                       </div>
-                      <div className="text-sm text-[#9FA6AD] font-poppins">{stat.label}</div>
+                      <div className="font-poppins text-[8px] sm:text-[11px] md:text-[12px] text-[#9FA6AD]">{stat.label}</div>
                     </motion.div>
                   );
                 })}
@@ -237,7 +239,7 @@ export default function ServiceDetailClient({ id }: ServiceDetailClientProps) {
 
               {/* Introduction with Gradient Text */}
               <motion.p
-                className="mt-4 font-poppins text-[12px] sm:text-[14px] md:text-base text-center text-[#9FA6AD]  md:mx-0 "
+                className="mt-4 font-poppins text-[11px] xs:text-[12px] sm:text-[13px] md:text-[14px] lg:text-[15px] xl:text-[16px] text-center text-[#9FA6AD] md:mx-0 leading-[140%] xs:leading-[145%] sm:leading-[150%]"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.5 }}
@@ -247,7 +249,7 @@ export default function ServiceDetailClient({ id }: ServiceDetailClientProps) {
               <div className="w-full h-[0.5px] bg-[#414141]" />
               {/* Features List */}
               <motion.div
-                className="flex flex-col sm:flex-row items-center justify-center gap-3"
+                className="grid grid-cols-1 xs:grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-3 xs:gap-4 sm:gap-5 md:gap-6 justify-items-center"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.6 }}
@@ -255,14 +257,14 @@ export default function ServiceDetailClient({ id }: ServiceDetailClientProps) {
                 {features.map((feature, idx) => (
                   <motion.div
                     key={idx}
-                    className="flex flex-col  items-center text-center p-4"
+                    className="flex flex-col items-center text-center p-4 w-full"
                     whileHover={{ y: -5, scale: 1.02 }}
                   >
-                    <div className="  flex items-center justify-center mb-3">
-                      <feature.icon className="h-8 w-8 text-accent" />
+                <div className="flex items-center justify-center mb-2 xs:mb-3">
+                  <feature.icon className="h-6 w-6 xs:h-7 xs:w-7 sm:h-8 sm:w-8 text-accent" />
                     </div>
-                    <h3 className="text-[20px] font-outfit mb-1">{feature.title}</h3>
-                    <p className="text-sm text-[#9FA6AD] font-poppins max-w-xs">{feature.description}</p>
+                <h3 className="font-outfit text-white text-[14px] xs:text-[15px] sm:text-[16px] md:text-[17px] lg:text-[18px] mb-1 leading-[120%]">{feature.title}</h3>
+                <p className="font-poppins text-[10px] xs:text-[11px] sm:text-[12px] md:text-[13px] text-[#9FA6AD] max-w-xs leading-[145%]">{feature.description}</p>
                   </motion.div>
                 ))}
               </motion.div>
@@ -295,11 +297,11 @@ export default function ServiceDetailClient({ id }: ServiceDetailClientProps) {
                   </ul>
                 </motion.div> */}
                 <motion.div
-                  className="group relative p-6 sm:p-8 rounded-2xl bg-[#2C3035] backdrop-blur-sm border border-border/10 shadow-md hover:shadow-lg transition-all duration-300"
+                  className="group relative p-6 sm:p-8 rounded-2xl xl:rounded-[30px] bg-[#2C3035] backdrop-blur-sm border border-border/10 shadow-md hover:shadow-lg transition-all duration-300"
                   whileHover={{ y: -5, scale: 1.02 }}
                 >
                   <div className="absolute inset-0 bg-gradient-to-br from-accent/5 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  <h3 className="text-2xl sm:text-3xl  text-white flex items-center mb-6">
+                  <h3 className="font-outfit text-white text-[18px] xs:text-[20px] sm:text-[22px] md:text-[24px] lg:text-[26px] flex items-center mb-4 xs:mb-5 sm:mb-6">
                     <Lightbulb className="h-7 w-7 mr-3 text-accent" />
                     Key Benefits
                   </h3>
@@ -313,18 +315,18 @@ export default function ServiceDetailClient({ id }: ServiceDetailClientProps) {
                         transition={{ delay: 0.6 + idx * 0.1 }}
                       >
                         <span className="mt-2 mr-3 h-2 w-2 rounded-full bg-accent flex-shrink-0" aria-hidden /> 
-                        <span className="text-base ">{benefit}</span>
+                        <span className="font-poppins text-[12px] xs:text-[13px] sm:text-[14px] md:text-[15px] text-white/90">{benefit}</span>
                       </motion.li>
                     ))}
                   </ul>
                 </motion.div>
                 {/* Highlights Card */}
                 <motion.div
-                  className="group relative p-6 sm:p-8 rounded-2xl bg-[#2C3035] backdrop-blur-sm border border-border/10 shadow-md hover:shadow-lg transition-all duration-300"
+                  className="group relative p-6 sm:p-8 rounded-2xl xl:rounded-[30px] bg-[#2C3035] backdrop-blur-sm border border-border/10 shadow-md hover:shadow-lg transition-all duration-300"
                   whileHover={{ y: -5, scale: 1.02 }}
                 >
                   <div className="absolute inset-0 bg-gradient-to-br from-accent/5 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  <h3 className="text-2xl sm:text-3xl  text-white flex items-center mb-6">
+                  <h3 className="font-outfit text-white text-[18px] xs:text-[20px] sm:text-[22px] md:text-[24px] lg:text-[26px] flex items-center mb-4 xs:mb-5 sm:mb-6">
                     <Lightbulb className="h-7 w-7 mr-3 text-accent" />
                     Highlights
                   </h3>
@@ -338,7 +340,7 @@ export default function ServiceDetailClient({ id }: ServiceDetailClientProps) {
                         transition={{ delay: 0.6 + idx * 0.1 }}
                       >
                         <span className="mt-2 mr-3 h-2 w-2 rounded-full bg-accent flex-shrink-0" aria-hidden /> 
-                        <span className="text-base sm:text-base">{item}</span>
+                        <span className="font-poppins text-[12px] xs:text-[13px] sm:text-[14px] md:text-[15px] text-white/90">{item}</span>
                       </motion.li>
                     ))}
                   </ul>
@@ -348,12 +350,12 @@ export default function ServiceDetailClient({ id }: ServiceDetailClientProps) {
 
               {/* Process Section with Timeline */}
               <motion.div
-                className="relative p-8 rounded-2xl bg-[#2C3035] backdrop-blur-sm border border-border/10 shadow-md"
+                className="relative p-8 rounded-2xl xl:rounded-[30px] bg-[#2C3035] backdrop-blur-sm border border-border/10 shadow-md"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.7 }}
               >
-                <h3 className="text-2xl sm:text-3xl font-outfit text-white mb-8 flex items-center">
+                <h3 className="font-outfit text-white text-[18px] xs:text-[20px] sm:text-[22px] md:text-[24px] lg:text-[26px] mb-6 flex items-center">
                   <Target className="h-7 w-7 mr-3 text-accent" />
                   Our Process
                 </h3>
@@ -370,7 +372,7 @@ export default function ServiceDetailClient({ id }: ServiceDetailClientProps) {
                       <div className="absolute py-2 left-0 top-1 w-8 h-8 rounded-full bg-accent/5 border border-accent flex items-center justify-center">
                         <span className="text-accent ">{idx + 1}</span>
                       </div>
-                      <p className="text-base  lg:text-base text-[#9FA6AD] font-poppins hover:text-foreground transition-colors duration-200">
+                      <p className="font-poppins text-[12px] xs:text-[13px] sm:text-[14px] md:text-[15px] text-[#9FA6AD] hover:text-foreground transition-colors duration-200 leading-[145%]">
                         {step}
                       </p>
                     </motion.div>
@@ -388,11 +390,11 @@ export default function ServiceDetailClient({ id }: ServiceDetailClientProps) {
                 {service.impacts.map((impact: string, idx: number) => (
                   <motion.div
                     key={idx}
-                    className="p-6 rounded-2xl bg-[#2C3035] backdrop-blur-sm border border-border/10 shadow-md hover:shadow-lg transition-all duration-300"
+                    className="p-6 rounded-2xl xl:rounded-[30px] bg-[#2C3035] backdrop-blur-sm border border-border/10 shadow-md hover:shadow-lg transition-all duration-300"
                     whileHover={{ y: -5, scale: 1.02 }}
                   >
                     <Zap className="h-6 w-6 text-accent mb-4" />
-                    <p className="text-base  text-[#9FA6AD] font-poppins hover:text-white transition-colors duration-200">
+                    <p className="font-poppins text-[12px] xs:text-[13px] sm:text-[14px] md:text-[15px] text-[#9FA6AD] hover:text-white transition-colors duration-200 leading-[145%]">
                       {impact}
                     </p>
                   </motion.div>
@@ -401,21 +403,21 @@ export default function ServiceDetailClient({ id }: ServiceDetailClientProps) {
               <div className="w-full h-[0.5px] bg-[#414141]" />
               {/* Partnership Section with Gradient Background */}
               <motion.div
-                className="relative p-8 sm:p-10 rounded-2xl overflow-hidden"
+                className="relative p-8 sm:p-10 rounded-2xl xl:rounded-[30px] overflow-hidden"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 1 }}
               >
                 <div className="absolute inset-0 bg-[#2B3035] via-accent/2 to-transparent" />
                 <div className="relative z-10">
-                  <h3 className="text-2xl sm:text-3xl font-outfit  text-white mb-6 ">
+                  <h3 className="font-outfit text-white text-[18px] xs:text-[20px] sm:text-[22px] md:text-[24px] lg:text-[26px] mb-5 sm:mb-6 ">
                     {service.partnerTitle ?? 'Why Partner with Upteky?'}
                   </h3>
-                  <p className="text-base  font-poppins text-[#9FA6AD]  mx-auto pr-20">
+                  <p className="font-poppins text-[11px] xs:text-[12px] sm:text-[13px] md:text-[14px] lg:text-[15px] text-[#9FA6AD]  mx-auto pr-0 lg:pr-20 leading-[145%]">
                     {service.partnerIntro ?? 'At Upteky Solutions Pvt. Ltd., our solutions are:'}
                   </p>
                   <div>
-                  <ul className="list-disc font-poppins list-inside marker:text-accent space-y-2 mt-4 text-base sm:text-base text-white/80">
+                  <ul className="list-disc font-poppins list-inside marker:text-accent space-y-2 mt-4 text-[12px] xs:text-[13px] sm:text-[14px] md:text-[15px] text-white/80 leading-[145%]">
                     {(service.partnerBullets ?? [
                       'Custom-designed to match your brand identity',
                       'Secure and scalable, with enterprise-grade compliance',

@@ -28,19 +28,26 @@ const SERVICES = [
 
 const TESTIMONIALS = [
   {
-    title: 'AlfaKinetic: AI Native Competitive Intelligence for Life Sciences',
-    body:
-      'Upteky transformed our idea into a powerful SaaS platform with MERN  flawless execution and design',
-    author: 'AlfaKinetic is Anervea',
-    role: 'Marketing manager, ABC Ad services',
+    title: 'Web Development: Reliable & User-Friendly',
+    body:'Upteky built us a website that’s clean, easy to use, and perfectly fits our needs. The automated documentation feature has saved us a lot of time and effort.Upteky made the whole process smooth and stress-free.',
+    author: 'Lokesh Sharma',
+    role: 'Founder, Game Of Pharma',
     rating: 5,
   },
   {
-    title: 'Scaling Shopify with Custom Integrations',
+    title: 'Upteky AI Video Call Transcription & Chatbot',
     body:
-      'Revenue grew 38% after launch. The team shipped on time with pixel-perfect UI and robust backend.',
-    author: 'Rohit Sharma',
-    role: 'Founder, D2C brand',
+      'Upteky built us an AI video call transcription system along with a chatbot that has made client interactions smoother and more productive. It saves us hours every week and gives us accurate records instantly.Upteky turned a complex need into a simple solution.',
+    author: 'Pranav',
+    role: 'Founder, Vtalix Pvt. Ltd',
+    rating: 5,
+  },
+  {
+    title: 'Upteky Custom Portal & Employee Management',
+    body:
+      'Upteky built us a custom pricing portal and employee management system that simplified our daily operations. It’s reliable, easy to use, and has saved us countless hours of manual work.Upteky made our processes more efficient and organized.',
+    author: 'Ashish Talati',
+    role: 'Director, JM PlastoPack Pvt. Ltd',
     rating: 5,
   },
 ];

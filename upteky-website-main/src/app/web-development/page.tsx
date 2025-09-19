@@ -4,6 +4,7 @@ import React, { useEffect } from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import ProjectDiscussion from '@/components/ProjectDiscussion';
+import FadeIn from '@/components/FadeIn';
 
 export default function WebDevelopmentPage() {
     const cards = [
@@ -249,7 +250,8 @@ export default function WebDevelopmentPage() {
   return (
     <div className="min-h-screen px-3 xs:px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 2xl:px-20 bg-[#232629] text-foreground">
       {/* Section-1 */}
-      <section className="max-w-4xl mx-auto px-2 xs:px-3 sm:px-4 md:px-6 lg:px-8 pt-16 xs:pt-20 sm:pt-24 md:pt-32 lg:pt-36 xl:pt-40 pb-6 xs:pb-8 sm:pb-10 md:pb-12 lg:pb-16">
+      <FadeIn>
+      <section className="max-w-4xl mx-auto px-2 xs:px-3 sm:px-4 md:px-6 lg:pt-36 xl:pt-40 pb-6 xs:pb-8 sm:pb-10 md:pb-12 lg:pb-16">
         <motion.h1
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
@@ -259,8 +261,10 @@ export default function WebDevelopmentPage() {
           Premium Web Development Solutions Tailored for Your Business Growth
         </motion.h1>
        </section>
+       </FadeIn>
        
-       <section className="container pb-16 xs:pb-20 sm:pb-24 md:pb-28 lg:pb-32 xl:pb-36 2xl:pb-40 mx-auto px-3 xs:px-4 sm:px-6 md:px-8">
+      <FadeIn>
+      <section className="container pb-16 xs:pb-20 sm:pb-24 md:pb-28 lg:pb-32 xl:pb-36 2xl:pb-40 mx-auto px-3 xs:px-4 sm:px-6 md:px-8">
          <div className="mx-auto rounded-t-[16px] xs:rounded-t-[18px] sm:rounded-t-[20px] md:rounded-t-[24px] lg:rounded-t-[28px] xl:rounded-t-[30px] 2xl:rounded-t-[33.39px] bg-[linear-gradient(180deg,_rgba(69,76,83,0.7)_0%,_rgba(35,38,41,0.7)_100%)] backdrop-blur-[65.437px] overflow-hidden">
            <div className="overflow-x-auto">
              <table className="w-full min-w-[500px] xs:min-w-[550px] sm:min-w-[600px] md:min-w-[700px] lg:min-w-[800px] xl:min-w-[860px] mt-[20px] xs:mt-[25px] sm:mt-[30px] md:mt-[40px] lg:mt-[50px] xl:mt-[60px]">
@@ -327,10 +331,12 @@ export default function WebDevelopmentPage() {
           </div>
         </div>
       </section>
+      </FadeIn>
       
       <div className="w-full h-[0.5px] bg-[#414141]" />
       
       {/* Section-3 */}
+      <FadeIn>
       <section className="container mx-auto px-3 xs:px-4 sm:px-6 md:px-8 lg:px-10 py-8 xs:py-10 sm:py-12 md:py-16 lg:py-20 xl:py-24">
         <motion.h1
           initial={{ opacity: 0, y: 12 }}
@@ -405,10 +411,12 @@ export default function WebDevelopmentPage() {
           </div>
         </div>
       </section>
+      </FadeIn>
 
       <div className="w-full h-[0.5px] bg-[#414141]" />
       
       {/* Section-4 */}
+      <FadeIn>
       <section className="container mx-auto px-3 xs:px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 pt-24 pb-24">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 xs:gap-7 sm:gap-8 md:gap-10 lg:gap-12 xl:gap-16 justify-center">
           {/* Text Content Section */}
@@ -430,10 +438,12 @@ export default function WebDevelopmentPage() {
           </div>
         </div>
       </section>
+      </FadeIn>
       
       <div className="w-full h-[0.5px] bg-[#414141]" />
       
       {/* Section-5 */}
+      <FadeIn>
       <section className="container mx-auto px-3 xs:px-4 sm:px-6 md:px-8 lg:px-10 py-8 xs:py-10 sm:py-12 md:py-16 lg:py-20 xl:py-24">
         <div>
           <ProjectDiscussion
@@ -443,6 +453,7 @@ export default function WebDevelopmentPage() {
           />
         </div>
       </section>
+      </FadeIn>
     </div>
   );
 }

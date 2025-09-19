@@ -4,6 +4,7 @@ import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import ProjectDiscussion from '@/components/ProjectDiscussion';
 import Image from 'next/image';
+import FadeIn from '@/components/FadeIn';
 
 export default function ConversationalAgentsPage() {
   const cards = [
@@ -296,6 +297,7 @@ export default function ConversationalAgentsPage() {
   return (
     <div className="min-h-screen px-3 xs:px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 2xl:px-20 bg-[#232629] text-foreground overflow-x-hidden">
       {/* Section-1 */}
+      <FadeIn>
       <section className="mx-auto px-2 xs:px-3 sm:px-4 md:px-6 lg:px-8 pt-16 xs:pt-20 sm:pt-24 md:pt-32 lg:pt-36 xl:pt-40 pb-6 xs:pb-8 sm:pb-10 md:pb-12 lg:pb-16">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 xs:gap-8 sm:gap-10 md:gap-12 lg:gap-16 items-center">
           {/* Text content and button */}
@@ -341,11 +343,13 @@ export default function ConversationalAgentsPage() {
           </div>
         </div>
       </section>
+      </FadeIn>
 
       {/* Divider line */}
       <div className="w-full h-[0.5px] bg-[#414141]" />
 
       {/* Section-2 */}
+      <FadeIn>
       <section className="container mx-auto px-3 xs:px-4 sm:px-6 md:px-8 lg:px-10 py-8 xs:py-10 sm:py-12 md:py-16 lg:py-20 xl:py-24">
         <div className="mx-auto rounded-[20px] xs:rounded-[24px] sm:rounded-[26px] md:rounded-[28px] lg:rounded-[30px]">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 xs:gap-5 sm:gap-6 md:gap-7 lg:gap-8">
@@ -371,10 +375,12 @@ export default function ConversationalAgentsPage() {
           </div>
         </div>
       </section>
+      </FadeIn>
 
       <div className="w-full h-[0.5px] bg-[#414141]" />
 
       {/* Section-3 */}
+      <FadeIn>
       <section className="container mx-auto px-3 xs:px-4 sm:px-6 md:px-8 lg:px-10 py-8 xs:py-10 sm:py-12 md:py-16 lg:py-20 xl:py-24">
         <motion.h1
           initial={{ opacity: 0, y: 12 }}
@@ -427,10 +433,12 @@ export default function ConversationalAgentsPage() {
           </div>
         </div>
       </section>
+      </FadeIn>
 
       <div className="w-full h-[0.5px] bg-[#414141]" />
 
       {/* Section-4 */}
+      <FadeIn>
       <section className="container mx-auto px-3 xs:px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 pt-24 pb-24">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 xs:gap-7 sm:gap-8 md:gap-10 lg:gap-12 xl:gap-16 justify-center">
           {/* Text Content Section */}
@@ -452,10 +460,12 @@ export default function ConversationalAgentsPage() {
           </div>
         </div>
       </section>
+      </FadeIn>
 
       <div className="w-full h-[0.5px] bg-[#414141]" />
 
       {/* Section-5 */}
+      <FadeIn>
       <section className="container mx-auto px-3 xs:px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 py-8 xs:py-10 sm:py-12 md:py-16 lg:py-20 xl:py-24">
         <div>
           <ProjectDiscussion
@@ -465,6 +475,7 @@ export default function ConversationalAgentsPage() {
           />
         </div>
       </section>
+      </FadeIn>
     </div>
   );
 }
