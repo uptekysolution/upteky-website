@@ -16,8 +16,8 @@ const whatWeDoData = [
   {
     id: "conversational-ai",
     buttonText: "Conversational Agents",
-    title: "Artificial Intelligence",
-    imageSrc: "/images/what-we-do/ai-conversation.jpg", // Replace with your actual image path
+    title: "Conversational Agents",
+    imageSrc: "/assets/whatWeDo/Conversational-agent.png", // Replace with your actual image path
     description:
       "Upteky Solutions Pvt. Ltd. specializes in creating robust Conversational AI solutions for web, messaging, and voice channels. From Website Chatbots and WhatsApp automation to AI-powered lead re-engagement and Voice Bots, we integrate advanced natural language processing, secure system connections, and actionable analytics to help businesses achieve measurable growth.",
     services: [
@@ -31,7 +31,7 @@ const whatWeDoData = [
     id: "automation-bi",
     buttonText: "AI Automation & Business Intelligence",
     title: "Intelligent Automation",
-    imageSrc: "/images/what-we-do/automation-bi.jpg", // Replace with your actual image path
+    imageSrc: "/assets/whatWeDo/AI Automation.png", // Replace with your actual image path
     description:
       "Streamline your operations and unlock data-driven insights. We develop custom automation workflows that eliminate repetitive tasks and integrate powerful business intelligence tools to transform raw data into actionable strategies, enhancing efficiency and decision-making across your organization.",
     services: [
@@ -45,7 +45,7 @@ const whatWeDoData = [
     id: "advanced-ai",
     buttonText: "Advanced AI Solutions",
     title: "Custom AI & Machine Learning",
-    imageSrc: "/images/what-we-do/advanced-ai.jpg", // Replace with your actual image path
+    imageSrc: "/assets/whatWeDo/Advance Ai.png", // Replace with your actual image path
     description:
       "Go beyond off-the-shelf solutions with custom-trained AI models tailored to your unique challenges. Our expertise in machine learning, computer vision, and predictive analytics allows us to build powerful, proprietary systems that provide a distinct competitive advantage and solve complex business problems.",
     services: [
@@ -59,7 +59,7 @@ const whatWeDoData = [
     id: "web-development",
     buttonText: "Web Development Services",
     title: "Modern Web Solutions",
-    imageSrc: "/images/what-we-do/web-development.jpg", // Replace with your actual image path
+    imageSrc: "/assets/whatWeDo/Web dev-services.png", // Replace with your actual image path
     description:
       "We build high-performance, scalable, and secure web applications that deliver exceptional user experiences. From dynamic e-commerce platforms to sophisticated enterprise portals, our development team leverages the latest technologies to create robust solutions that drive engagement and business growth.",
     services: [
