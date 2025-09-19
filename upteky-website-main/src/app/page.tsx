@@ -284,7 +284,7 @@ export default function Home() {
     email: '',
     phone: '',
     projectDescription: '',
-    services: [], // Array to hold selected services
+    services: [] as string[], // Array to hold selected services
 });
 const [responseMessage, setResponseMessage] = useState('');
 
@@ -521,7 +521,7 @@ const [responseMessage, setResponseMessage] = useState('');
     };
   }, [isAutoScrolling]);
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData(prevState => ({
         ...prevState,
@@ -530,7 +530,7 @@ const [responseMessage, setResponseMessage] = useState('');
 };
 
 // 3. HANDLER for the service buttons (toggle selection)
-const handleServiceToggle = (serviceName) => {
+const handleServiceToggle = (serviceName: string) => {
     setFormData(prevState => {
         const currentServices = prevState.services;
         // If the service is already selected, remove it. Otherwise, add it.
@@ -543,23 +543,25 @@ const handleServiceToggle = (serviceName) => {
 };
 
 // 4. HANDLER for form submission
-const handleSubmit = async (e) => {
+const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setResponseMessage('Submitting...');
 
     const scriptURL = 'https://script.google.com/macros/s/AKfycbxHy2aJu7uv7ZmMZ-stz1-9WmTDUq6Z5faTWTmn0G2nj4GnDFI3OdcT0QO8qe-fUu4s3A/exec'; // <-- IMPORTANT: PASTE YOUR URL HERE
 
-    // Create a new object to send, joining the services array into a string
-    const submissionData = {
-        ...formData,
-        services: formData.services.join(', '), // Convert array to "Service1, Service2"
-    };
+    // Create FormData object for proper submission to Google Apps Script
+    const formDataToSubmit = new FormData();
+    formDataToSubmit.append('fullName', formData.fullName);
+    formDataToSubmit.append('email', formData.email);
+    formDataToSubmit.append('phone', formData.phone);
+    formDataToSubmit.append('projectDescription', formData.projectDescription);
+    formDataToSubmit.append('services', formData.services.join(', ')); // Convert array to string
 
     try {
-        await fetch(scriptURL, {
+        const response = await fetch(scriptURL, {
             method: 'POST',
-            body: JSON.stringify(submissionData),
-            headers: { "Content-Type": "text/plain;charset=utf-8" },
+            body: formDataToSubmit,
+            mode: 'no-cors', // Important for Google Apps Script
         });
 
         setResponseMessage('Success! Your message was submitted.');
@@ -1428,7 +1430,7 @@ const handleSubmit = async (e) => {
       </section> */}
       {/* Free Consultation - two column form */}
       <section className="py-12 md:py-16 bg-[#232629] backdrop-blur-sm border-t border-border/20 snap-start">
-        <div className="container mx-auto px-4 md:px-6">
+        <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-20">
           <div className="w-full max-w-auto lg:max-w-[1273px] mx-auto bg-[#2C3035] backdrop-blur-lg rounded-[30px] border border-gray-600/30  p-4 sm:p-6 md:p-8">
             <div className="grid grid-cols-1  lg:grid-cols-5 gap-8 lg:gap-10 items-center">
               {/* Left info column */}
