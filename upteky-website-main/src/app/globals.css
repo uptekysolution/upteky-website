@@ -17,7 +17,7 @@
     --secondary: 210 8% 25%; /* Secondary elements - slightly lighter gray */
     --secondary-foreground: 0 0% 98%;
     --muted: 210 8% 25%; /* Muted elements */
-    --muted-foreground: 0 0% 63.9%; /* Lighter muted text */
+    --muted-foreground: 210 8% 68%; /* Lighter muted text */
     --accent: 25 85% 61%; /* Accent color derived from orange/red gradient */
     --accent-foreground: 0 0% 100%; /* Text on accent */
     --destructive: 0 62.8% 30.6%;

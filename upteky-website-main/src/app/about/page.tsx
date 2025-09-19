@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
-import { ShieldCheck, Code2, Network, BarChart2, Users, BarChart3, Settings2, ChevronRight, Layers, TrendingUp } from "lucide-react";
+import { ShieldCheck, Code2, Network, BarChart2, Users, BarChart3, Settings2, ChevronRight, Layers, TrendingUp, Rocket, Eye } from "lucide-react";
 import { useRouter } from "next/navigation";
 import Spline from '@splinetool/react-spline';
 import FadeIn from "@/components/FadeIn";
@@ -59,20 +59,115 @@ const steps = [
   },
 ];
 
+const cards = [
+  {
+    title: 'One Partner, Complete Solutions',
+    desc: 'AI + Web + IT under one roof.'
+  },
+  {
+    title: 'Built Around You',
+    desc: ' Every project is tailored to fit your needs.'
+  },
+  {
+    title: 'Designed to Scale',
+    desc: 'Technology that grows as your business grows.'
+  },
+  {
+    title: 'Trusted Experience',
+    desc: 'Proven impact across industries worldwide.'
+  },
+  {
+    title: 'Always Available',
+    desc: 'Continuous support to keep your business moving.'
+  },
+];
 
+const industries = [
+  "Healthcare",
+  "Fintech",
+  "Adtech",
+  "Retail & E-commerce",
+  "Logistics & Transportation",
+  "Legal",
+  "Pharmaceutical",
+  "Real Estate",
+  "Manufacturing",
+  "Oil and Gas",
+  "Media & Entertainment",
+  "Food & Restaurant",
+  "Automotive",
+  "Travel & Hospitality",
+  "Fitness",
+  "Education",
+];
 
+const whyFeatures = [
+  {
+    title: "One Partner, Complete Solutions",
+    desc: "AI + Web + IT under one roof.",
+  },
+  {
+    title: "Built Around You",
+    desc: "Every project is tailored to fit your needs.",
+  },
+  {
+    title: "Designed to Scale",
+    desc: "Technology that grows as your business grows.",
+  },
+  {
+    title: "Trusted Experience",
+    desc: "Proven impact across industries worldwide.",
+  },
+  {
+    title: "Always Available",
+    desc: "Continuous support to keep your business moving.",
+  },
+  {
+    title: "Secure & Reliable",
+    desc: "Enterprise-grade standards for peace of mind.",
+  },
+];
 
 export default function AboutPage() {
   const router = useRouter();
+  const [statsInView, setStatsInView] = useState(false);
+
+  // Intersection Observer for stats animation
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setStatsInView(true);
+          }
+        });
+      },
+      { threshold: 0.3 } // Trigger when 30% of the element is visible
+    );
+
+    const statsElement = document.getElementById('stats-grid');
+    if (statsElement) {
+      observer.observe(statsElement);
+    }
+
+    return () => {
+      if (statsElement) {
+        observer.unobserve(statsElement);
+      }
+    };
+  }, []);
 
   const fadeIn = {
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0 }
   };
-  const StatCounter = ({ end, label, duration = 2000 }: { end: number; label: string; duration?: number }) => {
+  const StatCounter = ({ end, label, duration = 2000, numberClassName = "", labelClassName = "", trigger = true }: { end: number; label: string; duration?: number; numberClassName?: string; labelClassName?: string; trigger?: boolean }) => {
     const [count, setCount] = useState(0);
+    const [hasAnimated, setHasAnimated] = useState(false);
 
     useEffect(() => {
+      if (!trigger || hasAnimated) return;
+
       let startTime: number | undefined;
       const updateCount = (timestamp: number) => {
         if (startTime === undefined) startTime = timestamp;
@@ -82,332 +177,311 @@ export default function AboutPage() {
 
         if (progressRatio < 1) {
           requestAnimationFrame(updateCount);
+        } else {
+          setHasAnimated(true);
         }
       };
 
       const frame = requestAnimationFrame(updateCount);
       return () => cancelAnimationFrame(frame);
-    }, [end, duration]);
+    }, [end, duration, trigger, hasAnimated]);
 
 
     return (
 
       <div className="text-center">
-        <p className="text-3xl  sm:text-4xl md:text-5xl font-bold text-accent mb-4 mt-2">{count}{label.includes("%") ? "%" : "+"}</p>
-        <p className="text-xs sm:text-sm uppercase tracking-widest text-[#8B8B8B] ">{label.replace(/\s*\(\d+-\d+%\)/, '').replace(/\s*\(\d+-\d+\sWeeks\)/, '').replace(" %", "")}</p>
+        <p className={`text-3xl sm:text-4xl md:text-5xl font-bold mb-2 mt-2 ${numberClassName}`}>{count}{label.includes("%") ? "%" : "+"}</p>
+        <p className={`text-xs sm:text-sm tracking-widest text-[#8B8B8B] ${labelClassName}`}>{label.replace(/\s*\(\d+-\d+%\)/, '').replace(/\s*\(\d+-\d+\sWeeks\)/, '').replace(" %", "")}</p>
       </div>
     );
   };
 
   return (
-    <div className="bg-background text-foreground font-sans overflow-x-hidden">
+    <div className="bg-background text-foreground font-sans overflow-x-hidden px-20">
       {/*---------------------------------- 1st Section-------------------------------------------  */}
       {/* Hero Section with Abstract Background */}
-      <FadeIn>
-        <div className="relative overflow-hidden bg-[url('/hero_section-1.png')] bg-cover bg-center bg-no-repeat">
-          {/* Top Orange Light Gradient */}
-          <div className="absolute top-0 left-0 right-0 w-full h-full z-0" aria-hidden="true">
-            <svg viewBox="0 0 1440 800" className="w-full h-full" preserveAspectRatio="xMidYMin slice">
-              <defs>
-                <radialGradient id="centerGlow" cx="50%" cy="5%" r="70%" fx="50%" fy="0%">
-                  {/* <stop offset="0%" stopColor="#FFFFFF" stopOpacity="0.35" /> */}
-                  {/* <stop offset="30%" stopColor="#FF" stopOpacity="0.15" /> */}
-                  {/* <stop offset="100%" stopColor="#FFFFFF" stopOpacity="0" /> */}
-                </radialGradient>
-              </defs>
-              <rect width="100%" height="65%" y="0" fill="url(#centerGlow)" />
-            </svg>
-          </div>
-
-          {/* Background SVG */}
-          <div className="absolute inset-0 z-0">
-            <svg
-              className="w-full h-full opacity-10"
-              viewBox="0 0 1440 600"
-              preserveAspectRatio="xMidYMin slice"
-            >
-              <defs>
-                <linearGradient
-                  id="heroGradientCareers"
-                  x1="0%"
-                  y1="0%"
-                  x2="100%"
-                  y2="100%"
-                >
-                  <stop offset="0%" stopColor="hsl(var(--accent))" />
-                  <stop
-                    offset="100%"
-                    stopColor="hsl(var(--accent))"
-                    stopOpacity="0.7"
-                  />
-                </linearGradient>
-                <filter
-                  id="glowCareers"
-                  x="-50%"
-                  y="-50%"
-                  width="200%"
-                  height="200%"
-                >
-                  <feGaussianBlur stdDeviation="15" result="blur" />
-                  <feMerge>
-                    <feMergeNode in="blur" />
-                    <feMergeNode in="SourceGraphic" />
-                  </feMerge>
-                </filter>
-              </defs>
-
-              <path
-                d="M -100,100 Q 500,200 1200,100 T 2000,200"
-                stroke="url(#heroGradientCareers)"
-                strokeWidth="2"
-                fill="none"
-                opacity="0.5"
-              />
-              <path
-                d="M -100,200 Q 600,50 1300,150 T 2000,50"
-                stroke="url(#heroGradientCareers)"
-                strokeWidth="3"
-                fill="none"
-                opacity="0.3"
-                strokeDasharray="5,15"
-              />
-              <circle cx="200" cy="150" r="3" fill="hsl(var(--accent))" />
-              <circle cx="600" cy="120" r="2" fill="hsl(var(--accent))" />
-              <circle cx="1000" cy="180" r="4" fill="hsl(var(--accent))" />
-              <circle cx="1400" cy="150" r="3" fill="hsl(var(--accent))" />
-            </svg>
-          </div>
-
-          {/* Content */}
-          <div className="relative z-10 min-h-[100vh] md:min-h-[100vh] sm:min-h-[100vh] flex items-center">
-            <div className="container mx-auto px-4 md:px-6">
-              <motion.div
-                className="text-left max-w-[1560px] sm:max-w-[1200px]  mx-auto"
-                initial="hidden"
-                animate="visible"
-                variants={fadeIn}
-                transition={{ duration: 0.7 }}
-              >
-                <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl lg:mt-10   tracking-tight mb-4 sm:mb-6 mt-10 bg-clip-text text-transparent   bg-gradient-to-br from-[#FFFFFF] to-[#BF6F28]">
-                Where Artificial <br/>
-                Intelligence Meets  <br/>
-                Real-World Impact
-                </h1>
-                <p className="text-lg text-left sm:text-xl text-muted-foreground max-w-3xl  mb-8 sm:mb-10 leading-relaxed">
-                  Witness the evolution of artificial intelligence and our journey in shaping the future of business automation.
-                </p>
-                <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
-
-
-                </div>
-              </motion.div>
-              {/* <div className="order-1 md:order-2 h-[20rem] sm:h-[24rem] md:h-[34rem] lg:h-[20rem] flex items-center justify-center">
-            <div className="w-full h-full rounded-xl overflow-hidden relative">
-              <Spline
-        scene="https://prod.spline.design/gzZr3RkDaeIJ0HKD/scene.splinecode" 
-      />
-            </div>
-          </div> */}
-            </div>
-          </div>
+      <section className="w-full relative overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute -top-24 -left-32 h-[420px] w-[420px] rounded-full bg-gradient-to-br from-[#2A2D31] to-transparent blur-3xl opacity-60" />
+          <div className="absolute -bottom-24 -right-32 h-[420px] w-[420px] rounded-full bg-gradient-to-tr from-[#2A2D31] to-transparent blur-3xl opacity-60" />
         </div>
-      </FadeIn>
 
-     
-      {/* ---------------------------------------------3rd Section---------------------------------------- */}
-      <div className="border-t border-[#333333] " />
-      <section className="w-full max-w-7xl lg:max-w-[1560px]  px-4 sm:px-6 lg:px-8 py-[64px]  mx-auto">
-        <div className="text-center mb-12">
-          <motion.h2
-            className="text-2xl sm:text-7xl md:text-3xl lg:text-4xl font-bold text-white"
-            initial={{ opacity: 0, y: -20 }}
+        <div className="relative z-10 max-w-[980px] mx-auto px-6 pt-16 pb-12 sm:pt-20 sm:pb-16 lg:pt-24 lg:pb-20 text-center">
+          <motion.h1
+            className="text-[48px] leading-[1.2] font-normal text-white font-['Outfit']"
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.6 }}
           >
-            Our Capabilities
-          </motion.h2>
+            Transforming Businesses with AI,
+            <br className="hidden sm:block" />
+            Web, and IT Innovation
+          </motion.h1>
+
+          <motion.p
+            className="mt-5 max-w-[860px] mx-auto text-[16px] leading-relaxed text-[#9FA6AD] font-['Poppins'] font-normal"
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+          >
+            At Upteky Solution Pvt. Ltd., we're redefining the way businesses adopt technology. Our focus is simple:
+            build intelligent, scalable, and user-friendly solutions that help organizations grow faster, operate smarter, and
+            serve customers better. Whether it's AI-powered chatbots, voice automation, custom ERP/CRM platforms, or
+            enterprise‑grade websites, our solutions are designed to eliminate complexity and put your business a step ahead.
+          </motion.p>
 
           <motion.div
-            className="w-[88px] h-1 mt-2 bg-gradient-to-r from-[#F58F1D] to-[#E57D77] mx-auto rounded-full"
-            initial={{ scaleX: 0 }}
-            whileInView={{ scaleX: 1 }}
+            className="mt-8"
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            style={{ transformOrigin: "center" }}
-          />
+          >
+            <Link href="/careers">
+              <Button
+                className="w-[180px] h-[45px] rounded-[62px] border border-[#E58A4D] text-[16px] font-normal bg-transparent text-white hover:bg-[#E58A4D]/10 font-['Poppins']"
+                variant="outline"
+              >
+                Join Our Team
+              </Button>
+            </Link>
+          </motion.div>
         </div>
-        <div className="mx-auto lg:mx-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6 md:gap-8">
-  {capabilities.map((cap, index) => (
-    <div
-      key={index}
-      className="w-full min-h-[260px] bg-[#232629] text-white 
-                 p-6 sm:p-8 md:p-10 lg:p-12 
-                 rounded-[30px] md:rounded-[40px]
-                 transition duration-300 
-                 hover:shadow-[0px_0px_30px_-3px_#F58F1D]  
-                 shadow-[0px_4px_34px_0px_#8E8E8E40]"
-    >
-      <img
-        className="h-12 w-12 md:h-[60px] md:w-[60px] mb-6 md:mb-8"
-        src={cap.image}
-        alt={cap.alt}
-      />
-      <h3 className="text-xl sm:text-2xl font-semibold mb-3 md:mb-5 mt-1">
-        {cap.title}
-      </h3>
-      <p className="text-sm md:text-base text-[#ADADAD] leading-relaxed">
-        {cap.desc}
-      </p>
-    </div>
-  ))}
-</div>
 
+        <div className="relative z-10 max-w-[1100px] mx-auto pb-8 sm:pb-12 md:pb-16">
+          <div className="grid grid-cols-1 sm:grid-cols-3 place-items-center px-6">
+            <div
+              className="w-[250px] h-[260px] rounded-[40px] border-4 border-[#434B53] mt-16"
+              style={{ 
+                transform: "rotate(-6.08deg)",
+                background: "linear-gradient(180deg, #232629 0%, #34393F 100%)"
+              }}
+            />
+            <div
+              className="w-[250px] h-[260px] rounded-[40px] border-4 border-[#434B53] -mt-8"
+              style={{ 
+                transform: "rotate(0deg)",
+                background: "linear-gradient(180deg, #232629 0%, #34393F 100%)"
+              }}
+            />
+            <div
+              className="w-[250px] h-[260px] rounded-[40px] border-4 border-[#434B53] mt-16"
+              style={{ 
+                transform: "rotate(6.08deg)",
+                background: "linear-gradient(180deg, #232629 0%, #34393F 100%)"
+              }}
+            />
+          </div>
+        </div>
       </section>
 
-      {/* -----------------------------------------4th Section-------------------------------------------------- */}
-
-      <div className="border-t border-[#333333]  " />
-      <section className="w-full max-w-[1210px] lg:max-w-[1560px]  mx-auto px-4 sm:px-6 lg:px-8  py-[64px] ">
-        <div className="text-center mb-10 md:mb-12 ">
+      {/* ---------------------------------------------2nd Section---------------------------------------- */}
+      <div className="border-t border-[#333333] " />
+      <section className="w-full max-w-7xl lg:max-w-[1560px] px-4 sm:px-6 lg:px-8 py-[64px] mx-auto">
+        <div className="text-center mb-12">
           <motion.h2
-            className="text-2xl sm:text-xl md:text-3xl lg:text-4xl font-bold text-white"
+            className="text-[40px] font-normal text-white font-['Outfit']"
             initial={{ opacity: 0, y: -20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.6 }}
           >
-            Our Workflow
+            What We Stand For
           </motion.h2>
-
-          <motion.div
-            className="w-[88px] h-1 mt-2 bg-gradient-to-r from-[#F58F1D] to-[#E57D77] mx-auto rounded-full"
-            initial={{ scaleX: 0 }}
-            whileInView={{ scaleX: 1 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            style={{ transformOrigin: "center" }}
-          />
         </div>
 
-        {/* Timeline container with absolute line */}
-        <div className="relative">
-          {/* Horizontal connecting line visible on md+ screens */}
-          <motion.div
-            className="absolute hidden 2xl:mx-40 xl:mx-36 lg:mx-24 md:mx-16 md:block top-[82px] left-4 right-4 h-[1px] bg-orange-500 z-0"
-            initial={{ scaleX: 0 }}
-            animate={{ scaleX: [0, 1] }}
-            transition={{
-              duration: 6,
-              repeat: Infinity,
-              repeatType: "loop",
-              ease: "easeOut",
-            }}
-            style={{ transformOrigin: "left" }}
-          />
-
-          <div
-            className="absolute hidden 2xl:mx-40 xl:mx-36 lg:mx-24  md:mx-16  md:block    top-[82px] left-4 right-4 h-[1px] bg-white/20 z-0"
-          />
-
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 text-center text-white relative z-10">
-            {steps.map((item, index) => (
-              <div
-                key={index}
-                className="flex flex-col items-center group transition-all duration-300 px-2"
-              >
-                {/* Step Number */}
-                <div
-                  className="text-[48px] font-bold mb-2 text-[#BABABA]
-                   group-hover:text-accent
-                   group-hover:-translate-y-1
-                   transition-all duration-300 transform"
-                >
-                  {item.step}
-                </div>
-
-                {/* Dot */}
-                <div className="w-2 h-2 rounded-full bg-white mb-4"></div>
-
-                {/* Title */}
-                <h3
-                  className="text-xl font-semibold mb-4
-                   group-hover:text-accent
-                   group-hover:-translate-y-1
-                   transition-all duration-300 transform"
-                >
-                  {item.title}
-                </h3>
-
-                {/* Description */}
-                <p
-                  className="text-sm text-gray-300 leading-relaxed max-w-[280px] mx-auto
-                   group-hover:-translate-y-1
-                   transition-all duration-300 transform"
-                >
-                  {item.desc}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+          <div className="bg-[#2C3035] text-white rounded-2xl md:rounded-3xl p-6 md:p-8">
+            <div className="flex items-start gap-4">
+              <div className="-mt-2">
+                <img src="/images/mission.png" alt="Mission" className="w-14 h-8" />
+              </div>
+              <div>
+                <h3 className="text-base md:text-lg font-normal text-white mb-2 font-['Outfit']">Mission</h3>
+                <p className="text-xs md:text-sm text-[#BDBDBD] leading-relaxed font-['Poppins'] font-normal">
+                  Empowering businesses with smart AI-driven solutions to boost efficiency, streamline operations, unlock growth, and achieve sustainable success.
                 </p>
+              </div>
+            </div>
+          </div>
+
+          <div className="bg-[#2C3035] text-white rounded-2xl md:rounded-3xl p-6 md:p-8">
+            <div className="flex items-start gap-4">
+              <div className="-mt-2">
+                <img src="/images/marketpenetration.png" alt="Vision" className="w-14 h-8" />
+              </div>
+              <div>
+                <h3 className="text-base md:text-lg font-normal text-white mb-2 font-['Outfit']">Vision</h3>
+                <p className="text-xs md:text-sm text-[#BDBDBD] leading-relaxed font-['Poppins'] font-normal">
+                  To lead global digital transformation with intelligent automation, making technology simple, seamless, impactful, and accessible for everyone.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* -----------------------------------------3rd Section-------------------------------------------------- */}
+
+      <div className="border-t border-[#333333]  " />
+      <section className="w-full max-w-[1210px] lg:max-w-[1560px] mx-auto px-4 sm:px-6 lg:px-8 py-[64px] ">
+        <div className="text-center mb-3 md:mb-4 ">
+          <motion.h2
+            className="text-[40px] font-normal text-white text-center font-['Outfit'] leading-[121%]"
+            initial={{ opacity: 0, y: -20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.6 }}
+          >
+            Industries We Serve
+          </motion.h2>
+        </div>
+        <p className="text-center text-[16px] text-[#B7B7B7] max-w-[820px] mx-auto mb-12 font-['Poppins'] font-normal leading-[100%]">
+          We help businesses in every sector unlock opportunities, optimize operations, and stay future‑ready with technology that works.
+        </p>
+
+        <div className="bg-[#2C3035] rounded-2xl md:rounded-3xl p-5 md:p-8 lg:p-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 items-stretch">
+            <div className="flex flex-col justify-between h-full">
+              <div>
+                <h3 className="text-white font-normal text-base md:text-lg mb-2 font-['Poppins']">Customized AI & Automation Solutions <br /> for Every Sector</h3>
+                <p className="text-[#BDBDBD] text-xs md:text-sm leading-relaxed max-w-[520px] font-['Poppins'] font-normal">
+                  We build powerful, custom software solutions designed <br /> to solve real business challenges. As a leading provider <br />of enterprise‑grade AI, ML, NLP, and automation tools,<br /> we deliver scalable, tailored solutions that give you a<br /> competitive edge.
+                </p>
+              </div>
+              <div className="mt-8">
+                <Link href="/careers">
+                  <Button className="rounded-full w-[243px] h-[50px] text-sm font-normal bg-transparent border border-[#E58A4D] text-white hover:bg-[#E58A4D]/10 font-['Poppins']" variant="outline">
+                    Join Our Team
+                  </Button>
+                </Link>
+              </div>
+            </div>
+
+            <div>
+              <div className="flex flex-wrap gap-3">
+                {industries.map((label, idx) => (
+                  <span
+                    key={idx}
+                    className="text-[#CFCFCF] bg-[#32373C] border border-white/5 rounded-full px-4 py-2 text-xs md:text-sm font-['Poppins'] font-normal"
+                  >
+                    {label}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* -------------------------------------4th Section---------------------------------------- */}
+      <div className="border-t border-[#333333]  " />
+      <section className="container mx-auto px-4 md:px-6 py-12 sm:py-16 md:py-24">
+        <div className="mx-auto rounded-[30px]">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+            {/* Left heading/description */}
+            <div className="col-span-1 px-3 flex flex-col text-center md:text-left">
+              <h2 className="font-outfit text-[24px] sm:text-[28px] md:text-[30px] lg:text-[45px] leading-[121%] text-white">
+                Why <br />Work With Us?
+              </h2>
+              <p className="mt-4 font-poppins text-[12px] sm:text-[14px] md:text-[16px] text-[#858C92] max-w-sm mx-auto md:mx-0">
+                Seamlessly engage customers across channels with secure, integrated, and conversion-focused solutions.
+              </p>
+            </div>
+
+            {cards.map((card, idx) => (
+              <div key={idx} className="col-span-1">
+                <div className="rounded-[20px] md:rounded-[28px] bg-[#2C3035] w-full min-h-[160px] sm:min-h-[180px] md:min-h-[216px] mx-auto p-4 sm:p-5 md:p-6">
+                  <h3 className="text-white pt-2 sm:pt-3 md:pt-4 text-lg sm:text-xl leading-[121%] text-center">{card.title}</h3>
+                  <div className="-mx-4 sm:-mx-5 md:-mx-6 my-4 sm:my-6 md:my-8 h-px bg-[#4C4C4C]" />
+                  <p className="text-[#858C92] text-[12px] sm:text-[14px] md:text-base leading-[121%] text-center max-w-[280px] sm:max-w-[300px] md:max-w-[320px] mx-auto">{card.desc}</p>
+                </div>
               </div>
             ))}
           </div>
 
+          <div className="w-full pt-12 md:pt-16 lg:pt-20">
+            <div className="text-center lg:mb-0 md:mb-12">
+
+              {/* Stats Grid */}
+              <FadeIn>
+                <div id="stats-grid" className="grid grid-cols-2 md:grid-cols-4 w-full">
+                  {/* Stat 1 */}
+                  <div className="relative flex items-center justify-center py-8">
+                    <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                      <StatCounter end={10} label="" numberClassName="text-[#353E47] font-poppins font-bold leading-none select-none text-[64px] sm:text-[80px] md:text-[96px]" labelClassName="hidden" trigger={statsInView} />
+                    </div>
+                    <p className="relative z-[1] text-white text-[12px] sm:text-sm tracking-wide">Industries Served</p>
+                  </div>
+
+                  {/* Stat 2 */}
+                  <div className="relative flex items-center justify-center py-8">
+                    <span className="hidden md:block absolute left-0 top-1/2 -translate-y-1/2 h-10 md:h-14 w-px bg-white/15" />
+                    <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                      <span className="text-[#353E47] font-poppins font-bold leading-none select-none text-[64px] sm:text-[80px] md:text-[96px]">4-8</span>
+                    </div>
+                    <p className="relative z-[1] text-white text-[12px] sm:text-sm tracking-wide">Delivery Time (Weeks)</p>
+                  </div>
+
+                  {/* Stat 3 */}
+                  <div className="relative flex items-center justify-center py-8">
+                    <span className="hidden md:block absolute left-0 top-1/2 -translate-y-1/2 h-10 md:h-14 w-px bg-white/15" />
+                    <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                      <StatCounter end={30} label="%" numberClassName="text-[#353E47] font-poppins font-bold leading-none select-none text-[64px] sm:text-[80px] md:text-[96px]" labelClassName="hidden" trigger={statsInView} />
+                    </div>
+                    <p className="relative z-[1] text-white text-[12px] sm:text-sm tracking-wide">Avg Client Growth</p>
+                  </div>
+
+                  {/* Stat 4 */}
+                  <div className="relative flex items-center justify-center py-8">
+                    <span className="hidden md:block absolute left-0 top-1/2 -translate-y-1/2 h-10 md:h-14 w-px bg-white/15" />
+                    <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                      <StatCounter end={100} label="" numberClassName="text-[#353E47] font-poppins font-bold leading-none select-none text-[64px] sm:text-[80px] md:text-[96px]" labelClassName="hidden" trigger={statsInView} />
+                    </div>
+                    <p className="relative z-[1] text-white text-[12px] sm:text-sm tracking-wide">Total Integrations</p>
+                  </div>
+                </div>
+              </FadeIn>
+            </div>
+          </div>
         </div>
       </section>
- {/* -------------------------------------2nd Section---------------------------------------- */}
-      {/* Track Record Section */}
+      {/*--------------------------------------------------5th Section--------------------------------------------------*/}
       <div className="border-t border-[#333333]  " />
-      <section className=" py-12 lg:max-w-[1560px] mx-auto md:py-16 bg-background/30 backdrop-blur-sm ">
-        <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ">
-          <div className="text-center lg:mb-0 md:mb-12">
+      <section className="py-12 lg:max-w-[1560px] mx-auto md:py-16">
+        <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-10 md:mb-12 ">
             <motion.h2
-              className="text-2xl sm:text-7xl md:text-3xl lg:text-4xl font-bold text-white"
+              className="text-[40px] font-medium text-white text-center font-['Outfit']"
               initial={{ opacity: 0, y: -20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.6 }}
             >
-              Our Track Record
+              Our Proven Path to <br /> Success
             </motion.h2>
+          </div>
 
-            <motion.div
-              className="w-[88px] h-1 mt-2 bg-gradient-to-r from-[#F58F1D] to-[#E57D77] mx-auto rounded-full mb-10"
-              initial={{ scaleX: 0 }}
-              whileInView={{ scaleX: 1 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              style={{ transformOrigin: 'center' }}
-            />
-
-            {/* Stats Grid */}
-            <FadeIn>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-[20px] w-full">
-                {/* Card 1 */}
-                <div className="bg-[#232629] text-center rounded-xl px-4 py-4 shadow-[0px_1px_31px_0px_#6B6B6B40]">
-                  <StatCounter end={10} label="Industries Served" />
-                </div>
-
-                {/* Card 2 */}
-                <div className="bg-[#232629] text-center rounded-xl px-4 py-4 shadow-[0px_1px_31px_0px_#6B6B6B40]">
-                  <p className="text-3xl sm:text-4xl md:text-5xl font-bold text-accent mt-2 mb-4">4-8</p>
-                  <p className="text-xs sm:text-sm uppercase tracking-widest text-[#8B8B8B]">Delivery Time (Weeks)</p>
-                </div>
-
-                {/* Card 3 */}
-                <div className="bg-[#232629] text-center rounded-xl px-4 py-4 shadow-[0px_1px_31px_0px_#6B6B6B40]">
-                  <StatCounter end={30} label="Avg Client Growth (30-50%)" />
-                </div>
-
-                {/* Card 4 */}
-                <div className="bg-[#232629] text-center rounded-xl px-4 py-4 shadow-[0px_1px_31px_0px_#6B6B6B40]">
-                  <StatCounter end={100} label="Integrations Implemented" />
-                </div>
-              </div>
-            </FadeIn>
+          <div className="grid grid-cols-1 sm:grid-cols-1 md:[grid-template-columns:repeat(2,314px)] lg:[grid-template-columns:repeat(3,314px)] xl:[grid-template-columns:repeat(4,314px)] gap-y-4 gap-x-3 justify-center">
+            {steps.map((item, index) => (
+              <motion.div
+                key={index}
+                className="bg-[#2C3035] rounded-xl px-6 py-6 ring-1 ring-white/5 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.03)] h-[203px]"
+                initial={{ opacity: 0, y: 12 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.4, delay: index * 0.05 }}
+              >
+                <p className="text-[#CFCFCF] font-['Outfit'] font-normal text-[20px] mb-3">{item.step}</p>
+                <h4 className="text-white font-['Outfit'] font-normal text-[20px] mb-2">{item.title}</h4>
+                <p className="text-[#BDBDBD] font-['Poppins'] font-normal text-[16px] leading-[150%]">{item.desc}</p>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
-      {/*--------------------------------------------------5th Section--------------------------------------------------*/}
     </div>
   );
 }

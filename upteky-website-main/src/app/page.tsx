@@ -201,7 +201,7 @@ const FAQSection = () => {
       {/* Heading */}
       <div className="text-center mb-8 sm:mb-10 md:mb-12">
         <motion.h2
-          className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white"
+          className="text-[40px] font-normal font-['Outfit'] leading-[111%] text-center text-white"
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
@@ -210,14 +210,6 @@ const FAQSection = () => {
           Frequently Asked Questions
         </motion.h2>
 
-        <motion.div
-          className="w-[64px] sm:w-[88px] h-1 mt-2 bg-gradient-to-r from-[#F58F1D] to-[#E57D77] mx-auto rounded-full"
-          initial={{ scaleX: 0 }}
-          whileInView={{ scaleX: 1 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          style={{ transformOrigin: "center" }}
-        />
       </div>
 
       {/* FAQ Items */}
@@ -236,7 +228,7 @@ const FAQSection = () => {
               className="flex items-center justify-between w-full text-left group md:pointer-events-none"
             >
               <span
-                className={`text-xs sm:text-base  md:text-base font-medium 
+                className={`text-[20px] leading-[100%] font-normal font-['Outfit'] 
                             transition-colors duration-300
                             ${openIndex === index ? "text-[#EE8741]" : "text-white"}`}
               >
@@ -266,7 +258,7 @@ const FAQSection = () => {
               className="overflow-hidden"
             >
               {openIndex === index && (
-                <p className="text-xs sm:text-sm text-gray-300 mt-2 sm:mt-3 leading-relaxed">
+                <p className="text-[16px] font-normal font-['Poppins'] text-[#9FA6AD] mt-2 sm:mt-3 leading-[130%]">
                   {faq.answer}
                 </p>
               )}
@@ -521,7 +513,7 @@ export default function Home() {
       <section
         ref={heroSectionRef}
         className={cn(
-          "relative flex flex-col items-center justify-center",
+          "relative flex flex-col items-center justify-center bg-[#232629]",
           "h-screen",
           "px-4 md:px-6",
           "pt-8 sm:pt-12 md:pt-16",
@@ -691,20 +683,14 @@ export default function Home() {
       </section>
 
 
-      {/* Industry Insights Section - Enhanced & Animated */}
-      <section ref={insightsSectionRef} id="stats-section" className="py-12 md:py-16 bg-background/30 backdrop-blur-sm relative overflow-hidden snap-start">
-        <div className="absolute inset-0 z-0 opacity-5 pointer-events-none"
-          style={{
-            backgroundImage: 'radial-gradient(#ffffff 0.5px, transparent 0.5px)',
-            backgroundSize: '20px 20px'
-          }}>
-        </div>
+      {/* Industry Insights Section - Enhanced */}
+      <section ref={insightsSectionRef} id="stats-section" className="py-12 md:py-16 bg-[#232629] backdrop-blur-sm relative overflow-hidden snap-start">
 
         <div className="container mx-auto px-4 md:px-6 relative z-10">
           <div className="text-center mb-10 md:mb-12">
            
             <motion.h2
-              className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mt-1 mb-3 sm:mb-4 text-foreground"
+              className="text-[40px] font-normal font-['Outfit'] leading-[111%] text-center mt-1 mb-3 sm:mb-4 text-foreground"
               initial={{ opacity: 0, y: -20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.3 }}
@@ -713,7 +699,7 @@ export default function Home() {
               Real Problems, AI Solutions
             </motion.h2>
             <motion.p
-              className="text-muted-foreground max-w-xl md:max-w-2xl mx-auto text-sm sm:text-base md:text-lg"
+              className="text-muted-foreground max-w-xl md:max-w-2xl mx-auto text-[16px] leading-[130%] text-center font-['Poppins'] font-normal"
               initial={{ opacity: 0, y: -20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.3 }}
@@ -757,16 +743,16 @@ export default function Home() {
                     "flex-shrink-0 px-3 sm:px-4 py-1 stats-card",
                     isMobile ? "w-full" : "md:w-1/3"
                   )}>
-                    <Card className="h-full bg-card/80 border border-border/30 rounded-xl overflow-hidden shadow-lg transition-all duration-300 hover:shadow-accent/20 hover:-translate-y-1 flex flex-col backdrop-blur-sm group">
+                    <Card className="h-full bg-[#2C3035] border border-border/30 rounded-xl overflow-hidden shadow-lg transition-all duration-300 hover:shadow-accent/20 hover:-translate-y-1 flex flex-col backdrop-blur-sm group">
                       <CardContent className="p-6 md:p-8 flex-grow flex flex-col items-center text-center">
                         <div className="bg-accent/10 group-hover:bg-accent/20 p-3 rounded-full inline-block transition-colors duration-300 mb-4">
                           {React.cloneElement(stat.icon as React.ReactElement, { className: "w-8 h-8 text-accent" })}
                         </div>
-                        <div className="text-3xl md:text-4xl font-bold text-accent mb-2 group-hover:text-accent-dark transition-colors duration-300">
+                        <div className="text-[24px] font-bold font-['Outfit'] leading-[100%] text-[#F58F1D] mb-2 transition-colors duration-300">
                           {stat.mainNumber}
                         </div>
-                        <h4 className="text-base sm:text-lg font-semibold text-foreground mb-3 min-h-[2.5em] group-hover:text-foreground/90 transition-colors duration-300">{stat.label}</h4>
-                        <p className="text-sm text-muted-foreground leading-relaxed min-h-[3.6em]">{stat.description}</p>
+                        <h4 className="text-[24px] font-normal font-['Outfit'] leading-[100%] text-white mb-3 min-h-[2.5em] transition-colors duration-300">{stat.label}</h4>
+                        <p className="text-[16px] font-normal font-['Poppins'] leading-[130%] text-center text-[#9FA6AD] mt-1 min-h-[3.6em]">{stat.description}</p>
                       </CardContent>
                     </Card>
                   </div>
@@ -778,11 +764,12 @@ export default function Home() {
       </section>
 
       {/* What We Do – End-to-End Solutions */}
-<section className="py-12 md:py-16 bg-background/30 backdrop-blur-sm snap-start">
+      <div className="border-t border-[#333333] " />
+<section className="py-12 md:py-16 bg-[#232629] backdrop-blur-sm snap-start">
   <div className="container mx-auto px-4 md:px-6">
     <div className="text-center mb-10 md:mb-12">
       <motion.h2
-        className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-4"
+        className="text-[40px] font-normal font-['Outfit'] leading-[111%] text-center text-white mb-4"
         initial={{ opacity: 0, y: -20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.3 }}
@@ -810,7 +797,7 @@ export default function Home() {
               onClick={() => setAccordionIndex(accordionIndex === index ? null : index)}
               className="flex items-center justify-between w-full text-left group"
             >
-              <span className={`text-base font-medium transition-colors duration-300 ${accordionIndex === index ? "text-[#EE8741]" : "text-white"}`}>
+              <span className={`text-[18px] leading-[100%] font-normal font-['Poppins'] text-center transition-colors duration-300 ${accordionIndex === index ? "text-[#EE8741]" : "text-white"}`}>
                 {tab.buttonText}
               </span>
               <motion.div
@@ -838,13 +825,13 @@ export default function Home() {
                     <Image src={tab.imageSrc} alt={tab.title} fill className="object-cover" sizes="100vw" />
                     <div className="absolute inset-0 bg-black/30"></div>
                   </div>
-                  <h3 className="text-xl font-bold text-white mb-2">{tab.title}</h3>
-                  <p className="text-gray-300 leading-relaxed mb-4 text-sm">{tab.description}</p>
+                  <h3 className="text-xl text-white mb-2 font-['Outfit'] font-normal leading-[111%]">{tab.title}</h3>
+                  <p className="text-[#9FA6AD] leading-[130%] mb-4 text-sm font-['Poppins'] font-normal">{tab.description}</p>
                   <div className="flex flex-col gap-2">
                     {tab.services.map((service, sIndex) => (
                       <div key={sIndex} className="flex items-center gap-3 text-gray-200 text-sm">
                         <ArrowRight className="w-4 h-4 text-accent flex-shrink-0" />
-                        <span>{service}</span>
+                        <span className="font-['Poppins'] font-normal">{service}</span>
                       </div>
                     ))}
                   </div>
@@ -871,7 +858,7 @@ export default function Home() {
               <button
                 onClick={() => setActiveTab(tab.id)}
                 className={cn(
-                  "p-4 rounded-lg text-center transition-all duration-300 font-medium w-full",
+                  "p-4 rounded-lg text-center transition-all duration-300 w-full text-[18px] leading-[100%] font-normal font-['Poppins']",
                   "focus:outline-none focus-visible:ring-2 focus-visible:ring-accent",
                   activeTab === tab.id
                     ? "bg-[#4A4E54] text-white shadow-lg rounded-full"
@@ -909,13 +896,13 @@ export default function Home() {
                     <Image src={currentTab.imageSrc} alt={currentTab.title} fill className="object-cover" sizes="(max-width: 1024px) 100vw, 67vw" />
                     <div className="absolute inset-0 bg-black/30"></div>
                   </div>
-                  <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">{currentTab.title}</h3>
-                  <p className="text-gray-300 leading-relaxed mb-6">{currentTab.description}</p>
+                  <h3 className="text-2xl md:text-3xl text-white mb-4 font-['Outfit'] font-normal leading-[111%]">{currentTab.title}</h3>
+                  <p className="text-[#9FA6AD] leading-[130%] mb-6 font-['Poppins'] font-normal">{currentTab.description}</p>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-4">
                     {currentTab.services.map((service, index) => (
                       <div key={index} className="flex items-center gap-3 text-gray-200">
                         <ArrowRight className="w-5 h-5 text-accent flex-shrink-0" />
-                        <span>{service}</span>
+                        <span className="font-['Poppins'] font-normal">{service}</span>
                       </div>
                     ))}
                   </div>
@@ -930,11 +917,12 @@ export default function Home() {
 </section>
        
 {/* Powering Innovation For */}
-<section className="py-16 md:py-20 bg-background/20 backdrop-blur-sm snap-start font-[Poppins]">
+<div className="border-t border-[#333333] " />
+<section className="py-16 md:py-20 bg-[#232629] backdrop-blur-sm snap-start font-[Poppins]">
   <div className="container mx-auto px-4 md:px-6">
     <div className="text-center mb-12">
       <motion.h2
-        className="font-[Outfit] text-[45px] font-bold text-white mb-4"
+        className="text-[40px] font-normal font-['Outfit'] leading-[111%] text-center text-white mb-4"
         initial={{ opacity: 0, y: -20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.3 }}
@@ -943,7 +931,7 @@ export default function Home() {
         Powering Innovation For
       </motion.h2>
       <motion.p
-        className="text-gray-400 text-lg max-w-4xl mx-auto leading-relaxed"
+        className="text-[#9FA6AD] text-[16px] leading-[130%] text-center font-['Poppins'] font-normal max-w-4xl mx-auto"
         initial={{ opacity: 0, y: -20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.3 }}
@@ -959,15 +947,15 @@ export default function Home() {
       <div className="grid grid-cols-1 md:grid-cols-10 gap-8 items-stretch"> {/* CHANGED: Back to 10-column grid for the 4:6 ratio */}
         {/* Startups */}
         <motion.div
-          className="md:col-span-4 bg-[#2A2D31] border border-gray-700/50 rounded-[30px] p-8 hover:bg-[#2F3236] transition-all duration-300 h-full flex flex-col" /* CHANGED: Spans 4 of 10 columns */
+          className="md:col-span-4 bg-[#2C3035] border border-gray-700/50 rounded-[30px] p-8 hover:bg-[#2C3035] transition-all duration-300 h-full flex flex-col" /* CHANGED: Spans 4 of 10 columns */
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.6, delay: 0.1 }}
         >
           <Image src="/icons/startup.png" alt="Startups" width={32} height={32} className="mb-4" />
-          <h3 className="font-[Outfit] text-2xl font-semibold text-white mb-3">Startups Business</h3>
-          <p className="text-gray-400 text-base leading-relaxed">
+          <h3 className="font-['Outfit'] text-2xl font-normal leading-[100%] tracking-[0] text-white mb-3">Startups Business</h3>
+          <p className="text-[#9FA6AD] text-base leading-[130%] tracking-[0] text-justify font-['Poppins'] font-normal">
             We specialize in MVP development, rapid prototyping, and flexible engagement models, helping startups scale from
             idea to launch. With a diverse tech stack and proactive execution, we act as their extended team, managing
             technology while they focus on growth.
@@ -976,15 +964,15 @@ export default function Home() {
 
         {/* Small Business */}
         <motion.div
-          className="md:col-span-6 bg-[#2A2D31] border border-gray-700/50 rounded-[30px] p-8 hover:bg-[#2F3236] transition-all duration-300 h-full flex flex-col" /* CHANGED: Spans 6 of 10 columns */
+          className="md:col-span-6 bg-[#2C3035] border border-gray-700/50 rounded-[30px] p-8 hover:bg-[#2C3035] transition-all duration-300 h-full flex flex-col" /* CHANGED: Spans 6 of 10 columns */
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
           <Image src="/icons/smallbusiness.png" alt="Small Business" width={32} height={32} className="mb-4" />
-          <h3 className="font-[Outfit] text-2xl font-semibold text-white mb-3">Small Business</h3>
-          <p className="text-gray-400 text-base leading-relaxed">
+          <h3 className="font-['Outfit'] text-2xl font-normal leading-[100%] tracking-[0] text-white mb-3">Small Business</h3>
+          <p className="text-[#9FA6AD] text-base leading-[130%] tracking-[0] text-justify font-['Poppins'] font-normal">
             Small businesses seek to scale and boost efficiency through technology and that's where we deliver value. From UI/UX design and development to QA
             and cloud deployment, we provide complete, end-to-end custom
             technology solutions under one roof.
@@ -996,15 +984,15 @@ export default function Home() {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
         {/* Enterprise */}
         <motion.div
-          className="bg-[#2A2D31] border border-gray-700/50 rounded-[30px] p-8 hover:bg-[#2F3236] transition-all duration-300 h-full flex flex-col"
+          className="bg-[#2C3035] border border-gray-700/50 rounded-[30px] p-8 hover:bg-[#2C3035] transition-all duration-300 h-full flex flex-col"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.6, delay: 0.3 }}
         >
           <Image src="/icons/enterprise.png" alt="Enterprise" width={32} height={32} className="mb-4" />
-          <h3 className="font-[Outfit] text-2xl font-semibold text-white mb-3">Enterprise Business</h3>
-          <p className="text-gray-400 text-base leading-relaxed">
+          <h3 className="font-['Outfit'] text-2xl font-normal leading-[100%] tracking-[0] text-white mb-3">Enterprise Business</h3>
+          <p className="text-[#9FA6AD] text-base leading-[130%] tracking-[0] text-justify font-['Poppins'] font-normal">
             We build enterprise-grade solutions that drive measurable impact, from clinical systems to insurance platforms. Our
             products power global multi-million-dollar businesses, with enterprises preferring our
             scalable dedicated hire model to match
@@ -1014,15 +1002,15 @@ export default function Home() {
 
         {/* Agency */}
         <motion.div
-          className="bg-[#2A2D31] border border-gray-700/50 rounded-[30px] p-8 hover:bg-[#2F3236] transition-all duration-300 h-full flex flex-col"
+          className="bg-[#2C3035] border border-gray-700/50 rounded-[30px] p-8 hover:bg-[#2C3035] transition-all duration-300 h-full flex flex-col"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.6, delay: 0.4 }}
         >
           <Image src="/icons/agency.png" alt="Agency" width={32} height={32} className="mb-4" />
-          <h3 className="font-[Outfit] text-2xl font-semibold text-white mb-3">Agency Business</h3>
-          <p className="text-gray-400 text-base leading-relaxed">
+          <h3 className="font-['Outfit'] text-2xl font-normal leading-[100%] tracking-[0] text-white mb-3">Agency Business</h3>
+          <p className="text-[#9FA6AD] text-base leading-[130%] tracking-[0] text-justify font-['Poppins'] font-normal">
             Upteky offers free business analysis, tech consultation, and tailored solutions. With
             flexible models and expert teams, we help
             enterprises scale efficiently, accelerate
@@ -1033,24 +1021,23 @@ export default function Home() {
 
         {/* Innovation */}
         <motion.div
-          className="bg-[#2A2D31] border border-gray-700/50 rounded-[30px] p-8 hover:bg-[#2F3236] transition-all duration-300 flex flex-col justify-between h-full"
+          className="bg-[#2C3035] border border-gray-700/50 rounded-[30px] p-10 md:p-12 hover:bg-[#2C3035] transition-all duration-300 flex flex-col justify-between h-full"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.6, delay: 0.5 }}
         >
-          <div>
-            <Image src="/icons/innovation.png" alt="Innovation" width={32} height={32} className="mb-4" />
-            <h3 className="font-[Outfit] text-2xl font-semibold text-white mb-3">Bringing Innovation Together</h3>
-            <p className="text-gray-400 text-base leading-relaxed mb-6">
+          <div className="space-y-6">
+            <h3 className="font-['Outfit'] text-2xl font-normal leading-[100%] tracking-[0] text-white whitespace-nowrap">Bringing Innovation Together</h3>
+            <p className="text-[#9FA6AD] text-base leading-[130%] tracking-[0] text-justify font-['Poppins'] font-normal">
               Upteky's R&D team ensures clients stay ahead with early tech adoption, seamless
               execution, and access to the latest innovations in a fast-evolving digital
               landscape.
             </p>
           </div>
-          <div>
+          <div className="pt-6">
             <Button
-              className="bg-[#2A2D31] border border-gray-500 text-gray-200 hover:bg-gray-700 hover:border-gray-400 transition-all duration-300 px-5 py-2 rounded-full text-sm"
+              className="bg-[#2F3133] border border-gray-600 text-gray-200 hover:bg-[#394046] hover:border-gray-500 transition-all duration-300 px-6 md:px-8 py-3 md:py-4 rounded-full text-base"
             >
               Get In Touch →
             </Button>
@@ -1062,12 +1049,13 @@ export default function Home() {
 </section>
 
 {/* Our Process */}
+<div className="border-t border-[#333333] " />
 <section className="py-16 md:py-20 bg-[#232629] text-white font-poppins">
   <div className="container mx-auto px-4 md:px-6">
     {/* Section Heading */}
     <div className="text-center mb-12">
       <motion.h2
-        className="text-3xl sm:text-4xl font-bold mb-4 font-outfit"
+        className="text-[40px] font-normal font-['Outfit'] leading-[111%] text-center mb-4"
         initial={{ opacity: 0, y: -20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.3 }}
@@ -1076,7 +1064,7 @@ export default function Home() {
         Our Process
       </motion.h2>
       <motion.p
-        className="text-gray-400 max-w-3xl mx-auto text-lg" /* CHANGED: to text-lg */
+        className="text-[#9FA6AD] text-[16px] leading-[130%] text-center font-['Poppins'] font-normal max-w-3xl mx-auto"
         initial={{ opacity: 0, y: -20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.3 }}
@@ -1144,13 +1132,13 @@ export default function Home() {
               >
                 {/* Constrain width of the centered last item */}
                 <div className={cn({ "md:w-2/3 lg:w-1/2": index === 4 })}>
-                  <span className="block text-xl font-bold text-[#F58F1D] mb-4"> {/* CHANGED: text-lg to text-xl */}
+                  <span className="block text-[24px] font-normal leading-[121%] tracking-[0] font-['Outfit'] text-[#F58F1D] mb-4"> {/* step number */}
                     {item.step}
                   </span>
-                  <h3 className="text-2xl font-semibold text-white mb-3 font-outfit"> {/* CHANGED: text-xl to text-2xl */}
+                  <h3 className="text-[24px] font-normal leading-[121%] tracking-[0] text-white mb-3 font-['Outfit']"> {/* step title */}
                     {item.title}
                   </h3>
-                  <p className="text-gray-300 text-base leading-relaxed font-poppins"> {/* CHANGED: text-sm to text-base */}
+                  <p className="text-[#9FA6AD] text-[16px] font-normal leading-[121%] tracking-[0] font-['Poppins']"> {/* step description */}
                     {item.description}
                   </p>
                 </div>
@@ -1164,6 +1152,7 @@ export default function Home() {
 </section>
 
 {/* Why Choose Upteky Solutions */}
+<div className="border-t border-[#333333] " />
 <section className="py-16 md:py-20 bg-[#232629] text-white font-poppins">
   <div className="container mx-auto px-4 md-px-6">
     {(() => {
@@ -1203,10 +1192,10 @@ export default function Home() {
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.7 }}
           >
-            <h2 className="text-3xl sm:text-4xl font-bold font-outfit mb-4">
+            <h2 className="text-[40px] font-normal leading-[121%] tracking-[0] font-['Outfit'] mb-4">
               Why Choose Upteky Solutions?
             </h2>
-            <p className="text-gray-400 leading-relaxed">
+            <p className="text-[#9FA6AD] text-[15.84px] font-normal leading-[121%] tracking-[0] font-['Poppins']">
               Empowering businesses with innovation, scalability, and trusted expertise delivering solutions that truly drive growth.
             </p>
           </motion.div>
@@ -1216,19 +1205,19 @@ export default function Home() {
             <motion.div
               key={index}
               // ADDED min-h-[240px] to enforce a consistent minimum height for ALL cards
-              className="bg-[#2C2F33] border border-neutral-800 rounded-2xl p-6 flex flex-col h-full text-center transition-all duration-300 hover:border-indigo-500/50 hover:-translate-y-1 min-h-[240px]"
+              className="bg-[#2C3035] border border-neutral-800 rounded-2xl p-6 flex flex-col h-full text-center transition-all duration-300 hover:border-indigo-500/50 hover:-translate-y-1 min-h-[240px]"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.6, delay: (index + 1) * 0.1 }}
             >
               <div className="flex-grow flex flex-col justify-center">
-                <h3 className="text-lg font-semibold text-white font-outfit pb-4">
+                <h3 className="text-[21.61px] font-normal leading-[121%] tracking-[0] text-white font-['Outfit'] pb-4">
                   {item.title}
                 </h3>
                 {/* Divider Line: Centered using mx-auto */}
                 <div className="h-px bg-neutral-700 w-2/3 mx-auto" /> 
-                <p className="text-gray-400 text-sm pt-4">
+                <p className="text-[#9FA6AD] text-[15.84px] font-normal leading-[121%] tracking-[0] font-['Poppins'] text-center pt-4">
                   {item.description}
                 </p>
               </div>
@@ -1242,11 +1231,11 @@ export default function Home() {
 
       
       {/* -----------------------------------------------Here from our clients-------------------------------------------------- */}
-<section className="py-12 px-6 md:py-16 bg-opacity-90 bg-background/30 backdrop-blur-sm border-t border-border/20 snap-start">
+<section className="py-12 px-6 md:py-16 bg-[#232629] backdrop-blur-sm border-t border-border/20 snap-start">
   <div className="container mx-auto px-4 md:px-6">
     <div className="text-center mb-10 md:mb-12">
       <motion.h2
-        className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mt-1 mb-3 sm:mb-4"
+        className="text-[40px] font-normal font-['Outfit'] leading-[111%] text-center mt-1 mb-3 sm:mb-4"
         initial={{ opacity: 0, y: -20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.3 }}
@@ -1255,7 +1244,7 @@ export default function Home() {
         Hear From Our Clients
       </motion.h2>
       <motion.p
-        className="text-gray-400 max-w-3xl mx-auto"
+        className="text-[#9FA6AD] text-[16px] leading-[130%] text-center font-['Poppins'] font-normal max-w-3xl mx-auto"
         initial={{ opacity: 0, y: -20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.3 }}
@@ -1280,17 +1269,17 @@ export default function Home() {
             ease: "easeOut",
           }}
         >
-          <div className="relative bg-gradient-to-b from-[#232629]/[0.18] to-[#23272B] backdrop-blur-sm border border-border/20 shadow-[0_4px_10px_rgba(142,142,142,0.3)] p-3 transition-all duration-300 group flex flex-col w-full max-w-[400px] sm:max-w-[500px] md:max-w-[400px] lg:max-w-[600px] xl:max-w-[800px] h-[320px] sm:h-[400px] md:h-[400px] lg:h-[400px] xl:h-[400px] 2xl:h[400px] rounded-[20px]">
+          <div className="relative bg-[#2C3035] backdrop-blur-sm border border-border/20 p-3 transition-all duration-300 group flex flex-col w-full max-w-[400px] sm:max-w-[500px] md:max-w-[400px] lg:max-w-[600px] xl:max-w-[800px] h-[320px] sm:h-[400px] md:h-[400px] lg:h-[400px] xl:h-[400px] 2xl:h[400px] rounded-[20px]">
             <div className=" flex-grow z-10 flex flex-col ">
               <div className="text-center mb-4 lg:mb-6 sm:mb-6 md:mb-6 xl:mb-6 2xl:mb-6">
-                <p className="font-semibold text-accent text-xl sm:text-xl md:text-2xl lg:text-2xl xl:text-2xl 2xl:text-2xl justify-center items-start mt-10 tracking-tight">
+                <p className="font-['Outfit'] font-normal text-white text-[24px] leading-[100%] tracking-[0] justify-center items-start mt-10">
                   {testimonial.author}
                 </p>
-                <p className="text-xs sm:text-xl md:text-base lg:text-base xl:text-base 2xl:text-base mt-1 text-white ">{testimonial.title}</p>
+                <p className="font-['Outfit'] font-normal text-[16px] leading-[100%] tracking-[0] mt-1 text-white">{testimonial.title}</p>
               </div>
               <div className="h-px bg-gray-600 opacity-60 w-full " ></div>
               <div className="flex-grow flex justify-center mt-6 2xl:mt-10 xl:mt-8 xl:px-6 lg:mt-8 md:mt-10 sm:mt-10 px-2 md:px-8 lg:px-4 2xl:px-12 ">
-                <p className="text-white/60 text-center text-sm sm:text-xl md:text-base lg:text-base xl:text-base 2xl:text-base leading-snug tracking-tighter">
+                <p className="font-['Poppins'] font-normal text-[16px] leading-[130%] tracking-[0] text-center text-[#9FA6AD]">
                   {testimonial.quote}
                 </p>
               </div>
@@ -1328,7 +1317,7 @@ export default function Home() {
               <motion.div
                 // REMOVED: max-w-... classes to make the card wider
                 // ADDED: min-h-... to maintain a consistent height
-                className="relative bg-gradient-to-b from-[#232629]/[0.18] to-[#23272B] backdrop-blur-sm border border-border/20 shadow-[0_4px_10px_rgba(142,142,142,0.3)] p-4 sm:p-6 transition-all duration-300 group flex flex-col w-full mx-auto min-h-[340px] sm:min-h-[360px] rounded-[20px] mb-4"
+                className="relative bg-[#2C3035] backdrop-blur-sm border border-border/20 p-4 sm:p-6 transition-all duration-300 group flex flex-col w-full mx-auto min-h-[340px] sm:min-h-[360px] rounded-[20px] mb-4"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.2 }}
@@ -1336,14 +1325,14 @@ export default function Home() {
               >
                 <div className="flex flex-col h-full">
                   <div className="text-center mb-4 sm:mb-5">
-                    <p className="font-semibold text-accent text-base sm:text-lg md:text-xl justify-center items-center mt-4 sm:mt-5 tracking-tight">
+                    <p className="font-['Outfit'] font-normal text-white text-[24px] leading-[100%] tracking-[0] justify-center items-center mt-4 sm:mt-5">
                       {testimonial.author}
                     </p>
-                    <p className="text-sm sm:text-base mt-1 text-white">{testimonial.title}</p>
+                    <p className="font-['Outfit'] font-normal text-[16px] leading-[100%] tracking-[0] mt-1 text-white">{testimonial.title}</p>
                   </div>
                   <div className="h-px bg-gray-600 opacity-60 w-full mb-4 sm:mb-5"></div>
                   <div className="flex-1 flex justify-center items-center px-2 sm:px-4 overflow-hidden">
-                    <p className="text-white/60 text-center text-sm sm:text-base leading-snug md:leading-relaxed tracking-tight">
+                    <p className="font-['Poppins'] font-normal text-[16px] leading-[130%] tracking-[0] text-center text-[#9FA6AD]">
                       {testimonial.quote}
                     </p>
                   </div>
@@ -1358,7 +1347,7 @@ export default function Home() {
 </section>
 
       {/* FAQ Section */}
-      <section className=" bg-background/30 backdrop-blur-sm border-t border-b border-border/20 snap-start">
+      <section className=" bg-[#232629] backdrop-blur-sm border-t border-b border-border/20 snap-start">
         <FAQSection />
       </section>
 
@@ -1368,33 +1357,33 @@ export default function Home() {
 
       </section> */}
       {/* Free Consultation - two column form */}
-      <section className="py-12 md:py-16  bg-opacity-90  bg-background/30 backdrop-blur-sm border-t border-border/20 snap-start">
+      <section className="py-12 md:py-16 bg-[#232629] backdrop-blur-sm border-t border-border/20 snap-start">
         <div className="container mx-auto px-4 md:px-6">
-          <div className="w-full max-w-auto lg:max-w-[1273px] mx-auto shadow-[0_4px_10px_rgba(142,142,142,0.3)] bg-[#232629] backdrop-blur-lg rounded-[30px] border border-gray-600/30  p-4 sm:p-6 md:p-8">
+          <div className="w-full max-w-auto lg:max-w-[1273px] mx-auto bg-[#2C3035] backdrop-blur-lg rounded-[30px] border border-gray-600/30  p-4 sm:p-6 md:p-8">
             <div className="grid grid-cols-1  lg:grid-cols-5 gap-8 lg:gap-10 items-center">
               {/* Left info column */}
               <div className="flex flex-col h-full lg:col-span-2">
                 <div>
-                  <h2 className="text-[18px] sm:text-2xl md:text-2xl lg:text-2xl  xl:text-3xl 2xl:text-4xl font-bold text-foreground mb-3 mt-1 lg:mt-6 pt-6 whitespace-nowrap ">Ready for Free Consultation?</h2>
-                  <p className=" mb-14 text-sm sm:text-base md:text-base lg:text-base xl:text-xl 2xl:text-xl text-muted-foreground font-semibold whitespace-wrap">
+                  <h2 className="text-[18px] sm:text-2xl md:text-2xl lg:text-2xl  xl:text-3xl 2xl:text-4xl font-normal font-['Outfit'] leading-[100%] text-center text-foreground mb-3 mt-1 lg:mt-6 pt-6 whitespace-nowrap">Ready for Free Consultation?</h2>
+                  <p className=" mb-10 text-[14px] sm:text-[15px] md:text-[16px] text-[#9FA6AD] font-['Outfit'] font-light leading-[100%] text-center whitespace-normal">
                     Your Demand for IT & AI Expert 
                     and  free consultation anytime
                   </p>
                   <div className="space-y-4 mt-8">
                     <div className="flex items-center gap-3 text-sm">
                       <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" className="text-accent  "><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" /><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" /></svg>
-                      <span className="text-foreground text-sm sm:text-[18px] whitespace-nowrap">Email us:</span>
-                      <span className="text-muted-foreground text-sm sm:text-[18px]">hello@upteky.com</span>
+                      <span className="text-foreground text-sm sm:text-[18px] whitespace-nowrap font-['Outfit'] font-light leading-[100%]">Email us:</span>
+                      <span className="text-muted-foreground text-sm sm:text-[18px] font-['Outfit'] font-light leading-[100%]">hello@upteky.com</span>
                     </div>
                     <div className="flex items-center gap-3 text-sm">
                       <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" className="text-accent"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" /></svg>
-                      <span className="text-foreground text-sm sm:text-[18px] whitespace-nowrap">Phone :</span>
-                      <span className="text-muted-foreground whitespace-nowrap text-sm sm:text-[18px] ">+91 1234567890</span>
+                      <span className="text-foreground text-sm sm:text-[18px] whitespace-nowrap font-['Outfit'] font-light leading-[100%]">Phone :</span>
+                      <span className="text-muted-foreground whitespace-nowrap text-sm sm:text-[18px] font-['Outfit'] font-light leading-[100%]">+91 9978901910</span>
                     </div>
                   </div>
 
                   <div className="lg:mt-60 md:mt-10 xl:mt-40 2xl:mt-40 sm:mt-5  mt-6 ">
-                    <p className="text-sm text-foreground mb-2 text-[18px]">Follow Us:</p>
+                    <p className="text-[14px] font-['Inter'] font-normal leading-[100%] text-foreground mb-2">Follow Us:</p>
                     <div className="flex gap-3">
                       <div className="flex space-x-2">
                         {socialMedia.map((social) => (
@@ -1416,7 +1405,7 @@ export default function Home() {
               </div>
 
               {/* Right form column */}
-              <div className=" bg-[#2F3133] rounded-[30px] px-5 py-10 sm:px-14  sm:py-10 my-3 md:p-6 border border-muted-foreground/10 lg:col-span-3 2xl:ml-12">
+              <div className=" bg-[#2C3035] rounded-[30px] px-5 py-10 sm:px-14  sm:py-10 my-3 md:p-6 border border-muted-foreground/10 lg:col-span-3 2xl:ml-12">
                 <form className="space-y-6 ">
                   <div className="space-y-3">
                     {/* First Name - Full Width */}
@@ -1444,7 +1433,7 @@ export default function Home() {
                   <div>
                     <p className="text-base text-muted-foreground font-medium mb-3">Services</p>
                     <div className="flex flex-wrap gap-2">
-                      {[...new Set(['Web development', 'AI automation', 'IT consultation', 'Custom solution', 'IT consultation', 'Voicebots', 'Chatbots', 'App development'])].map((s, idx) => (
+                      {['Web development', 'AI automation', 'IT consultation', 'Custom solution', 'IT consultation', 'Voicebots', 'Chatbots', 'App development'].map((s, idx) => (
                         <button key={`${s}-${idx}`} type="button" className="px-6 py-3 text-[12px] mx-1  text-foreground hover:text-accent rounded-full border border-muted-foreground/50 transition-colors">{s}</button>
                       ))}
                     </div>
