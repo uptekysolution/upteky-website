@@ -68,7 +68,7 @@ export default function MainBotLauncher() {
           {selectedBot ? (
             <X className="h-2 w-2 text-white" />
           ) : (
-            <img src="/assets/chat-bot3.png" alt="Assistant" className="h-14 w-14 object-contain mx-auto my-auto" />
+            <img src="/assets/chat.png" alt="Assistant" className="h-14 w-14 object-contain mx-auto my-auto" />
           )}
         </Button>
       </div>

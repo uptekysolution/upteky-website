@@ -197,7 +197,7 @@ export default function AboutPage() {
   };
 
   return (
-    <div className="bg-background text-foreground font-sans overflow-x-hidden px-20">
+    <div className="bg-[#232629] text-foreground font-sans overflow-x-hidden">
       {/*---------------------------------- 1st Section-------------------------------------------  */}
       {/* Hero Section with Abstract Background */}
       <section className="w-full relative overflow-hidden">
@@ -206,9 +206,9 @@ export default function AboutPage() {
           <div className="absolute -bottom-24 -right-32 h-[420px] w-[420px] rounded-full bg-gradient-to-tr from-[#2A2D31] to-transparent blur-3xl opacity-60" />
         </div>
 
-        <div className="relative z-10 max-w-[980px] mx-auto px-6 pt-16 pb-12 sm:pt-20 sm:pb-16 lg:pt-24 lg:pb-20 text-center">
+        <div className="relative z-10 max-w-[980px] mx-auto px-4 sm:px-6 pt-12 pb-10 sm:pt-16 sm:pb-14 lg:pt-[150px] lg:pb-20 text-center" style={{paddingTop: '150px'}}>
           <motion.h1
-            className="text-[48px] leading-[1.2] font-normal text-white font-['Outfit']"
+            className="text-[24px] sm:text-[28px] md:text-[40px] lg:text-[48px] xl:text-[45px] 2xl:text-[64px] leading-[121%] font-normal text-white font-['Outfit']"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
@@ -220,7 +220,7 @@ export default function AboutPage() {
           </motion.h1>
 
           <motion.p
-            className="mt-5 max-w-[860px] mx-auto text-[16px] leading-relaxed text-[#9FA6AD] font-['Poppins'] font-normal"
+            className="mt-4 sm:mt-5 max-w-[860px] mx-auto text-[14px] sm:text-[16px] md:text-[18px] leading-relaxed text-[#9FA6AD] font-['Poppins'] font-normal"
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
@@ -233,7 +233,7 @@ export default function AboutPage() {
           </motion.p>
 
           <motion.div
-            className="mt-8"
+            className="mt-6 sm:mt-8"
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
@@ -241,7 +241,7 @@ export default function AboutPage() {
           >
             <Link href="/careers">
               <Button
-                className="w-[180px] h-[45px] rounded-[62px] border border-[#E58A4D] text-[16px] font-normal bg-transparent text-white hover:bg-[#E58A4D]/10 font-['Poppins']"
+                className="w-[140px] sm:w-[180px] h-[42px] sm:h-[45px] rounded-[62px] border border-[#E58A4D] text-[14px] sm:text-[16px] font-normal bg-transparent text-white hover:bg-[#E58A4D]/10 font-['Poppins']"
                 variant="outline"
               >
                 Join Our Team
@@ -251,38 +251,49 @@ export default function AboutPage() {
         </div>
 
         <div className="relative z-10 max-w-[1100px] mx-auto pb-8 sm:pb-12 md:pb-16">
-          <div className="grid grid-cols-1 sm:grid-cols-3 place-items-center px-6">
-            <div
-              className="w-[250px] h-[260px] rounded-[40px] border-4 border-[#434B53] mt-16"
-              style={{ 
-                transform: "rotate(-6.08deg)",
-                background: "linear-gradient(180deg, #232629 0%, #34393F 100%)"
-              }}
+          {/* Mobile: single composite image */}
+          <motion.div 
+            className="block sm:hidden px-4"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+          >
+            <img src="/images/about-cards.png" alt="Process preview" className="w-full h-auto rounded-[20px]" />
+          </motion.div>
+          {/* Tablet/Desktop: three separate cards */}
+          <motion.div 
+            className="hidden sm:grid grid-cols-1 sm:grid-cols-3 place-items-center px-4 sm:px-6 gap-y-6 sm:gap-y-0 md:gap-x-8"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+          >
+            <img
+              src="/images/left-card.png"
+              alt="Decorative left card"
+              className="w-[220px] h-[220px] sm:w-[250px] sm:h-[260px] md:w-[210px] md:h-[230px] xl:w-[300px] xl:h-[320px] rounded-[30px] sm:rounded-[40px] object-cover mt-10 sm:mt-16 md:mt-10"
             />
-            <div
-              className="w-[250px] h-[260px] rounded-[40px] border-4 border-[#434B53] -mt-8"
-              style={{ 
-                transform: "rotate(0deg)",
-                background: "linear-gradient(180deg, #232629 0%, #34393F 100%)"
-              }}
+            <img
+              src="/images/middle-card.png"
+              alt="Decorative middle card"
+              className="w-[220px] h-[220px] sm:w-[250px] sm:h-[260px] md:w-[210px] md:h-[230px] xl:w-[300px] xl:h-[320px] rounded-[30px] sm:rounded-[40px] object-cover mt-6 sm:-mt-8 md:mt-2"
             />
-            <div
-              className="w-[250px] h-[260px] rounded-[40px] border-4 border-[#434B53] mt-16"
-              style={{ 
-                transform: "rotate(6.08deg)",
-                background: "linear-gradient(180deg, #232629 0%, #34393F 100%)"
-              }}
+            <img
+              src="/images/right-card.png"
+              alt="Decorative right card"
+              className="w-[220px] h-[220px] sm:w-[250px] sm:h-[260px] md:w-[210px] md:h-[230px] xl:w-[300px] xl:h-[320px] rounded-[30px] sm:rounded-[40px] object-cover mt-10 sm:mt-16 md:mt-10"
             />
-          </div>
+          </motion.div>
         </div>
       </section>
 
       {/* ---------------------------------------------2nd Section---------------------------------------- */}
       <div className="border-t border-[#333333] " />
-      <section className="w-full max-w-7xl lg:max-w-[1560px] px-4 sm:px-6 lg:px-8 py-[64px] mx-auto">
+      <section className="w-full max-w-7xl lg:max-w-[1560px] px-4 sm:px-6 lg:px-8 py-10 sm:py-14 md:py-16 lg:py-[64px] mx-auto">
         <div className="text-center mb-12">
           <motion.h2
-            className="text-[40px] font-normal text-white font-['Outfit']"
+            className="text-[22px] sm:text-[28px] md:text-[36px] lg:text-[40px] xl:text-[44px] 2xl:text-[48px] font-normal text-white font-['Outfit']"
             initial={{ opacity: 0, y: -20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
@@ -292,44 +303,56 @@ export default function AboutPage() {
           </motion.h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-          <div className="bg-[#2C3035] text-white rounded-2xl md:rounded-3xl p-6 md:p-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 md:gap-8">
+          <motion.div 
+            className="bg-[#2C3035] text-white rounded-xl sm:rounded-2xl md:rounded-3xl p-5 sm:p-6 md:p-8 sm:ml-[30px] md:ml-[60px]"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+          >
             <div className="flex items-start gap-4">
               <div className="-mt-2">
-                <img src="/images/mission.png" alt="Mission" className="w-14 h-8" />
+                <img src="/images/mission.png" alt="Mission" className="w-14 h-8 sm:w-16 sm:h-9 md:w-20 md:h-12 lg:w-20 lg:h-12 xl:w-16 xl:h-9 object-contain" />
               </div>
               <div>
-                <h3 className="text-base md:text-lg font-normal text-white mb-2 font-['Outfit']">Mission</h3>
-                <p className="text-xs md:text-sm text-[#BDBDBD] leading-relaxed font-['Poppins'] font-normal">
+                <h3 className="text-sm sm:text-base md:text-lg font-normal text-white mb-2 font-['Outfit']">Mission</h3>
+                <p className="text-xs sm:text-sm md:text-base text-[#BDBDBD] leading-relaxed font-['Poppins'] font-normal -ml-16 sm:-ml-[4.5rem] pl-10 sm:pl-8 md:pl-8">
                   Empowering businesses with smart AI-driven solutions to boost efficiency, streamline operations, unlock growth, and achieve sustainable success.
                 </p>
               </div>
             </div>
-          </div>
+          </motion.div>
 
-          <div className="bg-[#2C3035] text-white rounded-2xl md:rounded-3xl p-6 md:p-8">
+          <motion.div 
+            className="bg-[#2C3035] text-white rounded-xl sm:rounded-2xl md:rounded-3xl p-5 sm:p-6 md:p-8 sm:mr-[30px] md:mr-[60px]"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
             <div className="flex items-start gap-4">
               <div className="-mt-2">
-                <img src="/images/marketpenetration.png" alt="Vision" className="w-14 h-8" />
+                <img src="/images/marketpenetration.png" alt="Vision" className="w-14 h-8 sm:w-16 sm:h-9 md:w-20 md:h-12 lg:w-20 lg:h-12 xl:w-16 xl:h-9 object-contain" />
               </div>
               <div>
-                <h3 className="text-base md:text-lg font-normal text-white mb-2 font-['Outfit']">Vision</h3>
-                <p className="text-xs md:text-sm text-[#BDBDBD] leading-relaxed font-['Poppins'] font-normal">
+                <h3 className="text-sm sm:text-base md:text-lg font-normal text-white mb-2 font-['Outfit']">Vision</h3>
+                <p className="text-xs sm:text-sm md:text-base text-[#BDBDBD] leading-relaxed font-['Poppins'] font-normal -ml-16 sm:-ml-[4.5rem] pl-10 sm:pl-8 md:pl-8">
                   To lead global digital transformation with intelligent automation, making technology simple, seamless, impactful, and accessible for everyone.
                 </p>
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </section>
 
       {/* -----------------------------------------3rd Section-------------------------------------------------- */}
 
       <div className="border-t border-[#333333]  " />
-      <section className="w-full max-w-[1210px] lg:max-w-[1560px] mx-auto px-4 sm:px-6 lg:px-8 py-[64px] ">
+      <section className="w-full max-w-[1210px] lg:max-w-[1560px] mx-auto px-4 sm:px-6 lg:px-8 pt-16 sm:pt-20 md:pt-24 lg:pt-[96px] pb-10 sm:pb-14 md:pb-16 lg:pb-[64px] ">
         <div className="text-center mb-3 md:mb-4 ">
           <motion.h2
-            className="text-[40px] font-normal text-white text-center font-['Outfit'] leading-[121%]"
+            className="text-[22px] sm:text-[28px] md:text-[36px] lg:text-[40px] xl:text-[44px] 2xl:text-[48px] font-normal text-white text-center font-['Outfit'] leading-[121%]"
             initial={{ opacity: 0, y: -20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
@@ -338,34 +361,49 @@ export default function AboutPage() {
             Industries We Serve
           </motion.h2>
         </div>
-        <p className="text-center text-[16px] text-[#B7B7B7] max-w-[820px] mx-auto mb-12 font-['Poppins'] font-normal leading-[100%]">
+        <motion.p 
+          className="text-center text-[14px] sm:text-[16px] md:text-[18px] text-[#B7B7B7] max-w-[820px] mx-auto mb-8 sm:mb-10 md:mb-12 font-['Poppins'] font-normal leading-[150%]"
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+        >
           We help businesses in every sector unlock opportunities, optimize operations, and stay future‑ready with technology that works.
-        </p>
+        </motion.p>
 
-        <div className="bg-[#2C3035] rounded-2xl md:rounded-3xl p-5 md:p-8 lg:p-10">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 items-stretch">
-            <div className="flex flex-col justify-between h-full">
+        <motion.div 
+          className="bg-[#2C3035] rounded-xl sm:rounded-2xl md:rounded-3xl p-4 sm:p-5 md:p-8 lg:p-10 mx-4 sm:mx-6 md:mx-10 lg:mx-16 xl:mx-24"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+        >
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 md:gap-8 items-stretch">
+            <div className="flex flex-col justify-between h-full ml-2 sm:ml-4 md:ml-6 lg:ml-8">
               <div>
-                <h3 className="text-white font-normal text-base md:text-lg mb-2 font-['Poppins']">Customized AI & Automation Solutions <br /> for Every Sector</h3>
-                <p className="text-[#BDBDBD] text-xs md:text-sm leading-relaxed max-w-[520px] font-['Poppins'] font-normal">
-                  We build powerful, custom software solutions designed <br /> to solve real business challenges. As a leading provider <br />of enterprise‑grade AI, ML, NLP, and automation tools,<br /> we deliver scalable, tailored solutions that give you a<br /> competitive edge.
+                <h3 className="text-white font-normal text-[16px] sm:text-[18px] md:text-lg leading-[1.25] mb-2 font-['Poppins']">
+                  Customized AI & Automation Solutions
+                  <span className="block">for Every Sector</span>
+                </h3>
+                <p className="text-[#BDBDBD] text-[13px] sm:text-sm md:text-base leading-[1.6] max-w-[520px] font-['Poppins'] font-normal">
+                  We build powerful, custom software solutions designed to solve real business challenges. As a leading provider of enterprise‑grade AI, ML, NLP, and automation tools, we deliver scalable, tailored solutions that give you a competitive edge.
                 </p>
               </div>
               <div className="mt-8">
                 <Link href="/careers">
-                  <Button className="rounded-full w-[243px] h-[50px] text-sm font-normal bg-transparent border border-[#E58A4D] text-white hover:bg-[#E58A4D]/10 font-['Poppins']" variant="outline">
+                  <Button className="rounded-full w-[140px] sm:w-[243px] h-[46px] sm:h-[50px] text-sm font-normal bg-transparent border border-[#E58A4D] text-white hover:bg-[#E58A4D]/10 font-['Poppins']" variant="outline">
                     Join Our Team
                   </Button>
                 </Link>
               </div>
             </div>
 
-            <div>
-              <div className="flex flex-wrap gap-3">
+            <div className="sm:mr-[40px] md:mr-[70px]">
+              <div className="flex flex-wrap gap-2 sm:gap-3">
                 {industries.map((label, idx) => (
                   <span
                     key={idx}
-                    className="text-[#CFCFCF] bg-[#32373C] border border-white/5 rounded-full px-4 py-2 text-xs md:text-sm font-['Poppins'] font-normal"
+                    className="text-[#CFCFCF] bg-[#32373C] border border-white/5 rounded-full px-3 py-1.5 sm:px-4 sm:py-2 text-[11px] sm:text-xs md:text-sm font-['Poppins'] font-normal"
                   >
                     {label}
                   </span>
@@ -373,32 +411,45 @@ export default function AboutPage() {
               </div>
             </div>
           </div>
-        </div>
+        </motion.div>
       </section>
 
       {/* -------------------------------------4th Section---------------------------------------- */}
       <div className="border-t border-[#333333]  " />
-      <section className="container mx-auto px-4 md:px-6 py-12 sm:py-16 md:py-24">
+      <section className="container mx-auto px-4 md:px-6 py-10 sm:py-14 md:py-24">
         <div className="mx-auto rounded-[30px]">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
             {/* Left heading/description */}
-            <div className="col-span-1 px-3 flex flex-col text-center md:text-left">
-              <h2 className="font-outfit text-[24px] sm:text-[28px] md:text-[30px] lg:text-[45px] leading-[121%] text-white">
+            <motion.div 
+              className="col-span-1 px-3 flex flex-col text-center md:text-left"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.6 }}
+            >
+              <h2 className="font-outfit text-[22px] sm:text-[28px] md:text-[30px] lg:text-[40px] xl:text-[45px] leading-[121%] text-white">
                 Why <br />Work With Us?
               </h2>
-              <p className="mt-4 font-poppins text-[12px] sm:text-[14px] md:text-[16px] text-[#858C92] max-w-sm mx-auto md:mx-0">
+              <p className="mt-3 sm:mt-4 font-poppins text-[12px] sm:text-[14px] md:text-[16px] text-[#858C92] max-w-sm mx-auto md:mx-0">
                 Seamlessly engage customers across channels with secure, integrated, and conversion-focused solutions.
               </p>
-            </div>
+            </motion.div>
 
             {cards.map((card, idx) => (
-              <div key={idx} className="col-span-1">
-                <div className="rounded-[20px] md:rounded-[28px] bg-[#2C3035] w-full min-h-[160px] sm:min-h-[180px] md:min-h-[216px] mx-auto p-4 sm:p-5 md:p-6">
-                  <h3 className="text-white pt-2 sm:pt-3 md:pt-4 text-lg sm:text-xl leading-[121%] text-center">{card.title}</h3>
-                  <div className="-mx-4 sm:-mx-5 md:-mx-6 my-4 sm:my-6 md:my-8 h-px bg-[#4C4C4C]" />
-                  <p className="text-[#858C92] text-[12px] sm:text-[14px] md:text-base leading-[121%] text-center max-w-[280px] sm:max-w-[300px] md:max-w-[320px] mx-auto">{card.desc}</p>
+              <motion.div 
+                key={idx} 
+                className="col-span-1"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.6, delay: idx * 0.1 }}
+              >
+                <div className="rounded-[16px] sm:rounded-[20px] md:rounded-[28px] bg-[#2C3035] w-full min-h-[150px] sm:min-h-[180px] md:min-h-[216px] mx-auto p-4 sm:p-5 md:p-6">
+                  <h3 className="text-white pt-1.5 sm:pt-3 md:pt-4 text-base sm:text-lg md:text-xl leading-[121%] text-center">{card.title}</h3>
+                  <div className="-mx-4 sm:-mx-5 md:-mx-6 my-3 sm:my-5 md:my-8 h-px bg-[#4C4C4C]" />
+                  <p className="text-[#858C92] text-[12px] sm:text-[14px] md:text-base leading-[150%] text-center max-w-[260px] sm:max-w-[300px] md:max-w-[320px] mx-auto">{card.desc}</p>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
 
@@ -407,38 +458,38 @@ export default function AboutPage() {
 
               {/* Stats Grid */}
               <FadeIn>
-                <div id="stats-grid" className="grid grid-cols-2 md:grid-cols-4 w-full">
+                <div id="stats-grid" className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 w-full gap-y-10 md:gap-y-12">
                   {/* Stat 1 */}
                   <div className="relative flex items-center justify-center py-8">
                     <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                      <StatCounter end={10} label="" numberClassName="text-[#353E47] font-poppins font-bold leading-none select-none text-[64px] sm:text-[80px] md:text-[96px]" labelClassName="hidden" trigger={statsInView} />
+                      <StatCounter end={10} label="" numberClassName="text-[#353E47] font-poppins font-bold leading-none select-none text-[48px] sm:text-[64px] md:text-[96px] lg:text-[88px]" labelClassName="hidden" trigger={statsInView} />
                     </div>
                     <p className="relative z-[1] text-white text-[12px] sm:text-sm tracking-wide">Industries Served</p>
                   </div>
 
                   {/* Stat 2 */}
                   <div className="relative flex items-center justify-center py-8">
-                    <span className="hidden md:block absolute left-0 top-1/2 -translate-y-1/2 h-10 md:h-14 w-px bg-white/15" />
+                    <span className="hidden lg:block absolute left-0 top-1/2 -translate-y-1/2 h-10 lg:h-14 w-px bg-white/15" />
                     <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                      <span className="text-[#353E47] font-poppins font-bold leading-none select-none text-[64px] sm:text-[80px] md:text-[96px]">4-8</span>
+                      <span className="text-[#353E47] font-poppins font-bold leading-none select-none text-[48px] sm:text-[64px] md:text-[96px] lg:text-[88px]">4-8</span>
                     </div>
                     <p className="relative z-[1] text-white text-[12px] sm:text-sm tracking-wide">Delivery Time (Weeks)</p>
                   </div>
 
                   {/* Stat 3 */}
                   <div className="relative flex items-center justify-center py-8">
-                    <span className="hidden md:block absolute left-0 top-1/2 -translate-y-1/2 h-10 md:h-14 w-px bg-white/15" />
+                    <span className="hidden lg:block absolute left-0 top-1/2 -translate-y-1/2 h-10 lg:h-14 w-px bg-white/15" />
                     <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                      <StatCounter end={30} label="%" numberClassName="text-[#353E47] font-poppins font-bold leading-none select-none text-[64px] sm:text-[80px] md:text-[96px]" labelClassName="hidden" trigger={statsInView} />
+                      <StatCounter end={30} label="%" numberClassName="text-[#353E47] font-poppins font-bold leading-none select-none text-[48px] sm:text-[64px] md:text-[96px] lg:text-[88px]" labelClassName="hidden" trigger={statsInView} />
                     </div>
                     <p className="relative z-[1] text-white text-[12px] sm:text-sm tracking-wide">Avg Client Growth</p>
                   </div>
 
                   {/* Stat 4 */}
                   <div className="relative flex items-center justify-center py-8">
-                    <span className="hidden md:block absolute left-0 top-1/2 -translate-y-1/2 h-10 md:h-14 w-px bg-white/15" />
+                    <span className="hidden lg:block absolute left-0 top-1/2 -translate-y-1/2 h-10 lg:h-14 w-px bg-white/15" />
                     <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                      <StatCounter end={100} label="" numberClassName="text-[#353E47] font-poppins font-bold leading-none select-none text-[64px] sm:text-[80px] md:text-[96px]" labelClassName="hidden" trigger={statsInView} />
+                      <StatCounter end={100} label="" numberClassName="text-[#353E47] font-poppins font-bold leading-none select-none text-[48px] sm:text-[64px] md:text-[96px] lg:text-[88px]" labelClassName="hidden" trigger={statsInView} />
                     </div>
                     <p className="relative z-[1] text-white text-[12px] sm:text-sm tracking-wide">Total Integrations</p>
                   </div>
@@ -450,11 +501,11 @@ export default function AboutPage() {
       </section>
       {/*--------------------------------------------------5th Section--------------------------------------------------*/}
       <div className="border-t border-[#333333]  " />
-      <section className="py-12 lg:max-w-[1560px] mx-auto md:py-16">
+      <section className="py-10 sm:py-12 lg:max-w-[1560px] mx-auto md:py-16">
         <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-10 md:mb-12 ">
             <motion.h2
-              className="text-[40px] font-medium text-white text-center font-['Outfit']"
+              className="text-[22px] sm:text-[28px] md:text-[36px] lg:text-[40px] xl:text-[44px] 2xl:text-[48px] font-medium text-white text-center font-['Outfit']"
               initial={{ opacity: 0, y: -20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.3 }}
@@ -464,19 +515,19 @@ export default function AboutPage() {
             </motion.h2>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-1 md:[grid-template-columns:repeat(2,314px)] lg:[grid-template-columns:repeat(3,314px)] xl:[grid-template-columns:repeat(4,314px)] gap-y-4 gap-x-3 justify-center">
+          <div className="grid grid-cols-1 sm:grid-cols-1 md:[grid-template-columns:repeat(2,314px)] lg:[grid-template-columns:repeat(3,314px)] xl:[grid-template-columns:repeat(4,290px)] gap-y-3 sm:gap-y-4 gap-x-2 sm:gap-x-3 justify-center">
             {steps.map((item, index) => (
               <motion.div
                 key={index}
-                className="bg-[#2C3035] rounded-xl px-6 py-6 ring-1 ring-white/5 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.03)] h-[203px]"
+                className="bg-[#2C3035] rounded-lg sm:rounded-xl px-5 sm:px-6 py-5 sm:py-6 ring-1 ring-white/5 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.03)] h-[210px] md:h-[225px] xl:h-[220px]"
                 initial={{ opacity: 0, y: 12 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.2 }}
                 transition={{ duration: 0.4, delay: index * 0.05 }}
               >
-                <p className="text-[#CFCFCF] font-['Outfit'] font-normal text-[20px] mb-3">{item.step}</p>
-                <h4 className="text-white font-['Outfit'] font-normal text-[20px] mb-2">{item.title}</h4>
-                <p className="text-[#BDBDBD] font-['Poppins'] font-normal text-[16px] leading-[150%]">{item.desc}</p>
+                <p className="text-[#CFCFCF] font-['Outfit'] font-normal text-[16px] sm:text-[18px] md:text-[20px] mb-2 sm:mb-3">{item.step}</p>
+                <h4 className="text-white font-['Outfit'] font-normal text-[16px] sm:text-[18px] md:text-[20px] mb-1.5 sm:mb-2">{item.title}</h4>
+                <p className="text-[#BDBDBD] font-['Poppins'] font-normal text-[14px] sm:text-[15px] md:text-[16px] leading-[130%]">{item.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -485,3 +536,5 @@ export default function AboutPage() {
     </div>
   );
 }
+
+
