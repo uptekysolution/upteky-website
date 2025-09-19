@@ -111,45 +111,44 @@ export function Navbar() {
                          {/* Column 1 */}
                          <div className="py-4 lg:py-0 lg:px-4 border-b sm:border-b-0 lg:border-b-0 lg:border-r border-white/10">
                            <h4 className="mb-4 text-white font-semibold text-base"><Link href="/conversational-agents" className="hover:text-accent transition-colors">Conversational Agents</Link></h4>
-                           <ul className="space-y-2 text-gray-400">
-                             <li><Link href="#" className="hover:text-white transition-colors">Interactive AI Website Chatbot</Link></li>
-                             <li><Link href="#" className="hover:text-white transition-colors">WhatsApp & Multi-Platform Chatbot</Link></li>
-                             <li><Link href="#" className="hover:text-white transition-colors">AI-Powered Lead Reactivation</Link></li>
-                             <li><Link href="#" className="hover:text-white transition-colors">AI Voice Assistant (Voice Bot)</Link></li>
-                           </ul>
+                          <ul className="space-y-2 text-gray-400">
+                            <li><Link href="/solution_pages/s01" className="hover:text-white transition-colors">Interactive AI Website Chatbot</Link></li>
+                            <li><Link href="/solution_pages/s02" className="hover:text-white transition-colors">WhatsApp & Multi-Platform Chatbot</Link></li>
+                            <li><Link href="/solution_pages/s03" className="hover:text-white transition-colors">AI-Powered Lead Reactivation</Link></li>
+                            <li><Link href="/solution_pages/s04" className="hover:text-white transition-colors">AI Voice Assistant (Voice Bot)</Link></li>
+                          </ul>
                          </div>
 
                          {/* Column 2 */}
                          <div className="py-4 lg:py-0 lg:px-4 border-b sm:border-b-0 lg:border-b-0 lg:border-r border-white/10">
                            <h4 className="mb-4 text-white font-semibold text-base"><Link href="/ai-automation" className="hover:text-accent transition-colors">AI Automation Solution</Link></h4>
-                           <ul className="space-y-2 text-gray-400">
-                             <li><Link href="#" className="hover:text-white transition-colors">AI Workflow Automation</Link></li>
-                             <li><Link href="#" className="hover:text-white transition-colors">AI-Powered ERP</Link></li>
-                             <li><Link href="#" className="hover:text-white transition-colors">AI-Powered CRM Platform</Link></li>
-                             <li><Link href="#" className="hover:text-white transition-colors">AI-Powered Data Analyst</Link></li>
-                           </ul>
+                          <ul className="space-y-2 text-gray-400">
+                            <li><Link href="/solution_pages/s05" className="hover:text-white transition-colors">AI Workflow Automation</Link></li>
+                            <li><Link href="/solution_pages/s12" className="hover:text-white transition-colors">AI-Powered ERP</Link></li>
+                            <li><Link href="/solution_pages/s10" className="hover:text-white transition-colors">AI-Powered CRM Platform</Link></li>
+                            <li><Link href="/solution_pages/s07" className="hover:text-white transition-colors">AI-Powered Data Analyst</Link></li>
+                          </ul>
                          </div>
 
                          {/* Column 3 */}
                          <div className="py-4 lg:py-0 lg:px-4 border-b sm:border-b-0 lg:border-b-0 lg:border-r border-white/10">
                            <h4 className="mb-4 text-white font-semibold text-base"><Link href="ai-sales-growth" className="hover:text-accent transition-colors">AI Sales & Growth Solution</Link></h4>
-                           <ul className="space-y-2 text-gray-400">
-                       
-                             <li><Link href="#" className="hover:text-white transition-colors">AI Strategy Consulting</Link></li>
-                             <li><Link href="#" className="hover:text-white transition-colors">AI Sales Agent</Link></li>
-                             <li><Link href="#" className="hover:text-white transition-colors">AI Digital Marketing Agent</Link></li>
-                           </ul>
+                          <ul className="space-y-2 text-gray-400">
+                            <li><Link href="/solution_pages/s08" className="hover:text-white transition-colors">AI Strategy Consulting</Link></li>
+                            <li><Link href="/solution_pages/s09" className="hover:text-white transition-colors">AI Sales Agent</Link></li>
+                            <li><Link href="/solution_pages/s11" className="hover:text-white transition-colors">AI Digital Marketing Agent</Link></li>
+                          </ul>
                          </div>
 
                          {/* Column 4 */}
                          <div className="py-4 lg:py-0 lg:px-4">
                            <h4 className="mb-4 text-white font-semibold text-base"><Link href="/web-development" className="hover:text-accent transition-colors"> Web Development Services</Link></h4>
                            <ul className="space-y-2 text-gray-400">
-                             <li><Link href="#" className="hover:text-white transition-colors">Wix Development</Link></li>
-                             <li><Link href="#" className="hover:text-white transition-colors">Webflow Development</Link></li>
-                             <li><Link href="#" className="hover:text-white transition-colors">MERN Stack Development</Link></li>
-                             <li><Link href="#" className="hover:text-white transition-colors">Shopify Development</Link></li>
-                             <li><Link href="#" className="hover:text-white transition-colors">WordPress Development</Link></li>
+                            <li><Link href="/solution_pages/s13" className="hover:text-white transition-colors">Wix Development</Link></li>
+                            <li><Link href="/solution_pages/s14" className="hover:text-white transition-colors">Webflow Development</Link></li>
+                            <li><Link href="/solution_pages/s15" className="hover:text-white transition-colors">MERN Stack Development</Link></li>
+                            <li><Link href="/solution_pages/s16" className="hover:text-white transition-colors">Shopify Development</Link></li>
+                            <li><Link href="/solution_pages/s17" className="hover:text-white transition-colors">WordPress Development</Link></li>
                            </ul>
                          </div>
 

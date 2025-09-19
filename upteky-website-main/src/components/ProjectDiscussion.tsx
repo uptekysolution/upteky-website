@@ -90,7 +90,7 @@ export default function ProjectDiscussion({
         <div className="mx-auto rounded-[20px] sm:rounded-[25px] md:rounded-[30px] bg-[#2C3035] p-6 sm:p-8 md:p-10 lg:p-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-16 items-center">
             {/* Left: Heading + Form */}
-            <div className="w-full">
+            <div className="w-full order-1 lg:order-1">
               <h3 className="text-white font-outfit text-[20px] sm:text-[24px] md:text-[30px] lg:text-2xl max-w-md leading-tight">
                 Want To Discuss This Solution or your Custom Project
               </h3>
@@ -158,33 +158,34 @@ export default function ProjectDiscussion({
             </div>
 
             {/* Right: Carousel */}
-            <div className="w-full relative px-2 sm:px-4 mx-auto lg:px-8">
+            <div className="w-full justify-between relative px-2 sm:px-4 mx-auto lg:px-8 order-2 lg:order-2">
               {/* side arrows, vertically centered */}
               <button
                 aria-label="Previous"
                 onClick={() => setIdx(i => (i - 1 + TESTIMONIALS.length) % TESTIMONIALS.length)}
-                className="hidden lg:flex absolute left-0 top-1/2 -translate-y-1/2 h-10 w-10 items-center justify-center text-white/90 hover:text-white transition-opacity"
+                className="hidden lg:flex absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 xl:-translate-x-6 h-10 w-10 xl:h-12 xl:w-12 
+                items-center justify-center text-white/90 hover:text-white transition-opacity z-10"
               >
-                <svg width="22" height="42" viewBox="0 0 22 42" fill="none">
+                <svg width="20" height="30" viewBox="0 0 22 42" fill="none" className="xl:w-[22px] xl:h-[32px]">
                   <path d="M20 2L2 21L20 40" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
               </button>
               <button
                 aria-label="Next"
                 onClick={() => setIdx(i => (i + 1) % TESTIMONIALS.length)}
-                className="hidden lg:flex absolute right-0 top-1/2 -translate-y-1/2 h-10 w-10 items-center justify-center text-white/90 hover:text-white transition-opacity"
+                className="hidden lg:flex absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 xl:translate-x-6 h-10 w-10 xl:h-12 xl:w-12 items-center justify-center text-white/90 hover:text-white transition-opacity z-10"
               >
-                <svg width="22" height="42" viewBox="0 0 22 42" fill="none">
+                <svg width="20" height="30" viewBox="0 0 22 42" fill="none" className="xl:w-[22px] xl:h-[42px]">
                   <path d="M2 2L20 21L2 40" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
               </button>
 
-              {/* top arrows for small screens */}
-              <div className="flex items-center justify-between lg:hidden mb-4">
+              {/* arrows for mobile and tablet screens */}
+              <div className="flex justify-between lg:hidden">
                 <button
                   aria-label="Previous"
                   onClick={() => setIdx(i => (i - 1 + TESTIMONIALS.length) % TESTIMONIALS.length)}
-                  className="h-8 w-8 sm:h-9 sm:w-9 inline-flex items-center justify-center text-white/90"
+                  className="h-8 w-8 sm:h-10 sm:w-10 absolute left-0 top-1/2 -translate-y-1/2 -translate-x-2 sm:-translate-x-3 inline-flex items-center justify-center text-white/90 hover:text-white transition-opacity z-10"
                 >
                   <svg width="16" height="30" viewBox="0 0 22 42" fill="none">
                     <path d="M20 2L2 21L20 40" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
@@ -193,7 +194,7 @@ export default function ProjectDiscussion({
                 <button
                   aria-label="Next"
                   onClick={() => setIdx(i => (i + 1) % TESTIMONIALS.length)}
-                  className="h-8 w-8 sm:h-9 sm:w-9 inline-flex items-center justify-center text-white/90"
+                  className="h-8 w-8 sm:h-10 sm:w-10 absolute right-0 top-1/2 -translate-y-1/2 translate-x-2 sm:translate-x-3 inline-flex items-center justify-center text-white/90 hover:text-white transition-opacity z-10"
                 >
                   <svg width="16" height="30" viewBox="0 0 22 42" fill="none">
                     <path d="M2 2L20 21L2 40" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
@@ -202,28 +203,28 @@ export default function ProjectDiscussion({
               </div>
 
               {/* centered testimonial content */}
-              <div className="mx-auto max-w-sm">
-                <h4 className="text-white font-outfit text-[20px] sm:text-[24px] md:text-[28px] lg:text-[30px] font-semibold leading-tight">
+              <div className="mx-auto max-w-xs xs:max-w-sm sm:max-w-md lg:max-w-sm px-6 xs:px-8 sm:px-10 md:px-12 lg:px-0">
+                <h4 className="text-white font-outfit text-[16px] xs:text-[18px] sm:text-[20px] md:text-[22px] lg:text-[24px] xl:text-[26px] 2xl:text-[28px] font-semibold leading-[115%] xs:leading-[118%] sm:leading-[120%] md:leading-[121%]">
                   {t.title}
                 </h4>
 
-                <p className="mt-6 sm:mt-8 text-[#9FA6AD] font-poppins text-[12px] sm:text-[14px] md:text-[16px]">
+                <p className="mt-4 xs:mt-5 sm:mt-6 md:mt-7 lg:mt-8 text-[#9FA6AD] font-poppins text-[11px] xs:text-[12px] sm:text-[13px] md:text-[14px] lg:text-[15px] xl:text-[16px] leading-[140%] xs:leading-[145%] sm:leading-[150%]">
                   {t.body}
                 </p>
 
-                <div className="mt-6 sm:mt-8">
-                  <div className="mt-6 sm:mt-8 flex items-center justify-between">
-                    <div className="min-w-0">
-                      <p className="text-white font-outfit text-[14px] sm:text-[16px] md:text-[20px] truncate">{t.author}</p>
-                      <p className="text-[#9FA6AD] font-poppins text-[12px] sm:text-[14px] md:text-[16px] truncate">{t.role}</p>
+                <div className="mt-4 xs:mt-5 sm:mt-6 md:mt-7 lg:mt-8">
+                  <div className="mt-4 xs:mt-5 sm:mt-6 md:mt-7 lg:mt-8 flex flex-col sm:flex-row items-start sm:items-center justify-start sm:justify-between gap-2 xs:gap-3 sm:gap-0">
+                    <div className="min-w-0 flex-1">
+                      <p className="text-white font-outfit text-[12px] xs:text-[13px] sm:text-[14px] md:text-[15px] lg:text-[16px] xl:text-[18px] 2xl:text-[20px] truncate">{t.author}</p>
+                      <p className="text-[#9FA6AD] font-poppins text-[11px] xs:text-[12px] sm:text-[13px] md:text-[14px] lg:text-[15px] xl:text-[16px] truncate">{t.role}</p>
                     </div>
-                    <div className="ml-4 flex shrink-0 items-center gap-1 text-[#F59E0B]">
+                    <div className="mt-1 xs:mt-2 sm:mt-0 sm:ml-4 flex shrink-0 items-center gap-0.5 xs:gap-1 text-[#F59E0B]">
                       {Array.from({ length: t.rating }).map((_, i) => (
-                        <Star key={i} className="h-3 w-3 sm:h-4 sm:w-4 fill-current" />
+                        <Star key={i} className="h-2.5 w-2.5 xs:h-3 xs:w-3 sm:h-3.5 sm:w-3.5 md:h-4 md:w-4 fill-current" />
                       ))}
                     </div>
                   </div>
-                  <div className="mt-3 sm:mt-4 h-px w-[180px] sm:w-[280px] bg-white" />
+                  <div className="mt-2 xs:mt-3 sm:mt-4 h-px w-[120px] xs:w-[140px] sm:w-[160px] md:w-[180px] lg:w-[200px] xl:w-[240px] 2xl:w-[280px] bg-white" />
                 </div>
               </div>
             </div>

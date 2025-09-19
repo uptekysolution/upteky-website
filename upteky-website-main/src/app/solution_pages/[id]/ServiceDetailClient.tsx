@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import Link from "next/link";
 import Image from "next/image";
+import ProjectDiscussion from '@/components/ProjectDiscussion';
 import { 
   ArrowLeft, Mail, CheckCircle, Sparkles, Lightbulb, 
   ArrowRight, Star, Zap, Target, Rocket, Shield, 
@@ -90,28 +91,19 @@ export default function ServiceDetailClient({ id }: ServiceDetailClientProps) {
     setService(foundService || null);
   }, [id]);
 
-  const features = [
-    {
-      icon: Shield,
-      title: "Enterprise Security",
-      description: "Advanced security measures to protect your data and operations"
-    },
-    {
-      icon: Globe,
-      title: "Global Reach",
-      description: "Seamless integration with international markets and partners"
-    },
-    {
-      icon: BarChart3,
-      title: "Conversion-Focused",
-      description: "Capture leads, Nurture prospects, and accelerate sales"
-    },
-    {
-      icon: Activity,
-      title: "Real-time Monitoring",
-      description: "CRM systems, calendars, marketing tools, and databases"
-    }
-  ];
+  const features = (service?.featureCards ?? [
+    { icon: 'Shield', title: 'Enterprise-Grade Solution', description: 'Context-aware and scalable chatbot designed for businesses of all sizes, from startups to enterprises.' },
+    { icon: 'Globe', title: 'Global Reach', description: 'Support for multi-language audiences, enabling your brand to connect with customers worldwide.' },
+    { icon: 'BarChart3', title: 'Conversion-Focused', description: 'Flows built to capture leads, nurture prospects, and accelerate sales with minimal human intervention' },
+    { icon: 'Activity', title: 'Seamless Integrations', description: 'Direct integration with CRM systems, calendars, marketing tools, and databases for complete automation.' },
+  ]).map(fc => ({
+    icon: fc.icon === 'Shield' ? Shield
+      : fc.icon === 'Globe' ? Globe
+      : fc.icon === 'BarChart3' ? BarChart3
+      : Activity,
+    title: fc.title,
+    description: fc.description,
+  }));
 
   if (!service) {
     return (
@@ -122,11 +114,11 @@ export default function ServiceDetailClient({ id }: ServiceDetailClientProps) {
         transition={{ duration: 0.5 }}
       >
         <div className="text-center p-12 rounded-2xl bg-card/30 backdrop-blur-lg border border-border/20 shadow-lg">
-          <h1 className="text-4xl font-bold mb-6 bg-gradient-to-r from-accent to-accent/70 bg-clip-text text-transparent">
+          <h1 className="text-4xl  font-outfit mb-6 bg-gradient-to-r from-accent to-accent/70 bg-clip-text text-transparent">
             Service Not Found
           </h1>
           <Link href="/solution" className="inline-flex items-center text-accent hover:text-accent/80 transition-colors group">
-            <ArrowLeft className="mr-2 h-5 w-5 group-hover:-translate-x-1 transition-transform" />
+            <ArrowLeft className="mr-2 h-5 w-5 font-outfit group-hover:-translate-x-1 transition-transform" />
             Back to All Solutions
           </Link>
         </div>
@@ -136,7 +128,7 @@ export default function ServiceDetailClient({ id }: ServiceDetailClientProps) {
 
   return (
     <motion.div
-      className="min-h-screen bg-gradient-to-br from-background via-background/95 to-background/90 text-foreground"
+      className="min-h-screen bg-[#232629] px-20 pt-4"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.7, ease: "easeOut" }}
@@ -144,7 +136,7 @@ export default function ServiceDetailClient({ id }: ServiceDetailClientProps) {
       <div className="container mx-auto px-4 md:px-6 py-16 relative z-10">
         {/* Main Card with 3D Effect */}
         <motion.div
-          className="bg-card/40 border border-border/20 shadow-xl overflow-hidden rounded-3xl backdrop-blur-md transform-gpu"
+          className="bg-card/40 border border-border/20 shadow-xl overflow-hidden rounded-[20px] backdrop-blur-md transform-gpu"
           initial="hidden"
           animate="visible"
           variants={fadeInUp}
@@ -152,17 +144,17 @@ export default function ServiceDetailClient({ id }: ServiceDetailClientProps) {
         >
           {/* Hero Section with Parallax */}
           <motion.div 
-            className="relative w-full h-72 sm:h-96 md:h-[500px] lg:h-[600px] group"
+            className="relative w-full h-72 sm:h-96 md:h-[500px] lg:h-[650px] group"
             style={{ opacity, scale }}
           >
             <Image
               src={service.imgSrc}
               alt={service.title}
               fill
-              className="object-cover object-center opacity-90 group-hover:opacity-100 transition-all duration-500"
+              className="object-cover  object-center opacity-90 group-hover:opacity-100 transition-all duration-500"
               priority
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/70 to-transparent flex flex-col justify-end p-6 sm:p-8 md:p-10">
+            <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/7 to-transparent flex flex-col justify-end p-6 sm:p-8 md:p-10">
               <motion.div 
                 className="mb-auto pt-4"
                 initial={{ opacity: 0, y: 20 }}
@@ -190,7 +182,7 @@ export default function ServiceDetailClient({ id }: ServiceDetailClientProps) {
                     className: "w-7 h-7 sm:w-8 sm:h-8 text-accent drop-shadow-lg",
                   })}
                 </motion.div>
-                <h1 className="text-xl sm:text-xl md:text-3xl font-bold text-white leading-tight drop-shadow-lg">
+                <h1 className="font-outfit text-[24px] sm:text-[30px] md:text-[36px] lg:text-[35px] xl:text-[40px]  text-white leading-tight drop-shadow-lg">
                   {service.title}
                 </h1>
               </motion.div>
@@ -198,48 +190,61 @@ export default function ServiceDetailClient({ id }: ServiceDetailClientProps) {
           </motion.div>
 
           {/* Content Section with Enhanced Styling */}
-          <div className="p-6 sm:p-8 md:p-12">
+          <div className="p-6  sm:p-8 md:p-12">
             <motion.div
-              className="max-w-4xl mx-auto space-y-12"
+              className=" mx-auto space-y-12"
               initial="hidden"
               animate="visible"
               variants={fadeInUp}
             >
               {/* Quick Stats */}
               <motion.div
-                className="grid grid-cols-2 gap-4"
+                className={`grid ${service.stats && service.stats.length === 2 ? 'grid-cols-2' : service.stats && service.stats.length === 4 ? 'grid-cols-4' : 'grid-cols-3'} text-center gap-10`}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.5 }}
               >
-                {[
-                  { icon: TrendingUp, value: 95, suffix: "%", label: "Success Rate" },
-                  { icon: Clock, value: 24, suffix: "h", label: "Response Time" },
-                ].map((stat, idx) => (
-                  <motion.div
-                    key={idx}
-                    className="p-4 rounded-2xl bg-card/20 backdrop-blur-sm border border-border/10 shadow-md hover:shadow-lg transition-all duration-300"
-                    whileHover={{ y: -5, scale: 1.02 }}
-                  >
-                    <stat.icon className="h-6 w-6 text-accent mb-2" />
-                    <div className="text-2xl font-bold text-foreground">
-                      <AnimatedCounter value={stat.value} suffix={stat.suffix} />
-                    </div>
-                    <div className="text-sm text-muted-foreground">{stat.label}</div>
-                  </motion.div>
-                ))}
+                {(service.stats ?? [
+                  { icon: 'TrendingUp', value: 96, suffix: '%', label: 'Client Satisfaction' },
+                  { icon: 'Clock', value: 24, suffix: '/7', label: 'Customer Engagement' },
+                  { icon: 'LineChart', value: 40, suffix: '% Faster', label: 'Lead Conversion' },
+                ]).map((stat, idx) => {
+                  const IconComp = stat.icon === 'TrendingUp' ? TrendingUp
+                    : stat.icon === 'Clock' ? Clock
+                    : stat.icon === 'LineChart' ? LineChart
+                    : stat.icon === 'Globe' ? Globe
+                    : stat.icon === 'Zap' ? Zap
+                    : Activity;
+                  return (
+                    <motion.div
+                      key={idx}
+                      className="p-4 rounded-[20px] bg-[#2C3035]  backdrop-blur-sm  hover:shadow-lg transition-all duration-300"
+                      whileHover={{ y: -5, scale: 1.02 }}
+                    >
+                      <IconComp className="h-8 w-8 text-accent mb-3 mx-auto" />
+                      <div className="text-2xl  text-foreground font-outfit">
+                        {typeof stat.value === 'number' ? (
+                          <AnimatedCounter value={stat.value as number} suffix={stat.suffix} />
+                        ) : (
+                          <span>{String(stat.value)}</span>
+                        )}
+                      </div>
+                      <div className="text-sm text-[#9FA6AD] font-poppins">{stat.label}</div>
+                    </motion.div>
+                  );
+                })}
               </motion.div>
 
               {/* Introduction with Gradient Text */}
               <motion.p
-                className="text-lg sm:text-xl md:text-  xl text-muted-foreground leading-relaxed border-b border-border/10 pb-8 sm:pb-10"
+                className="mt-4 font-poppins text-[12px] sm:text-[14px] md:text-base text-center text-[#9FA6AD]  md:mx-0 "
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.5 }}
               >
                 {service.introduction}
               </motion.p>
-
+              <div className="w-full h-[0.5px] bg-[#414141]" />
               {/* Features List */}
               <motion.div
                 className="flex flex-col sm:flex-row items-center justify-center gap-3"
@@ -250,53 +255,76 @@ export default function ServiceDetailClient({ id }: ServiceDetailClientProps) {
                 {features.map((feature, idx) => (
                   <motion.div
                     key={idx}
-                    className="flex flex-col items-center text-center p-4"
+                    className="flex flex-col  items-center text-center p-4"
                     whileHover={{ y: -5, scale: 1.02 }}
                   >
-                    <div className="h-10 w-10 rounded-xl bg-accent/5 flex items-center justify-center mb-3">
-                      <feature.icon className="h-5 w-5 text-accent" />
+                    <div className="  flex items-center justify-center mb-3">
+                      <feature.icon className="h-8 w-8 text-accent" />
                     </div>
-                    <h3 className="text-lg font-semibold mb-1">{feature.title}</h3>
-                    <p className="text-sm text-muted-foreground max-w-xs">{feature.description}</p>
+                    <h3 className="text-[20px] font-outfit mb-1">{feature.title}</h3>
+                    <p className="text-sm text-[#9FA6AD] font-poppins max-w-xs">{feature.description}</p>
                   </motion.div>
                 ))}
               </motion.div>
-
+           <div className="w-full h-[0.5px] bg-[#414141]" />
               {/* Benefits & Highlights with Enhanced Cards */}
               <div className="grid md:grid-cols-2 gap-8 sm:gap-10">
                 {/* Benefits Card */}
-                <motion.div
+                {/* <motion.div
                   className="group relative p-6 sm:p-8 rounded-2xl bg-card/20 backdrop-blur-sm border border-border/10 shadow-md hover:shadow-lg transition-all duration-300"
                   whileHover={{ y: -5, scale: 1.02 }}
                 >
-                  <div className="absolute inset-0 bg-gradient-to-br from-accent/5 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="absolute inset-0 rounded-[20px] opacity-0 group-hover:transition-opacity duration-300" />
                   <h3 className="text-2xl sm:text-3xl font-semibold text-foreground flex items-center mb-6">
-                    <Sparkles className="h-7 w-7 mr-3 text-accent" />
+                    <Sparkles className="h-7 w-7 mr-3 text-accent " />
                     Key Benefits
                   </h3>
                   <ul className="space-y-4">
                     {service.benefits.map((benefit: string, idx: number) => (
                       <motion.li
                         key={idx}
-                        className="flex items-start text-muted-foreground hover:text-foreground transition-colors duration-200"
+                        className="flex items-start text-[#9FA6AD] font-poppins hover:text-foreground transition-colors duration-200"
                         initial={{ opacity: 0, x: -20 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: 0.6 + idx * 0.1 }}
                       >
-                        <CheckCircle className="h-5 w-5 mr-3 mt-1 text-green-500 flex-shrink-0" />
+                        <span className="mt-2 mr-3 h-2 w-2 rounded-full bg-accent flex-shrink-0" aria-hidden /> 
                         <span className="text-base sm:text-lg">{benefit}</span>
                       </motion.li>
                     ))}
                   </ul>
-                </motion.div>
-
-                {/* Highlights Card */}
+                </motion.div> */}
                 <motion.div
-                  className="group relative p-6 sm:p-8 rounded-2xl bg-card/20 backdrop-blur-sm border border-border/10 shadow-md hover:shadow-lg transition-all duration-300"
+                  className="group relative p-6 sm:p-8 rounded-2xl bg-[#2C3035] backdrop-blur-sm border border-border/10 shadow-md hover:shadow-lg transition-all duration-300"
                   whileHover={{ y: -5, scale: 1.02 }}
                 >
                   <div className="absolute inset-0 bg-gradient-to-br from-accent/5 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  <h3 className="text-2xl sm:text-3xl font-semibold text-foreground flex items-center mb-6">
+                  <h3 className="text-2xl sm:text-3xl  text-white flex items-center mb-6">
+                    <Lightbulb className="h-7 w-7 mr-3 text-accent" />
+                    Key Benefits
+                  </h3>
+                  <ul className="space-y-4">
+                  {service.benefits.map((benefit: string, idx: number) => (
+                      <motion.li
+                        key={idx}
+                        className="flex items-start text-[#9FA6AD] font-poppins hover:text-foreground transition-colors duration-200"
+                        initial={{ opacity: 0, x:-20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: 0.6 + idx * 0.1 }}
+                      >
+                        <span className="mt-2 mr-3 h-2 w-2 rounded-full bg-accent flex-shrink-0" aria-hidden /> 
+                        <span className="text-base ">{benefit}</span>
+                      </motion.li>
+                    ))}
+                  </ul>
+                </motion.div>
+                {/* Highlights Card */}
+                <motion.div
+                  className="group relative p-6 sm:p-8 rounded-2xl bg-[#2C3035] backdrop-blur-sm border border-border/10 shadow-md hover:shadow-lg transition-all duration-300"
+                  whileHover={{ y: -5, scale: 1.02 }}
+                >
+                  <div className="absolute inset-0 bg-gradient-to-br from-accent/5 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <h3 className="text-2xl sm:text-3xl  text-white flex items-center mb-6">
                     <Lightbulb className="h-7 w-7 mr-3 text-accent" />
                     Highlights
                   </h3>
@@ -304,27 +332,28 @@ export default function ServiceDetailClient({ id }: ServiceDetailClientProps) {
                     {service.highlights.map((item: string, idx: number) => (
                       <motion.li
                         key={idx}
-                        className="flex items-start text-muted-foreground hover:text-foreground transition-colors duration-200"
+                        className="flex items-start text-[#9FA6AD] font-poppins hover:text-foreground transition-colors duration-200"
                         initial={{ opacity: 0, x: 20 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: 0.6 + idx * 0.1 }}
                       >
-                        <Star className="h-5 w-5 mr-3 mt-1 text-accent flex-shrink-0" />
-                        <span className="text-base sm:text-lg">{item}</span>
+                        <span className="mt-2 mr-3 h-2 w-2 rounded-full bg-accent flex-shrink-0" aria-hidden /> 
+                        <span className="text-base sm:text-base">{item}</span>
                       </motion.li>
                     ))}
                   </ul>
                 </motion.div>
               </div>
+            
 
               {/* Process Section with Timeline */}
               <motion.div
-                className="relative p-8 rounded-2xl bg-card/20 backdrop-blur-sm border border-border/10 shadow-md"
+                className="relative p-8 rounded-2xl bg-[#2C3035] backdrop-blur-sm border border-border/10 shadow-md"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.7 }}
               >
-                <h3 className="text-2xl sm:text-3xl font-semibold text-foreground mb-8 flex items-center">
+                <h3 className="text-2xl sm:text-3xl font-outfit text-white mb-8 flex items-center">
                   <Target className="h-7 w-7 mr-3 text-accent" />
                   Our Process
                 </h3>
@@ -339,16 +368,16 @@ export default function ServiceDetailClient({ id }: ServiceDetailClientProps) {
                       transition={{ delay: 0.8 + idx * 0.1 }}
                     >
                       <div className="absolute py-2 left-0 top-1 w-8 h-8 rounded-full bg-accent/5 border border-accent flex items-center justify-center">
-                        <span className="text-accent font-semibold">{idx + 1}</span>
+                        <span className="text-accent ">{idx + 1}</span>
                       </div>
-                      <p className="text-base sm:text-lg text-muted-foreground hover:text-foreground transition-colors duration-200">
+                      <p className="text-base  lg:text-base text-[#9FA6AD] font-poppins hover:text-foreground transition-colors duration-200">
                         {step}
                       </p>
                     </motion.div>
                   ))}
                 </div>
               </motion.div>
-
+              <div className="w-full h-[0.5px] bg-[#414141]" />
               {/* Impact Section with Cards */}
               <motion.div
                 className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"
@@ -359,17 +388,17 @@ export default function ServiceDetailClient({ id }: ServiceDetailClientProps) {
                 {service.impacts.map((impact: string, idx: number) => (
                   <motion.div
                     key={idx}
-                    className="p-6 rounded-2xl bg-card/20 backdrop-blur-sm border border-border/10 shadow-md hover:shadow-lg transition-all duration-300"
+                    className="p-6 rounded-2xl bg-[#2C3035] backdrop-blur-sm border border-border/10 shadow-md hover:shadow-lg transition-all duration-300"
                     whileHover={{ y: -5, scale: 1.02 }}
                   >
                     <Zap className="h-6 w-6 text-accent mb-4" />
-                    <p className="text-base sm:text-lg text-muted-foreground hover:text-foreground transition-colors duration-200">
+                    <p className="text-base  text-[#9FA6AD] font-poppins hover:text-white transition-colors duration-200">
                       {impact}
                     </p>
                   </motion.div>
                 ))}
               </motion.div>
-
+              <div className="w-full h-[0.5px] bg-[#414141]" />
               {/* Partnership Section with Gradient Background */}
               <motion.div
                 className="relative p-8 sm:p-10 rounded-2xl overflow-hidden"
@@ -379,58 +408,39 @@ export default function ServiceDetailClient({ id }: ServiceDetailClientProps) {
               >
                 <div className="absolute inset-0 bg-[#2B3035] via-accent/2 to-transparent" />
                 <div className="relative z-10">
-                  <h3 className="text-2xl sm:text-3xl  text-foreground mb-6 ">
-                  Why Partner with Upteky for Interactive AI Website Chatbots?
+                  <h3 className="text-2xl sm:text-3xl font-outfit  text-white mb-6 ">
+                    {service.partnerTitle ?? 'Why Partner with Upteky?'}
                   </h3>
-                  <p className="text-base sm:text-lg text-muted-foreground   tracking-tight max-w-4xl mx-auto">
-                  At Upteky Solutions Pvt. Ltd., we specialize in building conversion-driven website chatbots tailored to your business goals. Unlike generic bots, our solutions are:
+                  <p className="text-base  font-poppins text-[#9FA6AD]  mx-auto pr-20">
+                    {service.partnerIntro ?? 'At Upteky Solutions Pvt. Ltd., our solutions are:'}
                   </p>
                   <div>
-                  <ul className="list-disc list-inside space-y-2 mt-4 text-base sm:text-lg text-foreground">
-                    <li>Custom-designed to match your brand identity</li>
-                    <li>Secure and scalable, with enterprise-grade compliance</li>
-                    <li>Analytics-enabled, so you always know what’s working</li>
-                    <li>Proven to deliver results across industries like healthcare, real estate, e-commerce, SaaS,.</li>
+                  <ul className="list-disc font-poppins list-inside marker:text-accent space-y-2 mt-4 text-base sm:text-base text-white/80">
+                    {(service.partnerBullets ?? [
+                      'Custom-designed to match your brand identity',
+                      'Secure and scalable, with enterprise-grade compliance',
+                      'Analytics-enabled, so you always know what’s working',
+                      'Proven to deliver results across industries like healthcare, real estate, e-commerce, SaaS.'
+                    ]).map((b, i) => (
+                      <li key={i}>{b}</li>
+                    ))}
                   </ul>
                   </div>
                   
                 </div>
               </motion.div>
-
-              {/* CTA Section with Enhanced Button */}
-              <motion.div
-                className="text-center"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 1.1 }}
-              >
-                <h3 className="text-2xl sm:text-3xl  text-foreground mb-4">
-                  Ready to Transform Your Business?
-                </h3>
-                <p className="text-base sm:text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
-                Discover how the Interactive AI Website Chatbot can transform your online engagement and drive measurable growth. Contact us today for a personalized consultation and demo. 
-                </p>
-                <Button
-                  size="lg"
-                  asChild
-                  className="group relative overflow-hidden bg-gradient-accent text-white hover:opacity-90 transition-all duration-300 transform hover:scale-105 shadow-lg px-4 sm:px-8 py-4 sm:py-6 text-sm sm:text-lg rounded-full font-semibold"
-                >
-                  <Link href={`${service.contactLink}&title=${encodeURIComponent(service.title)}`}>
-                    <span className="relative z-10 flex items-center">
-                      <Mail className="mr-1 sm:mr-2 h-4 w-4 sm:h-5 sm:w-5" />
-                      <span className="hidden sm:inline">Contact Us About This Solution</span>
-                      <span className="sm:hidden">Contact Us</span>
-                      <ArrowRight className="ml-1 sm:ml-2 h-4 w-4 sm:h-5 sm:w-5 group-hover:translate-x-1 transition-transform" />
-                    </span>
-                    <div className="absolute inset-0 bg-gradient-to-r from-yellow-400 via-orange-400 to-orange-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  </Link>
-                </Button>
-                <p className="text-sm text-muted-foreground mt-4">
-                  We'll get back to you within 24 hours.
-                </p>
-              </motion.div>
             </motion.div>
           </div>
+          <div className="w-full h-[0.5px] bg-[#414141]" />
+          <section className="container mx-auto px-4 md:px-6 py-10 sm:py-8 md:py-10">
+        <div>
+          <ProjectDiscussion
+            onSubmit={async (values) => {
+              console.log('Web Dev form values:', values);
+            }}
+          />
+        </div>
+      </section>
         </motion.div>
       </div>
     </motion.div>
