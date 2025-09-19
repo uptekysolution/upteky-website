@@ -77,127 +77,44 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-background to-background/95">
+    <div className="min-h-screen bg-gradient-to-b from-background to-background/95 font-poppins">
       {/* Hero Section with Background */}
-      {/* <FadeIn>
-      <div className="relative bg-accent/10 overflow-hidden">
-        <div className="absolute inset-0 bg-grid-white/5 [mask-image:radial-gradient(white,transparent_85%)]" />
-        <div className="container mx-auto px-4 md:px-6 py-12 sm:py-16 md:py-24 relative z-10">
-          <div className="text-center max-w-3xl mx-auto">
-            <h1 className="text-3xl sm:text-4xl font-bold tracking-tight md:text-5xl lg:text-6xl bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/70 mb-3 sm:mb-4">
-              Get In Touch
-            </h1>
-            <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
-              Have questions about our AI solutions or want to discuss a partnership? 
-              We'd love to hear from you and explore how we can help.
-            </p>
-          </div>
-        </div>
-         */}
-        {/* Decorative elements */}
-        {/* <div className="absolute -bottom-6 left-0 right-0 h-12 bg-gradient-to-r from-accent/20 via-accent/30 to-accent/20 blur-xl" />
-      </div>
-      </FadeIn> */}
+      
       <FadeIn>
-          <div className="relative overflow-hidden bg-gradient-to-br from-[#2d3436] to-[#000000]">
-            {/* Top Orange Light Gradient */}
-            <div className="absolute top-0 left-0 right-0 w-full h-full z-0 pointer-events-none" aria-hidden="true">
-              <svg viewBox="0 0 1440 800" className="w-full h-full" preserveAspectRatio="xMidYMin slice">
-                <defs>
-                  <radialGradient id="centerGlow" cx="50%" cy="5%" r="70%" fx="50%" fy="0%">
-                    <stop offset="0%" stopColor="#FF8B06" stopOpacity="0.35" />
-                    <stop offset="30%" stopColor="#FF8B06" stopOpacity="0.15" />
-                    <stop offset="100%" stopColor="#FF8B06" stopOpacity="0" />
-                  </radialGradient>
-                </defs>
-                <rect width="100%" height="65%" y="0" fill="url(#centerGlow)" />
-              </svg>
-            </div>
+  <div className="relative overflow-hidden bg-[#232629] text-white">
+    <div className="absolute inset-0 z-0 ">
+      <img
+        src="/assets/circular-bg-pattern.png"
+        alt="Background circles pattern"
+        className="absolute right-0 bottom-0 h-full w-auto object-cover object-right-bottom"
+      />
+    </div>
+    {/* --- MODIFIED LINE --- */}
+    <div className="relative z-10 flex h-screen items-center py-20">
+      <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-20">
+        {/* --- MODIFIED LINE --- */}
+        <motion.div
+          className="max-w-4xl"
+          initial="hidden"
+          animate="visible"
+          variants={fadeIn}
+          transition={{ duration: 0.7 }}
+        >
+          <h1 className="font-outfit text-4xl font-bold tracking-tight text-white md:text-[45px] mb-4 sm:mb-6">
+            Let’s Get In Touch
+          </h1>
+          {/* --- MODIFIED LINE --- */}
+          <p className="text-base text-gray-300 max-w-3xl leading-relaxed mb-8 sm:mb-10">
+            Have questions about our AI solutions or want to discuss a partnership? We'd love to hear from you and explore how we can help.
+          </p>
+        </motion.div>
+      </div>
+    </div>
+  </div>
+</FadeIn>
 
-            {/* Background SVG */}
-            <div className="absolute inset-0 z-0 pointer-events-none">
-             <svg
-               className="w-full h-full opacity-10"
-               viewBox="0 0 1440 600"
-               preserveAspectRatio="xMidYMin slice"
-             >
-               <defs>
-                 <linearGradient
-                   id="heroGradientCareers"
-                   x1="0%"
-                   y1="0%"
-                   x2="100%"
-                   y2="100%"
-                 >
-                   <stop offset="0%" stopColor="hsl(var(--accent))" />
-                   <stop
-                     offset="100%"
-                     stopColor="hsl(var(--accent))"
-                     stopOpacity="0.7"
-                   />
-                 </linearGradient>
-                 <filter
-                   id="glowCareers"
-                   x="-50%"
-                   y="-50%"
-                   width="200%"
-                   height="200%"
-                 >
-                   <feGaussianBlur stdDeviation="15" result="blur" />
-                   <feMerge>
-                     <feMergeNode in="blur" />
-                     <feMergeNode in="SourceGraphic" />
-                   </feMerge>
-                 </filter>
-               </defs>
-
-               <path
-                 d="M -100,100 Q 500,200 1200,100 T 2000,200"
-                 stroke="url(#heroGradientCareers)"
-                 strokeWidth="2"
-                 fill="none"
-                 opacity="0.5"
-               />
-               <path
-                 d="M -100,200 Q 600,50 1300,150 T 2000,50"
-                 stroke="url(#heroGradientCareers)"
-                 strokeWidth="3"
-                 fill="none"
-                 opacity="0.3"
-                 strokeDasharray="5,15"
-               />
-               <circle cx="200" cy="150" r="3" fill="hsl(var(--accent))" />
-               <circle cx="600" cy="120" r="2" fill="hsl(var(--accent))" />
-               <circle cx="1000" cy="180" r="4" fill="hsl(var(--accent))" />
-               <circle cx="1400" cy="150" r="3" fill="hsl(var(--accent))" />
-             </svg>
-           </div>
-
-              {/* Content */}
-              <div className="relative z-10 min-h-[50vh] md:min-h-[60vh] flex items-center">
-              <div className="container mx-auto px-4 md:px-6  ">
-                <motion.div
-                  className="text-center max-w-4xl mx-auto"
-                  initial="hidden"
-                  animate="visible"
-                  variants={fadeIn}
-                  transition={{ duration: 0.7 }}
-                >
-                  <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl lg:mt-10 font-bold tracking-tight mb-4 sm:mb-6 bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/80">
-                  Get In Touch
-                  </h1>
-                  <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto mb-8 sm:mb-10 leading-relaxed">
-                  Have questions about our AI solutions or want to discuss a partnership? 
-                  We'd love to hear from you and explore how we can help.
-                  </p>
-                 
-                </motion.div>
-             </div>
-           </div>
-         </div>
-       </FadeIn>
-
-      <div className="container mx-auto px-4 md:px-6 py-10 sm:py-12 md:py-20">
+      {/* --- MODIFIED LINE --- */}
+      <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-20 py-10 sm:py-12 md:py-20">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
           {/* Contact Form Section */}
           <FadeIn>
@@ -336,9 +253,9 @@ export default function ContactPage() {
             
           </section>
           </FadeIn>
-     
+      
         </div>
-             {/* Map Section */}
+              {/* Map Section */}
             <Card className="mt-12 border border-border/30 shadow-lg overflow-hidden rounded-xl  md:mt-8 sm:mt-8">
               <div className="w-full h-[300px] sm:h-[350px] md:h-[450px] bg-muted ">
                 <iframe 
