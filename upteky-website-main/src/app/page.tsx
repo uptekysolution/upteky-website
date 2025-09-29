@@ -277,6 +277,9 @@ export default function Home() {
   const [activeTab, setActiveTab] = useState(whatWeDoData[0].id);
   const [accordionIndex, setAccordionIndex] = useState<number | null>(0); // ADD THIS STATE
 
+  const [files, setFiles] = useState<FileList | null>(null);
+const fileInputRef = useRef<HTMLInputElement>(null);
+
 
   const [formData, setFormData] = useState({
     fullName: '',
@@ -381,6 +384,18 @@ const [responseMessage, setResponseMessage] = useState('');
     });
   };
 
+
+// HANDLER to trigger the hidden file input
+const handleAttachClick = () => {
+  fileInputRef.current?.click();
+};
+
+// HANDLER to update state when files are selected
+const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  setFiles(e.target.files);
+};
+
+// ... your existing handleChange and other handlers
   const handleTestimonialNavigation = (direction: 'prev' | 'next') => {
     const currentIsAutoScrolling = isTestimonialAutoScrolling;
     setIsTestimonialAutoScrolling(false);
@@ -543,39 +558,49 @@ const handleServiceToggle = (serviceName: string) => {
 
 // 4. HANDLER for form submission
 const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setResponseMessage('Submitting...');
+  e.preventDefault();
+  setResponseMessage('Submitting...');
 
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbxHy2aJu7uv7ZmMZ-stz1-9WmTDUq6Z5faTWTmn0G2nj4GnDFI3OdcT0QO8qe-fUu4s3A/exec'; // <-- IMPORTANT: PASTE YOUR URL HERE
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbyhWHya3HvPyY2PlwH2_EvYprTkHkjovfOJx1tZY0UqhGVZtR1Mp6rKw4cXJFLp2sRTfA/exec';
 
-    // Create FormData object for proper submission to Google Apps Script
-    const formDataToSubmit = new FormData();
-    formDataToSubmit.append('fullName', formData.fullName);
-    formDataToSubmit.append('email', formData.email);
-    formDataToSubmit.append('phone', formData.phone);
-    formDataToSubmit.append('projectDescription', formData.projectDescription);
-    formDataToSubmit.append('services', formData.services.join(', ')); // Convert array to string
+  const formDataToSubmit = new FormData();
+  formDataToSubmit.append('fullName', formData.fullName);
+  formDataToSubmit.append('email', formData.email);
+  formDataToSubmit.append('phone', formData.phone);
+  formDataToSubmit.append('projectDescription', formData.projectDescription);
+  formDataToSubmit.append('services', formData.services.join(', '));
 
-    try {
-        const response = await fetch(scriptURL, {
-            method: 'POST',
-            body: formDataToSubmit,
-            mode: 'no-cors', // Important for Google Apps Script
-        });
+  // START: ADD THIS BLOCK TO APPEND FILES
+  if (files) {
+      for (let i = 0; i < files.length; i++) {
+          // Each file will be named 'file0', 'file1', etc.
+          formDataToSubmit.append('file' + i, files[i]);
+      }
+  }
+  // END: ADD THIS BLOCK
 
-        setResponseMessage('Success! Your message was submitted.');
-        // Reset the form after successful submission
-        setFormData({
-            fullName: '',
-            email: '',
-            phone: '',
-            projectDescription: '',
-            services: [],
-        });
-    } catch (error) {
-        setResponseMessage('An error occurred. Please try again.');
-        console.error('Submission error:', error);
-    }
+  try {
+      const response = await fetch(scriptURL, {
+          method: 'POST',
+          body: formDataToSubmit,
+          // Google Apps Script doesn't handle attachments with 'no-cors'.
+          // You may need to remove this or adjust your backend script.
+          // mode: 'no-cors',
+      });
+
+      setResponseMessage('Success! Your message was submitted.');
+      setFormData({
+          fullName: '',
+          email: '',
+          phone: '',
+          projectDescription: '',
+          services: [],
+      });
+      setFiles(null); // Clear the files after submission
+  } catch (error) {
+      setResponseMessage('An error occurred. Please try again.');
+      console.error('Submission error:', error);
+  }
 };
 
 
@@ -1449,159 +1474,151 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
       </section> */}
       {/* Free Consultation - two column form */}
       <section id="contact-form" className="py-12 md:py-16 bg-[#232629] backdrop-blur-sm border-t border-border/20 snap-start">
-        <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-20">
-          <div className="w-full max-w-auto lg:max-w-[1273px] mx-auto bg-[#2C3035] backdrop-blur-lg rounded-[30px] border border-gray-600/30  p-4 sm:p-6 md:p-8">
-            <div className="grid grid-cols-1  lg:grid-cols-5 gap-8 lg:gap-10 items-center">
-              {/* Left info column */}
-              <div className="flex flex-col h-full lg:col-span-2">
-                <div>
-                  <h2 className="text-[18px] sm:text-2xl md:text-2xl lg:text-2xl  xl:text-3xl 2xl:text-4xl font-normal font-['Outfit'] leading-[100%] text-center text-foreground mb-3 mt-1 lg:mt-6 pt-6 whitespace-nowrap">Ready for Free Consultation?</h2>
-                  <p className=" mb-10 text-[14px] sm:text-[15px] md:text-[16px] text-[#9FA6AD] font-['Outfit'] font-light leading-[100%] text-center whitespace-normal">
-                    Your Demand for IT & AI Expert 
-                    and  free consultation anytime
-                  </p>
-                  <div className="space-y-4 mt-8">
-                    <div className="flex items-center gap-3 text-sm">
-                      <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" className="text-accent  "><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" /><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" /></svg>
-                      <span className="text-foreground text-sm sm:text-[18px] whitespace-nowrap font-['Outfit'] font-light leading-[100%]">Email us:</span>
-                      <span className="text-muted-foreground text-sm sm:text-[18px] font-['Outfit'] font-light leading-[100%]">hello@upteky.com</span>
-                    </div>
-                    <div className="flex items-center gap-3 text-sm">
-                      <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" className="text-accent"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" /></svg>
-                      <span className="text-foreground text-sm sm:text-[18px] whitespace-nowrap font-['Outfit'] font-light leading-[100%]">Phone :</span>
-                      <span className="text-muted-foreground whitespace-nowrap text-sm sm:text-[18px] font-['Outfit'] font-light leading-[100%]">+91 9978901910</span>
-                    </div>
-                  </div>
+    <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-20">
+        {/*
+            FIX: Removed max-w-auto and lg:max-w-[1273px] to conform to container width.
+            The container div above already handles the max-width and centering for the page.
+        */}
+        <div className="w-full mx-auto bg-[#2C3035] backdrop-blur-lg rounded-[30px] border border-gray-600/30 p-4 sm:p-6 md:p-8">
+            <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-10 items-center">
+                {/* Left info column (no changes here) */}
+                <div className="flex flex-col h-full lg:col-span-2 justify-between items-center text-center lg:items-start lg:text-left p-4 md:p-6">
 
-                  <div className="lg:mt-60 md:mt-10 xl:mt-40 2xl:mt-40 sm:mt-5  mt-6 ">
-                    <p className="text-[14px] font-['Inter'] font-normal leading-[100%] text-foreground mb-2">Follow Us:</p>
-                    <div className="flex gap-3">
-                      <div className="flex space-x-2">
-                        {socialMedia.map((social) => (
-                          <Link
-                            key={social.name}
-                            href={social.href}
-                            aria-label={social.name}
-                            className="p-2.5 rounded-full bg-secondary/50 text-muted-foreground hover:bg-accent hover:text-accent-foreground transition-all duration-300 transform hover:scale-110"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                          >
-                            {social.icon}
-                          </Link>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+    {/* --- Top Content Block --- */}
+    <div className="w-full">
+        <h2 className="text-[18px] sm:text-2xl md:text-2xl lg:text-2xl xl:text-3xl 2xl:text-4xl font-normal font-['Outfit'] leading-[100%] text-foreground mb-3 mt-1 lg:mt-6 pt-6">
+            Ready for Free Consultation?
+        </h2>
+        <p className="mb-10 text-[14px] sm:text-[15px] md:text-[16px] text-[#9FA6AD] font-['Outfit'] font-light leading-normal">
+            Your Demand for IT & AI Experts and free consultation anytime.
+        </p>
 
-              {/* Right form column */}
-              <div className=" bg-[#2C3035] rounded-[30px] px-6 py-8 sm:px-14 sm:py-10 my-3 md:p-10 border border-muted-foreground/10 lg:col-span-3 2xl:ml-12">
-    <form onSubmit={handleSubmit} className="space-y-8"> {/* Increased spacing for mobile */}
-        <div className="space-y-3">
-            {/* First Name - Full Width */}
-            <div>
-                <input
-                    type="text"
-                    placeholder="Full Name*"
-                    // --- Responsive Change: Added base vertical padding for better touch targets ---
-                    className="w-full my-4 bg-transparent border-b border-muted-foreground/50 py-3 focus:border-accent focus:outline-none placeholder:text-base placeholder:text-muted-foreground"
-                    // --- Functional additions ---
-                    name="fullName"
-                    value={formData.fullName}
-                    onChange={handleChange}
-                    required
-                />
+        {/* This container ensures the contact info is grouped and aligned */}
+        <div className="mt-8 flex flex-col items-center lg:items-start gap-4">
+            <div className="flex items-center gap-3 text-sm">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" className="text-accent flex-shrink-0"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" /><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" /></svg>
+                <span className="text-foreground text-sm sm:text-base font-['Outfit'] font-light">Email us:</span>
+                <span className="text-muted-foreground text-sm sm:text-base font-['Outfit'] font-light">hello@upteky.com</span>
             </div>
-
-            {/* Email and Phone - Stacks on mobile, side-by-side on md+ */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-3"> {/* Added gap-y for mobile */}
-                <div>
-                    <input
-                        type="email"
-                        placeholder="Email*"
-                        // --- Responsive Change: Added base vertical padding ---
-                        className="w-full mb-4 bg-transparent border-b border-muted-foreground/50 py-3 focus:border-accent focus:outline-none placeholder:text-base placeholder:text-muted-foreground"
-                        // --- Functional additions ---
-                        name="email"
-                        value={formData.email}
-                        onChange={handleChange}
-                        required
-                    />
-                </div>
-                <div>
-                    <input
-                        type="text"
-                        placeholder="Phone number"
-                        // --- Responsive Change: Added base vertical padding ---
-                        className="w-full mb-4 bg-transparent border-b border-muted-foreground/50 py-3 focus:border-accent focus:outline-none placeholder:text-base placeholder:text-muted-foreground"
-                        // --- Functional additions ---
-                        name="phone"
-                        value={formData.phone}
-                        onChange={handleChange}
-                    />
-                </div>
-            </div>
-
-            {/* Describe your project - Full Width */}
-            <div>
-                <textarea
-                    rows={3}
-                    placeholder="Describe your project"
-                    // --- Responsive Change: Added base vertical padding ---
-                    className="w-full mb-4 bg-transparent border-b border-muted-foreground/50 py-3 focus:border-accent focus:outline-none resize-none placeholder:text-base placeholder:text-muted-foreground"
-                    // --- Functional additions ---
-                    name="projectDescription"
-                    value={formData.projectDescription}
-                    onChange={handleChange}
-                />
+            <div className="flex items-center gap-3 text-sm">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" className="text-accent flex-shrink-0"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" /></svg>
+                <span className="text-foreground text-sm sm:text-base font-['Outfit'] font-light">Phone:</span>
+                <span className="text-muted-foreground text-sm sm:text-base font-['Outfit'] font-light">+91 9978901910</span>
             </div>
         </div>
+    </div>
 
-        <div>
-            <p className="text-base text-muted-foreground font-medium mb-4">Services</p> {/* Increased margin bottom */}
-            <div className="flex flex-wrap gap-3"> {/* Increased gap for better spacing */}
-                {['Web development', 'AI automation', 'IT consultation', 'Custom solution', 'Voicebots', 'Chatbots', 'App development'].map((service) => (
-                    <button
-                        key={service}
-                        type="button"
-                        onClick={() => handleServiceToggle(service)} // <-- onClick handler
-                        // --- Responsive Change: Smaller padding & text on mobile, larger on sm+ screens ---
-                        className={cn(
-                            "px-5 py-2 text-xs sm:px-6 sm:py-3 sm:text-sm rounded-full border border-muted-foreground/50 transition-colors",
-                            formData.services.includes(service)
-                                ? "bg-accent text-accent-foreground border-accent" // Style for selected button
-                                : "text-foreground hover:text-accent" // Default style
-                        )}
+    {/* --- Bottom Content Block (pushed to the end by `justify-between`) --- */}
+    <div className="w-full mt-10 lg:mt-0">
+        <p className="text-[14px] font-['Inter'] font-normal leading-[100%] text-foreground mb-2">Follow Us:</p>
+        <div className="flex gap-3 justify-center lg:justify-start">
+            <div className="flex space-x-2">
+                {socialMedia.map((social) => (
+                    <Link
+                        key={social.name}
+                        href={social.href}
+                        aria-label={social.name}
+                        className="p-2.5 rounded-full bg-secondary/50 text-muted-foreground hover:bg-accent hover:text-accent-foreground transition-all duration-300 transform hover:scale-110"
+                        target="_blank"
+                        rel="noopener noreferrer"
                     >
-                        {service}
-                    </button>
+                        {social.icon}
+                    </Link>
                 ))}
             </div>
         </div>
-
-        {/* --- Responsive Change: Stacks on mobile, row on sm+ screens --- */}
-        <div className="flex flex-col sm:flex-row items-center gap-4 pt-4">
-            <button type="button" className="w-full sm:w-auto flex-1 px-4 py-4 bg-muted/40 hover:bg-muted text-muted-foreground rounded-full border border-border/40 transition-colors flex items-center justify-center gap-2">
-                <span className="text-lg">+</span> Attach File(s)
-            </button>
-            <Button
-                type="submit"
-                // --- Responsive Change: Adjusted padding and rounding for different screen sizes ---
-                className="w-full sm:w-auto bg-gradient-accent text-sm text-white rounded-full px-12 py-4 sm:px-16 sm:py-5 border-transparent hover:bg-none hover:bg-[#2c2c2c] hover:text-accent hover:border-accent transition-all duration-300"
-            >
-                Send
-            </Button>
-        </div>
-
-        {/* Display the submission status message */}
-        {responseMessage && <p className="text-center text-white mt-4">{responseMessage}</p>}
-    </form>
+    </div>
 </div>
+
+                {/* Right form column */}
+                <div className="bg-[#2C3035] rounded-[30px] px-6 py-8 sm:px-14 sm:py-10 my-3 md:p-10 border border-muted-foreground/10 lg:col-span-3 2xl:ml-12">
+                    <form onSubmit={handleSubmit} className="space-y-8">
+                        <div className="space-y-3">
+                            {/* Input fields (no changes) */}
+                            <div>
+                                <input type="text" placeholder="Full Name*" className="w-full my-4 bg-transparent border-b border-muted-foreground/50 py-3 focus:border-accent focus:outline-none placeholder:text-base placeholder:text-muted-foreground" name="fullName" value={formData.fullName} onChange={handleChange} required />
+                            </div>
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-3">
+                                <div>
+                                    <input type="email" placeholder="Email*" className="w-full mb-4 bg-transparent border-b border-muted-foreground/50 py-3 focus:border-accent focus:outline-none placeholder:text-base placeholder:text-muted-foreground" name="email" value={formData.email} onChange={handleChange} required />
+                                </div>
+                                <div>
+                                    <input type="text" placeholder="Phone number" className="w-full mb-4 bg-transparent border-b border-muted-foreground/50 py-3 focus:border-accent focus:outline-none placeholder:text-base placeholder:text-muted-foreground" name="phone" value={formData.phone} onChange={handleChange} />
+                                </div>
+                            </div>
+                            <div>
+                                <textarea rows={3} placeholder="Describe your project" className="w-full mb-4 bg-transparent border-b border-muted-foreground/50 py-3 focus:border-accent focus:outline-none resize-none placeholder:text-base placeholder:text-muted-foreground" name="projectDescription" value={formData.projectDescription} onChange={handleChange} />
+                            </div>
+                        </div>
+
+                        <div>
+                            <p className="text-base text-muted-foreground font-medium mb-4">Services</p>
+                            <div className="flex flex-wrap gap-3">
+                                {['Web development', 'AI automation', 'IT consultation', 'Custom solution', 'Voicebots', 'Chatbots', 'App development'].map((service) => (
+                                    <button
+                                        key={service}
+                                        type="button"
+                                        onClick={() => handleServiceToggle(service)}
+                                        className={cn(
+                                            "px-5 py-2 text-xs sm:px-6 sm:py-3 sm:text-sm rounded-full border border-muted-foreground/50 transition-colors",
+                                            formData.services.includes(service)
+                                                ? "bg-accent text-accent-foreground border-accent"
+                                                : "text-foreground hover:text-accent"
+                                        )}
+                                    >
+                                        {service}
+                                    </button>
+                                ))}
+                            </div>
+                        </div>
+
+                        {/* START: FUNCTIONAL FILE INPUT */}
+                        <div>
+                            {/* This is the hidden file input that does the actual work */}
+                            <input
+                                type="file"
+                                multiple
+                                ref={fileInputRef}
+                                onChange={handleFileChange}
+                                className="hidden"
+                            />
+                            {/* This is your styled button that the user sees and clicks */}
+                            <div className="flex flex-col sm:flex-row items-center gap-4 pt-4">
+                                <button
+                                    type="button"
+                                    onClick={handleAttachClick} // Triggers the hidden input
+                                    className="w-full sm:w-auto flex-1 px-4 py-4 bg-muted/40 hover:bg-muted text-muted-foreground rounded-full border border-border/40 transition-colors flex items-center justify-center gap-2"
+                                >
+                                    <span className="text-lg">+</span> Attach File(s)
+                                </button>
+                                <Button
+                                    type="submit"
+                                    className="w-full sm:w-auto bg-gradient-accent text-sm text-white rounded-full px-12 py-4 sm:px-16 sm:py-5 border-transparent hover:bg-none hover:bg-[#2c2c2c] hover:text-accent hover:border-accent transition-all duration-300"
+                                >
+                                    Send
+                                </Button>
+                            </div>
+                            {/* This block will display the names of selected files */}
+                            {files && files.length > 0 && (
+                                <div className="mt-4 text-sm text-muted-foreground">
+                                    <p className="font-medium text-foreground">Selected files:</p>
+                                    <ul className="list-disc pl-5 mt-1">
+                                        {Array.from(files).map((file, index) => (
+                                            <li key={index}>{file.name}</li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            )}
+                        </div>
+                        {/* END: FUNCTIONAL FILE INPUT */}
+
+                        {responseMessage && <p className="text-center text-white mt-4">{responseMessage}</p>}
+                    </form>
+                </div>
             </div>
-          </div>
         </div>
-      </section>
+    </div>
+</section>
 
 
       <style jsx global>{`
