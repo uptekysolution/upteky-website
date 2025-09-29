@@ -1,8 +1,8 @@
 import type { Config } from "tailwindcss";
 
 export default {
-    darkMode: ["class"],
-    content: [
+  darkMode: ["class"],
+  content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
@@ -17,11 +17,15 @@ export default {
       '2xl': '1536px',
     },
     extend: {
-       fontFamily: {
-         sans: ["var(--font-inter)", "sans-serif"], // Use Inter font
-         outfit: ['Outfit', 'sans-serif'],
-         poppins: ['Poppins', 'sans-serif']
-       },
+      // --- CORRECTED FONT FAMILY SECTION ---
+      fontFamily: {
+        // Set Poppins as the default font for the 'font-sans' utility class
+        sans: ["var(--font-poppins)", "sans-serif"],
+        // Create a new 'font-heading' utility class for the Outfit font
+        heading: ["var(--font-outfit)", "sans-serif"],
+        // Keep Inter available if you need it specifically
+        inter: ["var(--font-inter)", "sans-serif"],
+      },
       colors: {
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
@@ -96,17 +100,17 @@ export default {
             height: '0'
           }
         },
-         'fade-in': { // Keep fade-in for other elements
-           from: { opacity: '0' },
-           to: { opacity: '1' },
-         },
-         'dash-slow': {
-            to: { 'stroke-dashoffset': '-170' } // Value should match stroke-dasharray sum approx
-         },
-         'float': {
-            '0%, 100%': { transform: 'translateY(0px)', opacity: '0.7' },
-            '50%': { transform: 'translateY(-15px)', opacity: '1' }
-         },
+        'fade-in': { // Keep fade-in for other elements
+          from: { opacity: '0' },
+          to: { opacity: '1' },
+        },
+        'dash-slow': {
+          to: { 'stroke-dashoffset': '-170' } // Value should match stroke-dasharray sum approx
+        },
+        'float': {
+          '0%, 100%': { transform: 'translateY(0px)', opacity: '0.7' },
+          '50%': { transform: 'translateY(-15px)', opacity: '1' }
+        },
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',

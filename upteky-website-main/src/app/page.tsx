@@ -19,10 +19,10 @@ const whatWeDoData = [
     title: "Conversational Agents",
     imageSrc: "/assets/whatWeDo/Conversational-agent.png", // Replace with your actual image path
     description:
-      "Upteky Solutions Pvt. Ltd. specializes in creating robust Conversational AI solutions for web, messaging, and voice channels. From Website Chatbots and WhatsApp automation to AI-powered lead re-engagement and Voice Bots, we integrate advanced natural language processing, secure system connections, and actionable analytics to help businesses achieve measurable growth.",
+      "Upteky Solutions Pvt. Ltd. specializes in creating robust Conversational AI solutions for web, messaging, and voice channels. From Website Chatbots and WhatsApp automation to AI powered lead reengagement and Voice Bots, we integrate advanced natural language processing, secure system connections, and actionable analytics to help businesses achieve measurable growth.",
     services: [
       "Interactive AI Website Chatbot",
-      "WhatsApp & Multi-Platform Chatbot",
+      "WhatsApp & Multi Platform Chatbot",
       "AI-Powered Lead Reactivation",
       "AI Voice Assistant (Voice Bot)",
     ],
@@ -33,7 +33,7 @@ const whatWeDoData = [
     title: "Intelligent Automation",
     imageSrc: "/assets/whatWeDo/AI Automation.png", // Replace with your actual image path
     description:
-      "Streamline your operations and unlock data-driven insights. We develop custom automation workflows that eliminate repetitive tasks and integrate powerful business intelligence tools to transform raw data into actionable strategies, enhancing efficiency and decision-making across your organization.",
+      "Streamline your operations and unlock data driven insights. We develop custom automation workflows that eliminate repetitive tasks and integrate powerful business intelligence tools to transform raw data into actionable strategies, enhancing efficiency and decision making across your organization.",
     services: [
       "Business Process Automation",
       "AI-Powered Data Analytics",
@@ -47,7 +47,7 @@ const whatWeDoData = [
     title: "Custom AI & Machine Learning",
     imageSrc: "/assets/whatWeDo/Advance Ai.png", // Replace with your actual image path
     description:
-      "Go beyond off-the-shelf solutions with custom-trained AI models tailored to your unique challenges. Our expertise in machine learning, computer vision, and predictive analytics allows us to build powerful, proprietary systems that provide a distinct competitive advantage and solve complex business problems.",
+      "Go beyond off the shelf solutions with custom trained AI models tailored to your unique challenges. Our expertise in machine learning, computer vision, and predictive analytics allows us to build powerful, proprietary systems that provide a distinct competitive advantage and solve complex business problems.",
     services: [
       "Custom Machine Learning Models",
       "Predictive Analytics & Forecasting",
@@ -101,7 +101,7 @@ const problemSolutionStats = [
     icon: <Sparkles />,
     mainNumber: "25-40%",
     label: "Productivity Boost",
-    description: "Let your team focus on what truly matters – AI handles the rest.",
+    description: "Let your team focus on what truly matters AI handles the rest.",
   },
   {
     icon: <Settings2 />,
@@ -126,19 +126,19 @@ const problemSolutionStats = [
 
 const testimonials = [
   {
-    quote: "The custom AI solutions from Upteky helped us simplify internal communication and automate key customer interactions. It's been a game-changer for how we manage operational flow.",
+    quote: "The custom AI solutions from Upteky helped us simplify internal communication and automate key customer interactions. It's been a game changer for how we manage operational flow.",
     author: "Ashish Talati",
     title: "Director, JM PlastoPack Pvt. Ltd",
     link: "https://www.jmplastopack.com/"
   },
   {
-    quote: "Upteky's expertise transformed our website into a smart, user-friendly platform and integrated automated documentation, making our processes faster and more reliable. This upgrade has been a game-changer for our efficiency and team morale",
+    quote: "Upteky revamped our website, making it intelligent and easy to use. They also automated our documentation, which has sped up our work and made it more reliable. This has been a huge boost for our team's productivity.",
     author: "Lokesh Sharma",
     title: "Founder, Game Of Pharma",
     link: "https://gameofpharma.com/"
   },
   {
-    quote: "Upteky built a smart, user-friendly website and automated our documentation with AI, streamlining daily operations and boosting team efficiency",
+    quote: "Upteky built a smart, user friendly website and automated our documentation with AI, streamlining daily operations and boosting team efficiency",
     author: "Pranav",
     title: "Founder, Vtalix Pvt. Ltd",
     link: "https://www.vtalix.com/"
@@ -190,85 +190,84 @@ const FAQSection = () => {
     setOpenIndex(openIndex === index ? null : index);
   };
 
-  const handleHover = (index: number) => {
-    setOpenIndex(index);
-  };
-
-  const handleLeave = () => {
-    setOpenIndex(null);
-  };
-
-  
-
   return (
-    <section className="w-full max-w-7xl mx-auto lg:max-w-[1560px] px-2 sm:px-6 lg:px-8 pt-[48px] sm:pt-[56px] md:py-[64px] pb-[40px] lg:pb-[64px] sm:pb-[44px]">
-      {/* Heading */}
-      <div className="text-center mb-8 sm:mb-10 md:mb-12">
-        <motion.h2
-          className="text-[40px] font-normal font-['Outfit'] leading-[111%] text-center text-white"
-          initial={{ opacity: 0, y: -20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.6 }}
-        >
-          Frequently Asked Questions
-        </motion.h2>
-
-      </div>
-
-      {/* FAQ Items */}
-      <div className="bg-[#2D2F33] divide-y-4 sm:divide-y-6 md:divide-y-8 divide-[#232629] rounded-lg sm:rounded-xl">
-        {faqs.map((faq, index) => (
-          <div
-            key={index}
-            className={`px-4 sm:px-6 md:px-8 py-4 sm:py-5 md:py-6 
-                        transition-all duration-300 
-                        ${openIndex === index ? "bg-[#2D2F33]" : ""}`}
-            onMouseEnter={() => handleHover(index)}
-            onMouseLeave={handleLeave}
+    // The <section> is now just for vertical padding. The width is handled by the inner <div>.
+    <section className="w-full py-16 sm:py-20">
+      {/* Use the outer page container; avoid nesting an extra container here */}
+      <div className="w-full">
+        {/* Heading */}
+        <div className="text-center mb-12">
+          <motion.h2
+            className="text-4xl sm:text-5xl font-['Outfit'] font-medium text-white"
+            initial={{ opacity: 0, y: -20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.6 }}
           >
-            <button
-              onClick={() => handleClick(index)}
-              className="flex items-center justify-between w-full text-left group md:pointer-events-none"
-            >
-              <span
-                className={`text-[20px] leading-[100%] font-normal font-['Outfit'] 
-                            transition-colors duration-300
-                            ${openIndex === index ? "text-[#EE8741]" : "text-white"}`}
-              >
-                {faq.question}
-              </span>
+            Frequently Asked Question
+          </motion.h2>
+        </div>
 
-              <motion.div
-                animate={{ rotate: openIndex === index ? 180 : 0 }}
-                transition={{ duration: 0.3 }}
-                className="transition-transform duration-300"
+        {/* FAQ Items */}
+        <motion.div
+          className="bg-[#2D2F33] divide-y divide-[#232629] rounded-2xl mx-auto"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.7 }}
+        >
+          {faqs.map((faq, index) => (
+            <div key={index} className="px-6 py-5 sm:p-6">
+              <button
+                onClick={() => handleClick(index)}
+                className="flex items-center justify-between w-full text-left"
               >
-                {openIndex === index ? (
-                  <ChevronUp className="text-[#F58F1D] w-4 h-4 sm:w-5 sm:h-5" />
-                ) : (
-                  <ChevronDown className="text-white w-4 h-4 sm:w-5 sm:h-5" />
+                {/* Left side: Number + Question */}
+                <div className="flex items-center">
+                  <span className="text-gray-400 font-['Outfit'] text-base sm:text-lg w-8 text-left">
+                    {(index + 1).toString().padStart(2, '0')}.
+                  </span>
+                  <span
+                    className={`ml-4 text-base sm:text-xl font-['Outfit'] transition-colors duration-300
+                      ${openIndex === index ? "text-[#EE8741]" : "text-white"}`}
+                  >
+                    {faq.question}
+                  </span>
+                </div>
+
+                {/* Right side: Icon in a circle */}
+                <div
+                  className={`flex-shrink-0 w-8 h-8 sm:w-9 sm:h-9 rounded-full border flex items-center justify-center transition-all duration-300
+                    ${openIndex === index ? "border-[#EE8741]" : "border-gray-500"}`}
+                >
+                  <motion.div
+                    animate={{ rotate: openIndex === index ? 180 : 0 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                      <ChevronDown className={`w-4 h-4 sm:w-5 sm:h-5 transition-colors duration-300 ${openIndex === index ? "text-[#EE8741]" : "text-gray-400" }`} />
+                  </motion.div>
+                </div>
+              </button>
+
+              {/* Answer Panel */}
+              <AnimatePresence>
+                {openIndex === index && (
+                  <motion.div
+                    initial={{ opacity: 0, height: 0, marginTop: 0 }}
+                    animate={{ opacity: 1, height: 'auto', marginTop: '16px' }}
+                    exit={{ opacity: 0, height: 0, marginTop: 0 }}
+                    transition={{ duration: 0.4, ease: "easeInOut" }}
+                    className="overflow-hidden"
+                  >
+                    <p className="pl-12 text-sm sm:text-base text-[#9FA6AD] font-['Poppins'] leading-relaxed">
+                      {faq.answer}
+                    </p>
+                  </motion.div>
                 )}
-              </motion.div>
-            </button>
-
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={{
-                opacity: openIndex === index ? 1 : 0,
-                y: openIndex === index ? 0 : 10,
-              }}
-              transition={{ duration: 0.3 }}
-              className="overflow-hidden"
-            >
-              {openIndex === index && (
-                <p className="text-[16px] font-normal font-['Poppins'] text-[#9FA6AD] mt-2 sm:mt-3 leading-[130%]">
-                  {faq.answer}
-                </p>
-              )}
-            </motion.div>
-          </div>
-        ))}
+              </AnimatePresence>
+            </div>
+          ))}
+        </motion.div>
       </div>
     </section>
   );
@@ -707,27 +706,27 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         <div className="relative z-10  container mx-auto text-center flex flex-col h-full justify-center pb-10 sm:pb-0">
           <div className="relative inline-block hero-text-container">
             <motion.h1
-              className="text-4xl sm:text-5xl mt-[90px] sm:mt-64  md:mt-56 lg:mt-40 md:text-6xl  lg:text-7xl 2xl:text-8xl font-extrabold leading-tight text-foreground hero-text-transform"
+              className="text-4xl sm:text-5xl mt-[90px] sm:mt-64  md:mt-56 lg:mt-40 md:text-6xl  lg:text-7xl 2xl:text-8xl font-bold leading-tight text-foreground hero-text-transform"
               style={{ x: x1, opacity: opacity1, originX: 0.5, originY: 0.5, textShadow: '0 0 1px rgba(0,0,0,0.1)' }}
             >
               Smarter Decisions
             </motion.h1>
             <motion.h1
-              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl 2xl:text-8xl font-extrabold leading-tight text-gradient-accent hero-text-ease my-1"
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl 2xl:text-8xl font-bold leading-tight text-gradient-accent hero-text-ease my-1"
               style={{ x: x2, opacity: opacity2, originX: 0.5, originY: 0.5, textShadow: '0 0 1px rgba(0,0,0,0.1)' }}
             >
               Faster Results
             </motion.h1>
             <motion.h1
-              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl 2xl:text-8xl font-extrabold leading-tight text-foreground hero-text-ai"
+              className="  text-4xl sm:text-5xl md:text-6xl lg:text-7xl 2xl:text-8xl font-bold leading-tight text-foreground hero-text-ai"
               style={{ x: x3, opacity: opacity3, originX: 0.5, originY: 0.5, textShadow: '0 0 1px rgba(0,0,0,0.1)' }}
             >
               Powered By AI
             </motion.h1>
-            <motion.div
+            {/* <motion.div
               className="absolute -bottom-4 sm:-bottom-6 left-1/2 transform -translate-x-1/2 w-32 sm:w-40 h-1.5 sm:h-2 bg-gradient-accent rounded-full shadow-glow"
               style={{ opacity: contentOpacity }}
-            />
+            /> */}
           </div>
 
           <div className="flex flex-col items-center mt-4 sm:mt-6">
@@ -847,7 +846,7 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         viewport={{ once: true, amount: 0.3 }}
         transition={{ duration: 0.6 }}
       >
-        What We Do – End-to-End Solutions
+        What We Do End-to-End Solutions
       </motion.h2>
     </div>
 
@@ -1009,21 +1008,23 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         viewport={{ once: true, amount: 0.3 }}
         transition={{ duration: 0.6, delay: 0.1 }}
       >
-        Tailored technology solutions for startups, small businesses, enterprises, and agencies – driving innovation,
+        Tailored technology solutions for startups, small businesses, enterprises, and agencies driving innovation,
         scalability, and sustainable growth at every stage.
       </motion.p>
     </div>
 
     <div className=" space-y-8">
       {/* First Row */}
-      <div className="grid grid-cols-1 md:grid-cols-10 gap-8 items-stretch"> {/* CHANGED: Back to 10-column grid for the 4:6 ratio */}
+      <div className="grid grid-cols-1 md:grid-cols-10 gap-8 items-stretch">
         {/* Startups */}
         <motion.div
-          className="md:col-span-4 bg-[#2C3035] border border-gray-700/50 rounded-[30px] p-8 hover:bg-[#2C3035] transition-all duration-300 h-full flex flex-col" /* CHANGED: Spans 4 of 10 columns */
+          className="md:col-span-4 bg-[#2C3035] border border-gray-700/50 rounded-[30px] p-8 h-full flex flex-col"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
+          transition={{ duration: 0.3, delay: 0.1 }}
+          // 1. Added Framer Motion hover animation
+          whileHover={{ y: -8, scale: 1.03 }}
         >
           <Image src="/icons/startup 1.png" alt="Startups" width={32} height={32} className="mb-4" />
           <h3 className="font-['Outfit'] text-2xl font-normal leading-[100%] tracking-[0] text-white mb-3">Startups Business</h3>
@@ -1036,11 +1037,13 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 
         {/* Small Business */}
         <motion.div
-          className="md:col-span-6 bg-[#2C3035] border border-gray-700/50 rounded-[30px] p-8 hover:bg-[#2C3035] transition-all duration-300 h-full flex flex-col" /* CHANGED: Spans 6 of 10 columns */
+          className="md:col-span-6 bg-[#2C3035] border border-gray-700/50 rounded-[30px] p-8 h-full flex flex-col"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
+          transition={{ duration: 0.3, delay: 0.2 }}
+          // 1. Added Framer Motion hover animation
+          whileHover={{ y: -8, scale: 1.03 }}
         >
           <Image src="/icons/supermarket 1.png" alt="Small Business" width={32} height={32} className="mb-4" />
           <h3 className="font-['Outfit'] text-2xl font-normal leading-[100%] tracking-[0] text-white mb-3">Small Business</h3>
@@ -1052,21 +1055,23 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         </motion.div>
       </div>
 
-      {/* Second Row (This remains unchanged as the 3 cards are already equal) */}
+      {/* Second Row */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
         {/* Enterprise */}
         <motion.div
-          className="bg-[#2C3035] border border-gray-700/50 rounded-[30px] p-8 hover:bg-[#2C3035] transition-all duration-300 h-full flex flex-col"
+          className="bg-[#2C3035] border border-gray-700/50 rounded-[30px] p-8 h-full flex flex-col"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
+          transition={{ duration: 0.3, delay: 0.3 }}
+          // 1. Added Framer Motion hover animation
+          whileHover={{ y: -8, scale: 1.03 }}
         >
           <Image src="/icons/global-access 1.png" alt="Enterprise" width={32} height={32} className="mb-4" />
           <h3 className="font-['Outfit'] text-2xl font-normal leading-[100%] tracking-[0] text-white mb-3">Enterprise Business</h3>
           <p className="text-[#9FA6AD] text-base leading-[130%] tracking-[0] text-justify font-['Poppins'] font-normal">
-            We build enterprise-grade solutions that drive measurable impact, from clinical systems to insurance platforms. Our
-            products power global multi-million-dollar businesses, with enterprises preferring our
+            We build enterprise grade solutions that drive measurable impact, from clinical systems to insurance platforms. Our
+            products power global multi million dollar businesses, with enterprises preferring our
             scalable dedicated hire model to match
             evolving needs.
           </p>
@@ -1074,11 +1079,13 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 
         {/* Agency */}
         <motion.div
-          className="bg-[#2C3035] border border-gray-700/50 rounded-[30px] p-8 hover:bg-[#2C3035] transition-all duration-300 h-full flex flex-col"
+          className="bg-[#2C3035] border border-gray-700/50 rounded-[30px] p-8 h-full flex flex-col"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
+          transition={{ duration: 0.3, delay: 0.4 }}
+          // 1. Added Framer Motion hover animation
+          whileHover={{ y: -8, scale: 1.03 }}
         >
           <Image src="/icons/employee 1.png" alt="Agency" width={32} height={32} className="mb-4" />
           <h3 className="font-['Outfit'] text-2xl font-normal leading-[100%] tracking-[0] text-white mb-3">Agency Business</h3>
@@ -1093,11 +1100,14 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 
         {/* Innovation */}
         <motion.div
-          className="bg-[#2C3035] border border-gray-700/50 rounded-[30px] p-6 sm:p-8 md:p-10 lg:p-12 hover:bg-[#2C3035] transition-all duration-300 flex flex-col justify-between h-full"
+          // 2. Standardized padding to p-8 for consistency
+          className="bg-[#2C3035] border border-gray-700/50 rounded-[30px] p-8 flex flex-col justify-between h-full"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.6, delay: 0.5 }}
+          transition={{ duration: 0.3, delay: 0.5 }}
+          // 1. Added Framer Motion hover animation
+          whileHover={{ y: -8, scale: 1.03 }}
         >
           <div className="space-y-6">
             <h3 className="font-['Outfit'] text-xl sm:text-2xl font-normal leading-[100%] tracking-[0] text-white">Bringing Innovation Together</h3>
@@ -1121,7 +1131,6 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 </section>
 
 {/* Our Process */}
-<div className="border-t border-[#333333] " />
 <section className="py-16 md:py-20 bg-[#232629] text-white font-poppins">
   <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-20">
     {/* Section Heading */}
@@ -1142,8 +1151,8 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         viewport={{ once: true, amount: 0.3 }}
         transition={{ duration: 0.6, delay: 0.1 }}
       >
-        A streamlined journey from idea to impact – guiding you through every stage with
-        clarity, innovation, and measurable results.
+        A streamlined journey from idea to impact – guiding you through every
+        stage with clarity, innovation, and measurable results.
       </motion.p>
     </div>
 
@@ -1153,48 +1162,55 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         {
           step: "01",
           title: "Consultation & Discovery",
-          description: "Understand your business challenges and uncover hidden opportunities with tailored AI and IT solutions designed to accelerate growth and efficiency.",
+          description:
+            "Understand your business challenges and uncover hidden opportunities with tailored AI and IT solutions designed to accelerate growth and efficiency.",
         },
         {
           step: "02",
           title: "Solution Design",
-          description: "We combine AI, IT, and web expertise to craft the right-fit solutions that empower businesses with innovation, scalability, and measurable growth.",
+          description:
+            "We combine AI, IT, and web expertise to craft the right-fit solutions that empower businesses with innovation, scalability, and measurable growth.",
         },
         {
           step: "03",
           title: "Development & Implementation",
-          description: "Delivering smooth and secure execution with reliable processes, robust technology, and enterprise-grade solutions that ensure efficiency, trust, and long-term success.",
+          description:
+            "Delivering smooth and secure execution with reliable processes, robust technology, and enterprise-grade solutions that ensure efficiency, trust, and long-term success.",
         },
         {
           step: "04",
           title: "Optimization & Training",
-          description: "We ensure adoption and efficiency through tailored guidance, streamlined processes, and continuous improvements that maximize business impact.",
+          description:
+            "We ensure adoption and efficiency through tailored guidance, streamlined processes, and continuous improvements that maximize business impact.",
         },
         {
           step: "05",
           title: "Ongoing Support & Scaling",
-          description: "Enabling continuous growth with technology through proactive support, scalable systems, and future-ready solutions tailored for businesses.",
+          description:
+            "Enabling continuous growth with technology through proactive support, scalable systems, and future-ready solutions tailored for businesses.",
         },
       ];
 
       return (
-        // Outer Box
+        // The outer border remains unchanged
         <div className="border border-neutral-800 rounded-2xl overflow-hidden bg-[#2C2F33]">
           <div className="grid grid-cols-1 md:grid-cols-2">
             {processSteps.map((item, index) => (
               <motion.div
                 key={item.step}
                 className={cn(
-                  "text-left",
-                  // Re-organized classes for clarity
+                  "p-10 text-left transition-colors duration-300 ease-in-out hover:bg-neutral-700 cursor-pointer",
+                  // Conditional classes for layout and borders
                   {
-                    // For the last item, center it and give it more padding
-                    "md:col-span-2 flex flex-col items-left text-left p-10 md:p-12": index === 4,
-                    // For all other items
-                    "p-10": index < 5,
-                    // Border logic
-                    "border-b border-neutral-800": index < processSteps.length - 1 && index !== 4, // All but last two items get bottom border
-                    "md:border-r border-neutral-800": index % 2 === 0 && index < 4, // Items 0 and 2 get a right border on desktop
+                    "md:col-span-2 flex flex-col items-start md:p-10":
+                      index === processSteps.length - 1,
+                    
+                    // --- BORDER LOGIC (UPDATED) ---
+                    // Add bottom border with the new color
+                    "border-b border-[#565656]": index < 3,
+                    // Add right border with the new color
+                    "md:border-r border-[#565656]":
+                      index % 2 === 0 && index < 4,
                   }
                 )}
                 initial={{ opacity: 0, y: 20 }}
@@ -1202,15 +1218,19 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
                 viewport={{ once: true, amount: 0.2 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
               >
-                {/* Constrain width of the centered last item */}
-                <div className={cn({ "md:w-2/3 lg:w-1/2": index === 4 })}>
-                  <span className="block text-[24px] font-normal leading-[121%] tracking-[0] font-['Outfit'] text-[#F58F1D] mb-4"> {/* step number */}
+                {/* Constrain width of the last item's content */}
+                <div
+                  className={cn({
+                    "md:w-2/3 lg:w-1/2": index === processSteps.length - 1,
+                  })}
+                >
+                  <span className="block text-[24px] font-normal leading-[121%] tracking-[0] font-['Outfit'] text-[#F58F1D] mb-4">
                     {item.step}
                   </span>
-                  <h3 className="text-[24px] font-normal leading-[121%] tracking-[0] text-white mb-3 font-['Outfit']"> {/* step title */}
+                  <h3 className="text-[24px] font-normal leading-[121%] tracking-[0] text-white mb-3 font-['Outfit']">
                     {item.title}
                   </h3>
-                  <p className="text-[#9FA6AD] text-[16px] font-normal leading-[121%] tracking-[0] font-['Poppins']"> {/* step description */}
+                  <p className="text-[#9FA6AD] text-[16px] font-normal leading-[121%] tracking-[0] font-['Poppins']">
                     {item.description}
                   </p>
                 </div>
@@ -1276,8 +1296,8 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
           {whyChooseData.map((item, index) => (
             <motion.div
               key={index}
-              // ADDED min-h-[240px] to enforce a consistent minimum height for ALL cards
-              className="bg-[#2C3035] border border-neutral-800 rounded-2xl p-6 flex flex-col h-full text-center transition-all duration-300 hover:border-indigo-500/50 hover:-translate-y-1 min-h-[240px]"
+              // The class below is the only thing that changed
+              className="bg-[#2C3035] border border-neutral-800 rounded-2xl p-6 flex flex-col h-full text-center transition-all duration-300 hover:border-[#F58F1D]/50 hover:-translate-y-1 min-h-[240px]"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
@@ -1302,7 +1322,7 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 </section>
 
       
-      {/* -----------------------------------------------Here from our clients-------------------------------------------------- */}
+    {/* -----------------------------------------------Hear from our clients-------------------------------------------------- */}
 <section className="py-12 md:py-16 bg-[#232629] backdrop-blur-sm border-t border-border/20 snap-start">
   <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-20">
     <div className="text-center mb-10 md:mb-12">
@@ -1326,7 +1346,7 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
       </motion.p>
     </div>
 
-    {/* Desktop Grid Layout (Unchanged) */}
+    {/* Desktop Grid Layout (This is where the changes are) */}
     <div className="hidden lg:grid grid-cols-3 gap-8 xl:gap-24 2xl:gap-24 max-w-auto sm:w-full mx-auto">
       {seamlessTestimonials.map((testimonial, index) => (
         <motion.div
@@ -1335,11 +1355,14 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
           initial={{ opacity: 0, y: 20, scale: 0.95 }}
           whileInView={{ opacity: 1, y: 0, scale: 1 }}
           viewport={{ once: true, amount: 0.2 }}
+          // 1. UPDATED: Made the transition faster for a responsive hover
           transition={{
-            duration: 0.6,
+            duration: 0.25,
             delay: index * 0.15,
             ease: "easeOut",
           }}
+          // 2. ADDED: The hover animation effect
+          whileHover={{ y: -8, scale: 1.03 }}
         >
           <div className="relative bg-[#2C3035] backdrop-blur-sm border border-border/20 p-3 transition-all duration-300 group flex flex-col w-full max-w-[400px] sm:max-w-[500px] md:max-w-[400px] lg:max-w-[600px] xl:max-w-[800px] h-[320px] sm:h-[400px] md:h-[400px] lg:h-[400px] xl:h-[400px] 2xl:h[400px] rounded-[20px]">
             <div className=" flex-grow z-10 flex flex-col ">
@@ -1361,22 +1384,17 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
       ))}
     </div>
 
-    {/* ====================================================== */}
-    {/* UPDATED: Mobile/Tablet Carousel Layout                 */}
-    {/* ====================================================== */}
+    {/* Mobile/Tablet Carousel Layout (Unchanged) */}
     <div className="lg:hidden">
-      {/* The flex container with arrows is removed */}
       <div className="relative overflow-hidden">
         <motion.div
-          className="flex" // Removed transition classes, framer handles it
+          className="flex"
           animate={{ x: `-${currentTestimonialIndex * 100}%` }}
           transition={{ type: "spring", stiffness: 100, damping: 20 }}
-
-          // ADDED: Drag gesture for swipe navigation
           drag="x"
           dragConstraints={{ left: 0, right: 0 }}
           onDragEnd={(e, { offset, velocity }) => {
-            const swipeThreshold = 50; // Min drag distance to trigger swipe
+            const swipeThreshold = 50; 
             if (offset.x < -swipeThreshold) {
               goToNextTestimonial();
             } else if (offset.x > swipeThreshold) {
@@ -1385,10 +1403,8 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
           }}
         >
           {seamlessTestimonials.map((testimonial, index) => (
-            <div key={index} className="w-full flex-shrink-0 px-2 sm:px-4"> {/* Adjusted padding */}
+            <div key={index} className="w-full flex-shrink-0 px-2 sm:px-4">
               <motion.div
-                // REMOVED: max-w-... classes to make the card wider
-                // ADDED: min-h-... to maintain a consistent height
                 className="relative bg-[#2C3035] backdrop-blur-sm border border-border/20 p-4 sm:p-6 transition-all duration-300 group flex flex-col w-full mx-auto min-h-[340px] sm:min-h-[360px] rounded-[20px] mb-4"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -1419,9 +1435,12 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 </section>
 
       {/* FAQ Section */}
-      <section className=" bg-[#232629] backdrop-blur-sm border-t border-b border-border/20 snap-start">
-        <FAQSection />
-      </section>
+<section className=" bg-[#232629] backdrop-blur-sm border-t border-b border-border/20 snap-start">
+  {/* Added this container div to match other sections */}
+  <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-20">
+    <FAQSection />
+  </div>
+</section>
 
       {/* CTA Section - Enhanced */}
       {/* <section className='py-12 md:py-16 md:pt-0 bg-background/30 backdrop-blur-sm text-foreground snap-start'>
@@ -1586,117 +1605,169 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 
 
       <style jsx global>{`
-         .hero-text-container {
-           padding-top: 0;
-           margin-bottom: 0;
-           position: relative;
-         }
-         @media (min-width: 640px) { /* sm */
-           .hero-text-container {
-             padding-top: 0;
-             margin-bottom: 0;
-           }
-         }
-         @media (min-width: 1024px) { /* lg */
-           .hero-text-container {
+          body,
+          html {
+            font-family: 'Poppins', sans-serif;
+          }
+
+          h1,
+          h2,
+          h3,
+          h4,
+          h5,
+          h6 {
+            font-family: 'Outfit', sans-serif;
+          }
+
+          .hero-text-container {
             padding-top: 0;
             margin-bottom: 0;
-           }
-         }
-          @media (min-width: 1536px) { /* 2xl */
-           .hero-text-container {
-             padding-top: 0; 
-             margin-bottom: 0;
-           }
-         }
-         .hero-text-transform, .hero-text-ease, .hero-text-ai {
+            position: relative;
+          }
+          @media (min-width: 640px) {
+            /* sm */
+            .hero-text-container {
+              padding-top: 0;
+              margin-bottom: 0;
+            }
+          }
+          @media (min-width: 1024px) {
+            /* lg */
+            .hero-text-container {
+              padding-top: 0;
+              margin-bottom: 0;
+            }
+          }
+          @media (min-width: 1536px) {
+            /* 2xl */
+            .hero-text-container {
+              padding-top: 0;
+              margin-bottom: 0;
+            }
+          }
+          .hero-text-transform,
+          .hero-text-ease,
+          .hero-text-ai {
             transform-origin: center;
             will-change: transform, opacity;
-         }
-         .hero-text-ease {
+          }
+          .hero-text-ease {
             margin-top: 0.25rem;
             margin-bottom: 0.25rem;
-         }
+          }
 
-         @keyframes dash-fast {
-           to {
-             stroke-dashoffset: 1000;
-           }
-         }
-        .animate-dash-fast {
-          animation: dash-fast 20s linear infinite;
-        }
+          @keyframes dash-fast {
+            to {
+              stroke-dashoffset: 1000;
+            }
+          }
+          .animate-dash-fast {
+            animation: dash-fast 20s linear infinite;
+          }
 
-         @keyframes float {
-           0% { transform: translateY(0px); opacity: 0.6; }
-           50% { transform: translateY(-12px); opacity: 0.9; }
-           100% { transform: translateY(0px); opacity: 0.6; }
-         }
-        .animate-float {
-          animation: float 8s infinite ease-in-out;
-        }
+          @keyframes float {
+            0% {
+              transform: translateY(0px);
+              opacity: 0.6;
+            }
+            50% {
+              transform: translateY(-12px);
+              opacity: 0.9;
+            }
+            100% {
+              transform: translateY(0px);
+              opacity: 0.6;
+            }
+          }
+          .animate-float {
+            animation: float 8s infinite ease-in-out;
+          }
 
-        @keyframes shootingStar {
-          0% {
+          @keyframes shootingStar {
+            0% {
+              opacity: 0;
+              stroke-width: 0;
+              transform: translateX(0) translateY(0);
+            }
+            30% {
+              opacity: 1;
+              stroke-width: 2px;
+            }
+            100% {
+              opacity: 0;
+              stroke-width: 0;
+              transform: translateX(300px) translateY(30px);
+            }
+          }
+          .animate-shooting-star {
+            animation: shootingStar 6s linear infinite;
             opacity: 0;
-            stroke-width: 0;
-            transform: translateX(0) translateY(0);
           }
-          30% {
-            opacity: 1;
-            stroke-width: 2px;
-          }
-          100% {
-            opacity: 0;
-            stroke-width: 0;
-            transform: translateX(300px) translateY(30px);
-          }
-        }
-        .animate-shooting-star {
-          animation: shootingStar 6s linear infinite;
-          opacity: 0;
-        }
 
-        .hide-scrollbar {
-          scrollbar-width: none; /* Firefox */
-          -ms-overflow-style: none; /* IE and Edge */
-        }
-        .hide-scrollbar::-webkit-scrollbar {
-          display: none; /* Chrome, Safari, Opera */
-        }
-         /* Testimonial carousel layout: exact n-per-view by breakpoint */
-         .testimonial-scroll {
-           display: flex;
-           gap: 1rem; /* default */
-         }
-         @media (min-width: 768px) { /* md */
-           .testimonial-scroll { gap: 1.5rem; }
-         }
-         @media (min-width: 1024px) { /* lg */
-           .testimonial-scroll { gap: 1.5rem; }
-         }
-         @media (min-width: 1280px) { /* xl */
-           .testimonial-scroll { gap: 1.5rem; }
-         }
-         /* Widths: 1 per view on small, 2 on md, 3 on lg, 4 on xl+ */
-         .testimonial-card { width: calc((100% - (1 * var(--ts-gap, 1rem))) / 2); }
-         @media (max-width: 639.98px) {
-           .testimonial-card { width: 100%; }
-         }
-         @media (min-width: 640px) and (max-width: 767.98px) {
-           .testimonial-card { width: 80vw; }
-         }
-         @media (min-width: 768px) and (max-width: 1023.98px) { /* md: 2 per view */
-           .testimonial-card { width: calc((100% - (1 * 1.5rem)) / 2); }
-         }
-         @media (min-width: 1024px) and (max-width: 1279.98px) { /* lg: 3 per view */
-           .testimonial-card { width: calc((100% - (2 * 1.5rem)) / 3); }
-         }
-         @media (min-width: 1280px) { /* xl+: 4 per view */
-           .testimonial-card { width: calc((100% - (3 * 1.5rem)) / 4); }
-         }
-       `}</style>
-    </div>
+          .hide-scrollbar {
+            scrollbar-width: none; /* Firefox */
+            -ms-overflow-style: none; /* IE and Edge */
+          }
+          .hide-scrollbar::-webkit-scrollbar {
+            display: none; /* Chrome, Safari, Opera */
+          }
+          /* Testimonial carousel layout: exact n-per-view by breakpoint */
+          .testimonial-scroll {
+            display: flex;
+            gap: 1rem; /* default */
+          }
+          @media (min-width: 768px) {
+            /* md */
+            .testimonial-scroll {
+              gap: 1.5rem;
+            }
+          }
+          @media (min-width: 1024px) {
+            /* lg */
+            .testimonial-scroll {
+              gap: 1.5rem;
+            }
+          }
+          @media (min-width: 1280px) {
+            /* xl */
+            .testimonial-scroll {
+              gap: 1.5rem;
+            }
+          }
+          /* Widths: 1 per view on small, 2 on md, 3 on lg, 4 on xl+ */
+          .testimonial-card {
+            width: calc((100% - (1 * var(--ts-gap, 1rem))) / 2);
+          }
+          @media (max-width: 639.98px) {
+            .testimonial-card {
+              width: 100%;
+            }
+          }
+          @media (min-width: 640px) and (max-width: 767.98px) {
+            .testimonial-card {
+              width: 80vw;
+            }
+          }
+          @media (min-width: 768px) and (max-width: 1023.98px) {
+            /* md: 2 per view */
+            .testimonial-card {
+              width: calc((100% - (1 * 1.5rem)) / 2);
+            }
+          }
+          @media (min-width: 1024px) and (max-width: 1279.98px) {
+            /* lg: 3 per view */
+            .testimonial-card {
+              width: calc((100% - (2 * 1.5rem)) / 3);
+            }
+          }
+          @media (min-width: 1280px) {
+            /* xl+: 4 per view */
+            .testimonial-card {
+              width: calc((100% - (3 * 1.5rem)) / 4);
+            }
+          }
+        `}</style>
+      </div>
   );
 }
 
