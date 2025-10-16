@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -15,6 +15,81 @@ import Image from "next/image";
 import Link from "next/link";
 import { useToast } from "@/hooks/use-toast";
 import FadeIn from "@/components/FadeIn";
+
+
+
+const StatCounter = ({
+  end,
+  label,
+  duration = 2000,
+  numberClassName = "",
+  labelClassName = "",
+  trigger = true,
+}: {
+  end: number;
+  label?: string;
+  duration?: number;
+  numberClassName?: string;
+  labelClassName?: string;
+  trigger?: boolean;
+}) => {
+  const [count, setCount] = useState(0);
+  const [hasAnimated, setHasAnimated] = useState(false);
+
+  useEffect(() => {
+    if (!trigger || hasAnimated) return;
+
+    let startTime: number | undefined;
+    const updateCount = (timestamp: number) => {
+      if (startTime === undefined) startTime = timestamp;
+      const progress = timestamp - startTime;
+      const progressRatio = Math.min(progress / duration, 1);
+      setCount(Math.floor(progressRatio * end));
+
+      if (progressRatio < 1) {
+        requestAnimationFrame(updateCount);
+      } else {
+        setHasAnimated(true);
+      }
+    };
+
+    const frame = requestAnimationFrame(updateCount);
+    return () => cancelAnimationFrame(frame);
+  }, [end, duration, trigger, hasAnimated]);
+
+  return (
+    <div className="text-center">
+      <p className={`text-4xl sm:text-5xl font-bold mb-1 ${numberClassName}`}>
+        {count}
+        {label
+          ? label.includes("%")
+            ? "%"
+            : label.includes("-")
+              ? "-"
+              : label.includes("x") || label.includes("X")
+                ? "x"
+                : "+"
+          : ""}
+      </p>
+
+      {/* Only render descriptive label text if it’s not a symbol-only label */}
+      {label &&
+        !["%", "-", "+", "x", "X"].includes(label.trim()) && (
+          <p
+            className={`text-xs sm:text-sm tracking-widest text-[#8B8B8B] ${labelClassName}`}
+          >
+            {label
+              .replace(/\s*\(\d+-\d+%\)/, "")
+              .replace(/\s*\(\d+-\d+\sWeeks\)/, "")
+              .replace(" %", "")
+              .trim()}
+          </p>
+        )}
+    </div>
+
+
+  );
+};
 
 const openRoles = {
   "Engineering": [
@@ -150,6 +225,26 @@ export default function CareersPage() {
     coverLetter: '',
     resume: null as File | null
   });
+  const [statsInView, setStatsInView] = useState(false);
+
+  // 👇 Intersection observer to trigger animation
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) setStatsInView(true);
+        });
+      },
+      { threshold: 0.3 }
+    );
+
+    const statsElement = document.getElementById("stats-grid");
+    if (statsElement) observer.observe(statsElement);
+
+    return () => {
+      if (statsElement) observer.unobserve(statsElement);
+    };
+  }, []);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -193,6 +288,8 @@ export default function CareersPage() {
           params.append(key, value.toString());
         }
       }
+
+
 
       // Submit to Google Sheets
       const response = await fetch(googleScriptURL, {
@@ -317,24 +414,63 @@ export default function CareersPage() {
 
       <div className="container mx-auto px-4 md:px-6 py-10 md:py-12">
         {/* Stats Banner */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-8 py-8 sm:py-10 mb-12 sm:mb-16 bg-[#2C3035] rounded-xl xl:rounded-[30px] px-4 sm:px-6 md:px-12 border border-border/30">
+        <div
+          id="stats-grid"
+          className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-8 py-8 sm:py-10 mb-12 sm:mb-16 bg-[#2C3035] rounded-xl xl:rounded-[30px] px-4 sm:px-6 md:px-12 border border-border/30"
+        >
+          {/* Stat 1 */}
           <div className="text-center py-3 sm:py-4">
-            <p className="text-2xl sm:text-3xl font-outfit md:text-4xl text-accent mb-1 sm:mb-2">3x</p>
-            <p className="font-poppins text-xs sm:text-sm text-[#9FA6AD]">Fastest Career Acceleration</p>
+            <StatCounter
+              end={3}
+              label="x"
+              numberClassName="text-accent font-outfit text-2xl sm:text-3xl md:text-4xl mb-1 sm:mb-2"
+              labelClassName="font-poppins text-xs sm:text-sm text-[#9FA6AD]"
+              trigger={statsInView}
+            />
+            <p className="font-poppins text-xs sm:text-sm text-[#9FA6AD]">
+              Fastest Career Acceleration
+            </p>
           </div>
+
+          {/* Stat 2 */}
           <div className="text-center py-3 sm:py-4">
-            <p className="text-2xl sm:text-3xl font-outfit md:text-4xl text-accent mb-1 sm:mb-2">90%</p>
-            <p className="font-poppins text-xs sm:text-sm text-[#9FA6AD]">Multi-Stack Learning Rate</p>
+            <StatCounter
+              end={90}
+              label="%"
+              numberClassName="text-accent font-outfit text-2xl sm:text-3xl md:text-4xl mb-1 sm:mb-2"
+              labelClassName="font-poppins text-xs sm:text-sm text-[#9FA6AD]"
+              trigger={statsInView}
+            />
+            <p className="font-poppins text-xs sm:text-sm text-[#9FA6AD]">
+              Multi-Stack Learning Rate
+            </p>
           </div>
+
+          {/* Stat 3 */}
           <div className="text-center py-3 sm:py-4">
-            <p className="text-2xl sm:text-3xl md:text-4xl font-outfit text-accent mb-1 sm:mb-2">40%</p>
+            <StatCounter
+              end={40}
+              label="%"
+              numberClassName="text-accent font-outfit text-2xl sm:text-3xl md:text-4xl mb-1 sm:mb-2"
+              labelClassName="font-poppins text-xs sm:text-sm text-[#9FA6AD]"
+              trigger={statsInView}
+            />
             <p className="font-poppins text-xs sm:text-sm text-[#9FA6AD]">Annual Growth</p>
           </div>
+
+          {/* Stat 4 */}
           <div className="text-center py-3 sm:py-4">
-            <p className="text-2xl sm:text-3xl md:text-4xl font-outfit text-accent mb-1 sm:mb-2">4.8</p>
+            <StatCounter
+              end={4.8}
+              label=""
+              numberClassName="text-accent font-outfit text-2xl sm:text-3xl md:text-4xl mb-1 sm:mb-2"
+              labelClassName="font-poppins text-xs sm:text-sm text-[#9FA6AD]"
+              trigger={statsInView}
+            />
             <p className="font-poppins text-xs sm:text-sm text-[#9FA6AD]">Employee Rating</p>
           </div>
         </div>
+
 
         {/* Open Positions Section */}
         <FadeIn>
@@ -422,7 +558,7 @@ export default function CareersPage() {
         <FadeIn>
           <section id="company-culture" className="mb-16 sm:mb-24 scroll-mt-24">
             <div className="text-center mb-12 sm:mb-16">
-              
+
               <h2 className="font-outfit text-white  text-[20px] xs:text-[22px] sm:text-[24px] md:text-[26px] lg:text-[28px] xl:text-[32px] 2xl:text-[35px] leading-[115%] xs:leading-[118%] sm:leading-[120%] md:leading-[121%] mb-4 xs:mb-5 sm:mb-6 md:mb-7 lg:mb-8">
                 Life at Our Company
               </h2>
@@ -481,9 +617,7 @@ export default function CareersPage() {
           <section id="apply-form" className="scroll-mt-24 mb-10 sm:mb-14">
             <div className="   bg-[#232629]/30 backdrop-blur-sm  shadow-[0_4px_10px_rgba(142,142,142,0.3)]   rounded-[30px]  p-4 sm:p-6 md:p-8 border border-border/50 max-w-6xl mx-auto">
               <div className="text-center mb-8 xs:mb-10 sm:mb-12 md:mb-14 lg:mb-16">
-                <button className="text-white font-poppins shadow-lg bg-[#2C3035] hover:bg-[linear-gradient(90deg,_#F58F1D_0%,_#E57D77_100%)] w-full xs:w-auto min-w-[160px] xs:min-w-[180px] sm:min-w-[200px] md:min-w-[220px] lg:min-w-[240px] xl:min-w-[243px] h-[36px] xs:h-[40px] sm:h-[44px] md:h-[46px] lg:h-[48px] xl:h-[50px] rounded-[30px] font-normal text-[12px] xs:text-[11px] sm:text-[12px] md:text-[13px] transition-all duration-300 px-3 xs:px-4 sm:px-5 md:px-6 lg:px-7 xl:px-8 mb-3 xs:mb-4 sm:mb-5 md:mb-6">
-                  Apply Now
-                </button>
+                
                 <h2 className="font-outfit text-white  text-[20px] xs:text-[22px] sm:text-[24px] md:text-[26px] lg:text-[28px] xl:text-[32px] 2xl:text-[35px] leading-[115%] xs:leading-[118%] sm:leading-[120%] md:leading-[121%] mb-3 xs:mb-4 sm:mb-5 md:mb-6">
                   Submit Your Application
                 </h2>
@@ -561,61 +695,61 @@ export default function CareersPage() {
                     />
                   </div>
                   <div className="space-y-1.5 sm:space-y-2">
-                  <Label htmlFor="linkedin" className="text-xs sm:text-sm font-poppins text-[#9FA6AD]">LinkedIn Profile (Optional)</Label>
-                  <Input
-                    id="linkedin"
-                    name="linkedin"
-                    value={formData.linkedin}
-                    onChange={handleInputChange}
-                    className="rounded-md bg-background/50 border-border/50 focus:border-accent focus:ring-accent h-9 sm:h-10 text-sm"
-                    disabled={isLoading}
-                  />
-                </div>
+                    <Label htmlFor="linkedin" className="text-xs sm:text-sm font-poppins text-[#9FA6AD]">LinkedIn Profile (Optional)</Label>
+                    <Input
+                      id="linkedin"
+                      name="linkedin"
+                      value={formData.linkedin}
+                      onChange={handleInputChange}
+                      className="rounded-md bg-background/50 border-border/50 focus:border-accent focus:ring-accent h-9 sm:h-10 text-sm"
+                      disabled={isLoading}
+                    />
+                  </div>
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
-                <div className="space-y-1 sm:space-y-2">
-                  <Label className="text-xs sm:text-sm font-poppins text-[#9FA6AD]">Resume/CV</Label>
-                  <div className="border-2 border-dashed border-border/70 rounded-lg p-3 sm:p-0 h-30 text-center hover:border-accent/50 transition-colors bg-background/30">
-                    <Upload className="h-6 w-6 my-2 sm:h-10 sm:w-10 text-[#9FA6AD] mx-auto  sm:mb-4" />
-                    <p className="text-xs sm:text-sm mb-1 font-poppins text-white ">Drag and drop your resume</p>
-                    <p className="text-xs  mb-[3px] font-poppins text-[#9FA6AD]">PDF, DOCX or RTF up to 5MB</p>
-                    <input
-                      type="file"
-                      id="resume"
-                      name="resume"
-                      onChange={handleFileChange}
-                      accept=".pdf,.doc,.docx,.rtf"
-                      className="hidden"
+                  <div className="space-y-1 sm:space-y-2">
+                    <Label className="text-xs sm:text-sm font-poppins text-[#9FA6AD]">Resume/CV</Label>
+                    <div className="border-2 border-dashed border-border/70 rounded-lg p-3 sm:p-0 h-30 text-center hover:border-accent/50 transition-colors bg-background/30">
+                      <Upload className="h-6 w-6 my-2 sm:h-10 sm:w-10 text-[#9FA6AD] mx-auto  sm:mb-4" />
+                      <p className="text-xs sm:text-sm mb-1 font-poppins text-white ">Drag and drop your resume</p>
+                      <p className="text-xs  mb-[3px] font-poppins text-[#9FA6AD]">PDF, DOCX or RTF up to 5MB</p>
+                      <input
+                        type="file"
+                        id="resume"
+                        name="resume"
+                        onChange={handleFileChange}
+                        accept=".pdf,.doc,.docx,.rtf"
+                        className="hidden"
+                        required
+                        disabled={isLoading}
+                      />
+                      <Button
+                        type="button"
+                        variant="outline"
+                        size="sm"
+                        className="mx-auto  mb-3 border-border font-poppins text-[#9FA6AD]  hover:bg-accent/10 hover:text-accent text-xs h-6 sm:h-9"
+                        onClick={() => document.getElementById('resume')?.click()}
+                        disabled={isLoading}
+                      >
+                        Browse Files
+                      </Button>
+                      {formData.resume && (
+                        <p className="mt-2 text-xs text-accent">{formData.resume.name}</p>
+                      )}
+                    </div>
+                  </div>
+                  <div className="space-y-1.5 sm:space-y-2">
+                    <Label htmlFor="coverLetter" className="text-xs sm:text-sm font-poppins text-[#9FA6AD]">Why do you want to join our team?</Label>
+                    <Textarea
+                      id="coverLetter"
+                      name="coverLetter"
+                      value={formData.coverLetter}
+                      onChange={handleInputChange}
+                      className="rounded-md bg-background/50 border-border/50 focus:border-accent focus:ring-accent  min-h-[150px]   text-sm"
                       required
                       disabled={isLoading}
                     />
-                    <Button
-                      type="button"
-                      variant="outline"
-                      size="sm"
-                      className="mx-auto  mb-3 border-border font-poppins text-[#9FA6AD]  hover:bg-accent/10 hover:text-accent text-xs h-6 sm:h-9"
-                      onClick={() => document.getElementById('resume')?.click()}
-                      disabled={isLoading}
-                    >
-                      Browse Files
-                    </Button>
-                    {formData.resume && (
-                      <p className="mt-2 text-xs text-accent">{formData.resume.name}</p>
-                    )}
                   </div>
-                </div>
-                <div className="space-y-1.5 sm:space-y-2">
-                  <Label htmlFor="coverLetter" className="text-xs sm:text-sm font-poppins text-[#9FA6AD]">Why do you want to join our team?</Label>
-                  <Textarea
-                    id="coverLetter"
-                    name="coverLetter"
-                    value={formData.coverLetter}
-                    onChange={handleInputChange}
-                    className="rounded-md bg-background/50 border-border/50 focus:border-accent focus:ring-accent  min-h-[150px]   text-sm"
-                    required
-                    disabled={isLoading}
-                  />
-                </div>
                 </div>
               </form>
               <div className="flex justify-center mt-6 xs:mt-7 sm:mt-8 md:mt-9 lg:mt-10">
@@ -633,7 +767,7 @@ export default function CareersPage() {
                     'Submit Application'
                   )}
                 </button>
-                </div>
+              </div>
             </div>
           </section>
         </FadeIn>

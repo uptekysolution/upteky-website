@@ -202,7 +202,7 @@ export default function ContactPage() {
               <h2 className="text-2xl sm:text-2xl font-semibold mb-10 sm:mb-2">Contact Information</h2>
               <div className="h-0.5 sm:h-1 w-16 lg:w-60 sm:w-20 bg-accent/70 rounded-full mb-8 sm:mb-6"></div>
               <p className="text-muted-foreground mb-6 sm:mb-8 text-sm sm:text-base leading-relaxed lg:mb-10">
-                Reach out to us directly or visit our office. We're available Monday through Friday, 9AM-6PM IST.
+                Reach out to us directly or visit our office. We're available Monday to Friday, 9AM-6PM IST.
               </p>
             </div>
             

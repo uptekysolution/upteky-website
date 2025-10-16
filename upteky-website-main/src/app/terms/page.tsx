@@ -20,11 +20,11 @@ export default function TermsOfServicePage() {
 
   return (
     <div className="py-16 md:py-24 bg-background text-foreground">
-      <FadeIn>
+      
       <div className="container mx-auto px-4 md:px-6 max-w-3xl">
         <h1 className="text-3xl font-bold tracking-tight sm:text-4xl mb-8">Terms of Service</h1>
-        <div className="prose prose-invert max-w-none text-muted-foreground space-y-6">
-           <p><strong>Last Updated:</strong> {lastUpdatedDate}</p>
+        <div className="max-w-none text-foreground/90 space-y-6">
+           <p><strong>Last Updated:</strong> <span suppressHydrationWarning>{lastUpdatedDate}</span></p>
 
            <p>
              Welcome to {companyName} ("Upteky", "we", "us", or "our"). These Terms of Service ("Terms") govern your access to and use of our website {websiteURL} (the "Site") and any services, content, features, or applications offered by Upteky (collectively, the "Services").
@@ -141,7 +141,7 @@ export default function TermsOfServicePage() {
           </p>
         </div>
       </div>
-      </FadeIn>
+      
     </div>
   );
 }

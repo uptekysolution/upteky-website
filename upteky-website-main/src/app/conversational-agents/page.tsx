@@ -78,7 +78,7 @@ export default function ConversationalAgentsPage() {
         gsap.registerPlugin(ScrollTrigger, Observer);
 
         let allowScroll = true;
-        let scrollTimeout = gsap.delayedCall(1, () => (allowScroll = true)).pause();
+        let scrollTimeout = gsap.delayedCall(0.5, () => (allowScroll = true)).pause();
         const time = 0.5;
         let animating = false;
 
@@ -184,7 +184,7 @@ export default function ConversationalAgentsPage() {
           id: "STOP-SCROLL",
           trigger: ".cards-section-stack",
           pin: true,
-          start: "top 20%",
+          start: "top 30%",
           end: "+=1",
           onEnter: () => {
             if (cardsObserver.isEnabled) return;
