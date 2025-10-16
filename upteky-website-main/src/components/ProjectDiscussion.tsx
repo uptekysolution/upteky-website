@@ -128,9 +128,9 @@ export default function ProjectDiscussion({ className }: { className?: string; }
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-16 items-center">
             {/* Left: Heading + Form */}
             <div className="w-full order-1 lg:order-1">
-              <h3 className="text-white font-outfit text-[20px] sm:text-[24px] md:text-[30px] lg:text-2xl max-w-md leading-tight">
+              <h2 className="text-white font-outfit text-[20px] sm:text-[24px] md:text-[30px] lg:text-3xl max-w-md leading-tight">
                 Want To Discuss This Solution or your Custom Project
-              </h3>
+              </h2>
               <p className="mt-3 text-[#9FA6AD] font-poppins text-[12px] sm:text-[14px] md:text-[16px] max-w-xl">
                 Fill out the form below or book a free consultation with our team.
               </p>

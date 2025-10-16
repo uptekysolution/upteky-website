@@ -408,7 +408,7 @@ export default function AIAutomationPage() {
         
       {/* Section-4 */}
       <FadeIn>
-      <section className="container mx-auto px-3 xs:px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 pt-24 pb-24">
+      <section className="container mx-auto px-3 xs:px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 pt-12 pb-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 xs:gap-7 sm:gap-8 md:gap-10 lg:gap-12 xl:gap-16 justify-center">
           {/* Text Content Section */}
           <div className="space-y-4 xs:space-y-5 sm:space-y-6 md:space-y-7 lg:space-y-8 max-w-full lg:max-w-[527px] mx-auto lg:mx-0 order-1">
@@ -424,9 +424,9 @@ export default function AIAutomationPage() {
           </div>
 
           {/* Cards Section */}
-          <div className="order-2">
+          {/* <div className="order-2">
             <ScrollStack />
-          </div>
+          </div> */}
         </div>
       </section>
       </FadeIn>

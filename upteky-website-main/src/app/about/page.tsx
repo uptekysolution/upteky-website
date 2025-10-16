@@ -190,9 +190,32 @@ export default function AboutPage() {
     return (
 
       <div className="text-center">
-        <p className={`text-3xl sm:text-4xl md:text-5xl font-bold mb-2 mt-2 ${numberClassName}`}>{count}{label.includes("%") ? "%" : "+"}</p>
-        <p className={`text-xs sm:text-sm tracking-widest text-[#8B8B8B] ${labelClassName}`}>{label.replace(/\s*\(\d+-\d+%\)/, '').replace(/\s*\(\d+-\d+\sWeeks\)/, '').replace(" %", "")}</p>
+        <p
+          className={`text-3xl sm:text-4xl md:text-5xl font-bold mb-2 mt-2 ${numberClassName}`}
+        >
+          {count}
+          {label
+            ? label.includes("%")
+              ? "%"
+              : label.includes("-")
+                ? "-"
+                : "+"
+            : ""}
+        </p>
+        <p
+          className={`text-xs sm:text-sm tracking-widest text-[#8B8B8B] ${labelClassName}`}
+        >
+          {label
+            ? label
+              .replace(/\s*\(\d+-\d+%\)/, "")
+              .replace(/\s*\(\d+-\d+\sWeeks\)/, "")
+              .replace(" %", "")
+              .trim()
+            : ""}
+        </p>
       </div>
+
+
     );
   };
 
@@ -206,7 +229,7 @@ export default function AboutPage() {
           <div className="absolute -bottom-24 -right-32 h-[420px] w-[420px] rounded-full bg-gradient-to-tr from-[#2A2D31] to-transparent blur-3xl opacity-60" />
         </div>
 
-        <div className="relative z-10 max-w-[980px] mx-auto px-4 sm:px-6 pt-12 pb-10 sm:pt-16 sm:pb-14 lg:pt-[150px] lg:pb-20 text-center" style={{paddingTop: '150px'}}>
+        <div className="relative z-10 max-w-[980px] mx-auto px-4 sm:px-6 pt-12 pb-10 sm:pt-16 sm:pb-14 lg:pt-[150px] lg:pb-20 text-center" style={{ paddingTop: '150px' }}>
           <motion.h1
             className="text-[24px] sm:text-[28px] md:text-[40px] lg:text-[48px] xl:text-[45px] 2xl:text-[64px] leading-[121%] font-normal text-white font-['Outfit']"
             initial={{ opacity: 0, y: 20 }}
@@ -252,7 +275,7 @@ export default function AboutPage() {
 
         <div className="relative z-10 max-w-[1100px] mx-auto pb-8 sm:pb-12 md:pb-16">
           {/* Mobile: single composite image */}
-          <motion.div 
+          <motion.div
             className="block sm:hidden px-4"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -262,7 +285,7 @@ export default function AboutPage() {
             <img src="/images/about-cards.png" alt="Process preview" className="w-full h-auto rounded-[20px]" />
           </motion.div>
           {/* Tablet/Desktop: three separate cards */}
-          <motion.div 
+          <motion.div
             className="hidden sm:grid grid-cols-1 sm:grid-cols-3 place-items-center px-4 sm:px-6 gap-y-6 sm:gap-y-0 md:gap-x-8"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -272,17 +295,17 @@ export default function AboutPage() {
             <img
               src="/images/left-card.png"
               alt="Decorative left card"
-              className="w-[220px] h-[220px] sm:w-[250px] sm:h-[260px] md:w-[210px] md:h-[230px] xl:w-[300px] xl:h-[320px] rounded-[30px] sm:rounded-[40px] object-cover mt-10 sm:mt-16 md:mt-10"
+              className="w-[220px] h-[220px] sm:w-[250px] sm:h-[260px] md:w-[210px] md:h-[230px] xl:w-[300px] xl:h-[320px] rounded-[30px] sm:rounded-[40px] object-cover mt-10 sm:mt-16 md:mt-10 hover:scale-[1.03] transition-transform duration-200 ease-in-out"
             />
             <img
               src="/images/middle-card.png"
               alt="Decorative middle card"
-              className="w-[220px] h-[220px] sm:w-[250px] sm:h-[260px] md:w-[210px] md:h-[230px] xl:w-[300px] xl:h-[320px] rounded-[30px] sm:rounded-[40px] object-cover mt-6 sm:-mt-8 md:mt-2"
+              className="w-[220px] h-[220px] sm:w-[250px] sm:h-[260px] md:w-[210px] md:h-[230px] xl:w-[300px] xl:h-[320px] rounded-[30px] sm:rounded-[40px] object-cover mt-6 sm:-mt-8 md:mt-2 hover:scale-[1.03] transition-transform duration-200 ease-in-out"
             />
             <img
               src="/images/right-card.png"
               alt="Decorative right card"
-              className="w-[220px] h-[220px] sm:w-[250px] sm:h-[260px] md:w-[210px] md:h-[230px] xl:w-[300px] xl:h-[320px] rounded-[30px] sm:rounded-[40px] object-cover mt-10 sm:mt-16 md:mt-10"
+              className="w-[220px] h-[220px] sm:w-[250px] sm:h-[260px] md:w-[210px] md:h-[230px] xl:w-[300px] xl:h-[320px] rounded-[30px] sm:rounded-[40px] object-cover mt-10 sm:mt-16 md:mt-10 hover:scale-[1.03] transition-transform duration-200 ease-in-out"
             />
           </motion.div>
         </div>
@@ -303,11 +326,15 @@ export default function AboutPage() {
           </motion.h2>
         </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 md:gap-8">
-          <motion.div 
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 md:gap-8">
+          <motion.div
             className="bg-[#2C3035] text-white rounded-xl sm:rounded-2xl md:rounded-3xl p-5 sm:p-6 md:p-8 sm:ml-[30px] md:ml-[60px]"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
+            whileHover={{
+              scale: 1.03,
+              transition: { duration: 0.1, ease: "easeOut" }, // fast hover
+            }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
@@ -324,10 +351,14 @@ export default function AboutPage() {
             </div>
           </motion.div>
 
-          <motion.div 
+          <motion.div
             className="bg-[#2C3035] text-white rounded-xl sm:rounded-2xl md:rounded-3xl p-5 sm:p-6 md:p-8 sm:mr-[30px] md:mr-[60px]"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
+            whileHover={{
+              scale: 1.03,
+              transition: { duration: 0.1, ease: "easeOut" }, // fast hover
+            }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
@@ -361,7 +392,7 @@ export default function AboutPage() {
             Industries We Serve
           </motion.h2>
         </div>
-        <motion.p 
+        <motion.p
           className="text-center text-[14px] sm:text-[16px] md:text-[18px] text-[#B7B7B7] max-w-[820px] mx-auto mb-8 sm:mb-10 md:mb-12 font-['Poppins'] font-normal leading-[150%]"
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -371,7 +402,7 @@ export default function AboutPage() {
           We help businesses in every sector unlock opportunities, optimize operations, and stay future‑ready with technology that works.
         </motion.p>
 
-        <motion.div 
+        <motion.div
           className="bg-[#2C3035] rounded-xl sm:rounded-2xl md:rounded-3xl p-4 sm:p-5 md:p-8 lg:p-10 mx-4 sm:mx-6 md:mx-10 lg:mx-16 xl:mx-24"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -403,7 +434,7 @@ export default function AboutPage() {
                 {industries.map((label, idx) => (
                   <span
                     key={idx}
-                    className="text-[#CFCFCF] bg-[#32373C] border border-white/5 rounded-full px-3 py-1.5 sm:px-4 sm:py-2 text-[11px] sm:text-xs md:text-sm font-['Poppins'] font-normal"
+                    className="text-[#CFCFCF] bg-[#32373C] border border-white/5 rounded-full px-3 py-1.5 sm:px-4 sm:py-2 text-[11px] sm:text-xs md:text-sm font-['Poppins'] font-normal hover:scale-[1.03] cursor-default select-none"
                   >
                     {label}
                   </span>
@@ -420,27 +451,31 @@ export default function AboutPage() {
         <div className="mx-auto rounded-[30px]">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
             {/* Left heading/description */}
-            <motion.div 
+            <motion.div
               className="col-span-1 px-3 flex flex-col text-center md:text-left"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.6 }}
             >
-              <h2 className="font-outfit text-[22px] sm:text-[28px] md:text-[30px] lg:text-[40px] xl:text-[45px] leading-[121%] text-white">
+              <h2 className="font-outfit text-[22px] sm:text-[28px] md:text-[30px] lg:text-[40px] xl:text-[45px] leading-[121%] text-white hover:scale-[1.02] transition-transform duration-200 ease-in-out">
                 Why <br />Work With Us?
               </h2>
-              <p className="mt-3 sm:mt-4 font-poppins text-[12px] sm:text-[14px] md:text-[16px] text-[#858C92] max-w-sm mx-auto md:mx-0">
+              <p className="mt-3 sm:mt-4 font-poppins text-[12px] sm:text-[14px] md:text-[16px] text-[#858C92] max-w-sm mx-auto md:mx-0 hover:scale-[1.02] transition-transform duration-200 ease-in-out">
                 Seamlessly engage customers across channels with secure, integrated, and conversion-focused solutions.
               </p>
             </motion.div>
 
             {cards.map((card, idx) => (
-              <motion.div 
-                key={idx} 
+              <motion.div
+                key={idx}
                 className="col-span-1"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
+                whileHover={{
+                  scale: 1.02,
+                  transition: { duration: 0.1, ease: "easeOut" }, // fast hover
+                }}
                 viewport={{ once: true, amount: 0.3 }}
                 transition={{ duration: 0.6, delay: idx * 0.1 }}
               >
@@ -460,24 +495,41 @@ export default function AboutPage() {
               <FadeIn>
                 <div id="stats-grid" className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 w-full gap-y-10 md:gap-y-12">
                   {/* Stat 1 */}
-                  <div className="relative flex items-center justify-center py-8">
+                  <div className="relative flex items-center justify-center py-8 hover:scale-[1.02] transition-transform duration-200 ease-in-out">
                     <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                      <StatCounter end={10} label="" numberClassName="text-[#353E47] font-poppins font-bold leading-none select-none text-[48px] sm:text-[64px] md:text-[96px] lg:text-[88px]" labelClassName="hidden" trigger={statsInView} />
+                      <StatCounter end={10} label="+" numberClassName="text-[#353E47] font-poppins font-bold leading-none select-none text-[48px] sm:text-[64px] md:text-[96px] lg:text-[88px]" labelClassName="hidden" trigger={statsInView} />
                     </div>
                     <p className="relative z-[1] text-white text-[12px] sm:text-sm tracking-wide">Industries Served</p>
                   </div>
 
                   {/* Stat 2 */}
-                  <div className="relative flex items-center justify-center py-8">
+                  <div className="relative flex items-center justify-center py-8 hover:scale-[1.02] transition-transform duration-200 ease-in-out">
                     <span className="hidden lg:block absolute left-0 top-1/2 -translate-y-1/2 h-10 lg:h-14 w-px bg-white/15" />
-                    <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                      <span className="text-[#353E47] font-poppins font-bold leading-none select-none text-[48px] sm:text-[64px] md:text-[96px] lg:text-[88px]">4-8</span>
+                    <div className="absolute inset-0 flex items-center justify-center pointer-events-none space-x-2">
+                      <StatCounter
+                        end={4}
+                        label=""
+                        numberClassName="text-[#353E47] font-poppins font-bold leading-none select-none text-[48px] sm:text-[64px] md:text-[96px] lg:text-[88px]"
+                        labelClassName="hidden"
+                        trigger={statsInView}
+                      />
+                      <span className="text-[#353E47] font-poppins font-bold leading-none select-none text-[48px] sm:text-[64px] md:text-[96px] lg:text-[88px]">–</span>
+                      <StatCounter
+                        end={8}
+                        label=""
+                        numberClassName="text-[#353E47] font-poppins font-bold leading-none select-none text-[48px] sm:text-[64px] md:text-[96px] lg:text-[88px]"
+                        labelClassName="hidden"
+                        trigger={statsInView}
+                      />
                     </div>
-                    <p className="relative z-[1] text-white text-[12px] sm:text-sm tracking-wide">Delivery Time (Weeks)</p>
+                    <p className="relative z-[1] text-white text-[12px] sm:text-sm tracking-wide">
+                      Delivery Time (Weeks)
+                    </p>
                   </div>
 
+
                   {/* Stat 3 */}
-                  <div className="relative flex items-center justify-center py-8">
+                  <div className="relative flex items-center justify-center py-8 hover:scale-[1.02] transition-transform duration-200 ease-in-out">
                     <span className="hidden lg:block absolute left-0 top-1/2 -translate-y-1/2 h-10 lg:h-14 w-px bg-white/15" />
                     <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
                       <StatCounter end={30} label="%" numberClassName="text-[#353E47] font-poppins font-bold leading-none select-none text-[48px] sm:text-[64px] md:text-[96px] lg:text-[88px]" labelClassName="hidden" trigger={statsInView} />
@@ -486,7 +538,7 @@ export default function AboutPage() {
                   </div>
 
                   {/* Stat 4 */}
-                  <div className="relative flex items-center justify-center py-8">
+                  <div className="relative flex items-center justify-center py-8 hover:scale-[1.02] transition-transform duration-200 ease-in-out">
                     <span className="hidden lg:block absolute left-0 top-1/2 -translate-y-1/2 h-10 lg:h-14 w-px bg-white/15" />
                     <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
                       <StatCounter end={100} label="" numberClassName="text-[#353E47] font-poppins font-bold leading-none select-none text-[48px] sm:text-[64px] md:text-[96px] lg:text-[88px]" labelClassName="hidden" trigger={statsInView} />
@@ -508,10 +560,14 @@ export default function AboutPage() {
               className="text-[22px] sm:text-[28px] md:text-[36px] lg:text-[40px] xl:text-[44px] 2xl:text-[48px] font-medium text-white text-center font-['Outfit']"
               initial={{ opacity: 0, y: -20 }}
               whileInView={{ opacity: 1, y: 0 }}
+              // whileHover={{
+              //   scale: 1.02,
+              //   transition: { duration: 0.1, ease: "easeOut" }, // fast hover
+              // }}
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.6 }}
             >
-              Our Proven Path to <br /> Success
+              Our Proven Path to Success
             </motion.h2>
           </div>
 
@@ -522,8 +578,12 @@ export default function AboutPage() {
                 className="bg-[#2C3035] rounded-lg sm:rounded-xl px-5 sm:px-6 py-5 sm:py-6 ring-1 ring-white/5 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.03)] h-[210px] md:h-[225px] xl:h-[220px]"
                 initial={{ opacity: 0, y: 12 }}
                 whileInView={{ opacity: 1, y: 0 }}
+                whileHover={{
+                  scale: 1.03,
+                  transition: { duration: 0.1, ease: "easeOut" }, // fast hover
+                }}
                 viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 0.4, delay: index * 0.05 }}
+                transition={{ duration: 0.6, delay: index * 0.05 }}
               >
                 <p className="text-[#CFCFCF] font-['Outfit'] font-normal text-[16px] sm:text-[18px] md:text-[20px] mb-2 sm:mb-3">{item.step}</p>
                 <h4 className="text-white font-['Outfit'] font-normal text-[16px] sm:text-[18px] md:text-[20px] mb-1.5 sm:mb-2">{item.title}</h4>

@@ -1,13 +1,17 @@
 'use client';
 
-import { useRef, useEffect } from 'react';
+import React, { useRef, useEffect } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
+// Register the GSAP plugin
 gsap.registerPlugin(ScrollTrigger);
 
+// --- Component Interfaces ---
 interface ScrollStackProps {
   children: React.ReactNode;
+  /** A number that determines how much scroll distance is required for the animation. Higher is slower. */
+  scrollSpeed?: number;
   className?: string;
 }
 
@@ -16,79 +20,75 @@ interface ScrollStackItemProps {
   className?: string;
 }
 
+// --- Child Component (Card Wrapper) ---
 export const ScrollStackItem = ({ children, className = '' }: ScrollStackItemProps) => (
-  <div className={`scroll-stack-card ${className}`.trim()}>{children}</div>
+  <div
+    className={`scroll-stack-card absolute top-0 left-0 h-full w-full ${className}`.trim()}
+  >
+    {children}
+  </div>
 );
 
-const ScrollStack = ({ children, className = '' }: ScrollStackProps) => {
+// --- Main Component ---
+const ScrollStack = ({ children, scrollSpeed = 300, className = '' }: ScrollStackProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const cardsRef = useRef<HTMLDivElement>(null);
+  const wrapperRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const container = containerRef.current;
-    const cardsContainer = cardsRef.current;
-    
-    if (!container || !cardsContainer) return;
+    if (!container) return;
 
-    const cards = cardsContainer.querySelectorAll('.scroll-stack-card');
-    const cardCount = cards.length;
+    // Use a GSAP context for safe cleanup
+    let ctx = gsap.context(() => {
+      const cards = gsap.utils.toArray<HTMLElement>('.scroll-stack-card');
+      const cardCount = cards.length;
 
-    // Set initial positions for stacked cards
-    gsap.set(cards, {
-      y: (index: number) => index * 20, // 20px vertical offset between cards
-      x: (index: number) => index * 10, // 10px horizontal offset for stacking effect
-      scale: (index: number) => 1 - (index * 0.05), // Scale reduction for depth
-      zIndex: (index: number) => cardCount - index, // Higher z-index for cards on top
-      transformOrigin: 'center top'
-    });
+      if (cardCount < 2) return;
 
-    // Create ScrollTrigger for the stacked animation
-    ScrollTrigger.create({
-      trigger: container,
-      start: 'top 80%',
-      end: 'bottom 20%',
-      pin: true,
-      pinSpacing: true,
-      scrub: 1,
-      onUpdate: (self) => {
-        const progress = self.progress;
-        const totalSteps = cardCount - 1;
-        
-        cards.forEach((card, index) => {
-          if (index === 0) return; // First card stays in place
-          
-          const stepProgress = Math.min(progress * totalSteps, index);
-          const clampedProgress = Math.max(0, Math.min(1, stepProgress - (index - 1)));
-          
-          // Calculate final position with stacking offset
-          const finalY = index * 20;
-          const finalX = index * 10;
-          const finalScale = 1 - (index * 0.05);
-          
-          // Animate to final position
-          gsap.to(card, {
-            y: finalY * clampedProgress,
-            x: finalX * clampedProgress,
-            scale: 1 - (1 - finalScale) * clampedProgress,
-            duration: 0.1,
-            ease: "none"
-          });
-        });
-      }
-    });
-
-    return () => {
-      ScrollTrigger.getAll().forEach(trigger => {
-        if (trigger.vars.trigger === container) {
-          trigger.kill();
-        }
+      // Set initial z-index for correct visual stacking
+      cards.forEach((card, index) => {
+        gsap.set(card, { zIndex: cardCount - index });
       });
-    };
-  }, []);
+
+      // Main timeline for the entire stack animation
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: container,
+          pin: wrapperRef.current, // Pin the sticky wrapper
+          scrub: 1,
+          start: 'top top',
+          // Calculate the total scroll distance needed
+          end: `+=${(cardCount - 1) * scrollSpeed}`,
+        },
+      });
+
+      // Animate each card (except the last one which stays in place)
+      cards.slice(0, -1).forEach((card, index) => {
+        tl.to(
+          card,
+          {
+            // Move the card off-screen upwards
+            yPercent: -105,
+            ease: 'power1.inOut',
+          },
+          // Stagger the start time of each animation
+          index * (1 / (cardCount - 1))
+        );
+      });
+    }, containerRef);
+
+    return () => ctx.revert(); // Cleanup GSAP animations
+  }, [children, scrollSpeed]);
 
   return (
-    <div ref={containerRef} className={`scroll-stack-container ${className}`.trim()}>
-      <div ref={cardsRef} className="scroll-stack-cards">
+    <div
+      ref={containerRef}
+      className={`scroll-stack-container relative ${className}`.trim()}
+    >
+      <div
+        ref={wrapperRef}
+        className="scroll-stack-cards-wrapper sticky top-0 h-screen w-full overflow-hidden"
+      >
         {children}
       </div>
     </div>
