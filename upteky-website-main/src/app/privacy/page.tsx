@@ -140,7 +140,12 @@ export default function PrivacyPolicyPage() {
             We may update this Privacy Policy from time to time. The updated version will be indicated by an updated "Last Updated" date and the updated version will be effective as soon as it is accessible. We encourage you to review this privacy policy frequently to be informed of how we are protecting your information.
           </p>
 
-          <h2 className="text-2xl font-semibold text-foreground mt-8">11. Contact Us</h2>
+          <h2 className="text-2xl font-semibold text-foreground mt-8">11. Refund Policy</h2>
+          <p>
+            At Upteky Solution Pvt. Ltd., refunds are evaluated for IT services and subscriptions on a case-by-case basis. Payments for discovery, consulting, and custom software development already delivered (including completed sprints or milestones) are non-refundable, though defects within agreed scope and SLAs will be remediated. For subscription-based products or managed services, you may request a pro-rated refund of any unused, prepaid months within 14 days of renewal, provided there is no material breach of terms. Deposits and setup fees allocated to resource reservation, licenses, or third-party costs are non-refundable. To initiate a request, contact <a href="mailto:hello@upteky.com" className="text-accent hover:underline">hello@upteky.com</a> with your order details; approved refunds are issued to the original payment method within 7–10 business days and may exclude processing fees.
+          </p>
+
+          <h2 className="text-2xl font-semibold text-foreground mt-8">12. Contact Us</h2>
           <p>
             If you have questions or comments about this Privacy Policy, please contact us at:
           </p>
