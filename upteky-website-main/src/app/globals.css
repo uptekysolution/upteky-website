@@ -1,9 +1,29 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-
-
+ 
+ 
+/* src/app/globals.css */
+@layer base {
+  html, body {
+    scrollbar-width: none;          /* Firefox */
+    scrollbar-color: transparent #232629;  /* thumb track */
+  }
+  html::-webkit-scrollbar,
+  body::-webkit-scrollbar {
+    width: 0px;
+  }
+  html::-webkit-scrollbar-track,
+  body::-webkit-scrollbar-track {
+    background: #232629;            /* match page bg */
+  }
+  html::-webkit-scrollbar-thumb,
+  body::-webkit-scrollbar-thumb {
+    background: #555;
+    border-radius: 8px;
+  }
+}
+ 
 @layer base {
   :root {
     --background: 210 8% 15%; /* Darker gray derived from #2d3436 */
@@ -40,28 +60,39 @@
     --sidebar-border: 210 8% 25%;
     --sidebar-ring: 25 85% 61%;
   }
-
+ 
   /* Remove dark class override as the base theme is dark now */
   /* .dark { ... } */
 }
-
+ 
 @layer base {
   * {
-    @apply border-border;
+   
   }
   html {
-    @apply scroll-smooth;
+   
     scroll-snap-type: y mandatory;
     scroll-padding-top: 4rem; /* For sticky navbar (h-16 = 4rem) */
+    /* Hide window scrollbar (Firefox/modern) */
+    scrollbar-width: none;
   }
   body {
-    @apply bg-background text-foreground;
+ 
     background-color: #2d3436;
     background-image: linear-gradient(315deg, #2d3436 0%, #000000 74%);
     min-height: 100vh;
+    /* Hide window scrollbar (IE/Edge) */
+    -ms-overflow-style: none;
+  }
+  /* Hide window scrollbar (WebKit) */
+  html::-webkit-scrollbar,
+  body::-webkit-scrollbar {
+    display: none;
+    width: 0;
+    height: 0;
   }
 }
-
+ 
 /* Custom gradient text utility */
 @layer utilities {
   .text-gradient-accent {
@@ -71,31 +102,31 @@
     @apply bg-gradient-to-r from-[#f69018] to-[#e47c7c];
   }
 }
-
+ 
 .animate-dash-fast {
   animation: dash 20s linear infinite;
 }
-
+ 
 .animate-float {
   animation: float 8s ease-in-out infinite;
 }
-
+ 
 .animate-shooting-star {
   animation: shootingStar 6s linear infinite;
   opacity: 0;
 }
-
+ 
 .animate-wave {
   animation: wave 1.5s ease-in-out infinite alternate; /* Adjusted duration slightly for smoother feel */
 }
-
-
+ 
+ 
 @keyframes dash {
   to {
     stroke-dashoffset: 1000;
   }
 }
-
+ 
 @keyframes float {
   0%, 100% {
     transform: translateY(0);
@@ -104,7 +135,7 @@
     transform: translateY(-20px);
   }
 }
-
+ 
 @keyframes shootingStar {
   0% {
     opacity: 0;
@@ -119,7 +150,7 @@
     stroke-width: 0;
   }
 }
-
+ 
 @keyframes wave {
   0% {
     transform: rotate(20deg); /* Increased start angle */
@@ -128,32 +159,33 @@
     transform: rotate(-35deg); /* Increased end angle for a wider wave */
   }
 }
-
-
+ 
+ 
 .shadow-glow {
   box-shadow: 0 0 15px 5px rgba(255, 153, 0, 0.2);
 }
-
+ 
 /* Testimonial Scrollbar Styles */
 .testimonial-scroll::-webkit-scrollbar {
   height: 6px;
   width: 6px;
 }
-
+ 
 .testimonial-scroll::-webkit-scrollbar-track {
   background: transparent;
 }
-
+ 
 .testimonial-scroll::-webkit-scrollbar-thumb {
   background: rgba(255, 139, 6, 0.3);
   border-radius: 3px;
 }
-
+ 
 .testimonial-scroll::-webkit-scrollbar-thumb:hover {
   background: rgba(255, 139, 6, 0.5);
 }
-
+ 
 .testimonial-scroll::-webkit-scrollbar-vertical {
   display: none;
 }
-
+ 
+ 

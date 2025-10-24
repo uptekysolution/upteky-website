@@ -492,9 +492,9 @@ export default function WebDevelopmentPage() {
           </div>
 
           {/* Cards Section */}
-          {/* <div className="order-2">
+          <div className="order-2">
             <ScrollStack />
-          </div> */}
+          </div>
         </div>
       </section>
       </FadeIn>
