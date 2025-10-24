@@ -170,7 +170,275 @@ export function Navbar() {
                 </Button>
               </SheetTrigger>
               <SheetContent side="right" className="w-[300px] sm:w-[340px] bg-background p-0">
-                {/* Mobile menu content... */}
+                <div className="flex flex-col h-full">
+                  {/* Mobile Menu Header */}
+                  <div className="flex items-center justify-between p-6 border-b border-border">
+                    <UptekyLogo className="h-8 w-auto text-primary" />
+                    <Button
+                      variant="ghost"
+                      size="icon"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                      className="text-muted-foreground hover:text-foreground"
+                    >
+                      <X className="h-5 w-5" />
+                      <span className="sr-only">Close menu</span>
+                    </Button>
+                  </div>
+
+                  {/* Mobile Navigation */}
+                  <div className="flex-1 overflow-y-auto">
+                    <nav className="p-6 space-y-1">
+                      {navItems.map((item) => (
+                        <div key={item.href}>
+                          {item.href === '/solution' ? (
+                            <div>
+                              <button
+                                onClick={() => setMobileSolutionsOpen(!mobileSolutionsOpen)}
+                                className="flex items-center justify-between w-full px-3 py-2 text-base font-medium text-foreground hover:text-primary transition-colors"
+                              >
+                                <span>Solutions</span>
+                                <ChevronRight 
+                                  className={cn(
+                                    "h-4 w-4 transition-transform duration-200",
+                                    mobileSolutionsOpen && "rotate-90"
+                                  )}
+                                />
+                              </button>
+                              
+                              {/* Solutions Dropdown */}
+                              <div className={cn(
+                                "overflow-hidden transition-all duration-300 ease-in-out",
+                                mobileSolutionsOpen ? "max-h-[800px] opacity-100" : "max-h-0 opacity-0"
+                              )}>
+                                <div className="pl-4 space-y-1 mt-2">
+                                  {/* Conversational Agents */}
+                                  <div className="space-y-1">
+                                    <Link
+                                      href="/conversational-agents"
+                                      className="block px-3 py-2 text-sm font-medium text-foreground/80 hover:text-primary transition-colors"
+                                      onClick={() => handleLinkClick('/conversational-agents')}
+                                    >
+                                      Conversational Agents
+                                    </Link>
+                                    <div className="pl-4 space-y-1">
+                                      <Link
+                                        href="/solution_pages/s01"
+                                        className="block px-3 py-1.5 text-sm text-muted-foreground hover:text-primary transition-colors"
+                                        onClick={() => handleLinkClick('/solution_pages/s01')}
+                                      >
+                                        Interactive AI Website Chatbot
+                                      </Link>
+                                      <Link
+                                        href="/solution_pages/s02"
+                                        className="block px-3 py-1.5 text-sm text-muted-foreground hover:text-primary transition-colors"
+                                        onClick={() => handleLinkClick('/solution_pages/s02')}
+                                      >
+                                        WhatsApp & Multi-Platform Chatbot
+                                      </Link>
+                                      <Link
+                                        href="/solution_pages/s03"
+                                        className="block px-3 py-1.5 text-sm text-muted-foreground hover:text-primary transition-colors"
+                                        onClick={() => handleLinkClick('/solution_pages/s03')}
+                                      >
+                                        AI-Powered Lead Reactivation
+                                      </Link>
+                                      <Link
+                                        href="/solution_pages/s04"
+                                        className="block px-3 py-1.5 text-sm text-muted-foreground hover:text-primary transition-colors"
+                                        onClick={() => handleLinkClick('/solution_pages/s04')}
+                                      >
+                                        AI Voice Assistant (Voice Bot)
+                                      </Link>
+                                    </div>
+                                  </div>
+
+                                  {/* AI Automation Solution */}
+                                  <div className="space-y-1">
+                                    <Link
+                                      href="/ai-automation"
+                                      className="block px-3 py-2 text-sm font-medium text-foreground/80 hover:text-primary transition-colors"
+                                      onClick={() => handleLinkClick('/ai-automation')}
+                                    >
+                                      AI Automation Solution
+                                    </Link>
+                                    <div className="pl-4 space-y-1">
+                                      <Link
+                                        href="/solution_pages/s05"
+                                        className="block px-3 py-1.5 text-sm text-muted-foreground hover:text-primary transition-colors"
+                                        onClick={() => handleLinkClick('/solution_pages/s05')}
+                                      >
+                                        AI Workflow Automation
+                                      </Link>
+                                      <Link
+                                        href="/solution_pages/s12"
+                                        className="block px-3 py-1.5 text-sm text-muted-foreground hover:text-primary transition-colors"
+                                        onClick={() => handleLinkClick('/solution_pages/s12')}
+                                      >
+                                        AI-Powered ERP
+                                      </Link>
+                                      <Link
+                                        href="/solution_pages/s10"
+                                        className="block px-3 py-1.5 text-sm text-muted-foreground hover:text-primary transition-colors"
+                                        onClick={() => handleLinkClick('/solution_pages/s10')}
+                                      >
+                                        AI-Powered CRM Platform
+                                      </Link>
+                                      <Link
+                                        href="/solution_pages/s07"
+                                        className="block px-3 py-1.5 text-sm text-muted-foreground hover:text-primary transition-colors"
+                                        onClick={() => handleLinkClick('/solution_pages/s07')}
+                                      >
+                                        AI-Powered Data Analyst
+                                      </Link>
+                                    </div>
+                                  </div>
+
+                                  {/* AI Sales & Growth Solution */}
+                                  <div className="space-y-1">
+                                    <Link
+                                      href="/ai-sales-growth"
+                                      className="block px-3 py-2 text-sm font-medium text-foreground/80 hover:text-primary transition-colors"
+                                      onClick={() => handleLinkClick('/ai-sales-growth')}
+                                    >
+                                      AI Sales & Growth Solution
+                                    </Link>
+                                    <div className="pl-4 space-y-1">
+                                      <Link
+                                        href="/solution_pages/s08"
+                                        className="block px-3 py-1.5 text-sm text-muted-foreground hover:text-primary transition-colors"
+                                        onClick={() => handleLinkClick('/solution_pages/s08')}
+                                      >
+                                        AI Strategy Consulting
+                                      </Link>
+                                      <Link
+                                        href="/solution_pages/s09"
+                                        className="block px-3 py-1.5 text-sm text-muted-foreground hover:text-primary transition-colors"
+                                        onClick={() => handleLinkClick('/solution_pages/s09')}
+                                      >
+                                        AI Sales Agent
+                                      </Link>
+                                      <Link
+                                        href="/solution_pages/s11"
+                                        className="block px-3 py-1.5 text-sm text-muted-foreground hover:text-primary transition-colors"
+                                        onClick={() => handleLinkClick('/solution_pages/s11')}
+                                      >
+                                        AI Digital Marketing Agent
+                                      </Link>
+                                    </div>
+                                  </div>
+
+                                  {/* Web Development Services */}
+                                  <div className="space-y-1">
+                                    <Link
+                                      href="/web-development"
+                                      className="block px-3 py-2 text-sm font-medium text-foreground/80 hover:text-primary transition-colors"
+                                      onClick={() => handleLinkClick('/web-development')}
+                                    >
+                                      Web Development Services
+                                    </Link>
+                                    <div className="pl-4 space-y-1">
+                                      <Link
+                                        href="/solution_pages/s13"
+                                        className="block px-3 py-1.5 text-sm text-muted-foreground hover:text-primary transition-colors"
+                                        onClick={() => handleLinkClick('/solution_pages/s13')}
+                                      >
+                                        Wix Development
+                                      </Link>
+                                      <Link
+                                        href="/solution_pages/s14"
+                                        className="block px-3 py-1.5 text-sm text-muted-foreground hover:text-primary transition-colors"
+                                        onClick={() => handleLinkClick('/solution_pages/s14')}
+                                      >
+                                        Webflow Development
+                                      </Link>
+                                      <Link
+                                        href="/solution_pages/s15"
+                                        className="block px-3 py-1.5 text-sm text-muted-foreground hover:text-primary transition-colors"
+                                        onClick={() => handleLinkClick('/solution_pages/s15')}
+                                      >
+                                        MERN Stack Development
+                                      </Link>
+                                      <Link
+                                        href="/solution_pages/s16"
+                                        className="block px-3 py-1.5 text-sm text-muted-foreground hover:text-primary transition-colors"
+                                        onClick={() => handleLinkClick('/solution_pages/s16')}
+                                      >
+                                        Shopify Development
+                                      </Link>
+                                      <Link
+                                        href="/solution_pages/s17"
+                                        className="block px-3 py-1.5 text-sm text-muted-foreground hover:text-primary transition-colors"
+                                        onClick={() => handleLinkClick('/solution_pages/s17')}
+                                      >
+                                        WordPress Development
+                                      </Link>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          ) : (
+                            <Link
+                              href={item.href}
+                              className={cn(
+                                "block px-3 py-2 text-base font-medium transition-colors hover:text-primary",
+                                pathname === item.href ? "text-primary" : "text-foreground"
+                              )}
+                              onClick={() => handleLinkClick(item.href)}
+                            >
+                              {item.label}
+                            </Link>
+                          )}
+                        </div>
+                      ))}
+                    </nav>
+
+                    {/* Mobile CTA Button */}
+                    <div className="p-6 border-t border-border">
+                      <Button
+                        className="w-full bg-transparent border border-accent text-white rounded-full px-6 py-2.5 text-base font-outfit hover:bg-gradient-to-r from-accent to-accent-dark transition-all duration-300"
+                        asChild
+                      >
+                        <Link href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ0Hf-bvSzm-R79180oE1OQfbfQZI_QdfANF-hMCMk0U7i5xALnGlP0GS4vtFsky9z28D5zgGTsT">
+                          Let's Tech Talk
+                        </Link>
+                      </Button>
+                    </div>
+
+                    {/* Social Links */}
+                    <div className="p-6 border-t border-border">
+                      <div className="flex items-center justify-center space-x-4">
+                        <Link
+                          href="https://linkedin.com/company/upteky"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-muted-foreground hover:text-primary transition-colors"
+                        >
+                          <Linkedin className="h-5 w-5" />
+                          <span className="sr-only">LinkedIn</span>
+                        </Link>
+                        <Link
+                          href="https://facebook.com/upteky"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-muted-foreground hover:text-primary transition-colors"
+                        >
+                          <Facebook className="h-5 w-5" />
+                          <span className="sr-only">Facebook</span>
+                        </Link>
+                        <Link
+                          href="https://instagram.com/upteky"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-muted-foreground hover:text-primary transition-colors"
+                        >
+                          <Instagram className="h-5 w-5" />
+                          <span className="sr-only">Instagram</span>
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </SheetContent>
             </Sheet>
           </div>
