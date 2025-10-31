@@ -19,10 +19,10 @@ const whatWeDoData = [
     title: "Conversational Agents",
     imageSrc: "/assets/whatWeDo/Conversational-agent.png", // Replace with your actual image path
     description:
-      "Upteky Solutions Pvt. Ltd. specializes in creating robust Conversational AI solutions for web, messaging, and voice channels. From Website Chatbots and WhatsApp automation to AI powered lead reengagement and Voice Bots, we integrate advanced natural language processing, secure system connections, and actionable analytics to help businesses achieve measurable growth. Services from 10k to 2Lakh.",
+      "Upteky Solutions Pvt. Ltd. specializes in creating robust Conversational AI solutions for web, messaging, and voice channels. From Website Chatbots we integrate advanced natural language processing, secure system connections, and actionable analytics to help businesses achieve measurable growth. Services from 10k to 2Lakh.",
     services: [
       "Interactive AI Website Chatbot",
-      "WhatsApp & Multi Platform Chatbot",
+      // "WhatsApp & Multi Platform Chatbot",
       "AI-Powered Lead Reactivation",
       "AI Voice Assistant (Voice Bot)",
     ],

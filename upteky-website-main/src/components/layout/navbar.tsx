@@ -172,17 +172,8 @@ export function Navbar() {
               <SheetContent side="right" className="w-[300px] sm:w-[340px] bg-background p-0">
                 <div className="flex flex-col h-full">
                   {/* Mobile Menu Header */}
-                  <div className="flex items-center justify-between p-6 border-b border-border">
+                  <div className="flex items-center justify-center p-6 border-b border-border">
                     <UptekyLogo className="h-8 w-auto text-primary" />
-                    <Button
-                      variant="ghost"
-                      size="icon"
-                      onClick={() => setIsMobileMenuOpen(false)}
-                      className="text-muted-foreground hover:text-foreground"
-                    >
-                      <X className="h-5 w-5" />
-                      <span className="sr-only">Close menu</span>
-                    </Button>
                   </div>
 
                   {/* Mobile Navigation */}
@@ -208,7 +199,7 @@ export function Navbar() {
                               {/* Solutions Dropdown */}
                               <div className={cn(
                                 "overflow-hidden transition-all duration-300 ease-in-out",
-                                mobileSolutionsOpen ? "max-h-[800px] opacity-100" : "max-h-0 opacity-0"
+                                mobileSolutionsOpen ? "max-h-[1200px] opacity-100" : "max-h-0 opacity-0"
                               )}>
                                 <div className="pl-4 space-y-1 mt-2">
                                   {/* Conversational Agents */}
