@@ -1,7 +1,7 @@
-import AboutPage from "./page";
+import LandingPage from "./page";
 
 export const metadata = {
-  title: "About Us | Upteky",
+  title: "Landing | Upteky",
   description:
     "Discover Upteky – an AI automation company revolutionizing business operations with smart, scalable solutions. Learn about our mission, vision, and innovation-driven team.",
   keywords: [
@@ -60,7 +60,7 @@ export const metadata = {
     title: "About Upteky - AI Automation Experts",
     description:
       "Upteky is driving innovation in AI and automation. Meet our team, learn our story, and explore our values as we transform industries with intelligent technology.",
-    url: "https://upteky.com/about",
+    url: "https://upteky.com/landing",
     siteName: "Upteky",
     images: [
       {
@@ -85,5 +85,5 @@ export const metadata = {
 };
 
 export default function Page() {
-  return <AboutPage />;
+  return <LandingPage />;
 }

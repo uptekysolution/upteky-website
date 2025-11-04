@@ -191,28 +191,29 @@ const services = [
 // Data for the process steps
 const processSteps = [
   {
-    imgSrc: '/iconimages/interview.png',
+    imgSrc: '/iconImages/interview.png',
     title: 'Consultation & Discovery',
     description: 'Solve challenges and unlock opportunities with AI and IT solutions that fuel growth and efficiency.',
   },
   {
-    imgSrc: '/iconimages/idea.png',
+    imgSrc: '/iconImages/idea.png',
     title: 'Solution Design',
     description: 'We craft AI, IT, and web solutions that spark innovation, scale seamlessly, and fuel business growth.',
   },
   {
-    imgSrc: '/iconimages/implementation.png',
+    imgSrc: '/iconImages/implementation.png',
     title: 'Development & Implementation',
     description: 'Secure, seamless execution with reliable tech for lasting success.',
   },
   {
-    imgSrc: '/iconimages/efficacy.png',
+    imgSrc: '/iconImages/efficacy.png',
     title: 'Optimization & Training',
     description: 'Driving adoption and efficiency through guidance and continuous improvement.',
   },
 ];
 
-export default function AboutPage() {
+
+export default function LandingPage() {
   const router = useRouter();
   const [statsInView, setStatsInView] = useState(false);
 
@@ -325,7 +326,7 @@ export default function AboutPage() {
       </motion.section>
 
 
-      <hr />
+      <div className="border-t border-[#333333]" />
 
       {/* Section 2: Services */}
       <motion.section
@@ -392,7 +393,7 @@ export default function AboutPage() {
         </div>
       </motion.section>
 
-      <hr />
+      <div className="border-t border-[#333333]" />
 
       {/* Section 3: Our Process */}
       <motion.section
@@ -452,7 +453,7 @@ export default function AboutPage() {
           </div>
         </div>
       </motion.section>
-      <hr />
+      <div className="border-t border-[#333333]" />
 
       {/* Section 4: Business Impact */}
       <motion.section
@@ -559,7 +560,7 @@ export default function AboutPage() {
 
 
 
-      <hr />
+      <div className="border-t border-[#333333]" />
 
       {/* Section 5: CTA */}
       <motion.section
