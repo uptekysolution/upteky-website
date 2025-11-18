@@ -198,10 +198,15 @@ export default function ContactPage() {
           {/* Contact Details & Map Section */}
           <FadeIn>
           <section className="space-y-3 sm:space-y-4">
-            <div>
-              <h2 className="text-2xl sm:text-2xl font-semibold mb-10 sm:mb-2">Contact Information</h2>
-              <div className="h-0.5 sm:h-1 w-16 lg:w-60 sm:w-20 bg-accent/70 rounded-full mb-8 sm:mb-6"></div>
-              <p className="text-muted-foreground mb-6 sm:mb-8 text-sm sm:text-base leading-relaxed lg:mb-10">
+            <div className="flex flex-col items-center text-center sm:items-start sm:text-left">
+              <h2
+                className="text-2xl sm:text-2xl font-semibold mb-4 xs:mb-2 text-white text-center"
+                style={{ color: "#ffffff" }}
+              >
+                Contact Information
+              </h2>
+              <div className="h-0.5 xs:mx-auto sm:mx-0 sm:h-1 w-60 lg:w-60 sm:w-60 bg-accent/70 rounded-full mb-8 sm:mb-6"></div>
+              <p className="text-muted-foreground mb-6 sm:mb-8 text-sm sm:text-base leading-relaxed lg:mb-10 max-w-lg">
                 Reach out to us directly or visit our office. We're available Monday to Friday, 9AM-6PM IST.
               </p>
             </div>

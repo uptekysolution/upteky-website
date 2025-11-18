@@ -201,7 +201,13 @@ export default function ServiceDetailClient({ id }: ServiceDetailClientProps) {
             >
               {/* Quick Stats */}
               <motion.div
-                className={`grid ${service.stats && service.stats.length === 2 ? 'grid-cols-2' : service.stats && service.stats.length === 4 ? 'grid-cols-4' : 'grid-cols-3'} text-center gap-2 xs:gap-8 sm:gap-10`}
+                className={`grid ${
+                  service.stats && service.stats.length === 2
+                    ? 'grid-cols-1 xs:grid-cols-2'
+                    : service.stats && service.stats.length === 4
+                      ? 'grid-cols-1 xs:grid-cols-2 lg:grid-cols-4'
+                      : 'grid-cols-1 xs:grid-cols-2 lg:grid-cols-3'
+                } text-center gap-3 xs:gap-6 sm:gap-8 lg:gap-10`}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.5 }}
@@ -231,7 +237,7 @@ export default function ServiceDetailClient({ id }: ServiceDetailClientProps) {
                           <span>{String(stat.value)}</span>
                         )}
                       </div>
-                      <div className="font-poppins text-[8px] sm:text-[11px] md:text-[12px] text-[#9FA6AD]">{stat.label}</div>
+                      <div className="font-poppins text-[9px] sm:text-[12px] md:text-[12px] text-[#9FA6AD] leading-snug break-words max-w-[200px] mx-auto">{stat.label}</div>
                     </motion.div>
                   );
                 })}

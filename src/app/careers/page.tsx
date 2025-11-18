@@ -316,19 +316,19 @@ export default function CareersPage() {
         {/* Stats Banner */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-8 py-8 sm:py-10 mb-12 sm:mb-16 bg-card/50 rounded-xl px-4 sm:px-6 md:px-12 border border-border/30">
           <div className="text-center py-3 sm:py-4">
-            <p className="text-2xl sm:text-3xl md:text-4xl font-bold text-accent mb-1 sm:mb-2">3x</p>
+            <p className="text-2xl sm:text-2xl md:text-4xl font-bold text-accent mb-1 sm:mb-2">3x</p>
             <p className="text-xs sm:text-sm text-muted-foreground">Fastest Career Acceleration</p>
           </div>
           <div className="text-center py-3 sm:py-4">
-            <p className="text-2xl sm:text-3xl md:text-4xl font-bold text-accent mb-1 sm:mb-2">90%</p>
+            <p className="text-2xl sm:text-2xl md:text-4xl font-bold text-accent mb-1 sm:mb-2">90%</p>
             <p className="text-xs sm:text-sm text-muted-foreground">Multi-Stack Learning Rate</p>
           </div>
           <div className="text-center py-3 sm:py-4">
-            <p className="text-2xl sm:text-3xl md:text-4xl font-bold text-accent mb-1 sm:mb-2">40%</p>
+            <p className="text-2xl sm:text-2xl md:text-4xl font-bold text-accent mb-1 sm:mb-2">40%</p>
             <p className="text-xs sm:text-sm text-muted-foreground">Annual Growth</p>
           </div>
           <div className="text-center py-3 sm:py-4">
-            <p className="text-2xl sm:text-3xl md:text-4xl font-bold text-accent mb-1 sm:mb-2">4.8</p>
+            <p className="text-2xl sm:text-2xl md:text-4xl font-bold text-accent mb-1 sm:mb-2">4.8</p>
             <p className="text-xs sm:text-sm text-muted-foreground">Employee Rating</p>
           </div>
         </div>

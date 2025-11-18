@@ -22,7 +22,7 @@ const whatWeDoData = [
       "Upteky Solutions Pvt. Ltd. specializes in creating robust Conversational AI solutions for web, messaging, and voice channels. From Website Chatbots we integrate advanced natural language processing, secure system connections, and actionable analytics to help businesses achieve measurable growth. Services from 10k to 2Lakh.",
     services: [
       "Interactive AI Website Chatbot",
-      // "WhatsApp & Multi Platform Chatbot",
+      "WhatsApp & Multi Platform Chatbot",
       "AI-Powered Lead Reactivation",
       "AI Voice Assistant (Voice Bot)",
     ],
@@ -893,7 +893,7 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
               onClick={() => setAccordionIndex(accordionIndex === index ? null : index)}
               className="flex items-center justify-between w-full text-left group"
             >
-              <span className={`text-[18px] leading-[100%] font-normal font-['Poppins'] text-center transition-colors duration-300 ${accordionIndex === index ? "text-[#EE8741]" : "text-white"}`}>
+              <span className={`text-[18px] leading-[100%] font-normal font-['Poppins'] text-left transition-colors duration-300 ${accordionIndex === index ? "text-[#EE8741]" : "text-white"}`}>
                 {tab.buttonText}
               </span>
               <motion.div
@@ -1144,7 +1144,7 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
           </div>
           <div className="pt-6">
             <Button
-              className="bg-[#2F3133] border border-gray-600 text-gray-200 hover:bg-[#394046] hover:border-gray-500 transition-all duration-300 px-4 sm:px-6 md:px-8 py-2 sm:py-3 md:py-4 rounded-full text-sm sm:text-base"
+              className="bg-[#2F3133] border border-gray-600 text-gray-200 hover:bg-[#394046] hover:border-gray-500 transition-all duration-300 px-5 sm:px-4 py-2 sm:py-2.5 rounded-full text-sm sm:text-base w-fit self-start whitespace-nowrap"
             >
               Get In Touch →
             </Button>
@@ -1334,7 +1334,7 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
                 </h3>
                 {/* Divider Line: Centered using mx-auto */}
                 <div className="h-px bg-neutral-700 w-2/3 mx-auto" /> 
-                <p className="text-[#9FA6AD] text-[15.84px] font-normal leading-[121%] tracking-[0] font-['Poppins'] text-center pt-4">
+                <p className="text-[#9FA6AD] text-[14px] sm:text-[15.84px] font-normal leading-[121%] tracking-[0] font-['Poppins'] text-center pt-4">
                   {item.description}
                 </p>
               </div>

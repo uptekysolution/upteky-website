@@ -429,7 +429,7 @@ export default function AboutPage() {
               </div>
             </div>
 
-            <div className="sm:mr-[40px] md:mr-[70px]">
+            <div className="sm:mr-[40px] md:mr-[0px]">
               <div className="flex flex-wrap gap-2 sm:gap-3">
                 {industries.map((label, idx) => (
                   <span
@@ -447,7 +447,7 @@ export default function AboutPage() {
 
       {/* -------------------------------------4th Section---------------------------------------- */}
       <div className="border-t border-[#333333]  " />
-      <section className="container mx-auto px-4 md:px-6 py-10 sm:py-14 md:py-24">
+      <section className="container mx-auto px-4 md:px-6 lg:px-24 py-10 sm:py-14 md:py-24">
         <div className="mx-auto rounded-[30px]">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
             {/* Left heading/description */}
@@ -461,7 +461,7 @@ export default function AboutPage() {
               <h2 className="font-outfit text-[22px] sm:text-[28px] md:text-[30px] lg:text-[40px] xl:text-[45px] leading-[121%] text-white hover:scale-[1.02] transition-transform duration-200 ease-in-out">
                 Why <br />Work With Us?
               </h2>
-              <p className="mt-3 sm:mt-4 font-poppins text-[12px] sm:text-[14px] md:text-[16px] text-[#858C92] max-w-sm mx-auto md:mx-0 hover:scale-[1.02] transition-transform duration-200 ease-in-out">
+              <p className="mt-3 sm:mt-4 font-poppins text-[14px] sm:text-[14px] md:text-[16px] text-[#858C92] max-w-sm mx-auto md:mx-0 hover:scale-[1.02] transition-transform duration-200 ease-in-out">
                 Seamlessly engage customers across channels with secure, integrated, and conversion-focused solutions.
               </p>
             </motion.div>
@@ -482,7 +482,7 @@ export default function AboutPage() {
                 <div className="rounded-[16px] sm:rounded-[20px] md:rounded-[28px] bg-[#2C3035] w-full min-h-[150px] sm:min-h-[180px] md:min-h-[216px] mx-auto p-4 sm:p-5 md:p-6">
                   <h3 className="text-white pt-1.5 sm:pt-3 md:pt-4 text-base sm:text-lg md:text-xl leading-[121%] text-center">{card.title}</h3>
                   <div className="-mx-4 sm:-mx-5 md:-mx-6 my-3 sm:my-5 md:my-8 h-px bg-[#4C4C4C]" />
-                  <p className="text-[#858C92] text-[12px] sm:text-[14px] md:text-base leading-[150%] text-center max-w-[260px] sm:max-w-[300px] md:max-w-[320px] mx-auto">{card.desc}</p>
+                  <p className="text-[#858C92] text-[14px] sm:text-base md:text-base leading-[150%] text-center max-w-[260px] sm:max-w-[300px] md:max-w-[320px] mx-auto">{card.desc}</p>
                 </div>
               </motion.div>
             ))}
