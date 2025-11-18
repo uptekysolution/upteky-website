@@ -293,7 +293,7 @@ export default function AISalesGrowthPage() {
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="font-outfit md:mt-10 mt-14 text-center md:text-left text-white font-light text-[20px] xs:text-[22px] sm:text-[26px] md:text-[30px] lg:text-[32px] xl:text-[38px] 2xl:text-[45px] leading-[110%] xs:leading-[115%] sm:leading-[120%] md:leading-[121%]"
+              className="font-outfit md:mt-10 mt-14 text-center md:text-left text-white font-light text-[22px] xs:text-[22px] sm:text-[26px] md:text-[30px] lg:text-[32px] xl:text-[38px] 2xl:text-[45px] leading-[110%] xs:leading-[115%] sm:leading-[120%] md:leading-[121%]"
             >
              AI Sales & Growth Solutions
             </motion.h1>
@@ -302,7 +302,7 @@ export default function AISalesGrowthPage() {
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.05 }}
-              className="mt-6  text-center md:text-left xs:mt-8 sm:mt-10 md:mt-12 lg:mt-14 max-w-full lg:max-w-xl font-poppins font-normal text-[11px] xs:text-[12px] sm:text-[13px] md:text-[14px] lg:text-[15px] xl:text-[16px] leading-[140%] xs:leading-[145%] sm:leading-[146%] text-[#858C92]"
+              className="mt-6  text-center md:text-left xs:mt-8 sm:mt-10 md:mt-12 lg:mt-14 max-w-full lg:max-w-xl font-poppins font-normal text-[12px] xs:text-[12px] sm:text-[13px] md:text-[14px] lg:text-[15px] xl:text-[16px] leading-[140%] xs:leading-[145%] sm:leading-[146%] text-[#858C92]"
             >
              Driving revenue, customer engagement, and market presence with intelligent AI. At Upteky Solutions Pvt. Ltd., we help organizations transform sales and marketing through intelligent automation, data-driven strategies, and custom AI models. Our solutions go beyond technology — they create measurable impact on revenue, customer satisfaction, and market growth.
             </motion.p>
@@ -338,10 +338,10 @@ export default function AISalesGrowthPage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 xs:gap-5 sm:gap-6 md:gap-7 lg:gap-8">
             {/* Left heading/description */}
             <div className="col-span-1 sm:col-span-2 lg:col-span-1 px-2 xs:px-3 sm:px-4 flex flex-col text-center lg:text-left">
-              <h2 className="font-outfit text-[20px] xs:text-[22px] sm:text-[24px] md:text-[26px] lg:text-[28px] xl:text-[32px] 2xl:text-[35px] leading-[115%] xs:leading-[118%] sm:leading-[120%] md:leading-[121%] text-white">
+              <h2 className="font-outfit text-[22px] xs:text-[22px] sm:text-[24px] md:text-[26px] lg:text-[28px] xl:text-[32px] 2xl:text-[35px] leading-[115%] xs:leading-[118%] sm:leading-[120%] md:leading-[121%] text-white">
                 Why Choose Upteky Solutions?
               </h2> 
-              <p className="mt-3 xs:mt-4 sm:mt-5 md:mt-6 font-poppins text-[11px] xs:text-[12px] sm:text-[13px] md:text-[14px] lg:text-[15px] xl:text-[16px] text-[#858C92] max-w-full sm:max-w-md lg:max-w-sm mx-auto lg:mx-0 leading-[140%] xs:leading-[145%] sm:leading-[150%]">
+              <p className="mt-3 xs:mt-4 sm:mt-5 md:mt-6 font-poppins text-[12px] xs:text-[12px] sm:text-[13px] md:text-[14px] lg:text-[15px] xl:text-[16px] text-[#858C92] max-w-full sm:max-w-md lg:max-w-sm mx-auto lg:mx-0 leading-[140%] xs:leading-[145%] sm:leading-[150%]">
                 Seamlessly engage customers across channels with secure, integrated, and conversion-focused solutions.
               </p>
             </div>
@@ -349,9 +349,9 @@ export default function AISalesGrowthPage() {
             {cards.map((card, idx) => (
               <div key={idx} className="col-span-1">
                 <div className="rounded-[16px] xs:rounded-[18px] sm:rounded-[20px] md:rounded-[22px] lg:rounded-[24px] xl:rounded-[28px] bg-[#2C3035] w-full min-h-[140px] xs:min-h-[150px] sm:min-h-[160px] md:min-h-[180px] lg:min-h-[200px] xl:min-h-[216px] mx-auto p-3 xs:p-4 sm:p-5 md:p-6 lg:p-7">
-                  <h3 className="text-white font-outfit pt-1 xs:pt-2 sm:pt-3 md:pt-4 text-[11px] xs:text-[12px] sm:text-[13px] md:text-[14px] lg:text-[15px] xl:text-[18px] leading-[115%] xs:leading-[118%] sm:leading-[120%] md:leading-[121%] text-center font-medium">{card.title}</h3>
+                  <h3 className="text-white font-outfit pt-1 xs:pt-2 sm:pt-3 md:pt-4 text-[14px] xs:text-[14px] sm:text-[14px] md:text-[14px] lg:text-[15px] xl:text-[18px] leading-[115%] xs:leading-[118%] sm:leading-[120%] md:leading-[121%] text-center font-medium">{card.title}</h3>
                   <div className="-mx-3 xs:-mx-4 sm:-mx-5 md:-mx-6 lg:-mx-7 my-3 xs:my-4 sm:my-5 md:my-6 lg:my-7 h-px bg-[#4C4C4C]" />
-                  <p className="text-[#858C92] font-poppins text-[10px] xs:text-[11px] sm:text-[12px] md:text-[13px] lg:text-[14px] xl:text-[15px] leading-[135%] xs:leading-[140%] sm:leading-[145%] md:leading-[150%] text-center max-w-[240px] xs:max-w-[260px] sm:max-w-[280px] md:max-w-[300px] lg:max-w-[320px] mx-auto">{card.desc}</p>
+                  <p className="text-[#858C92] font-poppins text-[12px] xs:text-[12px] sm:text-[12px] md:text-[13px] lg:text-[14px] xl:text-[15px] leading-[135%] xs:leading-[140%] sm:leading-[145%] md:leading-[150%] text-center max-w-[240px] xs:max-w-[260px] sm:max-w-[280px] md:max-w-[300px] lg:max-w-[320px] mx-auto">{card.desc}</p>
                 </div>
               </div>
             ))}
@@ -369,7 +369,7 @@ export default function AISalesGrowthPage() {
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="text-center text-white font-outfit text-[20px] xs:text-[22px] sm:text-[24px] md:text-[26px] lg:text-[28px] xl:text-[32px] 2xl:text-[35px] leading-[115%] xs:leading-[118%] sm:leading-[120%] md:leading-[121%] pb-6 xs:pb-7 sm:pb-8 md:pb-10 lg:pb-12"
+          className="text-center text-white font-outfit text-[22px] xs:text-[22px] sm:text-[24px] md:text-[26px] lg:text-[28px] xl:text-[32px] 2xl:text-[35px] leading-[115%] xs:leading-[118%] sm:leading-[120%] md:leading-[121%] pb-6 xs:pb-7 sm:pb-8 md:pb-10 lg:pb-12"
         >
           Our Core AI Growth Solutions
         </motion.h1>
@@ -381,7 +381,7 @@ export default function AISalesGrowthPage() {
               <div className="flex flex-col gap-4 xs:gap-5 sm:gap-6">
                 <div className="text-[#F58F1D] font-outfit font-normal text-[12px] xs:text-[13px] sm:text-[14px]">{s.no}</div>
                 <div className="text-white font-outfit font-normal text-[16px] xs:text-[17px] sm:text-[18px] md:text-[19px] lg:text-[20px] leading-[120%]">{s.title}</div>
-                <div className="text-[#9FA6AD] font-poppins font-normal text-[11px] xs:text-[12px] sm:text-[13px] md:text-[14px] leading-[140%]">{s.desc}</div>
+                <div className="text-[#9FA6AD] font-poppins font-normal text-[12px] xs:text-[12px] sm:text-[13px] md:text-[14px] leading-[140%]">{s.desc}</div>
                 <div className="text-white font-poppins font-normal text-[11px] xs:text-[12px] sm:text-[13px] md:text-[14px] leading-[140%]">{s.cta}</div>
               </div>
             </div>
@@ -426,13 +426,13 @@ export default function AISalesGrowthPage() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 xs:gap-7 sm:gap-8 md:gap-10 lg:gap-12 xl:gap-16 justify-center">
           {/* Text Content */}
           <div className="space-y-4 xs:space-y-5 sm:space-y-6 md:space-y-7 lg:space-y-8 max-w-full lg:max-w-[527px] mx-auto lg:mx-0 order-1">
-            <h2 className="text-white mb-6 xs:mb-8 sm:mb-10 md:mb-12 lg:mb-14 font-outfit text-[20px] xs:text-[22px] sm:text-[24px] md:text-[26px] lg:text-[28px] xl:text-[32px] 2xl:text-[36px] leading-[115%] xs:leading-[118%] sm:leading-[120%] md:leading-[121%]">
+            <h2 className="text-white mb-6 xs:mb-8 sm:mb-10 md:mb-12 lg:mb-14 font-outfit text-[22px] xs:text-[22px] sm:text-[24px] md:text-[26px] lg:text-[28px] xl:text-[32px] 2xl:text-[36px] leading-[115%] xs:leading-[118%] sm:leading-[120%] md:leading-[121%]">
               Our Delivery Process
             </h2>
-            <p className="text-[#9FA6AD] font-poppins font-normal text-[11px] xs:text-[12px] sm:text-[13px] md:text-[14px] lg:text-[15px] xl:text-[16px] leading-[140%] xs:leading-[145%] sm:leading-[150%]">
+            <p className="text-[#9FA6AD] font-poppins font-normal text-[12px] xs:text-[12px] sm:text-[13px] md:text-[14px] lg:text-[15px] xl:text-[16px] leading-[140%] xs:leading-[145%] sm:leading-[150%]">
               We start by understanding your goals, sales pipeline, and business challenges to identify opportunities for growth.
             </p>
-            <p className="text-[#9FA6AD] font-poppins font-normal text-[11px] xs:text-[12px] sm:text-[13px] md:text-[14px] lg:text-[15px] xl:text-[16px] leading-[140%] xs:leading-[145%] sm:leading-[150%]">
+            <p className="text-[#9FA6AD] font-poppins font-normal text-[12px] xs:text-[12px] sm:text-[13px] md:text-[14px] lg:text-[15px] xl:text-[16px] leading-[140%] xs:leading-[145%] sm:leading-[150%]">
               Then we design tailored AI workflows, predictive models, and strategies that align perfectly with your objectives. From seamless integration with your CRM and marketing tools to thorough testing, optimization, and continuous monitoring, we deliver scalable, high-performing, and compliant AI solutions that drive measurable business results.
             </p>
           </div>
