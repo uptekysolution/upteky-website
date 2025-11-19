@@ -402,7 +402,7 @@ export default function CareersPage() {
                       <ChevronRight className="ml-2 h-4 w-4" />
                     </Link>
                   </Button>
-                  <Button size="lg" variant="outline" className="bg-transparent text-white shadow-lg border border-accent hover:bg-accent/5 rounded-full px-6 py-3 sm:px-8 sm:py-3.5 font-medium text-sm sm:text-base transition-all duration-300">
+                  <Button size="lg" variant="outline" className="bg-transparent text-white shadow-lg border border-accent hover:bg-gradient-to-r hover:from-[#F58F1D] hover:to-[#E57D77] rounded-full px-6 py-3 sm:px-8 sm:py-3.5 font-medium text-sm sm:text-base transition-all duration-300">
                     <Link href="#company-culture">Our Culture</Link>
                   </Button>
                 </div>

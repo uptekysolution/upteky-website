@@ -264,11 +264,13 @@ export default function AboutPage() {
           >
             <Link href="/careers">
               <Button
-                className="w-[140px] sm:w-[180px] h-[42px] sm:h-[45px] rounded-[62px] border border-[#E58A4D] text-[14px] sm:text-[16px] font-normal bg-transparent text-white hover:bg-[#E58A4D]/10 font-['Poppins']"
+                className="w-[140px] sm:w-[180px] h-[42px] sm:h-[45px] rounded-[62px] border border-[#E58A4D] text-[14px] sm:text-[16px] font-normal bg-transparent text-white hover:bg-gradient-to-r hover:from-[#F58F1D] hover:to-[#E57D77] font-['Poppins']"
                 variant="outline"
               >
                 Join Our Team
               </Button>
+
+              
             </Link>
           </motion.div>
         </div>
@@ -422,7 +424,7 @@ export default function AboutPage() {
               </div>
               <div className="mt-8">
                 <Link href="/careers">
-                  <Button className="rounded-full w-[140px] sm:w-[243px] h-[46px] sm:h-[50px] text-sm font-normal bg-transparent border border-[#E58A4D] text-white hover:bg-[#E58A4D]/10 font-['Poppins']" variant="outline">
+                  <Button className="rounded-full w-[140px] sm:w-[243px] h-[46px] sm:h-[50px] text-sm font-normal bg-transparent border border-[#E58A4D] text-white hover:bg-gradient-to-r hover:from-[#F58F1D] hover:to-[#E57D77] font-['Poppins']" variant="outline">
                     Join Our Team
                   </Button>
                 </Link>

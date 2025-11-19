@@ -228,7 +228,7 @@ const FAQSection = () => {
                     {(index + 1).toString().padStart(2, '0')}.
                   </span>
                   <span
-                    className={`ml-4 text-base sm:text-xl font-['Outfit'] transition-colors duration-300
+                    className={`ml-4 text-base sm:text-xl font-['Outfit'] transition-colors duration-300 hover:text-[#F58F1D]
                       ${openIndex === index ? "text-[#EE8741]" : "text-white"}`}
                   >
                     {faq.question}
@@ -770,7 +770,7 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
               <Button size="lg" className="bg-gradient-accent text-accent-foreground hover:opacity-90 transition-all duration-300 transform hover:scale-105 hover:shadow-accent/40 shadow-lg px-6 py-2.5 sm:px-8 sm:py-3 text-sm sm:text-base font-semibold" onClick={() => document.getElementById('contact-form')?.scrollIntoView({ behavior: 'smooth' })}>
                 Get Started <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
-              <Button size="lg" variant="outline" className="border-accent text-accent hover:bg-accent/10 hover:text-accent/90 transition-all duration-300 shadow-sm hover:shadow-md hover:border-accent/70 px-6 py-2.5 sm:px-8 sm:py-3 text-sm sm:text-base font-semibold">
+              <Button size="lg" variant="outline" className="border-accent text-accent hover:bg-gradient-to-r hover:from-[#F58F1D] hover:to-[#E57D77] hover:text-white transition-all duration-300 shadow-sm hover:shadow-md hover:border-accent/70 px-6 py-2.5 sm:px-8 sm:py-3 text-sm sm:text-base font-semibold">
                 <Link href="/about">Learn More</Link>
               </Button>
             </motion.div>
@@ -954,16 +954,16 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
               <button
                 onClick={() => setActiveTab(tab.id)}
                 className={cn(
-                  "p-4 rounded-lg text-center transition-all duration-300 w-full text-[18px] leading-[100%] font-normal font-['Poppins']",
+                  "p-4 rounded-lg text-center transition-all duration-300 w-[90%] mx-auto text-[18px] leading-[100%] font-normal font-['Poppins']",
                   "focus:outline-none focus-visible:ring-2 focus-visible:ring-accent",
                   activeTab === tab.id
-                    ? "bg-[#4A4E54] text-white shadow-lg rounded-full"
+                    ? "bg-gradient-to-r from-[#616D78] to-[#454A51] text-white shadow-lg rounded-full"
                     : "bg-transparent text-gray-300 hover:bg-[#2A2D31] rounded-full"
                 )}
               >
                 {tab.buttonText}
               </button>
-              {index < whatWeDoData.length - 1 && <div className="h-px bg-gray-600/50 mx-4" />}
+              {index < whatWeDoData.length - 1 && <div className="h-px bg-gray-600/50 -mx-3" />}
             </React.Fragment>
           ))}
         </motion.div>
@@ -1144,9 +1144,10 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
           </div>
           <div className="pt-6">
             <Button
-              className="bg-[#2F3133] border border-gray-600 text-gray-200 hover:bg-[#394046] hover:border-gray-500 transition-all duration-300 px-5 sm:px-4 py-2 sm:py-2.5 rounded-full text-sm sm:text-base w-fit self-start whitespace-nowrap"
+              className="bg-[#2F3133] border border-gray-600 text-gray-200 hover:bg-[#394046] hover:border-gray-500 transition-all duration-300 px-5 sm:px-4 py-2 sm:py-2.5 rounded-full text-sm sm:text-base w-fit self-start whitespace-nowrap inline-flex items-center gap-2"
             >
-              Get In Touch →
+              <span>Get In Touch</span>
+              <Image src="/assets/arrow.svg" alt="Arrow" width={16} height={16} className="w-4 h-4" />
             </Button>
           </div>
         </motion.div>
@@ -1255,6 +1256,7 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
                   <h3 className="text-[24px] font-normal leading-[121%] tracking-[0] text-white mb-3 font-['Outfit']">
                     {item.title}
                   </h3>
+                  <div className="w-full sm:w-[10rem] lg:w-[20rem] md:w-[15rem] h-px bg-[#565656] mb-3" />
                   <p className="text-[#9FA6AD] text-[16px] font-normal leading-[121%] tracking-[0] font-['Poppins']">
                     {item.description}
                   </p>
@@ -1303,7 +1305,7 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
           
           {/* Grid Item 1: The Heading Block */}
           <motion.div
-            className="flex flex-col justify-center text-center lg:text-left p-4"
+            className="flex flex-col justify-start text-center lg:text-left px-4 pb-4"
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, amount: 0.3 }}
@@ -1321,8 +1323,7 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
           {whyChooseData.map((item, index) => (
             <motion.div
               key={index}
-              // The class below is the only thing that changed
-              className="bg-[#2C3035] border border-neutral-800 rounded-2xl p-6 flex flex-col h-full text-center transition-all duration-300 hover:border-[#F58F1D]/50 hover:-translate-y-1 min-h-[240px]"
+              className="bg-[#2C3035] border border-neutral-800 rounded-2xl p-6 flex flex-col h-full text-center transition-colors duration-300 ease-in-out min-h-[240px] hover:bg-neutral-700 cursor-pointer"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
@@ -1332,8 +1333,8 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
                 <h3 className="text-[21.61px] font-normal leading-[121%] tracking-[0] text-white font-['Outfit'] pb-4">
                   {item.title}
                 </h3>
-                {/* Divider Line: Centered using mx-auto */}
-                <div className="h-px bg-neutral-700 w-2/3 mx-auto" /> 
+                {/* Divider Line: spans full card width */}
+                <div className="h-px bg-neutral-700 -mx-6" /> 
                 <p className="text-[#9FA6AD] text-[14px] sm:text-[15.84px] font-normal leading-[121%] tracking-[0] font-['Poppins'] text-center pt-4">
                   {item.description}
                 </p>
@@ -1391,13 +1392,13 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         >
           <div className="relative bg-[#2C3035] backdrop-blur-sm border border-border/20 p-3 transition-all duration-300 group flex flex-col w-full max-w-[400px] sm:max-w-[500px] md:max-w-[400px] lg:max-w-[600px] xl:max-w-[800px] h-[320px] sm:h-[400px] md:h-[400px] lg:h-[400px] xl:h-[400px] 2xl:h[400px] rounded-[20px]">
             <div className=" flex-grow z-10 flex flex-col ">
-              <div className="text-center mb-4 lg:mb-6 sm:mb-6 md:mb-6 xl:mb-6 2xl:mb-6">
+              <div className="text-center mb-8 lg:mb-8 sm:mb-8 md:mb-8 xl:mb-8 2xl:mb-8">
                 <p className="font-['Outfit'] font-normal text-white text-[24px] leading-[100%] tracking-[0] justify-center items-start mt-10">
                   {testimonial.author}
                 </p>
                 <p className="font-['Outfit'] font-normal text-[16px] leading-[100%] tracking-[0] mt-1 text-white">{testimonial.title}</p>
               </div>
-              <div className="h-px bg-gray-600 opacity-60 w-full " ></div>
+              <div className="h-px bg-gray-600 opacity-60 -mx-3"></div>
               <div className="flex-grow flex justify-center mt-6 2xl:mt-10 xl:mt-8 xl:px-6 lg:mt-8 md:mt-10 sm:mt-10 px-2 md:px-8 lg:px-4 2xl:px-12 ">
                 <p className="font-['Poppins'] font-normal text-[16px] leading-[130%] tracking-[0] text-center text-[#9FA6AD]">
                   {testimonial.quote}
@@ -1587,13 +1588,14 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
                                 <button
                                     type="button"
                                     onClick={handleAttachClick} // Triggers the hidden input
-                                    className="w-full sm:w-auto flex-1 px-4 py-4 bg-muted/40 hover:bg-muted text-muted-foreground rounded-full border border-border/40 transition-colors flex items-center justify-center gap-2"
+                                    className="w-full sm:w-auto bg-muted/40 hover:bg-muted text-sm text-muted-foreground rounded-full px-8 py-3 sm:px-16 sm:py-5 border border-border/40 transition-colors inline-flex items-center justify-center gap-2"
                                 >
-                                    <span className="text-lg">+</span> Attach File(s)
+                                    <span className="text-base leading-none">+</span>
+                                    <span>Attach File(s)</span>
                                 </button>
                                 <Button
                                     type="submit"
-                                    className="w-full sm:w-auto bg-gradient-accent text-sm text-white rounded-full px-12 py-4 sm:px-16 sm:py-5 border-transparent hover:bg-none hover:bg-[#2c2c2c] hover:text-accent hover:border-accent transition-all duration-300"
+                                    className="w-full sm:w-auto bg-gradient-accent text-sm text-white rounded-full px-12 py-4 sm:px-16 sm:py-5 border border-transparent hover:bg-none hover:bg-[#2c2c2c] hover:text-accent hover:border-accent transition-all duration-300"
                                 >
                                     Send
                                 </Button>

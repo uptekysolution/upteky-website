@@ -152,12 +152,17 @@ export function Navbar() {
 
           {/* Desktop CTA - Style Restored */}
           <div className="hidden lg:flex items-center justify-end mr-1">
-            <Button
-              className="bg-transparent border border-accent text-white rounded-full px-6 py-2.5 text-base font-outfit hover:bg-gradient-to-r from-accent to-accent-dark transition-all duration-300"
-              asChild
-            >
-              <Link href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ0Hf-bvSzm-R79180oE1OQfbfQZI_QdfANF-hMCMk0U7i5xALnGlP0GS4vtFsky9z28D5zgGTsT">Let's Tech Talk</Link>
-            </Button>
+          <Button
+  className="bg-transparent border border-accent text-white rounded-full px-6 py-2.5 text-base font-outfit 
+             transition-all duration-300
+             hover:bg-gradient-to-r hover:from-[#F58F1D] hover:to-[#E57D77]"
+  asChild
+>
+  <Link href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ0Hf-bvSzm-R79180oE1OQfbfQZI_QdfANF-hMCMk0U7i5xALnGlP0GS4vtFsky9z28D5zgGTsT">
+    Let's Tech Talk
+  </Link>
+</Button>
+
           </div>
 
           {/* Mobile/Tablet Navigation */}

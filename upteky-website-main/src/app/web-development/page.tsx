@@ -362,7 +362,7 @@ export default function WebDevelopmentPage() {
         </div>
       </section>
 
-      <div className="w-full h-[0.5px] bg-[#414141]" />
+      <div className="w-screen h-[0.5px] bg-[#414141] relative left-1/2 -translate-x-1/2" />
 
       {/* Section-2 */}
       <section className="container mx-auto px-3 xs:px-4 sm:px-6 md:px-8 lg:px-10 py-8 xs:py-10 sm:py-12 md:py-16 lg:py-20 xl:py-24">
@@ -392,7 +392,7 @@ export default function WebDevelopmentPage() {
       </section>
       </FadeIn>
       
-      <div className="w-full h-[0.5px] bg-[#414141]" />
+      <div className="w-screen h-[0.5px] bg-[#414141] relative left-1/2 -translate-x-1/2" />
       
       {/* Section-3 */}
       <FadeIn>
@@ -472,7 +472,7 @@ export default function WebDevelopmentPage() {
       </section>
       </FadeIn>
 
-      <div className="w-full h-[0.5px] bg-[#414141]" />
+      <div className="w-screen h-[0.5px] bg-[#414141] relative left-1/2 -translate-x-1/2" />
       
       {/* Section-4 */}
       <FadeIn>
@@ -499,17 +499,13 @@ export default function WebDevelopmentPage() {
       </section>
       </FadeIn>
       
-      <div className="w-full h-[0.5px] bg-[#414141]" />
+      <div className="w-screen h-[0.5px] bg-[#414141] relative left-1/2 -translate-x-1/2" />
       
       {/* Section-5 */}
       <FadeIn>
       <section className="container mx-auto px-3 xs:px-4 sm:px-6 md:px-8 lg:px-10 py-8 xs:py-10 sm:py-12 md:py-16 lg:py-20 xl:py-24">
         <div>
-          <ProjectDiscussion
-            onSubmit={async (values) => {
-              console.log('Web Dev form values:', values);
-            }}
-          />
+          <ProjectDiscussion />
         </div>
       </section>
       </FadeIn>
