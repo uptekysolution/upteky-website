@@ -60,7 +60,7 @@ export const metadata = {
     title: "About Upteky - AI Automation Experts",
     description:
       "Upteky is driving innovation in AI and automation. Meet our team, learn our story, and explore our values as we transform industries with intelligent technology.",
-    url: "https://upteky.com/landing",
+    url: "https://upteky.com/ai-consultation",
     siteName: "Upteky",
     images: [
       {
