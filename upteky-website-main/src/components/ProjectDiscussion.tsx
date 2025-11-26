@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from 'react';
+import { useEffect } from "react";
 import { Star } from 'lucide-react';
 import { cn } from '@/lib/utils'; // Assuming you have this utility function
 
@@ -121,6 +122,16 @@ export default function ProjectDiscussion({ className }: { className?: string; }
     }
   };
 
+  useEffect(() => {
+    if (!TESTIMONIALS?.length) return;
+  
+    const interval = setInterval(() => {
+      setIdx(i => (i + 1) % TESTIMONIALS.length);
+    }, 3000); // 3 seconds
+  
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <section className={cn('w-full', className)}>
       <div className="mx-auto">
@@ -128,7 +139,7 @@ export default function ProjectDiscussion({ className }: { className?: string; }
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-16 items-center">
             {/* Left: Heading + Form */}
             <div className="w-full order-1 lg:order-1">
-              <h2 className="text-white font-outfit text-[20px] sm:text-[24px] md:text-[30px] lg:text-3xl max-w-md leading-tight">
+              <h2 className="text-white font-['Outfit'] text-[20px] sm:text-[24px] md:text-[24px] max-w-md leading-tight">
                 Want To Discuss This Solution or your Custom Project
               </h2>
               <p className="mt-3 text-[#9FA6AD] font-poppins text-[12px] sm:text-[14px] md:text-[16px] max-w-xl">
@@ -136,7 +147,7 @@ export default function ProjectDiscussion({ className }: { className?: string; }
               </p>
 
               <div
-                className="mt-6 rounded-[20px] sm:rounded-[24px] p-4 sm:p-6 md:p-7 border border-white/10"
+                className="mt-6 rounded-[20px] sm:rounded-[24px] p-4 sm:p-6 md:p-7 border border-0"
                 style={{ background: 'linear-gradient(180deg, #3A4046 0%, #31363B 100%)' }}
               >
                 {submissionStatus === 'success' ? (
@@ -223,7 +234,7 @@ export default function ProjectDiscussion({ className }: { className?: string; }
                       <button
                         type="submit"
                         disabled={loading}
-                        className="rounded-full font-poppins bg-[#F58F1D] hover:bg-[#df7f15] text-white px-6 sm:px-8 py-2 sm:py-2.5 text-[12px] sm:text-sm disabled:bg-gray-500 disabled:cursor-not-allowed"
+                        className="rounded-full font-poppins bg-gradient-to-r from-[#F58F1D] to-[#E57D77] hover:bg-[#df7f15] text-white px-6 sm:px-8 py-2 sm:py-2.5 text-[12px] sm:text-sm disabled:bg-gray-500 disabled:cursor-not-allowed"
                       >
                         {loading ? 'Sending...' : 'Send'}
                       </button>
@@ -276,7 +287,7 @@ export default function ProjectDiscussion({ className }: { className?: string; }
               </div>
 
               <div className="mx-auto max-w-xs xs:max-w-sm sm:max-w-md lg:max-w-sm px-6 xs:px-8 sm:px-10 md:px-12 lg:px-0">
-                <h4 className="text-white font-outfit text-[16px] xs:text-[18px] sm:text-[20px] md:text-[22px] lg:text-[24px] xl:text-[26px] 2xl:text-[28px] font-semibold leading-[115%] xs:leading-[118%] sm:leading-[120%] md:leading-[121%]">
+                <h4 className="text-white font-['Outfit'] text-[16px] xs:text-[18px] sm:text-[20px] md:text-[22px] lg:text-[30px] xl:text-[30px] 2xl:text-[30px] font-semibold leading-[115%] xs:leading-[118%] sm:leading-[120%] md:leading-[121%]">
                   {t.title}
                 </h4>
 

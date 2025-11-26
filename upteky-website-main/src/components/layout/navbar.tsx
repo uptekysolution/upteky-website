@@ -102,7 +102,7 @@ export function Navbar() {
                 </Link>
                 
                 {item.href === "/solution" && (
-                  <div className="fixed inset-x-0 top-20 py-10 hidden group-hover:block w-screen rounded-b-2xl bg-[#212529] shadow-xl border-t border-border z-40">
+                  <div className="fixed inset-x-0 top-16 py-10 hidden group-hover:block w-screen rounded-b-2xl bg-[#212529] shadow-xl border-t border-border z-40">
                     <div className="mx-auto w-full max-w-screen-2xl px-4 sm:px-6 md:px-8 lg:px-20 py-12">
                        {/* Mega menu content... */}
                       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-y-8 lg:gap-x-8 text-sm">

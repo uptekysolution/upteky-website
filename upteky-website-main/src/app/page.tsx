@@ -204,7 +204,7 @@ const FAQSection = () => {
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.6 }}
           >
-            Frequently Asked Question
+            Frequently Asked Questions
           </motion.h2>
         </div>
 
@@ -217,14 +217,14 @@ const FAQSection = () => {
           transition={{ duration: 0.7 }}
         >
           {faqs.map((faq, index) => (
-            <div key={index} className="px-6 py-5 sm:p-6">
+            <div key={index} className="px-10 py-6">
               <button
                 onClick={() => handleClick(index)}
                 className="flex items-center justify-between w-full text-left"
               >
                 {/* Left side: Number + Question */}
                 <div className="flex items-center">
-                  <span className="text-gray-400 font-['Outfit'] text-base sm:text-lg w-8 text-left">
+                  <span className="text-white font-['Outfit'] text-base sm:text-lg w-16 text-left">
                     {(index + 1).toString().padStart(2, '0')}.
                   </span>
                   <span
@@ -237,14 +237,14 @@ const FAQSection = () => {
 
                 {/* Right side: Icon in a circle */}
                 <div
-                  className={`flex-shrink-0 w-8 h-8 sm:w-9 sm:h-9 rounded-full border flex items-center justify-center transition-all duration-300
-                    ${openIndex === index ? "border-[#EE8741]" : "border-gray-500"}`}
+                  className={`flex-shrink-0 w-8 h-8 sm:w-9 sm:h-9 rounded-full border bg-[#535C65] flex items-center justify-center transition-all duration-300
+                    ${openIndex === index ? "border-[#EE8741]" : "border-0"}`}
                 >
                   <motion.div
                     animate={{ rotate: openIndex === index ? 180 : 0 }}
                     transition={{ duration: 0.3 }}
                   >
-                      <ChevronDown className={`w-4 h-4 sm:w-5 sm:h-5 transition-colors duration-300 ${openIndex === index ? "text-[#EE8741]" : "text-gray-400" }`} />
+                    <ChevronDown className={`w-4 h-4 sm:w-5 sm:h-5 transition-colors duration-300 ${openIndex === index ? "text-[#EE8741]" : "text-[#FFFFFF]"}`} />
                   </motion.div>
                 </div>
               </button>
@@ -259,7 +259,7 @@ const FAQSection = () => {
                     transition={{ duration: 0.4, ease: "easeInOut" }}
                     className="overflow-hidden"
                   >
-                    <p className="pl-12 text-sm sm:text-base text-[#9FA6AD] font-['Poppins'] leading-relaxed">
+                    <p className="pl-20 text-sm sm:text-base text-[#9FA6AD] font-['Poppins'] leading-relaxed">
                       {faq.answer}
                     </p>
                   </motion.div>
@@ -278,7 +278,7 @@ export default function Home() {
   const [accordionIndex, setAccordionIndex] = useState<number | null>(0); // ADD THIS STATE
 
   const [files, setFiles] = useState<FileList | null>(null);
-const fileInputRef = useRef<HTMLInputElement>(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
 
   const [formData, setFormData] = useState({
@@ -287,8 +287,8 @@ const fileInputRef = useRef<HTMLInputElement>(null);
     phone: '',
     projectDescription: '',
     services: [] as string[], // Array to hold selected services
-});
-const [responseMessage, setResponseMessage] = useState('');
+  });
+  const [responseMessage, setResponseMessage] = useState('');
 
 
   const socialMedia = [
@@ -336,13 +336,13 @@ const [responseMessage, setResponseMessage] = useState('');
 
   // Carousel navigation functions
   const goToNextTestimonial = () => {
-    setCurrentTestimonialIndex((prevIndex) => 
+    setCurrentTestimonialIndex((prevIndex) =>
       prevIndex === seamlessTestimonials.length - 1 ? 0 : prevIndex + 1
     );
   };
 
   const goToPreviousTestimonial = () => {
-    setCurrentTestimonialIndex((prevIndex) => 
+    setCurrentTestimonialIndex((prevIndex) =>
       prevIndex === 0 ? seamlessTestimonials.length - 1 : prevIndex - 1
     );
   };
@@ -385,17 +385,17 @@ const [responseMessage, setResponseMessage] = useState('');
   };
 
 
-// HANDLER to trigger the hidden file input
-const handleAttachClick = () => {
-  fileInputRef.current?.click();
-};
+  // HANDLER to trigger the hidden file input
+  const handleAttachClick = () => {
+    fileInputRef.current?.click();
+  };
 
-// HANDLER to update state when files are selected
-const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-  setFiles(e.target.files);
-};
+  // HANDLER to update state when files are selected
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFiles(e.target.files);
+  };
 
-// ... your existing handleChange and other handlers
+  // ... your existing handleChange and other handlers
   const handleTestimonialNavigation = (direction: 'prev' | 'next') => {
     const currentIsAutoScrolling = isTestimonialAutoScrolling;
     setIsTestimonialAutoScrolling(false);
@@ -538,70 +538,70 @@ const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData(prevState => ({
-        ...prevState,
-        [name]: value,
+      ...prevState,
+      [name]: value,
     }));
-};
+  };
 
-// 3. HANDLER for the service buttons (toggle selection)
-const handleServiceToggle = (serviceName: string) => {
+  // 3. HANDLER for the service buttons (toggle selection)
+  const handleServiceToggle = (serviceName: string) => {
     setFormData(prevState => {
-        const currentServices = prevState.services;
-        // If the service is already selected, remove it. Otherwise, add it.
-        const newServices = currentServices.includes(serviceName)
-            ? currentServices.filter(s => s !== serviceName)
-            : [...currentServices, serviceName];
-        
-        return { ...prevState, services: newServices };
+      const currentServices = prevState.services;
+      // If the service is already selected, remove it. Otherwise, add it.
+      const newServices = currentServices.includes(serviceName)
+        ? currentServices.filter(s => s !== serviceName)
+        : [...currentServices, serviceName];
+
+      return { ...prevState, services: newServices };
     });
-};
+  };
 
-// 4. HANDLER for form submission
-const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-  e.preventDefault();
-  setResponseMessage('Submitting...');
+  // 4. HANDLER for form submission
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setResponseMessage('Submitting...');
 
-  const scriptURL = 'https://script.google.com/macros/s/AKfycbyhWHya3HvPyY2PlwH2_EvYprTkHkjovfOJx1tZY0UqhGVZtR1Mp6rKw4cXJFLp2sRTfA/exec';
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbyhWHya3HvPyY2PlwH2_EvYprTkHkjovfOJx1tZY0UqhGVZtR1Mp6rKw4cXJFLp2sRTfA/exec';
 
-  const formDataToSubmit = new FormData();
-  formDataToSubmit.append('fullName', formData.fullName);
-  formDataToSubmit.append('email', formData.email);
-  formDataToSubmit.append('phone', formData.phone);
-  formDataToSubmit.append('projectDescription', formData.projectDescription);
-  formDataToSubmit.append('services', formData.services.join(', '));
+    const formDataToSubmit = new FormData();
+    formDataToSubmit.append('fullName', formData.fullName);
+    formDataToSubmit.append('email', formData.email);
+    formDataToSubmit.append('phone', formData.phone);
+    formDataToSubmit.append('projectDescription', formData.projectDescription);
+    formDataToSubmit.append('services', formData.services.join(', '));
 
-  // START: ADD THIS BLOCK TO APPEND FILES
-  if (files) {
+    // START: ADD THIS BLOCK TO APPEND FILES
+    if (files) {
       for (let i = 0; i < files.length; i++) {
-          // Each file will be named 'file0', 'file1', etc.
-          formDataToSubmit.append('file' + i, files[i]);
+        // Each file will be named 'file0', 'file1', etc.
+        formDataToSubmit.append('file' + i, files[i]);
       }
-  }
-  // END: ADD THIS BLOCK
+    }
+    // END: ADD THIS BLOCK
 
-  try {
+    try {
       const response = await fetch(scriptURL, {
-          method: 'POST',
-          body: formDataToSubmit,
-          // Google Apps Script doesn't handle attachments with 'no-cors'.
-          // You may need to remove this or adjust your backend script.
-          // mode: 'no-cors',
+        method: 'POST',
+        body: formDataToSubmit,
+        // Google Apps Script doesn't handle attachments with 'no-cors'.
+        // You may need to remove this or adjust your backend script.
+        // mode: 'no-cors',
       });
 
       setResponseMessage('Success! Your message was submitted.');
       setFormData({
-          fullName: '',
-          email: '',
-          phone: '',
-          projectDescription: '',
-          services: [],
+        fullName: '',
+        email: '',
+        phone: '',
+        projectDescription: '',
+        services: [],
       });
       setFiles(null); // Clear the files after submission
-  } catch (error) {
+    } catch (error) {
       setResponseMessage('An error occurred. Please try again.');
       console.error('Submission error:', error);
-  }
-};
+    }
+  };
 
 
   return (
@@ -782,9 +782,9 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
       {/* Industry Insights Section - Enhanced */}
       <section ref={insightsSectionRef} id="stats-section" className="py-12 md:py-16 bg-[#232629] backdrop-blur-sm relative overflow-hidden snap-start">
 
-        <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-20 relative z-10">
-          <div className="text-center mb-10 md:mb-12">
-           
+        <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-14 relative z-10">
+          <div className="text-center mb-10 md:mb-12 ">
+
             <motion.h2
               className="text-[40px] font-normal font-['Outfit'] leading-[111%] text-center mt-1 mb-3 sm:mb-4 text-foreground"
               initial={{ opacity: 0, y: -20 }}
@@ -803,7 +803,7 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
             >
               Discover how AI tackles key business challenges and unlocks new opportunities for growth and efficiency.
             </motion.p>
-           
+
           </div>
 
           {problemSolutionStats.length > 0 && (
@@ -861,612 +861,612 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 
       {/* What We Do – End-to-End Solutions */}
       <div className="border-t border-[#333333] " />
-<section className="py-12 md:py-16 bg-[#232629] backdrop-blur-sm snap-start">
-  <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-20">
-    <div className="text-center mb-10 md:mb-12">
-      <motion.h2
-        className="text-[40px] font-normal font-['Outfit'] leading-[111%] text-center text-white mb-4"
-        initial={{ opacity: 0, y: -20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.3 }}
-        transition={{ duration: 0.6 }}
-      >
-        What We Do End-to-End Solutions
-      </motion.h2>
-    </div>
-
-    {/* Conditionally render based on screen size */}
-    {isMobile ? (
-      // ======================================================
-      // NEW: Mobile Accordion Layout
-      // ======================================================
-      <motion.div
-        className="bg-[#2D2F33] divide-y-2 divide-[#232629] rounded-lg"
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.2 }}
-        transition={{ duration: 0.7 }}
-      >
-        {whatWeDoData.map((tab, index) => (
-          <div key={tab.id} className="p-4">
-            <button
-              onClick={() => setAccordionIndex(accordionIndex === index ? null : index)}
-              className="flex items-center justify-between w-full text-left group"
+      <section className="py-12 md:py-16 bg-[#232629] backdrop-blur-sm snap-start">
+        <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-14">
+          <div className="text-center mb-10 md:mb-12">
+            <motion.h2
+              className="text-[40px] font-normal font-['Outfit'] leading-[111%] text-center text-white mb-4"
+              initial={{ opacity: 0, y: -20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.6 }}
             >
-              <span className={`text-[18px] leading-[100%] font-normal font-['Poppins'] text-left transition-colors duration-300 ${accordionIndex === index ? "text-[#EE8741]" : "text-white"}`}>
-                {tab.buttonText}
-              </span>
+              What We Do End-to-End Solutions
+            </motion.h2>
+          </div>
+
+          {/* Conditionally render based on screen size */}
+          {isMobile ? (
+            // ======================================================
+            // NEW: Mobile Accordion Layout
+            // ======================================================
+            <motion.div
+              className="bg-[#2D2F33] divide-y-2 divide-[#232629] rounded-lg"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.7 }}
+            >
+              {whatWeDoData.map((tab, index) => (
+                <div key={tab.id} className="p-4">
+                  <button
+                    onClick={() => setAccordionIndex(accordionIndex === index ? null : index)}
+                    className="flex items-center justify-between w-full text-left group"
+                  >
+                    <span className={`text-[18px] leading-[100%] font-normal font-['Poppins'] text-left transition-colors duration-300 ${accordionIndex === index ? "text-[#EE8741]" : "text-white"}`}>
+                      {tab.buttonText}
+                    </span>
+                    <motion.div
+                      animate={{ rotate: accordionIndex === index ? 180 : 0 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      {accordionIndex === index ? (
+                        <ChevronUp className="w-5 h-5 text-[#F58F1D]" />
+                      ) : (
+                        <ChevronDown className="w-5 h-5 text-white" />
+                      )}
+                    </motion.div>
+                  </button>
+
+                  <AnimatePresence>
+                    {accordionIndex === index && (
+                      <motion.div
+                        initial={{ opacity: 0, height: 0, marginTop: 0 }}
+                        animate={{ opacity: 1, height: 'auto', marginTop: '16px' }}
+                        exit={{ opacity: 0, height: 0, marginTop: 0 }}
+                        transition={{ duration: 0.4, ease: "easeInOut" }}
+                        className="overflow-hidden"
+                      >
+                        <div className="relative w-full h-48 rounded-lg overflow-hidden mb-4">
+                          <Image src={tab.imageSrc} alt={tab.title} fill className="object-cover" sizes="100vw" />
+                          {/* <div className="absolute inset-0 bg-black/30"></div> */}
+                        </div>
+                        <h3 className="text-xl text-white mb-2 font-['Outfit'] font-normal leading-[111%]">{tab.title}</h3>
+                        <p className="text-[#9FA6AD] leading-[130%] mb-4 text-sm font-['Poppins'] font-normal">{tab.description}</p>
+                        <div className="flex flex-col gap-2">
+                          {tab.services.map((service, sIndex) => (
+                            <div key={sIndex} className="flex items-center gap-3 text-gray-200 text-sm">
+                              <ArrowRight className="w-4 h-4 text-accent flex-shrink-0" />
+                              <span className="font-['Poppins'] font-normal">{service}</span>
+                            </div>
+                          ))}
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              ))}
+            </motion.div>
+          ) : (
+            // ======================================================
+            // EXISTING: Desktop Two-Column Layout
+            // ======================================================
+            <div className="flex flex-col lg:flex-row gap-6 md:gap-8">
               <motion.div
-                animate={{ rotate: accordionIndex === index ? 180 : 0 }}
-                transition={{ duration: 0.3 }}
+                className="lg:w-1/3 bg-[#2C3035] p-3 rounded-[30px] flex flex-col justify-evenly"
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.7, delay: 0.2 }}
               >
-                {accordionIndex === index ? (
-                  <ChevronUp className="w-5 h-5 text-[#F58F1D]" />
-                ) : (
-                  <ChevronDown className="w-5 h-5 text-white" />
-                )}
+                {whatWeDoData.map((tab, index) => (
+                  <React.Fragment key={tab.id}>
+                    <button
+                      onClick={() => setActiveTab(tab.id)}
+                      className={cn(
+                        "p-4 rounded-lg text-center transition-all duration-300 w-[90%] mx-auto text-[18px] leading-[100%] font-normal font-['Poppins']",
+                        "focus:outline-none focus-visible:ring-2 focus-visible:ring-accent",
+                        activeTab === tab.id
+                          ? "bg-gradient-to-r from-[#616D78] to-[#454A51] text-white shadow-lg rounded-full"
+                          : "bg-transparent text-gray-300 hover:bg-[#2A2D31] rounded-full"
+                      )}
+                    >
+                      {tab.buttonText}
+                    </button>
+                    {index < whatWeDoData.length - 1 && <div className="h-px bg-gray-600/50 -mx-3" />}
+                  </React.Fragment>
+                ))}
               </motion.div>
-            </button>
-            
-            <AnimatePresence>
-              {accordionIndex === index && (
-                <motion.div
-                  initial={{ opacity: 0, height: 0, marginTop: 0 }}
-                  animate={{ opacity: 1, height: 'auto', marginTop: '16px' }}
-                  exit={{ opacity: 0, height: 0, marginTop: 0 }}
-                  transition={{ duration: 0.4, ease: "easeInOut" }}
-                  className="overflow-hidden"
-                >
-                  <div className="relative w-full h-48 rounded-lg overflow-hidden mb-4">
-                    <Image src={tab.imageSrc} alt={tab.title} fill className="object-cover" sizes="100vw" />
-                    <div className="absolute inset-0 bg-black/30"></div>
-                  </div>
-                  <h3 className="text-xl text-white mb-2 font-['Outfit'] font-normal leading-[111%]">{tab.title}</h3>
-                  <p className="text-[#9FA6AD] leading-[130%] mb-4 text-sm font-['Poppins'] font-normal">{tab.description}</p>
-                  <div className="flex flex-col gap-2">
-                    {tab.services.map((service, sIndex) => (
-                      <div key={sIndex} className="flex items-center gap-3 text-gray-200 text-sm">
-                        <ArrowRight className="w-4 h-4 text-accent flex-shrink-0" />
-                        <span className="font-['Poppins'] font-normal">{service}</span>
-                      </div>
-                    ))}
-                  </div>
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </div>
-        ))}
-      </motion.div>
-    ) : (
-      // ======================================================
-      // EXISTING: Desktop Two-Column Layout
-      // ======================================================
-      <div className="flex flex-col lg:flex-row gap-6 md:gap-8">
-        <motion.div
-          className="lg:w-1/3 bg-[#2C3035] p-3 rounded-2xl flex flex-col justify-evenly"
-          initial={{ opacity: 0, x: -20 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.7, delay: 0.2 }}
-        >
-          {whatWeDoData.map((tab, index) => (
-            <React.Fragment key={tab.id}>
-              <button
-                onClick={() => setActiveTab(tab.id)}
-                className={cn(
-                  "p-4 rounded-lg text-center transition-all duration-300 w-[90%] mx-auto text-[18px] leading-[100%] font-normal font-['Poppins']",
-                  "focus:outline-none focus-visible:ring-2 focus-visible:ring-accent",
-                  activeTab === tab.id
-                    ? "bg-gradient-to-r from-[#616D78] to-[#454A51] text-white shadow-lg rounded-full"
-                    : "bg-transparent text-gray-300 hover:bg-[#2A2D31] rounded-full"
-                )}
-              >
-                {tab.buttonText}
-              </button>
-              {index < whatWeDoData.length - 1 && <div className="h-px bg-gray-600/50 -mx-3" />}
-            </React.Fragment>
-          ))}
-        </motion.div>
 
-        <motion.div
-          className="lg:w-2/3 bg-[#2C3035] p-6 md:p-8 rounded-2xl"
-          initial={{ opacity: 0, x: 20 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.7, delay: 0.3 }}
-        >
-          <AnimatePresence mode="wait">
-            {(() => {
-              const currentTab = whatWeDoData.find(tab => tab.id === activeTab);
-              if (!currentTab) return null;
-
-              return (
-                <motion.div
-                  key={currentTab.id}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -20 }}
-                  transition={{ duration: 0.4, ease: "easeInOut" }}
-                >
-                  <div className="relative w-full h-48 md:h-60 rounded-lg overflow-hidden mb-6">
-                    <Image src={currentTab.imageSrc} alt={currentTab.title} fill className="object-cover" sizes="(max-width: 1024px) 100vw, 67vw" />
-                    <div className="absolute inset-0 bg-black/30"></div>
-                  </div>
-                  <h3 className="text-2xl md:text-3xl text-white mb-4 font-['Outfit'] font-normal leading-[111%]">{currentTab.title}</h3>
-                  <p className="text-[#9FA6AD] leading-[130%] mb-6 font-['Poppins'] font-normal">{currentTab.description}</p>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-4">
-                    {currentTab.services.map((service, index) => (
-                      <div key={index} className="flex items-center gap-3 text-gray-200">
-                        <ArrowRight className="w-5 h-5 text-accent flex-shrink-0" />
-                        <span className="font-['Poppins'] font-normal">{service}</span>
-                      </div>
-                    ))}
-                  </div>
-                </motion.div>
-              );
-            })()}
-          </AnimatePresence>
-        </motion.div>
-      </div>
-    )}
-  </div>
-</section>
-       
-{/* Powering Innovation For */}
-<div className="border-t border-[#333333] " />
-<section className="py-16 md:py-20 bg-[#232629] backdrop-blur-sm snap-start font-[Poppins]">
-  <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-20">
-    <div className="text-center mb-12">
-      <motion.h2
-        className="text-2xl sm:text-3xl md:text-4xl lg:text-[40px] font-normal font-['Outfit'] leading-[111%] text-center text-white mb-4"
-        initial={{ opacity: 0, y: -20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.3 }}
-        transition={{ duration: 0.6 }}
-      >
-        Powering Innovation For
-      </motion.h2>
-      <motion.p
-        className="text-[#9FA6AD] text-sm sm:text-base leading-[130%] text-center font-['Poppins'] font-normal max-w-4xl mx-auto px-4"
-        initial={{ opacity: 0, y: -20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.3 }}
-        transition={{ duration: 0.6, delay: 0.1 }}
-      >
-        Tailored technology solutions for startups, small businesses, enterprises, and agencies driving innovation,
-        scalability, and sustainable growth at every stage.
-      </motion.p>
-    </div>
-
-    <div className=" space-y-8">
-      {/* First Row */}
-      <div className="grid grid-cols-1 md:grid-cols-10 gap-8 items-stretch">
-        {/* Startups */}
-        <motion.div
-          className="md:col-span-4 bg-[#2C3035] border border-gray-700/50 rounded-[30px] p-8 h-full flex flex-col"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.3, delay: 0.1 }}
-          // 1. Added Framer Motion hover animation
-          whileHover={{ y: -8, scale: 1.03 }}
-        >
-          <Image src="/icons/startup 1.png" alt="Startups" width={32} height={32} className="mb-4" />
-          <h3 className="font-['Outfit'] text-2xl font-normal leading-[100%] tracking-[0] text-white mb-3">Startups Business</h3>
-          <p className="text-[#9FA6AD] text-base leading-[130%] tracking-[0] text-justify font-['Poppins'] font-normal">
-            We specialize in MVP development, rapid prototyping, and flexible engagement models, helping startups scale from
-            idea to launch. With a diverse tech stack and proactive execution, we act as their extended team, managing
-            technology while they focus on growth.
-          </p>
-        </motion.div>
-
-        {/* Small Business */}
-        <motion.div
-          className="md:col-span-6 bg-[#2C3035] border border-gray-700/50 rounded-[30px] p-8 h-full flex flex-col"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.3, delay: 0.2 }}
-          // 1. Added Framer Motion hover animation
-          whileHover={{ y: -8, scale: 1.03 }}
-        >
-          <Image src="/icons/supermarket 1.png" alt="Small Business" width={32} height={32} className="mb-4" />
-          <h3 className="font-['Outfit'] text-2xl font-normal leading-[100%] tracking-[0] text-white mb-3">Small Business</h3>
-          <p className="text-[#9FA6AD] text-base leading-[130%] tracking-[0] text-justify font-['Poppins'] font-normal">
-            Small businesses seek to scale and boost efficiency through technology and that's where we deliver value. From UI/UX design and development to QA
-            and cloud deployment, we provide complete, end-to-end custom
-            technology solutions under one roof.
-          </p>
-        </motion.div>
-      </div>
-
-      {/* Second Row */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
-        {/* Enterprise */}
-        <motion.div
-          className="bg-[#2C3035] border border-gray-700/50 rounded-[30px] p-8 h-full flex flex-col"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.3, delay: 0.3 }}
-          // 1. Added Framer Motion hover animation
-          whileHover={{ y: -8, scale: 1.03 }}
-        >
-          <Image src="/icons/global-access 1.png" alt="Enterprise" width={32} height={32} className="mb-4" />
-          <h3 className="font-['Outfit'] text-2xl font-normal leading-[100%] tracking-[0] text-white mb-3">Enterprise Business</h3>
-          <p className="text-[#9FA6AD] text-base leading-[130%] tracking-[0] text-justify font-['Poppins'] font-normal">
-            We build enterprise grade solutions that drive measurable impact, from clinical systems to insurance platforms. Our
-            products power global multi million dollar businesses, with enterprises preferring our
-            scalable dedicated hire model to match
-            evolving needs.
-          </p>
-        </motion.div>
-
-        {/* Agency */}
-        <motion.div
-          className="bg-[#2C3035] border border-gray-700/50 rounded-[30px] p-8 h-full flex flex-col"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.3, delay: 0.4 }}
-          // 1. Added Framer Motion hover animation
-          whileHover={{ y: -8, scale: 1.03 }}
-        >
-          <Image src="/icons/employee 1.png" alt="Agency" width={32} height={32} className="mb-4" />
-          <h3 className="font-['Outfit'] text-2xl font-normal leading-[100%] tracking-[0] text-white mb-3">Agency Business</h3>
-          <p className="text-[#9FA6AD] text-base leading-[130%] tracking-[0] text-justify font-['Poppins'] font-normal">
-            Upteky offers free business analysis, tech consultation, and tailored solutions. With
-            flexible models and expert teams, we help
-            enterprises scale efficiently, accelerate
-            growth, and maximize customer value
-            globally.
-          </p>
-        </motion.div>
-
-        {/* Innovation */}
-        <motion.div
-          // 2. Standardized padding to p-8 for consistency
-          className="bg-[#2C3035] border border-gray-700/50 rounded-[30px] p-8 flex flex-col justify-between h-full"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.3, delay: 0.5 }}
-          // 1. Added Framer Motion hover animation
-          whileHover={{ y: -8, scale: 1.03 }}
-        >
-          <div className="space-y-6">
-            <h3 className="font-['Outfit'] text-xl sm:text-2xl font-normal leading-[100%] tracking-[0] text-white">Bringing Innovation Together</h3>
-            <p className="text-[#9FA6AD] text-base leading-[130%] tracking-[0] text-justify font-['Poppins'] font-normal">
-              Upteky's R&D team ensures clients stay ahead with early tech adoption, seamless
-              execution, and access to the latest innovations in a fast-evolving digital
-              landscape.
-            </p>
-          </div>
-          <div className="pt-6">
-            <Button
-              className="bg-[#2F3133] border border-gray-600 text-gray-200 hover:bg-[#394046] hover:border-gray-500 transition-all duration-300 px-5 sm:px-4 py-2 sm:py-2.5 rounded-full text-sm sm:text-base w-fit self-start whitespace-nowrap inline-flex items-center gap-2"
-            >
-              <span>Get In Touch</span>
-              <Image src="/assets/arrow.svg" alt="Arrow" width={16} height={16} className="w-4 h-4" />
-            </Button>
-          </div>
-        </motion.div>
-      </div>
-    </div>
-  </div>
-</section>
-
-{/* Our Process */}
-<section className="py-16 md:py-20 bg-[#232629] text-white font-poppins">
-  <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-20">
-    {/* Section Heading */}
-    <div className="text-center mb-12">
-      <motion.h2
-        className="text-[40px] font-normal font-['Outfit'] leading-[111%] text-center mb-4"
-        initial={{ opacity: 0, y: -20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.3 }}
-        transition={{ duration: 0.6 }}
-      >
-        Our Process
-      </motion.h2>
-      <motion.p
-        className="text-[#9FA6AD] text-[16px] leading-[130%] text-center font-['Poppins'] font-normal max-w-3xl mx-auto"
-        initial={{ opacity: 0, y: -20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.3 }}
-        transition={{ duration: 0.6, delay: 0.1 }}
-      >
-        A streamlined journey from idea to impact – guiding you through every
-        stage with clarity, innovation, and measurable results.
-      </motion.p>
-    </div>
-
-    {/* Process Steps Data */}
-    {(() => {
-      const processSteps = [
-        {
-          step: "01",
-          title: "Consultation & Discovery",
-          description:
-            "Understand your business challenges and uncover hidden opportunities with tailored AI and IT solutions designed to accelerate growth and efficiency.",
-        },
-        {
-          step: "02",
-          title: "Solution Design",
-          description:
-            "We combine AI, IT, and web expertise to craft the right-fit solutions that empower businesses with innovation, scalability, and measurable growth.",
-        },
-        {
-          step: "03",
-          title: "Development & Implementation",
-          description:
-            "Delivering smooth and secure execution with reliable processes, robust technology, and enterprise-grade solutions that ensure efficiency, trust, and long-term success.",
-        },
-        {
-          step: "04",
-          title: "Optimization & Training",
-          description:
-            "We ensure adoption and efficiency through tailored guidance, streamlined processes, and continuous improvements that maximize business impact.",
-        },
-        {
-          step: "05",
-          title: "Ongoing Support & Scaling",
-          description:
-            "Enabling continuous growth with technology through proactive support, scalable systems, and future-ready solutions tailored for businesses.",
-        },
-      ];
-
-      return (
-        // The outer border remains unchanged
-        <div className="border border-neutral-800 rounded-2xl overflow-hidden bg-[#2C2F33]">
-          <div className="grid grid-cols-1 md:grid-cols-2">
-            {processSteps.map((item, index) => (
               <motion.div
-                key={item.step}
-                className={cn(
-                  "p-10 text-left transition-colors duration-300 ease-in-out hover:bg-neutral-700 cursor-pointer",
-                  // Conditional classes for layout and borders
-                  {
-                    "md:col-span-2 flex flex-col items-start md:p-10":
-                      index === processSteps.length - 1,
-                    
-                    // --- BORDER LOGIC (UPDATED) ---
-                    // Add bottom border with the new color
-                    "border-b border-[#565656]": index < 3,
-                    // Add right border with the new color
-                    "md:border-r border-[#565656]":
-                      index % 2 === 0 && index < 4,
-                  }
-                )}
+                className="lg:w-2/3 bg-[#2C3035] p-6 md:p-10 rounded-[30px]"
+                initial={{ opacity: 0, x: 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.7, delay: 0.3 }}
+              >
+                <AnimatePresence mode="wait">
+                  {(() => {
+                    const currentTab = whatWeDoData.find(tab => tab.id === activeTab);
+                    if (!currentTab) return null;
+
+                    return (
+                      <motion.div
+                        key={currentTab.id}
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -20 }}
+                        transition={{ duration: 0.4, ease: "easeInOut" }}
+                      >
+                        <div className="relative w-full h-48 md:h-60 lg:h-40 rounded-[20px] overflow-hidden mb-8">
+                          <Image src={currentTab.imageSrc} alt={currentTab.title} fill className="object-cover" sizes="(max-width: 1024px) 100vw, 67vw" />
+                          {/* <div className="absolute inset-0 bg-black/30"></div> */}
+                        </div>
+                        <h3 className="text-2xl md:text-3xl text-white mb-8 font-['Outfit'] font-normal leading-[111%]">{currentTab.title}</h3>
+                        <p className="text-[#9FA6AD] leading-[130%] mb-8 font-['Poppins'] font-normal">{currentTab.description}</p>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-4">
+                          {currentTab.services.map((service, index) => (
+                            <div key={index} className="flex items-center gap-3 text-gray-200">
+                              <ArrowRight className="w-5 h-5 text-white flex-shrink-0" />
+                              <span className="font-['Poppins'] font-normal">{service}</span>
+                            </div>
+                          ))}
+                        </div>
+                      </motion.div>
+                    );
+                  })()}
+                </AnimatePresence>
+              </motion.div>
+            </div>
+          )}
+        </div>
+      </section>
+
+      {/* Powering Innovation For */}
+      <div className="border-t border-[#333333]" />
+      <section className="py-16 md:py-20 bg-[#232629] backdrop-blur-sm snap-start font-[Poppins]">
+        <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-14">
+          <div className="text-center mb-12">
+            <motion.h2
+              className="text-2xl sm:text-3xl md:text-4xl lg:text-[40px] font-normal font-['Outfit'] leading-[111%] text-center text-white mb-4"
+              initial={{ opacity: 0, y: -20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.6 }}
+            >
+              Powering Innovation For
+            </motion.h2>
+            <motion.p
+              className="text-[#9FA6AD] text-sm sm:text-base leading-[130%] text-center font-['Poppins'] font-normal max-w-4xl mx-auto px-4"
+              initial={{ opacity: 0, y: -20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+            >
+              Tailored technology solutions for startups, small businesses, enterprises, and agencies driving innovation,
+              scalability, and sustainable growth at every stage.
+            </motion.p>
+          </div>
+
+          <div className=" space-y-8">
+            {/* First Row */}
+            <div className="grid grid-cols-1 md:grid-cols-10 gap-8 items-stretch">
+              {/* Startups */}
+              <motion.div
+                className="md:col-span-4 bg-[#2C3035] border border-0 rounded-[30px] py-[45] px-[45] h-full flex flex-col"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
+                transition={{ duration: 0.3, delay: 0.1 }}
+                // 1. Added Framer Motion hover animation
+                whileHover={{ y: -8, scale: 1.03 }}
               >
-                {/* Constrain width of the last item's content */}
-                <div
-                  className={cn({
-                    "md:w-2/3 lg:w-1/2": index === processSteps.length - 1,
-                  })}
-                >
-                  <span className="block text-[24px] font-normal leading-[121%] tracking-[0] font-['Outfit'] text-[#F58F1D] mb-4">
-                    {item.step}
-                  </span>
-                  <h3 className="text-[24px] font-normal leading-[121%] tracking-[0] text-white mb-3 font-['Outfit']">
-                    {item.title}
-                  </h3>
-                  <div className="w-full sm:w-[10rem] lg:w-[20rem] md:w-[15rem] h-px bg-[#565656] mb-3" />
-                  <p className="text-[#9FA6AD] text-[16px] font-normal leading-[121%] tracking-[0] font-['Poppins']">
-                    {item.description}
+                <Image src="/icons/startup 1.svg" alt="Startups" width={40} height={40} className="mb-8" />
+                <h3 className="font-['Outfit'] text-2xl font-normal leading-[100%] tracking-[0] text-white mb-8">Startups Business</h3>
+                <p className="text-[#9FA6AD] text-base leading-[130%] tracking-[0] text-left font-['Poppins'] font-normal">
+                  We specialize in MVP development, rapid prototyping, and flexible engagement models, helping startups scale from
+                  idea to launch. With a diverse tech stack and proactive execution, we act as their extended team, managing
+                  technology while they focus on growth.
+                </p>
+              </motion.div>
+
+              {/* Small Business */}
+              <motion.div
+                className="md:col-span-6 bg-[#2C3035] border border-0 rounded-[30px] py-[45] px-[45] h-full flex flex-col"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.3, delay: 0.2 }}
+                // 1. Added Framer Motion hover animation
+                whileHover={{ y: -8, scale: 1.03 }}
+              >
+                <Image src="/icons/supermarket 1.svg" alt="Small Business" width={40} height={40} className="mb-8" />
+                <h3 className="font-['Outfit'] text-2xl font-normal leading-[100%] tracking-[0] text-white mb-8">Small Business</h3>
+                <p className="text-[#9FA6AD] text-base leading-[130%] tracking-[0] text-left font-['Poppins'] font-normal">
+                  Small businesses seek to scale and boost efficiency through technology and that's where we deliver value. From UI/UX design and development to QA
+                  and cloud deployment, we provide complete, end-to-end custom
+                  technology solutions under one roof.
+                </p>
+              </motion.div>
+            </div>
+
+            {/* Second Row */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
+              {/* Enterprise */}
+              <motion.div
+                className="bg-[#2C3035] border border-0 rounded-[30px] py-[45] px-[45] h-full flex flex-col"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.3, delay: 0.3 }}
+                // 1. Added Framer Motion hover animation
+                whileHover={{ y: -8, scale: 1.03 }}
+              >
+                <Image src="/icons/global-access 1.svg" alt="Enterprise" width={40} height={40} className="mb-8" />
+                <h3 className="font-['Outfit'] text-2xl font-normal leading-[100%] tracking-[0] text-white mb-8">Enterprise Business</h3>
+                <p className="text-[#9FA6AD] text-base leading-[130%] tracking-[0] text-left font-['Poppins'] font-normal">
+                  We build enterprise grade solutions that drive measurable impact, from clinical systems to insurance platforms. Our
+                  products power global multi million dollar businesses, with enterprises preferring our
+                  scalable dedicated hire model to match
+                  evolving needs.
+                </p>
+              </motion.div>
+
+              {/* Agency */}
+              <motion.div
+                className="bg-[#2C3035] border border-0 rounded-[30px] py-[45] px-[45] h-full flex flex-col"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.3, delay: 0.4 }}
+                // 1. Added Framer Motion hover animation
+                whileHover={{ y: -8, scale: 1.02 }}
+              >
+                <Image src="/icons/employee 1.svg" alt="Agency" width={40} height={40} className="mb-8" />
+                <h3 className="font-['Outfit'] text-2xl font-normal leading-[100%] tracking-[0] text-white mb-8">Agency Business</h3>
+                <p className="text-[#9FA6AD] text-base leading-[130%] tracking-[0] text-left font-['Poppins'] font-normal">
+                  Upteky offers free business analysis, tech consultation, and tailored solutions. With
+                  flexible models and expert teams, we help
+                  enterprises scale efficiently, accelerate
+                  growth, and maximize customer value
+                  globally.
+                </p>
+              </motion.div>
+
+              {/* Innovation */}
+              <motion.div
+                // 2. Standardized padding to p-8 for consistency
+                className="bg-[#2C3035] border border-0 rounded-[30px] py-[45] px-[45] flex flex-col justify-between h-full"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.3, delay: 0.5 }}
+                // 1. Added Framer Motion hover animation
+                whileHover={{ y: -8, scale: 1.02 }}
+              >
+                <div className="space-y-6">
+                  <h3 className="font-['Outfit'] text-xl sm:text-2xl font-normal leading-[100%] tracking-[0] text-white">Bringing Innovation Together</h3>
+                  <p className="text-[#9FA6AD] text-base leading-[130%] tracking-[0] text-left font-['Poppins'] font-normal">
+                    Upteky's R&D team ensures clients stay ahead with early tech adoption, seamless
+                    execution, and access to the latest innovations in a fast-evolving digital
+                    landscape.
                   </p>
+                </div>
+                <div className="pt-6">
+                  <Button
+                    className="bg-[#2F3133] border border-gray-600 text-gray-200 hover:bg-[#394046] hover:border-gray-500 transition-all duration-300 px-5 sm:px-4 py-2 sm:py-2.5 rounded-full text-sm sm:text-base w-fit self-start whitespace-nowrap inline-flex items-center gap-2"
+                  >
+                    <span>Get In Touch</span>
+                    <Image src="/assets/arrow.svg" alt="Arrow" width={16} height={16} className="w-4 h-4" />
+                  </Button>
+                </div>
+              </motion.div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Our Process */}
+      <section className="py-16 md:py-20 bg-[#232629] text-white font-poppins">
+        <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-14">
+          {/* Section Heading */}
+          <div className="text-center mb-12">
+            <motion.h2
+              className="text-[40px] font-normal font-['Outfit'] leading-[111%] text-center mb-4"
+              initial={{ opacity: 0, y: -20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.6 }}
+            >
+              Our Process
+            </motion.h2>
+            <motion.p
+              className="text-[#9FA6AD] text-[16px] leading-[130%] text-center font-['Poppins'] font-normal max-w-3xl mx-auto"
+              initial={{ opacity: 0, y: -20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+            >
+              A streamlined journey from idea to impact – guiding you through every
+              stage with clarity, innovation, and measurable results.
+            </motion.p>
+          </div>
+
+          {/* Process Steps Data */}
+          {(() => {
+            const processSteps = [
+              {
+                step: "01",
+                title: "Consultation & Discovery",
+                description:
+                  "Understand your business challenges and uncover hidden opportunities with tailored AI and IT solutions designed to accelerate growth and efficiency.",
+              },
+              {
+                step: "02",
+                title: "Solution Design",
+                description:
+                  "We combine AI, IT, and web expertise to craft the right-fit solutions that empower businesses with innovation, scalability, and measurable growth.",
+              },
+              {
+                step: "03",
+                title: "Development & Implementation",
+                description:
+                  "Delivering smooth and secure execution with reliable processes, robust technology, and enterprise-grade solutions that ensure efficiency, trust, and long-term success.",
+              },
+              {
+                step: "04",
+                title: "Optimization & Training",
+                description:
+                  "We ensure adoption and efficiency through tailored guidance, streamlined processes, and continuous improvements that maximize business impact.",
+              },
+              {
+                step: "05",
+                title: "Ongoing Support & Scaling",
+                description:
+                  "Enabling continuous growth with technology through proactive support, scalable systems, and future-ready solutions tailored for businesses.",
+              },
+            ];
+
+            return (
+              // The outer border remains unchanged
+              <div className="border border-neutral-800 rounded-[30px] overflow-hidden bg-[#2C2F33]">
+                <div className="grid grid-cols-1 md:grid-cols-2">
+                  {processSteps.map((item, index) => (
+                    <motion.div
+                      key={item.step}
+                      className={cn(
+                        "p-14 text-left transition-colors duration-300 ease-in-out hover:bg-neutral-700 cursor-pointer",
+                        // Conditional classes for layout and borders
+                        {
+                          "md:col-span-2 flex flex-col items-start md:p-10":
+                            index === processSteps.length - 1,
+
+                          // --- BORDER LOGIC (UPDATED) ---
+                          // Add bottom border with the new color
+                          "border-b border-[#565656]": index < 4,
+                          // Add right border with the new color
+                          "md:border-r border-[#565656]":
+                            index % 2 === 0 && index < 4,
+                        }
+                      )}
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true, amount: 0.2 }}
+                      transition={{ duration: 0.6, delay: index * 0.1 }}
+                    >
+                      {/* Constrain width of the last item's content */}
+                      <div
+                        className={cn({
+                          "md:w-2/3 lg:w-1/2": index === processSteps.length - 1,
+                        })}
+                      >
+                        <span className="block text-[24px] font-normal leading-[121%] tracking-[0] font-['Outfit'] text-[#F58F1D] mb-8">
+                          {item.step}
+                        </span>
+                        <h3 className="text-[24px] font-normal leading-[121%] tracking-[0] text-white mb-3 font-['Outfit']">
+                          {item.title}
+                        </h3>
+                        <div className="w-full sm:w-[10rem] lg:w-[20rem] md:w-[15rem] h-px bg-[#565656] mb-8" />
+                        <p className="text-[#9FA6AD] my-4 text-[16px] pr-20 font-normal leading-[121%] tracking-[0] font-['Poppins']">
+                          {item.description}
+                        </p>
+                      </div>
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
+            );
+          })()}
+        </div>
+      </section>
+
+      {/* Why Choose Upteky Solutions */}
+      <div className="border-t border-[#333333] " />
+      <section className="py-16 md:py-20 bg-[#232629] text-white font-poppins">
+        <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-14">
+          {(() => {
+            // Data for the 5 feature cards
+            const whyChooseData = [
+              {
+                title: "All-in-One Partner",
+                description: "AI + Web + IT under one roof",
+              },
+              {
+                title: "Tailored Solutions",
+                description: "Customized for your business model",
+              },
+              {
+                title: "Scalable Technology",
+                description: "Grow without limitations",
+              },
+              {
+                title: "Proven Track Record",
+                description: "Trusted by global clients across industries",
+              },
+              {
+                title: "Round-the-Clock Support",
+                description: "Because business never sleeps",
+              },
+            ];
+
+            return (
+              // A single grid container for the text block AND all 5 cards
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
+
+                {/* Grid Item 1: The Heading Block */}
+                <motion.div
+                  className="flex flex-col justify-start text-center lg:text-left px-4 pb-4"
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, amount: 0.3 }}
+                  transition={{ duration: 0.7 }}
+                >
+                  <h2 className="text-[40px] font-normal leading-[121%] tracking-[0] font-['Outfit'] mb-4">
+                    Why Choose <br />Upteky Solutions?
+                  </h2>
+                  <p className="text-[#9FA6AD] text-[15.84px] font-normal leading-[121%] tracking-[0] font-['Poppins']">
+                    Empowering businesses with innovation, scalability, and trusted expertise delivering solutions that truly drive growth.
+                  </p>
+                </motion.div>
+
+                {/* Grid Items 2-6: The 5 Feature Cards */}
+                {whyChooseData.map((item, index) => (
+                  <motion.div
+                    key={index}
+                    className="bg-[#2C3035] border border-neutral-800 rounded-[30px] p-6 flex flex-col h-full text-center transition-colors duration-300 ease-in-out min-h-[240px] hover:bg-neutral-700 cursor-pointer"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.2 }}
+                    transition={{ duration: 0.6, delay: (index + 1) * 0.1 }}
+                  >
+                    <div className="flex-grow flex flex-col justify-start">
+                      <h3 className="text-[21.61px] font-normal leading-[121%] tracking-[0] text-white font-['Outfit'] pt-4 pb-8">
+                        {item.title}
+                      </h3>
+                      {/* Divider Line: spans full card width */}
+                      <div className="h-[0.5px] bg-[#4c4c4c] -mx-6" />
+                      <p className="text-[#9FA6AD] text-[14px] sm:text-[15.84px] font-normal leading-[121%] tracking-[0] font-['Poppins'] text-center pt-8">
+                        {item.description}
+                      </p>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            );
+          })()}
+        </div>
+      </section>
+
+
+      {/* -----------------------------------------------Hear from our clients-------------------------------------------------- */}
+      <section className="py-12 md:py-16 bg-[#232629] backdrop-blur-sm border-t border-border/20 snap-start">
+        <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-14">
+          <div className="text-center mb-10 md:mb-12">
+            <motion.h2
+              className="text-[40px] font-normal font-['Outfit'] leading-[111%] text-center mt-1 mb-3 sm:mb-4"
+              initial={{ opacity: 0, y: -20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.6, delay: 0.15 }}
+            >
+              Hear From Our Clients
+            </motion.h2>
+            <motion.p
+              className="text-[#9FA6AD] text-[16px] leading-[130%] text-center font-['Poppins'] font-normal max-w-3xl mx-auto"
+              initial={{ opacity: 0, y: -20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+            >
+              Real businesses, real results — showcasing the impact of our solutions.
+            </motion.p>
+          </div>
+
+          {/* Desktop Grid Layout (This is where the changes are) */}
+          <div className="hidden lg:grid grid-cols-3 gap-8 xl:gap-24 2xl:gap-24 max-w-auto sm:w-full mx-auto">
+            {seamlessTestimonials.map((testimonial, index) => (
+              <motion.div
+                key={index}
+                className={`flex justify-center ${index === 1 ? " lg:mt-16 md:mt-0" : ""}`}
+                initial={{ opacity: 0, y: 20, scale: 0.95 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                viewport={{ once: true, amount: 0.2 }}
+                // 1. UPDATED: Made the transition faster for a responsive hover
+                transition={{
+                  duration: 0.25,
+                  delay: index * 0.10,
+                  ease: "easeOut",
+                }}
+                // 2. ADDED: The hover animation effect
+                whileHover={{ y: -8, scale: 1.02 }}
+              >
+                <div className="relative bg-[#2C3035] backdrop-blur-sm border border-0 p-6 transition-all duration-300 group flex flex-col w-full max-w-[400px] sm:max-w-[500px] md:max-w-[400px] lg:max-w-[600px] xl:max-w-[800px] h-[320px] sm:h-[400px] md:h-[400px] lg:h-[400px] xl:h-[400px] 2xl:h[400px] rounded-[20px]">
+                  <div className=" flex-grow z-10 flex flex-col ">
+                    <div className="text-center mb-8 lg:mb-8 sm:mb-8 md:mb-8 xl:mb-8 2xl:mb-8">
+                      <p className="font-['Outfit'] font-normal text-white text-[24px] leading-[100%] tracking-[0] justify-center items-start mt-10">
+                        {testimonial.author}
+                      </p>
+                      <p className="font-['Outfit'] font-normal text-[16px] leading-[100%] tracking-[0] mt-1 text-white">{testimonial.title}</p>
+                    </div>
+                    <div className="h-px bg-gray-600 opacity-60 -mx-6 mt-3"></div>
+                    <div className="flex-grow flex justify-center my-6 2xl:my-10 xl:my-8 xl:px-6 lg:my-8 md:my-10 sm:my-10 px-2 md:px-8 lg:px-4 2xl:px-12 ">
+                      <p className="font-['Poppins'] font-normal text-[16px] leading-[130%] tracking-[0] text-center text-[#9FA6AD]">
+                        {testimonial.quote}
+                      </p>
+                    </div>
+                  </div>
                 </div>
               </motion.div>
             ))}
           </div>
-        </div>
-      );
-    })()}
-  </div>
-</section>
 
-{/* Why Choose Upteky Solutions */}
-<div className="border-t border-[#333333] " />
-<section className="py-16 md:py-20 bg-[#232629] text-white font-poppins">
-  <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-20">
-    {(() => {
-      // Data for the 5 feature cards
-      const whyChooseData = [
-        {
-          title: "All-in-One Partner",
-          description: "AI + Web + IT under one roof",
-        },
-        {
-          title: "Tailored Solutions",
-          description: "Customized for your business model",
-        },
-        {
-          title: "Scalable Technology",
-          description: "Grow without limitations",
-        },
-        {
-          title: "Proven Track Record",
-          description: "Trusted by global clients across industries",
-        },
-        {
-          title: "Round-the-Clock Support",
-          description: "Because business never sleeps",
-        },
-      ];
-
-      return (
-        // A single grid container for the text block AND all 5 cards
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
-          
-          {/* Grid Item 1: The Heading Block */}
-          <motion.div
-            className="flex flex-col justify-start text-center lg:text-left px-4 pb-4"
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.7 }}
-          >
-            <h2 className="text-[40px] font-normal leading-[121%] tracking-[0] font-['Outfit'] mb-4">
-              Why Choose Upteky Solutions?
-            </h2>
-            <p className="text-[#9FA6AD] text-[15.84px] font-normal leading-[121%] tracking-[0] font-['Poppins']">
-              Empowering businesses with innovation, scalability, and trusted expertise delivering solutions that truly drive growth.
-            </p>
-          </motion.div>
-
-          {/* Grid Items 2-6: The 5 Feature Cards */}
-          {whyChooseData.map((item, index) => (
-            <motion.div
-              key={index}
-              className="bg-[#2C3035] border border-neutral-800 rounded-2xl p-6 flex flex-col h-full text-center transition-colors duration-300 ease-in-out min-h-[240px] hover:bg-neutral-700 cursor-pointer"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.6, delay: (index + 1) * 0.1 }}
-            >
-              <div className="flex-grow flex flex-col justify-center">
-                <h3 className="text-[21.61px] font-normal leading-[121%] tracking-[0] text-white font-['Outfit'] pb-4">
-                  {item.title}
-                </h3>
-                {/* Divider Line: spans full card width */}
-                <div className="h-px bg-neutral-700 -mx-6" /> 
-                <p className="text-[#9FA6AD] text-[14px] sm:text-[15.84px] font-normal leading-[121%] tracking-[0] font-['Poppins'] text-center pt-4">
-                  {item.description}
-                </p>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-      );
-    })()}
-  </div>
-</section>
-
-      
-    {/* -----------------------------------------------Hear from our clients-------------------------------------------------- */}
-<section className="py-12 md:py-16 bg-[#232629] backdrop-blur-sm border-t border-border/20 snap-start">
-  <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-20">
-    <div className="text-center mb-10 md:mb-12">
-      <motion.h2
-        className="text-[40px] font-normal font-['Outfit'] leading-[111%] text-center mt-1 mb-3 sm:mb-4"
-        initial={{ opacity: 0, y: -20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.3 }}
-        transition={{ duration: 0.6, delay: 0.15 }}
-      >
-        Hear From Our Clients
-      </motion.h2>
-      <motion.p
-        className="text-[#9FA6AD] text-[16px] leading-[130%] text-center font-['Poppins'] font-normal max-w-3xl mx-auto"
-        initial={{ opacity: 0, y: -20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.3 }}
-        transition={{ duration: 0.6, delay: 0.1 }}
-      >
-        Real businesses, real results — showcasing the impact of our solutions.
-      </motion.p>
-    </div>
-
-    {/* Desktop Grid Layout (This is where the changes are) */}
-    <div className="hidden lg:grid grid-cols-3 gap-8 xl:gap-24 2xl:gap-24 max-w-auto sm:w-full mx-auto">
-      {seamlessTestimonials.map((testimonial, index) => (
-        <motion.div
-          key={index}
-          className={`flex justify-center ${index === 1 ? " lg:mt-16 md:mt-0" : ""}`}
-          initial={{ opacity: 0, y: 20, scale: 0.95 }}
-          whileInView={{ opacity: 1, y: 0, scale: 1 }}
-          viewport={{ once: true, amount: 0.2 }}
-          // 1. UPDATED: Made the transition faster for a responsive hover
-          transition={{
-            duration: 0.25,
-            delay: index * 0.15,
-            ease: "easeOut",
-          }}
-          // 2. ADDED: The hover animation effect
-          whileHover={{ y: -8, scale: 1.03 }}
-        >
-          <div className="relative bg-[#2C3035] backdrop-blur-sm border border-border/20 p-3 transition-all duration-300 group flex flex-col w-full max-w-[400px] sm:max-w-[500px] md:max-w-[400px] lg:max-w-[600px] xl:max-w-[800px] h-[320px] sm:h-[400px] md:h-[400px] lg:h-[400px] xl:h-[400px] 2xl:h[400px] rounded-[20px]">
-            <div className=" flex-grow z-10 flex flex-col ">
-              <div className="text-center mb-8 lg:mb-8 sm:mb-8 md:mb-8 xl:mb-8 2xl:mb-8">
-                <p className="font-['Outfit'] font-normal text-white text-[24px] leading-[100%] tracking-[0] justify-center items-start mt-10">
-                  {testimonial.author}
-                </p>
-                <p className="font-['Outfit'] font-normal text-[16px] leading-[100%] tracking-[0] mt-1 text-white">{testimonial.title}</p>
-              </div>
-              <div className="h-px bg-gray-600 opacity-60 -mx-3"></div>
-              <div className="flex-grow flex justify-center mt-6 2xl:mt-10 xl:mt-8 xl:px-6 lg:mt-8 md:mt-10 sm:mt-10 px-2 md:px-8 lg:px-4 2xl:px-12 ">
-                <p className="font-['Poppins'] font-normal text-[16px] leading-[130%] tracking-[0] text-center text-[#9FA6AD]">
-                  {testimonial.quote}
-                </p>
-              </div>
-            </div>
-          </div>
-        </motion.div>
-      ))}
-    </div>
-
-    {/* Mobile/Tablet Carousel Layout (Unchanged) */}
-    <div className="lg:hidden">
-      <div className="relative overflow-hidden">
-        <motion.div
-          className="flex"
-          animate={{ x: `-${currentTestimonialIndex * 100}%` }}
-          transition={{ type: "spring", stiffness: 100, damping: 20 }}
-          drag="x"
-          dragConstraints={{ left: 0, right: 0 }}
-          onDragEnd={(e, { offset, velocity }) => {
-            const swipeThreshold = 50; 
-            if (offset.x < -swipeThreshold) {
-              goToNextTestimonial();
-            } else if (offset.x > swipeThreshold) {
-              goToPreviousTestimonial();
-            }
-          }}
-        >
-          {seamlessTestimonials.map((testimonial, index) => (
-            <div key={index} className="w-full flex-shrink-0 px-2 sm:px-4">
+          {/* Mobile/Tablet Carousel Layout (Unchanged) */}
+          <div className="lg:hidden">
+            <div className="relative overflow-hidden">
               <motion.div
-                className="relative bg-[#2C3035] backdrop-blur-sm border border-border/20 p-4 sm:p-6 transition-all duration-300 group flex flex-col w-full mx-auto min-h-[340px] sm:min-h-[360px] rounded-[20px] mb-4"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 0.6, delay: index * 0.15, ease: "easeOut" }}
+                className="flex"
+                animate={{ x: `-${currentTestimonialIndex * 100}%` }}
+                transition={{ type: "spring", stiffness: 100, damping: 20 }}
+                drag="x"
+                dragConstraints={{ left: 0, right: 0 }}
+                onDragEnd={(e, { offset, velocity }) => {
+                  const swipeThreshold = 50;
+                  if (offset.x < -swipeThreshold) {
+                    goToNextTestimonial();
+                  } else if (offset.x > swipeThreshold) {
+                    goToPreviousTestimonial();
+                  }
+                }}
               >
-                <div className="flex flex-col h-full">
-                  <div className="text-center mb-4 sm:mb-5">
-                    <p className="font-['Outfit'] font-normal text-white text-[24px] leading-[100%] tracking-[0] justify-center items-center mt-4 sm:mt-5">
-                      {testimonial.author}
-                    </p>
-                    <p className="font-['Outfit'] font-normal text-[16px] leading-[100%] tracking-[0] mt-1 text-white">{testimonial.title}</p>
+                {seamlessTestimonials.map((testimonial, index) => (
+                  <div key={index} className="w-full flex-shrink-0 px-2 sm:px-4">
+                    <motion.div
+                      className="relative bg-[#2C3035] backdrop-blur-sm border border-border/20 p-4 sm:p-6 transition-all duration-300 group flex flex-col w-full mx-auto min-h-[340px] sm:min-h-[360px] rounded-[20px] mb-4"
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true, amount: 0.2 }}
+                      transition={{ duration: 0.6, delay: index * 0.15, ease: "easeOut" }}
+                    >
+                      <div className="flex flex-col h-full">
+                        <div className="text-center mb-4 sm:mb-5">
+                          <p className="font-['Outfit'] font-normal text-white text-[24px] leading-[100%] tracking-[0] justify-center items-center mt-4 sm:mt-5">
+                            {testimonial.author}
+                          </p>
+                          <p className="font-['Outfit'] font-normal text-[16px] leading-[100%] tracking-[0] mt-1 text-white">{testimonial.title}</p>
+                        </div>
+                        <div className="h-px bg-gray-600 opacity-60 w-full mb-4 sm:mb-5"></div>
+                        <div className="flex-1 flex justify-center items-center px-2 sm:px-4 overflow-hidden">
+                          <p className="font-['Poppins'] font-normal text-[16px] leading-[130%] tracking-[0] text-center text-[#9FA6AD]">
+                            {testimonial.quote}
+                          </p>
+                        </div>
+                      </div>
+                    </motion.div>
                   </div>
-                  <div className="h-px bg-gray-600 opacity-60 w-full mb-4 sm:mb-5"></div>
-                  <div className="flex-1 flex justify-center items-center px-2 sm:px-4 overflow-hidden">
-                    <p className="font-['Poppins'] font-normal text-[16px] leading-[130%] tracking-[0] text-center text-[#9FA6AD]">
-                      {testimonial.quote}
-                    </p>
-                  </div>
-                </div>
+                ))}
               </motion.div>
             </div>
-          ))}
-        </motion.div>
-      </div>
-    </div>
-  </div>
-</section>
+          </div>
+        </div>
+      </section>
 
       {/* FAQ Section */}
-<section className=" bg-[#232629] backdrop-blur-sm border-t border-b border-border/20 snap-start">
-  {/* Added this container div to match other sections */}
-  <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-20">
-    <FAQSection />
-  </div>
-</section>
+      <section className=" bg-[#232629] backdrop-blur-sm border-t border-b border-border/20 snap-start">
+        {/* Added this container div to match other sections */}
+        <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-14">
+          <FAQSection />
+        </div>
+      </section>
 
       {/* CTA Section - Enhanced */}
       {/* <section className='py-12 md:py-16 md:pt-0 bg-background/30 backdrop-blur-sm text-foreground snap-start'>
@@ -1475,152 +1475,152 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
       </section> */}
       {/* Free Consultation - two column form */}
       <section id="contact-form" className="py-12 md:py-16 bg-[#232629] backdrop-blur-sm border-t border-border/20 snap-start">
-    <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-20">
-        {/*
+        <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-14">
+          {/*
             FIX: Removed max-w-auto and lg:max-w-[1273px] to conform to container width.
             The container div above already handles the max-width and centering for the page.
         */}
-        <div className="w-full mx-auto bg-[#2C3035] backdrop-blur-lg rounded-[30px] border border-gray-600/30 p-4 sm:p-6 md:p-8">
+          <div className="w-full mx-auto bg-[#2C3035] backdrop-blur-lg rounded-[30px] border border-gray-600/30 p-4 sm:p-6 md:p-8">
             <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-10 items-center">
-                {/* Left info column (no changes here) */}
-                <div className="flex flex-col h-full lg:col-span-2 justify-between items-center text-center lg:items-start lg:text-left p-4 md:p-6">
+              {/* Left info column (no changes here) */}
+              <div className="flex flex-col h-full lg:col-span-2 justify-between items-center text-center lg:items-start lg:text-left p-4 md:p-6">
 
-    {/* --- Top Content Block --- */}
-    <div className="w-full">
-        <h2 className="text-[18px] sm:text-2xl md:text-2xl lg:text-2xl xl:text-3xl 2xl:text-4xl font-normal font-['Outfit'] leading-[100%] text-foreground mb-3 mt-1 lg:mt-6 pt-6">
-            Ready for Free Consultation?
-        </h2>
-        <p className="mb-10 text-[14px] sm:text-[15px] md:text-[16px] text-[#9FA6AD] font-['Outfit'] font-light leading-normal">
-            Your Demand for IT & AI Experts and free consultation anytime.
-        </p>
+                {/* --- Top Content Block --- */}
+                <div className="w-full">
+                  <h2 className="text-[18px] sm:text-2xl md:text-2xl lg:text-2xl xl:text-3xl 2xl:text-4xl font-normal font-['Outfit'] leading-[100%] text-foreground mb-3 mt-1 lg:mt-6 pt-6">
+                    Ready for Free Consultation?
+                  </h2>
+                  <p className="mb-10 text-[14px] sm:text-[15px] md:text-[20px] text-[#9FA6AD] font-['Outfit'] font-light leading-normal">
+                    Your Demand for IT & AI Experts and free consultation anytime.
+                  </p>
 
-        {/* This container ensures the contact info is grouped and aligned */}
-        <div className="mt-8 flex flex-col items-center lg:items-start gap-4">
-            <div className="flex items-center gap-3 text-sm">
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" className="text-accent flex-shrink-0"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" /><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" /></svg>
-                <span className="text-foreground text-sm sm:text-base font-['Outfit'] font-light">Email us:</span>
-                <span className="text-muted-foreground text-sm sm:text-base font-['Outfit'] font-light">hello@upteky.com</span>
-            </div>
-            <div className="flex items-center gap-3 text-sm">
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" className="text-accent flex-shrink-0"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" /></svg>
-                <span className="text-foreground text-sm sm:text-base font-['Outfit'] font-light">Phone:</span>
-                <span className="text-muted-foreground text-sm sm:text-base font-['Outfit'] font-light">+91 9978901910</span>
-            </div>
-        </div>
-    </div>
-
-    {/* --- Bottom Content Block (pushed to the end by `justify-between`) --- */}
-    <div className="w-full mt-10 lg:mt-0">
-        <p className="text-[14px] font-['Inter'] font-normal leading-[100%] text-foreground mb-2">Follow Us:</p>
-        <div className="flex gap-3 justify-center lg:justify-start">
-            <div className="flex space-x-2">
-                {socialMedia.map((social) => (
-                    <Link
-                        key={social.name}
-                        href={social.href}
-                        aria-label={social.name}
-                        className="p-2.5 rounded-full bg-secondary/50 text-muted-foreground hover:bg-accent hover:text-accent-foreground transition-all duration-300 transform hover:scale-110"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        {social.icon}
-                    </Link>
-                ))}
-            </div>
-        </div>
-    </div>
-</div>
-
-                {/* Right form column */}
-                <div className="bg-[#2C3035] rounded-[30px] px-6 py-8 sm:px-14 sm:py-10 my-3 md:p-10 border border-muted-foreground/10 lg:col-span-3 2xl:ml-12">
-                    <form onSubmit={handleSubmit} className="space-y-8">
-                        <div className="space-y-3">
-                            {/* Input fields (no changes) */}
-                            <div>
-                                <input type="text" placeholder="Full Name*" className="w-full my-4 bg-transparent border-b border-muted-foreground/50 py-3 focus:border-accent focus:outline-none placeholder:text-base placeholder:text-muted-foreground" name="fullName" value={formData.fullName} onChange={handleChange} required />
-                            </div>
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-3">
-                                <div>
-                                    <input type="email" placeholder="Email*" className="w-full mb-4 bg-transparent border-b border-muted-foreground/50 py-3 focus:border-accent focus:outline-none placeholder:text-base placeholder:text-muted-foreground" name="email" value={formData.email} onChange={handleChange} required />
-                                </div>
-                                <div>
-                                    <input type="text" placeholder="Phone number" className="w-full mb-4 bg-transparent border-b border-muted-foreground/50 py-3 focus:border-accent focus:outline-none placeholder:text-base placeholder:text-muted-foreground" name="phone" value={formData.phone} onChange={handleChange} />
-                                </div>
-                            </div>
-                            <div>
-                                <textarea rows={3} placeholder="Describe your project" className="w-full mb-4 bg-transparent border-b border-muted-foreground/50 py-3 focus:border-accent focus:outline-none resize-none placeholder:text-base placeholder:text-muted-foreground" name="projectDescription" value={formData.projectDescription} onChange={handleChange} />
-                            </div>
-                        </div>
-
-                        <div>
-                            <p className="text-base text-muted-foreground font-medium mb-4">Services</p>
-                            <div className="flex flex-wrap gap-3">
-                                {['Web development', 'AI automation', 'IT consultation', 'Custom solution', 'Voicebots', 'Chatbots', 'App development'].map((service) => (
-                                    <button
-                                        key={service}
-                                        type="button"
-                                        onClick={() => handleServiceToggle(service)}
-                                        className={cn(
-                                            "px-5 py-2 text-xs sm:px-6 sm:py-3 sm:text-sm rounded-full border border-muted-foreground/50 transition-colors",
-                                            formData.services.includes(service)
-                                                ? "bg-accent text-accent-foreground border-accent"
-                                                : "text-foreground hover:text-accent"
-                                        )}
-                                    >
-                                        {service}
-                                    </button>
-                                ))}
-                            </div>
-                        </div>
-
-                        {/* START: FUNCTIONAL FILE INPUT */}
-                        <div>
-                            {/* This is the hidden file input that does the actual work */}
-                            <input
-                                type="file"
-                                multiple
-                                ref={fileInputRef}
-                                onChange={handleFileChange}
-                                className="hidden"
-                            />
-                            {/* This is your styled button that the user sees and clicks */}
-                            <div className="flex flex-col sm:flex-row items-center gap-4 pt-4">
-                                <button
-                                    type="button"
-                                    onClick={handleAttachClick} // Triggers the hidden input
-                                    className="w-full sm:w-auto bg-muted/40 hover:bg-muted text-sm text-muted-foreground rounded-full px-8 py-3 sm:px-16 sm:py-5 border border-border/40 transition-colors inline-flex items-center justify-center gap-2"
-                                >
-                                    <span className="text-base leading-none">+</span>
-                                    <span>Attach File(s)</span>
-                                </button>
-                                <Button
-                                    type="submit"
-                                    className="w-full sm:w-auto bg-gradient-accent text-sm text-white rounded-full px-12 py-4 sm:px-16 sm:py-5 border border-transparent hover:bg-none hover:bg-[#2c2c2c] hover:text-accent hover:border-accent transition-all duration-300"
-                                >
-                                    Send
-                                </Button>
-                            </div>
-                            {/* This block will display the names of selected files */}
-                            {files && files.length > 0 && (
-                                <div className="mt-4 text-sm text-muted-foreground">
-                                    <p className="font-medium text-foreground">Selected files:</p>
-                                    <ul className="list-disc pl-5 mt-1">
-                                        {Array.from(files).map((file, index) => (
-                                            <li key={index}>{file.name}</li>
-                                        ))}
-                                    </ul>
-                                </div>
-                            )}
-                        </div>
-                        {/* END: FUNCTIONAL FILE INPUT */}
-
-                        {responseMessage && <p className="text-center text-white mt-4">{responseMessage}</p>}
-                    </form>
+                  {/* This container ensures the contact info is grouped and aligned */}
+                  <div className="mt-16 flex flex-col items-center lg:items-start gap-4">
+                    <div className="flex items-center gap-3 text-sm">
+                      <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" className="text-accent flex-shrink-0"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" /><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" /></svg>
+                      <span className="text-foreground text-sm sm:text-base font-['Outfit'] font-light">Email us:</span>
+                      <span className="text-muted-foreground text-sm sm:text-base font-['Outfit'] font-light">hello@upteky.com</span>
+                    </div>
+                    <div className="flex items-center gap-3 text-sm">
+                      <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" className="text-accent flex-shrink-0"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" /></svg>
+                      <span className="text-foreground text-sm sm:text-base font-['Outfit'] font-light">Phone:</span>
+                      <span className="text-muted-foreground text-sm sm:text-base font-['Outfit'] font-light">+91 9978901910</span>
+                    </div>
+                  </div>
                 </div>
+
+                {/* --- Bottom Content Block (pushed to the end by `justify-between`) --- */}
+                <div className="w-full mt-10 lg:mt-0">
+                  <p className="text-[14px] font-['Inter'] font-normal leading-[100%] text-foreground mb-2">Follow Us:</p>
+                  <div className="flex gap-3 justify-center lg:justify-start">
+                    <div className="flex space-x-2">
+                      {socialMedia.map((social) => (
+                        <Link
+                          key={social.name}
+                          href={social.href}
+                          aria-label={social.name}
+                          className="p-2.5 rounded-full bg-secondary/50 text-muted-foreground hover:bg-accent hover:text-accent-foreground transition-all duration-300 transform hover:scale-110"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          {social.icon}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Right form column */}
+              <div className="bg-[#2C3035] rounded-[30px] px-8 py-8 sm:px-14 sm:py-10 my-3 md:p-10 border border-[#A9A8A8] lg:col-span-3 2xl:ml-12">
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  <div className="space-y-0">
+                    {/* Input fields (no changes) */}
+                    <div>
+                      <input type="text" placeholder="Full Name*" className="w-full mb-4 bg-transparent border-b border-muted-foreground/50 py-3 focus:border-accent focus:outline-none placeholder:text-base placeholder:text-muted-foreground" name="fullName" value={formData.fullName} onChange={handleChange} required />
+                    </div>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-3">
+                      <div>
+                        <input type="email" placeholder="Email*" className="w-full mb-4 bg-transparent border-b border-muted-foreground/50 py-3 focus:border-accent focus:outline-none placeholder:text-base placeholder:text-muted-foreground" name="email" value={formData.email} onChange={handleChange} required />
+                      </div>
+                      <div>
+                        <input type="text" placeholder="Phone number" className="w-full mb-4 bg-transparent border-b border-muted-foreground/50 py-3 focus:border-accent focus:outline-none placeholder:text-base placeholder:text-muted-foreground" name="phone" value={formData.phone} onChange={handleChange} />
+                      </div>
+                    </div>
+                    <div>
+                      <textarea rows={3} placeholder="Describe your project" className="w-full  bg-transparent border-b border-muted-foreground/50 pt-3 focus:border-accent focus:outline-none resize-none placeholder:text-base placeholder:text-muted-foreground" name="projectDescription" value={formData.projectDescription} onChange={handleChange} />
+                    </div>
+                  </div>
+
+                  <div>
+                    <p className="text-base text-muted-foreground font-medium mb-4">Services</p>
+                    <div className="flex flex-wrap gap-3">
+                      {['Web development', 'AI automation', 'IT consultation', 'Custom solution', 'Voicebots', 'Chatbots', 'App development'].map((service) => (
+                        <button
+                          key={service}
+                          type="button"
+                          onClick={() => handleServiceToggle(service)}
+                          className={cn(
+                            "px-5 py-2 text-xs sm:px-6 sm:py-3 sm:text-sm rounded-full border border-muted-foreground/50 transition-colors",
+                            formData.services.includes(service)
+                              ? "bg-accent text-accent-foreground border-accent"
+                              : "text-foreground hover:text-accent"
+                          )}
+                        >
+                          {service}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* START: FUNCTIONAL FILE INPUT */}
+                  <div>
+                    {/* This is the hidden file input that does the actual work */}
+                    <input
+                      type="file"
+                      multiple
+                      ref={fileInputRef}
+                      onChange={handleFileChange}
+                      className="hidden"
+                    />
+                    {/* This is your styled button that the user sees and clicks */}
+                    <div className="flex flex-col sm:flex-row items-center gap-4 pt-4">
+                      <button
+                        type="button"
+                        onClick={handleAttachClick} // Triggers the hidden input
+                        className="w-full sm:w-auto bg-muted/40 hover:bg-muted text-sm text-muted-foreground rounded-full px-12 py-4 sm:px-12 sm:py-3 border border-border/40 transition-colors inline-flex items-center justify-center gap-2"
+                      >
+                        <span className="text-base leading-none m-0 p-0">+</span>
+                        <span>Attach File(s)</span>
+                      </button>
+                      <Button
+                        type="submit"
+                        className="w-full sm:w-auto bg-gradient-accent text-sm text-white rounded-full px-12 py-6 sm:px-16 sm:py-5 border border-transparent hover:bg-none hover:bg-[#2c2c2c] hover:text-accent hover:border-accent transition-all duration-300"
+                      >
+                        Send
+                      </Button>
+                    </div>
+                    {/* This block will display the names of selected files */}
+                    {files && files.length > 0 && (
+                      <div className="mt-4 text-sm text-muted-foreground">
+                        <p className="font-medium text-foreground">Selected files:</p>
+                        <ul className="list-disc pl-5 mt-1">
+                          {Array.from(files).map((file, index) => (
+                            <li key={index}>{file.name}</li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+                  </div>
+                  {/* END: FUNCTIONAL FILE INPUT */}
+
+                  {responseMessage && <p className="text-center text-white mt-4">{responseMessage}</p>}
+                </form>
+              </div>
             </div>
+          </div>
         </div>
-    </div>
-</section>
+      </section>
 
 
       <style jsx global>{`
@@ -1786,7 +1786,7 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
             }
           }
         `}</style>
-      </div>
+    </div>
   );
 }
 

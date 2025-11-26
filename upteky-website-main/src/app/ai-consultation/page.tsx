@@ -284,7 +284,7 @@ export default function LandingPage() {
 
 
   return (
-    <div className="bg-[#232629] text-white overflow-x-hidden ">
+    <div className="bg-[#232629] text-white overflow-x-hidden lg:px-16 px-4">
 
       {/* Section 1: Hero */}
       <motion.section
@@ -586,9 +586,13 @@ export default function LandingPage() {
 
             {/* Button */}
             <div className="flex-shrink-0 mt-4 sm:mt-6 md:mt-0">
-              <button className="whitespace-nowrap bg-gradient-to-r from-[#F58F1D] to-[#E57D77] w-[250px] h-[62px] text-white font-medium py-3 px-10 rounded-full shadow-lg hover:scale-105 transition-transform duration-300 ease-in-out">
+              <button
+                onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+                className="whitespace-nowrap bg-gradient-to-r from-[#F58F1D] to-[#E57D77] w-[250px] h-[62px] text-white font-medium py-3 px-10 rounded-full shadow-lg hover:scale-105 transition-transform duration-300 ease-in-out"
+              >
                 Book Now
               </button>
+
             </div>
           </div>
         </div>

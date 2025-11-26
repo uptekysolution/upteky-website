@@ -41,7 +41,7 @@ export default function ConversationalAgentsPage() {
       no: '02',
       title: 'WhatsApp & Multi-Platform Chatbot',
       desc: 'Automate chats on WhatsApp, Instagram, Messenger, and more.',
-      cta: 'Explore Multi-Platform Chatbot →',
+      cta: 'Explore MultiPlatform Chatbot →',
     },
     {
       no: '03',
@@ -298,51 +298,51 @@ export default function ConversationalAgentsPage() {
     <div className="min-h-screen px-3 xs:px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 2xl:px-20 bg-[#232629] text-foreground overflow-x-hidden">
       {/* Section-1 */}
       <FadeIn>
-      <section className="mx-auto px-2 xs:px-3 sm:px-4 md:px-6 lg:px-8 pt-16 xs:pt-20 sm:pt-24 md:pt-32 lg:pt-36 xl:pt-40 pb-6 xs:pb-8 sm:pb-10 md:pb-12 lg:pb-16">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 xs:gap-8 sm:gap-10 md:gap-12 lg:gap-16 items-center">
-          {/* Text content and button */}
-          <div className="order-1">
-            <motion.h1
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className="font-outfit md:mt-10 mt-14 text-center md:text-left text-white font-light text-[22px] xs:text-[22px] sm:text-[26px] md:text-[30px] lg:text-[32px] xl:text-[38px] 2xl:text-[45px] leading-[110%] xs:leading-[115%] sm:leading-[120%] md:leading-[121%]"
-            >
-              Intelligent Conversational Agents
-              <br className="hidden xs:block" />
-              -for Always On
-              <br className="hidden xs:block" />
-              Customer Engagement
-            </motion.h1>
-
-            <motion.p
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.05 }}
-              className="mt-6  text-center md:text-left xs:mt-8 sm:mt-10 md:mt-12 lg:mt-14 max-w-full lg:max-w-xl font-poppins font-normal text-[14px] xs:text-[14px] sm:text-[14px] md:text-[14px] lg:text-[15px] xl:text-[16px] leading-[140%] xs:leading-[145%] sm:leading-[146%] text-[#858C92]"
-            >
-              Upteky Solutions builds enterprise Conversational AI chatbots, WhatsApp automation, lead reactivation, and voice bots powered by NLP, secure integrations, and analytics to fuel growth.
-            </motion.p>
-
-            <div className="mt-6 xs:mt-8 text-center md:text-left  sm:mt-10 md:mt-12 lg:mt-14 xl:mt-16">
-              <button
-                className="text-white font-poppins shadow-lg hover:bg-[linear-gradient(90deg,_#F58F1D_0%,_#E57D77_100%)] w-auto min-w-[100px] xs:min-w-[180px] sm:min-w-[200px] md:min-w-[220px] lg:min-w-[240px] xl:min-w-[243px] h-[36px] xs:h-[40px] sm:h-[44px] md:h-[46px] lg:h-[48px] xl:h-[50px] rounded-[30px] xs:rounded-[35px] sm:rounded-[40px] md:rounded-[45px] lg:rounded-[50px] xl:rounded-[62px] border border-accent font-normal text-[12px] xs:text-[13px] sm:text-[14px] md:text-[15px] lg:text-[16px] xl:text-[18px] 2xl:text-[20px] transition-all duration-300 px-3 xs:px-4 sm:px-5 md:px-6 lg:px-7 xl:px-8"
+        <section className="mx-auto px-2 xs:px-3 sm:px-4 md:px-6 lg:px-8 pt-16 xs:pt-20 sm:pt-24 md:pt-32 lg:pt-36 xl:pt-40 pb-6 xs:pb-8 sm:pb-10 md:pb-12 lg:pb-16">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 xs:gap-8 sm:gap-10 md:gap-12 lg:gap-16 items-center">
+            {/* Text content and button */}
+            <div className="order-1">
+              <motion.h1
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+                className="font-['Outfit'] md:mt-10 mt-14 text-center md:text-left text-white font-light text-[22px] xs:text-[22px] sm:text-[26px] md:text-[30px] lg:text-[40px] xl:text-[40px] 2xl:text-[45px] leading-[110%] xs:leading-[115%] sm:leading-[120%] md:leading-[121%]"
               >
-                Talk to an Expert
-              </button>
+                Intelligent Conversational Agents
+                <br className="hidden xs:block" />
+                for Always On
+                <br className="hidden xs:block" />
+                Customer Engagement
+              </motion.h1>
+
+              <motion.p
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.05 }}
+                className="mt-6 text-center md:text-left xs:mt-8 sm:mt-10 md:mt-12 lg:mt-14 max-w-full lg:max-w-xl font-poppins font-normal text-[14px] xs:text-[14px] sm:text-[14px] md:text-[14px] lg:text-[18px] xl:text-[18px] leading-[140%] xs:leading-[145%] sm:leading-[146%] text-[#858C92]"
+              >
+                Upteky Solutions builds enterprise Conversational AI chatbots, WhatsApp automation, lead reactivation, and voice bots powered by NLP, secure integrations, and analytics to fuel growth.
+              </motion.p>
+
+              <div className="mt-6 xs:mt-8 text-center md:text-left  sm:mt-10 md:mt-12 lg:mt-14 xl:mt-16">
+                <button
+                  className="text-white font-poppins shadow-lg hover:bg-[linear-gradient(90deg,_#F58F1D_0%,_#E57D77_100%)] w-auto min-w-[100px] xs:min-w-[180px] sm:min-w-[200px] md:min-w-[220px] lg:min-w-[240px] xl:min-w-[243px] h-[36px] xs:h-[40px] sm:h-[44px] md:h-[46px] lg:h-[48px] xl:h-[50px] rounded-[30px] xs:rounded-[35px] sm:rounded-[40px] md:rounded-[45px] lg:rounded-[50px] xl:rounded-[62px] border border-accent font-normal text-[12px] xs:text-[13px] sm:text-[14px] md:text-[15px] lg:text-[16px] xl:text-[18px] 2xl:text-[20px] transition-all duration-300 px-3 xs:px-4 sm:px-5 md:px-6 lg:px-7 xl:px-8"
+                >
+                  Talk to an Expert
+                </button>
+              </div>
+            </div>
+
+            {/* Image */}
+            <div className="relative h-[280px] xs:h-[320px] sm:h-[380px] md:h-[450px] lg:h-[500px] xl:h-[560px] 2xl:h-[600px] overflow-hidden order-2">
+              <img
+                src="/Convhero.svg"
+                alt="Conversational AI Solutions"
+                className="w-full h-full object-contain object-center"
+              />
             </div>
           </div>
-
-          {/* Image */}
-          <div className="relative h-[280px] xs:h-[320px] sm:h-[380px] md:h-[450px] lg:h-[500px] xl:h-[560px] 2xl:h-[600px] overflow-hidden order-2">
-            <img 
-              src="/Convhero.png" 
-              alt="Conversational AI Solutions" 
-              className="w-full h-full object-contain object-center"
-            />
-          </div>
-        </div>
-      </section>
+        </section>
       </FadeIn>
 
       {/* Divider line */}
@@ -350,127 +350,144 @@ export default function ConversationalAgentsPage() {
 
       {/* Section-2 */}
       <FadeIn>
-      <section className="container mx-auto px-3 xs:px-4 sm:px-6 md:px-8 lg:px-10 py-8 xs:py-10 sm:py-12 md:py-16 lg:py-20 xl:py-24">
-        <div className="mx-auto rounded-[20px] xs:rounded-[24px] sm:rounded-[26px] md:rounded-[28px] lg:rounded-[30px]">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 xs:gap-5 sm:gap-6 md:gap-7 lg:gap-8">
-            {/* Left heading/description */}
-            <div className="col-span-1 sm:col-span-2 lg:col-span-1 px-2 xs:px-3 sm:px-4 flex flex-col text-center lg:text-left">
-              <h2 className="font-outfit text-[22px] xs:text-[22px] sm:text-[24px] md:text-[26px] lg:text-[28px] xl:text-[32px] 2xl:text-[35px] leading-[115%] xs:leading-[118%] sm:leading-[120%] md:leading-[121%] text-white">
-                Why Choose Upteky Solutions?
-              </h2>
-              <p className="mt-3 xs:mt-4 sm:mt-5 md:mt-6 font-poppins text-[14px] xs:text-[14px] sm:text-[14px] md:text-[14px] lg:text-[15px] xl:text-[16px] text-[#858C92] max-w-full sm:max-w-md lg:max-w-sm mx-auto lg:mx-0 leading-[140%] xs:leading-[145%] sm:leading-[150%]">
-                We don't just deploy bots we design intelligent systems that grow your pipeline and reduce support load.
-              </p>
-            </div>
-
-            {cards.map((card, idx) => (
-              <div key={idx} className="col-span-1">
-                <div className="rounded-[16px] xs:rounded-[18px] sm:rounded-[20px] md:rounded-[22px] lg:rounded-[24px] xl:rounded-[28px] bg-[#2C3035] w-full min-h-[140px] xs:min-h-[150px] sm:min-h-[160px] md:min-h-[180px] lg:min-h-[200px] xl:min-h-[216px] mx-auto p-3 xs:p-4 sm:p-5 md:p-6 lg:p-7">
-                  <h3 className="text-white font-outfit pt-1 xs:pt-2 sm:pt-3 md:pt-4 text-[14px] font-outfit xs:text-[14px] sm:text-[14px] md:text-[14px] lg:text-[15px] xl:text-[18px] leading-[115%] xs:leading-[118%] sm:leading-[120%] md:leading-[121%] text-center font-medium">{card.title}</h3>
-                  <div className="-mx-3 xs:-mx-4 sm:-mx-5 md:-mx-6 lg:-mx-7 my-3 xs:my-4 sm:my-5 md:my-6 lg:my-7 h-px bg-[#4C4C4C]" />
-                  <p className="text-[#858C92] font-poppins text-[12px] xs:text-[12px] sm:text-[12px] md:text-[13px] lg:text-[14px] xl:text-[15px] leading-[135%] xs:leading-[140%] sm:leading-[145%] md:leading-[150%] text-center max-w-[240px] xs:max-w-[260px] sm:max-w-[280px] md:max-w-[300px] lg:max-w-[320px] mx-auto">{card.desc}</p>
-                </div>
+        <section className="container mx-auto px-3 xs:px-4 sm:px-6 md:px-8 lg:px-10 py-8 xs:py-10 sm:py-12 md:py-16 lg:py-20 xl:py-24">
+          <div className="mx-auto rounded-[20px] xs:rounded-[24px] sm:rounded-[26px] md:rounded-[28px] lg:rounded-[30px]">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 xs:gap-5 sm:gap-6 md:gap-7 lg:gap-8">
+              {/* Left heading/description */}
+              <div className="col-span-1 sm:col-span-2 lg:col-span-1 px-2 xs:px-3 sm:px-4 flex flex-col text-center lg:text-left">
+                <h2 className="font-['Outfit'] text-[22px] xs:text-[22px] sm:text-[26px] md:text-[30px] lg:text-[40px] xl:text-[40px] 2xl:text-[45px] leading-[115%] xs:leading-[118%] sm:leading-[120%] md:leading-[121%] text-white">
+                  Why Choose Upteky Solutions?
+                </h2>
+                <p className="mt-3 xs:mt-4 sm:mt-5 md:mt-6 font-poppins text-[14px] xs:text-[14px] sm:text-[14px] md:text-[14px] lg:text-[15px] xl:text-[16px] text-[#858C92] max-w-full sm:max-w-md lg:max-w-sm mx-auto lg:mx-0 leading-[140%] xs:leading-[145%] sm:leading-[150%]">
+                  We don't just deploy bots we design intelligent systems that grow your pipeline and reduce support load.
+                </p>
               </div>
-            ))}
+
+              {cards.map((card, idx) => (
+                <div key={idx} className="col-span-1">
+                  <div className="rounded-[16px] xs:rounded-[18px] sm:rounded-[20px] md:rounded-[22px] lg:rounded-[24px] xl:rounded-[28px] bg-[#2C3035] w-full min-h-[140px] xs:min-h-[150px] sm:min-h-[160px] md:min-h-[180px] lg:min-h-[200px] xl:min-h-[216px] mx-auto p-3 xs:p-4 sm:p-5 md:p-6 lg:p-7">
+                    <h3 className="text-white font-['Outfit']  pt-1 xs:pt-2 sm:pt-3 md:pt-4 text-[14px] xs:text-[14px] sm:text-[14px] md:text-[14px] lg:text-[20px] xl:text-[20px] leading-[115%] xs:leading-[118%] sm:leading-[120%] md:leading-[121%] text-center font-light">{card.title}</h3>
+                    <div className="-mx-3 xs:-mx-4 sm:-mx-5 md:-mx-6 lg:-mx-7 my-3 xs:my-4 sm:my-5 md:my-6 lg:my-7 h-px bg-[#4C4C4C]" />
+                    <p className="text-[#858C92] font-poppins text-[12px] xs:text-[12px] sm:text-[12px] md:text-[13px] lg:text-[16px] xl:text-[16px] leading-[135%] xs:leading-[140%] sm:leading-[145%] md:leading-[150%] text-center max-w-[240px] xs:max-w-[260px] sm:max-w-[280px] md:max-w-[300px] lg:max-w-[320px] mx-auto">{card.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
       </FadeIn>
 
       <div className="w-screen h-[0.5px] bg-[#414141] relative left-1/2 -translate-x-1/2" />
 
       {/* Section-3 */}
       <FadeIn>
-      <section className="container mx-auto px-3 xs:px-4 sm:px-6 md:px-8 lg:px-10 py-8 xs:py-10 sm:py-12 md:py-16 lg:py-20 xl:py-24">
-        <motion.h1
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="text-center text-white font-outfit text-[22px] xs:text-[22px] sm:text-[24px] md:text-[26px] lg:text-[28px] xl:text-[32px] 2xl:text-[35px] leading-[115%] xs:leading-[118%] sm:leading-[120%] md:leading-[121%] pb-6 xs:pb-7 sm:pb-8 md:pb-10 lg:pb-12"
-        >
-          Our Conversational AI Solutions
-        </motion.h1>
+        <section className="container mx-auto px-3 xs:px-4 sm:px-6 md:px-8 lg:px-10 py-8 xs:py-10 sm:py-12 md:py-16 lg:py-20 xl:py-24">
+          <motion.h1
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="text-center text-white font-['Outfit'] text-[22px] text-[22px] xs:text-[22px] sm:text-[26px] md:text-[30px] lg:text-[40px] xl:text-[40px] 2xl:text-[45px] leading-[115%] xs:leading-[118%] sm:leading-[120%] md:leading-[121%] pb-6 xs:pb-7 sm:pb-8 md:pb-10 lg:pb-12"
+          >
+            Our Conversational AI Solutions
+          </motion.h1>
 
-        {/* Mobile/Tablet Layout */}
-        <div className="block lg:hidden space-y-3 xs:space-y-4 sm:space-y-5">
-          {services.map((s) => (
-            <div key={s.no} className="bg-[#2C3035] rounded-[16px] xs:rounded-[18px] sm:rounded-[20px] p-4 xs:p-5 sm:p-6">
-              <div className="flex flex-col gap-4 xs:gap-5 sm:gap-6">
-                <div className="text-[#F58F1D] font-outfit font-normal text-[12px] xs:text-[13px] sm:text-[14px]">{s.no}</div>
-                <div className="text-white font-outfit font-normal text-[16px] xs:text-[17px] sm:text-[18px] md:text-[19px] lg:text-[20px] leading-[120%]">{s.title}</div>
-                <div className="text-[#9FA6AD] font-poppins font-normal text-[12px] xs:text-[12px] sm:text-[13px] md:text-[14px] leading-[140%]">{s.desc}</div>
-                <div className="text-white font-poppins font-normal text-[11px] xs:text-[12px] sm:text-[13px] md:text-[14px] leading-[140%]">{s.cta}</div>
+          {/* Mobile/Tablet Layout */}
+          <div className="block lg:hidden space-y-3 xs:space-y-4 sm:space-y-5">
+            {services.map((s) => (
+              <div key={s.no} className="bg-[#2C3035] rounded-[16px] xs:rounded-[18px] sm:rounded-[20px] p-4 xs:p-5 sm:p-6">
+                <div className="flex flex-col gap-4 xs:gap-5 sm:gap-6">
+                  <div className="text-[#F58F1D] font-['Outfit'] font-normal text-[12px] xs:text-[13px] sm:text-[14px]">{s.no}</div>
+                  <div className="text-white font-['Outfit'] font-normal text-[16px] xs:text-[17px] sm:text-[18px] md:text-[19px] lg:text-[20px] leading-[120%]">{s.title}</div>
+                  <div className="text-[#9FA6AD] font-poppins font-normal text-[12px] xs:text-[12px] sm:text-[13px] md:text-[14px] leading-[140%]">{s.desc}</div>
+                  <div className="text-white font-poppins font-normal text-[11px] xs:text-[12px] sm:text-[13px] md:text-[14px] leading-[140%]">{s.cta}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Desktop Layout - All 4 cards in one row */}
+          <div className="hidden lg:block">
+            <div className="relative rounded-[18px] lg:rounded-[20px] xl:rounded-[22px] ring-1 ring-white/10 bg-[#2C3035] overflow-hidden">
+              {/* vertical dividers + plus markers */}
+              <div className="absolute inset-y-0 left-[25%] -translate-x-1/2 w-px bg-white/10" />
+              <div className="absolute inset-y-0 left-[50%] -translate-x-1/2 w-px bg-white/10" />
+              <div className="absolute inset-y-0 left-[75%] -translate-x-1/2 w-px bg-white/10" />
+
+              {/* Plus markers */}
+              <PlusMarker className="left-[25%] top-1/2 -translate-x-1/2 -translate-y-1/2" />
+              <PlusMarker className="left-[50%] top-1/2 -translate-x-1/2 -translate-y-1/2" />
+              <PlusMarker className="left-[75%] top-1/2 -translate-x-1/2 -translate-y-1/2" />
+
+              <div className="grid grid-cols-4">
+                {services.map((s) => (
+                  <div
+                    key={s.no}
+                    // Add 'h-full' to ensure the card takes up the full height of its grid cell
+                    className="px-4 lg:px-6 xl:px-8 2xl:px-10 py-6 lg:py-7 xl:py-8 h-full"
+                  >
+                    {/* Add 'h-full' to the ul to take the full height of the div.
+              Add 'flex-col' and 'justify-between' for vertical alignment (though we'll use 'grow' on desc).
+            */}
+                    <ul className="flex flex-col gap-4 lg:gap-5 xl:gap-6 2xl:gap-8 h-full">
+                      <li className="text-[#F58F1D] font-['Outfit'] font-normal text-[12px] lg:text-[13px] xl:text-[14px]">
+                        {s.no}
+                      </li>
+                      <li className="text-white font-['Outfit'] font-normal text-[11px] lg:text-[20px] xl:text-[20px] 2xl:text-[20px] leading-[120%]">
+                        {s.title}
+                      </li>
+                      <li className="text-[#9FA6AD] font-poppins font-normal text-[10px] lg:text-[16px] xl:text-[16px] 2xl:text-[16px] leading-[135%] grow">
+                        {s.desc}
+                      </li>
+                      <li className="text-white font-poppins font-normal text-[10px] lg:text-[14px] xl:text-[14px] 2xl:text-[14px] leading-[135%]">
+                        {s.cta}
+                      </li>
+                    </ul>
+                  </div>
+                ))}
               </div>
             </div>
-          ))}
-        </div>
-
-        {/* Desktop Layout - All 4 cards in one row */}
-        <div className="hidden lg:block">
-          <div className="relative rounded-[18px] lg:rounded-[20px] xl:rounded-[22px] ring-1 ring-white/10 bg-[#2C3035] overflow-hidden">
-            {/* vertical dividers + plus markers */}
-            <div className="absolute inset-y-0 left-[25%] -translate-x-1/2 w-px bg-white/10" />
-            <div className="absolute inset-y-0 left-[50%] -translate-x-1/2 w-px bg-white/10" />
-            <div className="absolute inset-y-0 left-[75%] -translate-x-1/2 w-px bg-white/10" />
-
-            {/* Plus markers */}
-            <PlusMarker className="left-[25%] top-1/2 -translate-x-1/2 -translate-y-1/2" />
-            <PlusMarker className="left-[50%] top-1/2 -translate-x-1/2 -translate-y-1/2" />
-            <PlusMarker className="left-[75%] top-1/2 -translate-x-1/2 -translate-y-1/2" />
-
-            <div className="grid grid-cols-4">
-              {services.map((s) => (
-                <div key={s.no} className="px-4 lg:px-6 xl:px-8 2xl:px-10 py-6 lg:py-7 xl:py-8">
-                  <ul className="flex flex-col gap-4 lg:gap-5 xl:gap-6 2xl:gap-8">
-                    <li className="text-[#F58F1D] font-outfit font-normal text-[12px] lg:text-[13px] xl:text-[14px]">{s.no}</li>
-                    <li className="text-white font-outfit font-normal text-[11px] lg:text-[12px] xl:text-[13px] 2xl:text-[14px] leading-[120%]">{s.title}</li>
-                    <li className="text-[#9FA6AD] font-poppins font-normal text-[10px] lg:text-[11px] xl:text-[12px] 2xl:text-[13px] leading-[135%]">{s.desc}</li>
-                    <li className="text-white font-poppins font-normal text-[10px] lg:text-[11px] xl:text-[12px] 2xl:text-[13px] leading-[135%]">{s.cta}</li>
-                  </ul>
-                </div>
-              ))}
-            </div>
           </div>
-        </div>
-      </section>
+        </section>
       </FadeIn>
 
       <div className="w-screen h-[0.5px] bg-[#414141] relative left-1/2 -translate-x-1/2" />
 
       {/* Section-4 */}
-      <FadeIn>
-      <section className="container mx-auto px-3 xs:px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 pt-24 pb-24">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 xs:gap-7 sm:gap-8 md:gap-10 lg:gap-12 xl:gap-16 justify-center">
-          {/* Text Content Section */}
-          <div className="space-y-4 xs:space-y-5 sm:space-y-6 md:space-y-7 lg:space-y-8 max-w-full lg:max-w-[527px] mx-auto lg:mx-0 order-1">
-            <h2 className="text-white mb-6 xs:mb-8 sm:mb-10 md:mb-12 lg:mb-14 font-outfit text-[22px] xs:text-[22px] sm:text-[24px] md:text-[26px] lg:text-[28px] xl:text-[32px] 2xl:text-[36px] leading-[115%] xs:leading-[118%] sm:leading-[120%] md:leading-[121%]">
-              Our Delivery Process
-            </h2>
-            <p className="text-[#9FA6AD] font-poppins font-normal text-[12px] xs:text-[12px] sm:text-[13px] md:text-[14px] lg:text-[15px] xl:text-[16px] leading-[140%] xs:leading-[145%] sm:leading-[150%]">
-              We follow a structured, client-first approach to transform ideas into smart digital solutions.
-            </p>
-            <p className="text-[#9FA6AD] font-poppins font-normal text-[12px] xs:text-[12px] sm:text-[13px] md:text-[14px] lg:text-[15px] xl:text-[16px] leading-[140%] xs:leading-[145%] sm:leading-[150%]">
-              From understanding goals and mapping conversations to building integrations, testing thoroughly, and optimizing for performance, each step is designed for precision, scalability, and long-term business impact.
-            </p>
-          </div>
+      {false && (    //  <--- Remove this false condition to show the delivery process section
+        <FadeIn>
+          <section className="container mx-auto px-3 xs:px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 pt-24 pb-24">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 xs:gap-7 sm:gap-8 md:gap-10 lg:gap-12 xl:gap-16 justify-center">
+              {/* Text Content Section */}
+              <div className="space-y-4 xs:space-y-5 sm:space-y-6 md:space-y-7 lg:space-y-8 max-w-full lg:max-w-[527px] mx-auto lg:mx-0 order-1">
+                <h2 className="text-white mb-6 xs:mb-8 sm:mb-10 md:mb-12 lg:mb-14 font-outfit text-[22px] xs:text-[22px] sm:text-[24px] md:text-[26px] lg:text-[28px] xl:text-[32px] 2xl:text-[36px] leading-[115%] xs:leading-[118%] sm:leading-[120%] md:leading-[121%]">
+                  Our Delivery Process
+                </h2>
+                <p className="text-[#9FA6AD] font-poppins font-normal text-[12px] xs:text-[12px] sm:text-[13px] md:text-[14px] lg:text-[15px] xl:text-[16px] leading-[140%] xs:leading-[145%] sm:leading-[150%]">
+                  We follow a structured, client-first approach to transform ideas into smart digital solutions.
+                </p>
+                <p className="text-[#9FA6AD] font-poppins font-normal text-[12px] xs:text-[12px] sm:text-[13px] md:text-[14px] lg:text-[15px] xl:text-[16px] leading-[140%] xs:leading-[145%] sm:leading-[150%]">
+                  From understanding goals and mapping conversations to building integrations, testing thoroughly, and optimizing for performance, each step is designed for precision, scalability, and long-term business impact.
+                </p>
+              </div>
 
-          {/* Cards Section */}
-          <div className="order-2">
-            <ScrollStack />
-          </div>
-        </div>
-      </section>
-      </FadeIn>
+              {/* Cards Section */}
+              <div className="order-2">
+                <ScrollStack />
+              </div>
+            </div>
+          </section>
+        </FadeIn>
+      )}
 
-      <div className="w-screen h-[0.5px] bg-[#414141] relative left-1/2 -translate-x-1/2" />
+      {/* <div className="w-screen h-[0.5px] bg-[#414141] relative left-1/2 -translate-x-1/2" /> */}
 
       {/* Section-5 */}
       <FadeIn>
-      <section className="container mx-auto px-3 xs:px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 py-8 xs:py-10 sm:py-12 md:py-16 lg:py-20 xl:py-24">
-        <div>
-          <ProjectDiscussion />
-        </div>
-      </section>
+        <section className="container mx-auto px-3 xs:px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 py-8 xs:py-10 sm:py-12 md:py-16 lg:py-20 xl:py-24">
+          <div>
+            <ProjectDiscussion />
+          </div>
+        </section>
       </FadeIn>
     </div>
   );
