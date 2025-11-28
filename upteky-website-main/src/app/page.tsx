@@ -1043,7 +1043,7 @@ export default function Home() {
             <div className="grid grid-cols-1 md:grid-cols-10 gap-8 items-stretch">
               {/* Startups */}
               <motion.div
-                className="md:col-span-4 bg-[#2C3035] border border-0 rounded-[30px] py-[45] px-[45] h-full flex flex-col"
+                className="md:col-span-4 bg-[#2C3035] border border-0 rounded-[30px] py-[45px] px-[45px] h-full flex flex-col"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.2 }}
@@ -1062,7 +1062,7 @@ export default function Home() {
 
               {/* Small Business */}
               <motion.div
-                className="md:col-span-6 bg-[#2C3035] border border-0 rounded-[30px] py-[45] px-[45] h-full flex flex-col"
+                className="md:col-span-6 bg-[#2C3035] border border-0 rounded-[30px] py-[45px] px-[45px] h-full flex flex-col"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.2 }}
@@ -1084,7 +1084,7 @@ export default function Home() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
               {/* Enterprise */}
               <motion.div
-                className="bg-[#2C3035] border border-0 rounded-[30px] py-[45] px-[45] h-full flex flex-col"
+                className="bg-[#2C3035] border border-0 rounded-[30px] py-[45px] px-[45px] h-full flex flex-col"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.2 }}
@@ -1104,7 +1104,7 @@ export default function Home() {
 
               {/* Agency */}
               <motion.div
-                className="bg-[#2C3035] border border-0 rounded-[30px] py-[45] px-[45] h-full flex flex-col"
+                className="bg-[#2C3035] border border-0 rounded-[30px] py-[45px] px-[45px] h-full flex flex-col"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.2 }}
@@ -1126,7 +1126,7 @@ export default function Home() {
               {/* Innovation */}
               <motion.div
                 // 2. Standardized padding to p-8 for consistency
-                className="bg-[#2C3035] border border-0 rounded-[30px] py-[45] px-[45] flex flex-col justify-between h-full"
+                className="bg-[#2C3035] border border-0 rounded-[30px] py-[45px] px-[45px] flex flex-col justify-between h-full"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.2 }}
